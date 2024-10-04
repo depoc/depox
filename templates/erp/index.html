@@ -160,123 +160,122 @@
 <div
     id="userEdit"
     class="
-        hidden
-        fixed
-        inset-0 z-50 
-        justify-center items-center
-        bg-black/70
-        backdrop-blur-md">
+            hidden
+            fixed
+            inset-0 z-50 
+            justify-center items-center
+            bg-black/70
+            backdrop-blur-md">
 
-  <div 
-    class=
-        "ring-1
-        ring-primary/10
-        dark:ring-white/15
-        bg-white dark:bg-secondary
-        p-6 w-11/12 h-5/6
-        rounded-xl
-        relative">
-
-    <button id="closeUserEdit" class="absolute top-4 right-4 text-lg text-black px-4 py-2 rounded"></button>
-
-    <!--user info-->
-    <div class="w-full">
-        <p 
-            class="
-            text-xl font-normal lg:text-8xl tracking-tight 
-            text-primary dark:text-white"> 
-
-            <div class="relative flex items-center gap-4">
-                <div class="flex justify-center">
-                    <button
-                        class="
-                        w-9 h-9
-                        rounded-md
-                        text-zinc-700
-                        bg-zinc-200
-                        dark:text-zinc-100
-                        dark:bg-tertiary">
-                        HB
-                    </button>
-                </div>
-                <div class="text-sm leading-5">
-                    <p class="font-semibold text-primary dark:text-white">
-                    <a href="#">
-                        <span class="absolute inset-0"></span>
-                        Hugo Belém
-                    </a>
-                    </p>
-                    <p class="text-zinc-500 dark:text-zinc-400">
-                        belem.hugo@hotmail.com
-                    </p>
-                </div>
-            </div>
-        </p>
-    </div>   
-
-    <!-- Date and Time  -->
-    <div class="absolute bottom-5 left-5 text-sm leading-5">
-        <p class="text-zinc-500 dark:text-zinc-400">
-            <span>
-                <span class="absolute inset-0"></span>
-                15:23
-                <br>
-                segunda, 3 outubro
-            </span>
-        </p>
-    </div>    
-
-    <!--theme button swith-->
     <div 
-        class="absolute grid bottom-5 right-5 grid-cols-1 gap-y-2 justify-center">
-        <button
-            id="light-theme-button"
-            class="
-                light-theme-button
-                flex items-center justify-center aspect-square
-                dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary
-                ring-1 bg-zinc-200 dark:ring-white/10 ring-primary/5 
-                dark:bg-tertiary rounded-lg hover:ring-primary/5 
-                dark:hover:ring-white/20 duration-300 group
-                transition-all h-9 w-9">
-                <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 200 200"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                class="size-4 text-black dark:text-white">
-                <path
-                d="M105.92 1.13855C101.387 -0.379518 98.6132 -0.379518 94.0804 1.13855C84.3803 4.38722 83.5585 22.8208 85.8095 42.9072C85.9416 44.0866 84.0933 44.5841 83.6157 43.4977C75.4802 24.9952 65.5166 9.46461 55.4963 11.5238C50.814 12.4861 48.415 13.8783 45.2567 17.4665C38.5977 25.0317 46.7905 41.0192 58.5378 57.0231C59.239 57.9785 57.8891 59.3314 56.9322 58.6322C40.9025 46.9201 24.8971 38.7624 17.3465 45.438C13.7653 48.6042 12.3783 51.0062 11.4263 55.6907C9.40359 65.6442 24.7215 75.5038 43.0677 83.5669C44.1534 84.0441 43.6583 85.8917 42.4794 85.762C22.5597 83.5706 4.36414 84.4492 1.13855 94.0804C-0.379518 98.6132 -0.379518 101.387 1.13855 105.92C4.36414 115.551 22.5597 116.429 42.4794 114.238C43.6583 114.108 44.1534 115.956 43.0676 116.433C24.7214 124.496 9.4035 134.356 11.4262 144.309C12.3782 148.994 13.7652 151.396 17.3464 154.562C24.8969 161.238 40.9021 153.08 56.9317 141.368C57.8886 140.669 59.2385 142.022 58.5372 142.977C46.7901 158.981 38.5975 174.968 45.2564 182.533C48.4147 186.122 50.8137 187.514 55.496 188.476C65.5164 190.535 75.4802 175.004 83.6157 156.501C84.0934 155.415 85.9417 155.913 85.8096 157.092C83.5584 177.179 84.3802 195.613 94.0804 198.861C98.6132 200.38 101.387 200.38 105.92 198.861C115.62 195.613 116.442 177.178 114.19 157.091C114.058 155.912 115.907 155.414 116.384 156.501C124.52 175.004 134.484 190.535 144.504 188.476C149.187 187.514 151.586 186.122 154.744 182.533C161.403 174.968 153.21 158.981 141.463 142.977C140.762 142.022 142.112 140.669 143.069 141.368C159.098 153.08 175.103 161.238 182.654 154.562C186.235 151.396 187.622 148.994 188.574 144.309C190.597 134.356 175.279 124.496 156.933 116.433C155.847 115.956 156.342 114.108 157.521 114.238C177.441 116.429 195.636 115.551 198.861 105.92C200.38 101.387 200.38 98.6132 198.861 94.0804C195.636 84.4493 177.441 83.5706 157.521 85.7619C156.342 85.8916 155.847 84.0441 156.933 83.5669C175.279 75.5038 190.597 65.6442 188.574 55.6907C187.622 51.0062 186.235 48.6042 182.654 45.438C175.103 38.7624 159.098 46.9201 143.068 58.6322C142.111 59.3313 140.761 57.9785 141.463 57.0231C153.21 41.0192 161.403 25.0317 154.744 17.4665C151.585 13.8783 149.186 12.4861 144.504 11.5238C134.484 9.46457 124.52 24.9957 116.384 43.4987C115.907 44.585 114.058 44.0875 114.19 42.9082C116.442 22.8214 115.62 4.38727 105.92 1.13855Z">
-                </path>
-            </svg>
-        </button>
+        class=
+            "ring-1
+            ring-primary/10
+            dark:ring-white/15
+            bg-white dark:bg-secondary
+            p-6 w-11/12 h-5/6
+            rounded-xl
+            relative">
 
-        <button
-            id="dark-theme-button"
-            class="
-                dark-theme-button
-                flex items-center justify-center aspect-square
-                dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary
-                ring-1 bg-zinc-200 dark:ring-white/10 ring-primary/5 
-                dark:bg-tertiary rounded-lg hover:ring-primary/5 
-                dark:hover:ring-white/20 duration-300 group
-                transition-all h-9 w-9">
-                <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 200 200"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                class="size-4 text-black dark:text-white">
-                <path
-                d="M200 99.789C200 97.5929 197.987 95.9886 195.811 96.2821C191.73 96.8325 187.565 97.1168 183.333 97.1168C132.155 97.1168 90.6667 55.541 90.6667 4.25461C90.6667 2.00409 88.7615 0.178388 86.5312 0.479284C37.6722 7.07094 0 49.0213 0 99.789C0 155.134 44.7715 200 100 200C155.228 200 200 155.134 200 99.789Z">
-                </path>
-            </svg>
-        </button>
+        <button id="closeUserEdit" class="absolute top-4 right-4 text-lg text-black px-4 py-2 rounded"></button>
+
+        <!--user info-->
+        <div class="w-full">
+            <p 
+                class="
+                text-xl font-normal lg:text-8xl tracking-tight 
+                text-primary dark:text-white"> 
+
+                <div class="relative flex items-center gap-4">
+                    <div class="flex justify-center">
+                        <button
+                            class="
+                            w-9 h-9
+                            rounded-md
+                            text-zinc-700
+                            bg-zinc-200
+                            dark:text-zinc-100
+                            dark:bg-tertiary">
+                            HB
+                        </button>
+                    </div>
+                    <div class="text-sm leading-5">
+                        <p class="font-semibold text-primary dark:text-white">
+                        <a href="#">
+                            <span class="absolute inset-0"></span>
+                            Hugo Belém
+                        </a>
+                        </p>
+                        <p class="text-zinc-500 dark:text-zinc-400">
+                            belem.hugo@hotmail.com
+                        </p>
+                    </div>
+                </div>
+            </p>
+        </div>   
+
+        <!-- Date and Time  -->
+        <div class="absolute bottom-5 left-5 text-sm leading-5">
+            <p class="text-zinc-500 dark:text-zinc-400">
+                <span>
+                    <span class="absolute inset-0"></span>
+                    15:23
+                    <br>
+                    segunda, 3 outubro
+                </span>
+            </p>
+        </div>    
+
+        <!--theme button swith-->
+        <div 
+            class="absolute grid bottom-5 right-5 grid-cols-1 gap-y-2 justify-center">
+            <button
+                id="light-theme-button"
+                class="
+                    light-theme-button
+                    flex items-center justify-center aspect-square
+                    dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary
+                    ring-1 bg-zinc-200 dark:ring-white/10 ring-primary/5 
+                    dark:bg-tertiary rounded-lg hover:ring-primary/5 
+                    dark:hover:ring-white/20 duration-300 group
+                    transition-all h-9 w-9">
+                    <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 200 200"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-4 text-black dark:text-white">
+                    <path
+                    d="M105.92 1.13855C101.387 -0.379518 98.6132 -0.379518 94.0804 1.13855C84.3803 4.38722 83.5585 22.8208 85.8095 42.9072C85.9416 44.0866 84.0933 44.5841 83.6157 43.4977C75.4802 24.9952 65.5166 9.46461 55.4963 11.5238C50.814 12.4861 48.415 13.8783 45.2567 17.4665C38.5977 25.0317 46.7905 41.0192 58.5378 57.0231C59.239 57.9785 57.8891 59.3314 56.9322 58.6322C40.9025 46.9201 24.8971 38.7624 17.3465 45.438C13.7653 48.6042 12.3783 51.0062 11.4263 55.6907C9.40359 65.6442 24.7215 75.5038 43.0677 83.5669C44.1534 84.0441 43.6583 85.8917 42.4794 85.762C22.5597 83.5706 4.36414 84.4492 1.13855 94.0804C-0.379518 98.6132 -0.379518 101.387 1.13855 105.92C4.36414 115.551 22.5597 116.429 42.4794 114.238C43.6583 114.108 44.1534 115.956 43.0676 116.433C24.7214 124.496 9.4035 134.356 11.4262 144.309C12.3782 148.994 13.7652 151.396 17.3464 154.562C24.8969 161.238 40.9021 153.08 56.9317 141.368C57.8886 140.669 59.2385 142.022 58.5372 142.977C46.7901 158.981 38.5975 174.968 45.2564 182.533C48.4147 186.122 50.8137 187.514 55.496 188.476C65.5164 190.535 75.4802 175.004 83.6157 156.501C84.0934 155.415 85.9417 155.913 85.8096 157.092C83.5584 177.179 84.3802 195.613 94.0804 198.861C98.6132 200.38 101.387 200.38 105.92 198.861C115.62 195.613 116.442 177.178 114.19 157.091C114.058 155.912 115.907 155.414 116.384 156.501C124.52 175.004 134.484 190.535 144.504 188.476C149.187 187.514 151.586 186.122 154.744 182.533C161.403 174.968 153.21 158.981 141.463 142.977C140.762 142.022 142.112 140.669 143.069 141.368C159.098 153.08 175.103 161.238 182.654 154.562C186.235 151.396 187.622 148.994 188.574 144.309C190.597 134.356 175.279 124.496 156.933 116.433C155.847 115.956 156.342 114.108 157.521 114.238C177.441 116.429 195.636 115.551 198.861 105.92C200.38 101.387 200.38 98.6132 198.861 94.0804C195.636 84.4493 177.441 83.5706 157.521 85.7619C156.342 85.8916 155.847 84.0441 156.933 83.5669C175.279 75.5038 190.597 65.6442 188.574 55.6907C187.622 51.0062 186.235 48.6042 182.654 45.438C175.103 38.7624 159.098 46.9201 143.068 58.6322C142.111 59.3313 140.761 57.9785 141.463 57.0231C153.21 41.0192 161.403 25.0317 154.744 17.4665C151.585 13.8783 149.186 12.4861 144.504 11.5238C134.484 9.46457 124.52 24.9957 116.384 43.4987C115.907 44.585 114.058 44.0875 114.19 42.9082C116.442 22.8214 115.62 4.38727 105.92 1.13855Z">
+                    </path>
+                </svg>
+            </button>
+
+            <button
+                id="dark-theme-button"
+                class="
+                    dark-theme-button
+                    flex items-center justify-center aspect-square
+                    dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary
+                    ring-1 bg-zinc-200 dark:ring-white/10 ring-primary/5 
+                    dark:bg-tertiary rounded-lg hover:ring-primary/5 
+                    dark:hover:ring-white/20 duration-300 group
+                    transition-all h-9 w-9">
+                    <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 200 200"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-4 text-black dark:text-white">
+                    <path
+                    d="M200 99.789C200 97.5929 197.987 95.9886 195.811 96.2821C191.73 96.8325 187.565 97.1168 183.333 97.1168C132.155 97.1168 90.6667 55.541 90.6667 4.25461C90.6667 2.00409 88.7615 0.178388 86.5312 0.479284C37.6722 7.07094 0 49.0213 0 99.789C0 155.134 44.7715 200 100 200C155.228 200 200 155.134 200 99.789Z">
+                    </path>
+                </svg>
+            </button>
+        </div>
     </div>
-
-  </div>
 </div>
 
 <!--vender-->
