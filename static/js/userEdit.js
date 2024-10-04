@@ -16,3 +16,16 @@ userEdit.addEventListener('click', (event) => {
     userEdit.classList.add('hidden');
   }
 });
+
+// Add event listener for the 'u' key
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'u') {
+    // Toggle the visibility of the userEdit modal
+    if (userEdit.classList.contains('hidden')) {
+      userEdit.classList.remove('hidden');
+      userEdit.classList.add('flex');
+    } else {
+      userEdit.classList.add('hidden');
+    }
+  }
+});
