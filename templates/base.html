@@ -5,18 +5,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERP</title>
-    <link rel="icon" href="{% static "assets/favicon.svg" %}" type="image/svg+xml">
-    <link rel="stylesheet" href="{% static "output.css" %}" type="text/css">
+    <title>DEPOC</title>
+    <link
+      rel="icon"
+      href="{% static "assets/favicon.svg" %}"
+      type="image/svg+xml">
+    <link
+      rel="stylesheet"
+      href="{% static "output.css" %}"
+      type="text/css">
 </head>
 <body class="dark:bg-primary bg-zinc-200">
   <section class="min-h-screen flex flex-col">
     <div class="p-4 flex-grow overflow-auto">
-      <div class="grid grid-cols-2 gap-2 list-none md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4">
+      <div
+        class="
+          list-none
+          grid grid-cols-2 gap-2
+          md:grid-cols-2
+          lg:grid-cols-3 lg:grid-rows-3
+          xl:grid-cols-4 xl:grid-rows-4">
         
         {% block content %}
         {% endblock content %}
-        
       </div>
     </div>
   </section>
