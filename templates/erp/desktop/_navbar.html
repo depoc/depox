@@ -10,7 +10,7 @@
         md:flex 
         flex-col
         hidden
-        p-8 
+        p-4
         h-full
         bg-white
         dark:bg-secondary
@@ -52,7 +52,7 @@
     </div>   
     
     <!--user edit button-->
-    <div class="absolute top-5 right-4 p-4 text-xl leading-5">
+    <div class="absolute top-0 right-0 p-4 text-xl leading-5">
             <div class="relative inline-block group">
                 <button 
                     id="UserEditDropdown" 
@@ -153,16 +153,24 @@
             </div>
     </div>
 
-    <!--date and time-->
-    <div class="absolute bottom-4 left-4 p-4 text-sm leading-5">
-        <p class="text-zinc-500 dark:text-zinc-400">
-            <span>
-                <span class="absolute inset-0"></span>
-                15:23
-                <br>
-                segunda, 3 outubro
+    <!--atalho a-->
+    <div class="absolute bottom-0 left-0 p-4 leading-4">
+            <span class="text-[12px] text-zinc-400">
+                atalho para ajustes
             </span>
-        </p>
+            <kbd 
+                class="
+                    px-[5px] py-[2px]
+                    text-xs
+                    text-zinc-500
+                    bg-zinc-200 border 
+                    border-zinc-300 
+                    rounded-md
+                    dark:bg-tertiary
+                    dark:text-zinc-100 
+                    dark:border-white/20">
+                a
+            </kbd>
     </div>
 
     <!--theme button swith-->
