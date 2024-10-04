@@ -1,0 +1,543 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div
+    class="
+        lg:row-span-2
+        ring-1 
+        dark:ring-white/10 
+        ring-primary/5 
+        bg-white 
+        dark:bg-secondary
+        shadow-xl 
+        dark:shadow-thick
+        rounded-3xl p-8">
+
+    <div class="relative flex items-center gap-x-4">
+        <div class="flex gap-x-1 justify-center">
+            <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 200 200"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            class="size-6"
+            style="color: black">
+            <path
+                d="M100 200C86.6892 200 75.3828 191.418 71.3125 179.485C70.3616 176.697 66.7246 175.19 64.0808 176.489C52.7649 182.049 38.7015 180.123 29.2893 170.711C19.8771 161.298 17.9509 147.235 23.5106 135.919C24.8095 133.275 23.303 129.638 20.5152 128.687C8.58225 124.617 -5.81836e-07 113.311 0 100C1.05351e-06 86.6891 8.58227 75.3828 20.5152 71.3125C23.3031 70.3616 24.8096 66.7245 23.5107 64.0808C17.9509 52.7649 19.8772 38.7015 29.2894 29.2893C38.7015 19.8771 52.7649 17.9509 64.0809 23.5106C66.7246 24.8095 70.3616 23.303 71.3125 20.5151C75.3828 8.58225 86.6892 1.05351e-06 100 0C113.311 -5.81836e-07 124.617 8.58225 128.687 20.5151C129.638 23.303 133.275 24.8095 135.919 23.5106C147.235 17.9509 161.298 19.8771 170.711 29.2893C180.123 38.7015 182.049 52.7649 176.489 64.0808C175.19 66.7246 176.697 70.3616 179.485 71.3125C191.418 75.3828 200 86.6891 200 100C200 113.311 191.418 124.617 179.485 128.687C176.697 129.638 175.19 133.275 176.489 135.919C182.049 147.235 180.123 161.298 170.711 170.711C161.299 180.123 147.235 182.049 135.919 176.489C133.275 175.19 129.638 176.697 128.687 179.485C124.617 191.418 113.311 200 100 200Z">
+            </path>
+            </svg>
+        </div>
+        <div class="text-sm leading-6">
+            <p class="font-semibold text-primary dark:text-white">
+            <a href="#">
+                <span class="absolute inset-0"></span>
+                Hugo Belém
+            </a>
+            </p>
+            <p class="text-zinc-500 dark:text-zinc-400">
+                UI Design & Web developer
+            </p>
+        </div>
+    </div>
+
+    <div class="grid mt-10 grid-cols-4 md:grid-cols-8 lg:grid-cols-4 gap-y-4 gap-4 justify-center w-full">
+        <a
+            href="#"
+            class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+            <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-6"
+                style="color: rgb(104, 177, 182)">
+                <path
+                    d="M100 200C86.6892 200 75.3828 191.418 71.3125 179.485C70.3616 176.697 66.7246 175.19 64.0808 176.489C52.7649 182.049 38.7015 180.123 29.2893 170.711C19.8771 161.298 17.9509 147.235 23.5106 135.919C24.8095 133.275 23.303 129.638 20.5152 128.687C8.58225 124.617 -5.81836e-07 113.311 0 100C1.05351e-06 86.6891 8.58227 75.3828 20.5152 71.3125C23.3031 70.3616 24.8096 66.7245 23.5107 64.0808C17.9509 52.7649 19.8772 38.7015 29.2894 29.2893C38.7015 19.8771 52.7649 17.9509 64.0809 23.5106C66.7246 24.8095 70.3616 23.303 71.3125 20.5151C75.3828 8.58225 86.6892 1.05351e-06 100 0C113.311 -5.81836e-07 124.617 8.58225 128.687 20.5151C129.638 23.303 133.275 24.8095 135.919 23.5106C147.235 17.9509 161.298 19.8771 170.711 29.2893C180.123 38.7015 182.049 52.7649 176.489 64.0808C175.19 66.7246 176.697 70.3616 179.485 71.3125C191.418 75.3828 200 86.6891 200 100C200 113.311 191.418 124.617 179.485 128.687C176.697 129.638 175.19 133.275 176.489 135.919C182.049 147.235 180.123 161.298 170.711 170.711C161.299 180.123 147.235 182.049 135.919 176.489C133.275 175.19 129.638 176.697 128.687 179.485C124.617 191.418 113.311 200 100 200Z">
+                </path>
+            </svg>
+        </a>
+
+        <a
+            href="#"
+            class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+            <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-6"
+                style="color: rgb(114, 146, 192)">
+                <path
+                d="M138.626 8C138.626 3.58172 135.044 0 130.626 0H69.033C64.6148 0 61.033 3.58173 61.033 8V15.1868C61.033 19.2841 58.3674 22.9603 54.3227 24.4413L45.5518 27.6528C25.328 35.0577 12 53.4388 12 73.9252V192C12 196.418 15.5817 200 20 200H179.659C184.077 200 187.659 196.418 187.659 192V73.9252C187.659 53.4388 174.331 35.0577 154.107 27.6528L145.337 24.4413C141.292 22.9603 138.626 19.2841 138.626 15.1868V8Z">
+                </path>
+            </svg>
+        </a>
+
+        <a
+            href="#"
+            class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+            <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-6"
+                style="color: rgb(126, 129, 200)">
+                <path
+                d="M200 99.789C200 97.5929 197.987 95.9886 195.811 96.2821C191.73 96.8325 187.565 97.1168 183.333 97.1168C132.155 97.1168 90.6667 55.541 90.6667 4.25461C90.6667 2.00409 88.7615 0.178388 86.5312 0.479284C37.6722 7.07094 0 49.0213 0 99.789C0 155.134 44.7715 200 100 200C155.228 200 200 155.134 200 99.789Z">
+                </path>
+            </svg>
+        </a>
+
+        <a
+            href="#"
+            class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+            <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-6"
+                style="color: rgb(217, 130, 208)">
+                <path
+                d="M105.92 1.13855C101.387 -0.379518 98.6132 -0.379518 94.0804 1.13855C84.3803 4.38722 83.5585 22.8208 85.8095 42.9072C85.9416 44.0866 84.0933 44.5841 83.6157 43.4977C75.4802 24.9952 65.5166 9.46461 55.4963 11.5238C50.814 12.4861 48.415 13.8783 45.2567 17.4665C38.5977 25.0317 46.7905 41.0192 58.5378 57.0231C59.239 57.9785 57.8891 59.3314 56.9322 58.6322C40.9025 46.9201 24.8971 38.7624 17.3465 45.438C13.7653 48.6042 12.3783 51.0062 11.4263 55.6907C9.40359 65.6442 24.7215 75.5038 43.0677 83.5669C44.1534 84.0441 43.6583 85.8917 42.4794 85.762C22.5597 83.5706 4.36414 84.4492 1.13855 94.0804C-0.379518 98.6132 -0.379518 101.387 1.13855 105.92C4.36414 115.551 22.5597 116.429 42.4794 114.238C43.6583 114.108 44.1534 115.956 43.0676 116.433C24.7214 124.496 9.4035 134.356 11.4262 144.309C12.3782 148.994 13.7652 151.396 17.3464 154.562C24.8969 161.238 40.9021 153.08 56.9317 141.368C57.8886 140.669 59.2385 142.022 58.5372 142.977C46.7901 158.981 38.5975 174.968 45.2564 182.533C48.4147 186.122 50.8137 187.514 55.496 188.476C65.5164 190.535 75.4802 175.004 83.6157 156.501C84.0934 155.415 85.9417 155.913 85.8096 157.092C83.5584 177.179 84.3802 195.613 94.0804 198.861C98.6132 200.38 101.387 200.38 105.92 198.861C115.62 195.613 116.442 177.178 114.19 157.091C114.058 155.912 115.907 155.414 116.384 156.501C124.52 175.004 134.484 190.535 144.504 188.476C149.187 187.514 151.586 186.122 154.744 182.533C161.403 174.968 153.21 158.981 141.463 142.977C140.762 142.022 142.112 140.669 143.069 141.368C159.098 153.08 175.103 161.238 182.654 154.562C186.235 151.396 187.622 148.994 188.574 144.309C190.597 134.356 175.279 124.496 156.933 116.433C155.847 115.956 156.342 114.108 157.521 114.238C177.441 116.429 195.636 115.551 198.861 105.92C200.38 101.387 200.38 98.6132 198.861 94.0804C195.636 84.4493 177.441 83.5706 157.521 85.7619C156.342 85.8916 155.847 84.0441 156.933 83.5669C175.279 75.5038 190.597 65.6442 188.574 55.6907C187.622 51.0062 186.235 48.6042 182.654 45.438C175.103 38.7624 159.098 46.9201 143.068 58.6322C142.111 59.3313 140.761 57.9785 141.463 57.0231C153.21 41.0192 161.403 25.0317 154.744 17.4665C151.585 13.8783 149.186 12.4861 144.504 11.5238C134.484 9.46457 124.52 24.9957 116.384 43.4987C115.907 44.585 114.058 44.0875 114.19 42.9082C116.442 22.8214 115.62 4.38727 105.92 1.13855Z">
+                </path>
+            </svg>
+        </a>
+
+        <a
+            href="#"
+            class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+            <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-6"
+                style="color: rgb(255, 111, 71)">
+                <path
+                    d="M99.9647 96.4182C152.547 96.4182 195.676 57.5059 199.904 7.9969C200.279 3.59465 196.662 -7.42775e-07 192.244 0L7.68592 3.10268e-05C3.26764 3.17695e-05 -0.350008 3.59468 0.0259045 7.99694C4.25352 57.5059 47.383 96.4182 99.9647 96.4182ZM100.035 103.582C47.4535 103.582 4.32412 142.494 0.0965162 192.003C-0.279395 196.405 3.33825 200 7.75653 200L192.314 200C196.732 200 200.35 196.405 199.974 192.003C195.747 142.494 152.617 103.582 100.035 103.582Z">
+                </path>
+            </svg>
+        </a>
+
+        <a
+            href="#"
+            class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+            <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-6"
+                style="color: rgb(242, 161, 41)">
+                <path
+                    d="M12 88.4314C12 39.5921 51.5921 0 100.431 0C149.271 0 188.863 39.5921 188.863 88.4314V192C188.863 196.418 185.281 200 180.863 200H20C15.5817 200 12 196.418 12 192V88.4314Z">
+                </path>
+            </svg>
+        </a>   
+        
+        <a
+            href="#"
+            class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+            <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-6"
+                style="color: rgb(223, 194, 2)">
+                <path
+                    d="M51.3676 120.382C57.5302 120.382 61.3787 127.057 58.291 132.39L36.6394 169.789C34.422 173.619 35.7356 178.522 39.5711 180.73L60.462 192.758C64.2845 194.959 69.1672 193.651 71.3771 189.834L93.0766 152.352C96.1579 147.03 103.842 147.03 106.923 152.352L128.623 189.834C130.833 193.651 135.715 194.959 139.538 192.758L160.429 180.73C164.264 178.522 165.578 173.619 163.361 169.789L141.709 132.39C138.621 127.057 142.47 120.382 148.632 120.382H192C196.418 120.382 200 116.8 200 112.382V88.3586C200 83.9403 196.418 80.3586 192 80.3586H148.632C142.47 80.3586 138.621 73.6837 141.709 68.3503L163.361 30.9517C165.578 27.1215 164.264 22.2187 160.429 20.0104L139.538 7.98224C135.715 5.78138 130.833 7.08969 128.623 10.9069L106.923 48.3881C103.842 53.7104 96.1579 53.7104 93.0766 48.3881L71.3771 10.9069C69.1671 7.08968 64.2845 5.78138 60.4619 7.98224L39.571 20.0104C35.7356 22.2187 34.4219 27.1215 36.6394 30.9517L58.291 68.3503C61.3787 73.6837 57.5303 80.3586 51.3676 80.3586H7.99999C3.58172 80.3586 0 83.9403 0 88.3586V112.382C0 116.8 3.58172 120.382 8 120.382H51.3676Z">
+                </path>
+            </svg>
+        </a> 
+        
+        <a
+            href="#"
+            class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+            <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-6"
+                style="color: rgb(106, 180, 135)">
+                <path
+                    d="M102.699 1.06732C101.166 -0.352109 98.7983 -0.352111 97.2649 1.06732L13.1058 78.9701C11.3954 80.5534 11.3954 83.2578 13.1058 84.841L25.4799 96.2952C27.1903 97.8785 27.1903 100.583 25.4799 102.166L12.2747 114.39C10.5643 115.973 10.5643 118.677 12.2747 120.261L97.2649 198.933C98.7983 200.352 101.166 200.352 102.699 198.933L187.69 120.261C189.4 118.677 189.4 115.973 187.69 114.39L174.484 102.166C172.774 100.583 172.774 97.8785 174.484 96.2952L186.858 84.841C188.569 83.2578 188.569 80.5534 186.858 78.9701L102.699 1.06732Z">
+                </path>
+            </svg>
+        </a>         
+
+
+    </div>
+</div>
+
+<div class="ring-1 dark:ring-white/10 ring-primary/5 rounded-3xl justify-between shadow-xl dark:shadow-thick items-center flex flex-col p-8 h-full bg-white dark:bg-secondary">
+    <div class="w-full">
+    <p class="text-xl font-normal tracking-tight text-primary dark:text-white lg:text-8xl">
+        Find me on
+    </p>
+    </div>
+
+    <div class="grid mt-4 grid-cols-4 md:grid-cols-8 lg:grid-cols-4 gap-y-4 gap-4 justify-center w-full">
+    <a
+        href="#"
+        class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-mail h-6 w-6 group-hover:scale-125 duration-300 text-primary dark:text-white group-hover text-primary:dark:text-white/50"
+            viewBox="0 0 24 24"
+            stroke-width="0.8"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none">
+            </path>
+            <path
+                d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z">
+            </path>
+            <path d="M3 7l9 6l9 -6"></path>
+        </svg>
+    </a>
+
+    <a
+        href="#_"
+        class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-brand-github h-6 w-6 group-hover:scale-125 duration-300 text-primary dark:text-white group-hover text-primary:dark:text-white/50"
+        viewBox="0 0 24 24"
+        stroke-width="0.8"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+        ></path></svg
+        >
+    </a>
+
+    <a
+        href="#_"
+        class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12">
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-brand-behance h-6 w-6 group-hover:scale-125 duration-300 text-primary dark:text-white group-hover text-primary:dark:text-white/50"
+        viewBox="0 0 24 24"
+        stroke-width="0.8"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5"></path><path
+            d="M3 12l4.5 0"></path><path
+            d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1"
+        ></path><path d="M16 6l3 0"></path></svg
+        >
+    </a>
+
+    <a
+        href="#_"
+        class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12"
+    >
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-brand-threads h-6 w-6 group-hover:scale-125 duration-300 text-primary dark:text-white group-hover text-primary:dark:text-white/50"
+        viewBox="0 0 24 24"
+        stroke-width="0.8"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M19 7.5c-1.333 -3 -3.667 -4.5 -7 -4.5c-5 0 -8 2.5 -8 9s3.5 9 8 9s7 -3 7 -5s-1 -5 -7 -5c-2.5 0 -3 1.25 -3 2.5c0 1.5 1 2.5 2.5 2.5c2.5 0 3.5 -1.5 3.5 -5s-2 -4 -3 -4s-1.833 .333 -2.5 1"
+        ></path></svg
+        >
+    </a>
+    <a
+        href="#_"
+        class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12"
+    >
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler h-6 w-6 group-hover:scale-125 duration-300 text-primary dark:text-white group-hover text-primary:dark:text-white/50 icon-tabler-brand-dribbble"
+        viewBox="0 0 24 24"
+        stroke-width="0.8"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path
+            d="M9 3.6c5 6 7 10.5 7.5 16.2"></path><path
+            d="M6.4 19c3.5 -3.5 6 -6.5 14.5 -6.4"></path><path
+            d="M3.1 10.75c5 0 9.814 -.38 15.314 -5"></path></svg
+        >
+    </a>
+    <a
+        href="#_"
+        class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12"
+    >
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler h-6 w-6 group-hover:scale-125 duration-300 text-primary dark:text-white group-hover text-primary:dark:text-white/50 icon-tabler-brand-x"
+        viewBox="0 0 24 24"
+        stroke-width="0.8"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path
+            d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg
+        >
+    </a>
+    <a
+        href="#_"
+        class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12"
+    >
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler h-6 w-6 group-hover:scale-125 duration-300 text-primary dark:text-white group-hover text-primary:dark:text-white/50 icon-tabler-brand-linkedin"
+        viewBox="0 0 24 24"
+        stroke-width="0.8"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"
+        ></path><path d="M8 11l0 5"></path><path d="M8 8l0 .01"
+        ></path><path d="M12 16l0 -5"></path><path
+            d="M16 16v-3a2 2 0 0 0 -4 0"></path></svg
+        >
+    </a><a
+        href="#_"
+        class="flex items-center justify-center aspect-square shadow-xl dark:shadow-thick hover:bg-zinc-100 dark:hover:bg-primary ring-1 bg-zinc-50 dark:ring-white/10 ring-primary/5 dark:bg-tertiary rounded-lg hover:ring-primary/5 dark:hover:ring-white/20 duration-300 group transition-all h-12 w-12"
+    >
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler h-6 w-6 group-hover:scale-125 duration-300 text-primary dark:text-white group-hover text-primary:dark:text-white/50 icon-tabler-brand-facebook"
+        viewBox="0 0 24 24"
+        stroke-width="0.8"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"
+        ></path></svg
+        >
+    </a>
+    </div>
+</div>
+
+<a
+    href="https://monomod.studio/"
+    class="ring-1 lg:row-span-2 flex flex-col justify-between group hover:ring-primary/10 dark:hover:ring-white/20 duration-300 h-full dark:ring-white/10 ring-primary/5 lg:row-start-2 md:grid-cols-2 md:grid lg:gap-0 md:items-center md:gap-12 lg:grid-cols-none lg:col-start-2 lg:col-span-2 rounded-3xl p-8 bg-white dark:bg-secondary shadow-xl dark:shadow-thick">
+    <div>
+    <p
+        class="ext-xl tracking-tight font-medium text-primary dark:text-white md:text-6xl"
+    >
+        Monomod
+    </p>
+    <p class="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
+        Design & development subscriptions for startups.
+        <br />
+        <br />
+        Monomod streamlines the design process with a fixed monthly rate and
+        limitless design requests. Say goodbye to phone calls and extensive contracts;
+        reach out to Monomod directly at any time. Embrace flexibility, pause
+        or terminate your subscription whenever you need.
+    </p>
+    </div>
+    <div class="mt-8">
+    </div>
+</a>
+
+<div
+    class="ring-1 dark:ring-white/10 ring-primary/5 flex flex-col justify-between items-center rounded-3xl shadow-xl dark:shadow-thick p-8 bg-white dark:bg-secondary overflow-hidden text-center lg:text-left">
+    <div>
+    <p
+        class="text-xl text-primary dark:text-white lg:text-7xl tracking-tight"
+    >
+        Grab my résumé!
+    </p>
+    <p
+        class="mt-4 text-sm text-zinc-500 dark:text-zinc-400 md:max-w-xs lg:max-w-none"
+    >
+        Unlock the doors to explore the rich tapestry of my professional
+        journey and accomplishments.
+    </p>
+    </div>
+    <div class="w-full mt-8 md:max-w-xs lg:max-w-none">
+    <button
+        type="button"
+        class="text-sm py-2 w-full px-4 h-12 font-semibold focus:ring-2 rounded-lg bg-primary dark:bg-white dark:text-primary dark:hover:text-white hover:text-primary dark:hover:bg-white/5 hover:bg-primary/10 text-white flex duration-200 focus:ring-offset-2 focus:ring-inline-flex items-center justify-between"
+    >
+        Download my CV
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-download w-4 h-4"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path><path
+            d="M7 11l5 5l5 -5"></path><path d="M12 4l0 12"></path></svg
+        >
+    </button>
+    </div>
+</div>
+
+<a
+    href="https://www.figma.com/@mikeandreuzza"
+    class="ring-1 lg:row-start-3 items-center h-full flex p-8 flex-col justify-center hover:ring-primary/5 dark:hover:ring-white/20 dark:ring-white/10 ring-primary/5 relative rounded-3xl overflow-hidden bg-white dark:bg-secondary shadow-xl dark:shadow-thick">
+    <svg
+    class="w-24 h-24 lg:w-48 xl:h-64 xl:w-64 lg:h-48"
+    viewBox="0 0 90 90"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    >
+    <g clip-path="url(#clip0_1_136)">
+        <path
+        d="M45 45.5C45 42.9804 46.0009 40.5641 47.7825 38.7825C49.5641 37.0009 51.9804 36 54.5 36C57.0196 36 59.4359 37.0009 61.2175 38.7825C62.9991 40.5641 64 42.9804 64 45.5C64 48.0196 62.9991 50.4359 61.2175 52.2175C59.4359 53.9991 57.0196 55 54.5 55C51.9804 55 49.5641 53.9991 47.7825 52.2175C46.0009 50.4359 45 48.0196 45 45.5Z"
+        fill="#1ABCFE"></path>
+        <path
+        d="M26 64.5C26 61.9804 27.0009 59.5641 28.7825 57.7825C30.5641 56.0009 32.9804 55 35.5 55H45V64.5C45 67.0196 43.9991 69.4359 42.2175 71.2175C40.4359 72.9991 38.0196 74 35.5 74C32.9804 74 30.5641 72.9991 28.7825 71.2175C27.0009 69.4359 26 67.0196 26 64.5V64.5Z"
+        fill="#0ACF83"></path>
+        <path
+        d="M45 17V36H54.5C57.0196 36 59.4359 34.9991 61.2175 33.2175C62.9991 31.4359 64 29.0196 64 26.5C64 23.9804 62.9991 21.5641 61.2175 19.7825C59.4359 18.0009 57.0196 17 54.5 17H45Z"
+        fill="#FF7262"></path>
+        <path
+        d="M26 26.5C26 29.0196 27.0009 31.4359 28.7825 33.2175C30.5641 34.9991 32.9804 36 35.5 36H45V17H35.5C32.9804 17 30.5641 18.0009 28.7825 19.7825C27.0009 21.5641 26 23.9804 26 26.5V26.5Z"
+        fill="#F24E1E"></path>
+        <path
+        d="M26 45.5C26 48.0196 27.0009 50.4359 28.7825 52.2175C30.5641 53.9991 32.9804 55 35.5 55H45V36H35.5C32.9804 36 30.5641 37.0009 28.7825 38.7825C27.0009 40.5641 26 42.9804 26 45.5V45.5Z"
+        fill="#A259FF"></path>
+    </g>
+    <defs>
+        <clipPath id="clip0_1_136">
+        <rect
+            width="38"
+            height="57"
+            fill="white"
+            transform="translate(26 17)"></rect>
+        </clipPath>
+    </defs>
+    </svg>
+    <p class="text-xl text-primary dark:text-white lg:text-2xl mt-6">
+    Figma Community
+    </p>
+</a>
+
+<a
+    href="https://lexingtonthemes.com/"
+    class="lg:row-span-2 ring-1 dark:ring-white/10 ring-primary/5 hover:ring-primary/5 bg-white dark:bg-secondary dark:hover:ring-white/20 overflow-hidden duration-300 shadow-xl dark:shadow-thick rounded-3xl p-8">
+    <div class="mt-8">
+    <p
+        class="ext-xl tracking-tight font-medium text-primary dark:text-white md:text-6xl mt-6"
+    >
+        Lexington
+    </p>
+    <p class="mt-4 text-sm text-zinc-500 dark:text-zinc-400 font-normal">
+        Free and premium multipage themes and UI Kits for freelancers,
+        developers, businesses, and personal use. Beautifully crafted with
+        Astro.js, and Tailwind CSS — Simple & easy to customise.
+    </p>
+    </div>
+</a>
+
+<div
+    class="ring-1 dark:ring-white/10 ring-primary/5 flex flex-col p-8 h-full justify-center items-center rounded-3xl overflow-hidden relative lg:col-span-2 lg:row-start-4 bg-white dark:bg-secondary shadow-xl dark:shadow-thick">
+    <div class="relative p-8 text-center w-full">
+    <p
+        class="text-xl tracking-tight font-medium text-primary dark:text-white md:text-6xl"
+    >
+        Subscribe <span class="lg:block">to my newsletter</span>
+    </p>
+    <form class="mt-6 sm:flex w-full lg:max-w-sm mx-auto">
+        <label for="email-address" class="sr-only">Email address</label>
+        <input
+        type="email"
+        name="email-address"
+        id="email-address"
+        autocomplete="email"
+        required=""
+        class="block w-full h-12 px-4 py-2 text-sm text-zinc-500 bg-zinc-100 dark:bg-tertiary ring-1 dark:ring-white/10 ring-primary/5 rounded-lg appearance-none focus:ring-white/20 placeholder-zinc-400 focus:border-zinc-300 focus:bg-primary focus:outline-none focus:ring-indigo-500 sm:text-sm"
+        placeholder="Enter your email"
+        />
+        <div class="mt-4 sm:ml-2 sm:mt-0 sm:flex-shrink-0">
+        <button
+            type="submit"
+            class="text-sm py-2 w-full px-4 h-12 font-semibold focus:ring-2 rounded-lg bg-primary dark:bg-white dark:text-primary dark:hover:text-white hover:text-primary dark:hover:bg-white/5 hover:bg-primary/10 text-white flex duration-200 focus:ring-offset-2 focus:ring-inline-flex items-center justify-between"
+            >Subscribe</button
+        >
+        </div>
+    </form>
+    </div>
+</div>
+
+<div
+    class="ring-1 dark:ring-white/10 ring-primary/5 shadow-xl dark:shadow-thick rounded-3xl p-8 lg:row-start-4 h-full flex flex-col justify-between bg-white dark:bg-secondary">
+    <p
+    class="text-xl tracking-tight font-medium text-primary dark:text-white md:text-5xl"
+    >
+    Testimonials
+    </p>
+    <div class="md:grid md:grid-cols-2 gap-6 lg:grid-cols-1">
+    <div class="mt-4">
+        <p class="text-sm text-pink-500 dark:text-pink-400">
+        "Big fan of your themes. They're well-organized, look clean, and
+        are fast."
+        </p>
+        <p class="text-xs mt-2 text-zinc-500">
+        <span class="block text-xs">Kevin Focke</span>
+        <span class="block text-xs"> Developer</span>
+        </p>
+    </div>
+    <div class="mt-4">
+        <p class="text-sm text-orange-500 dark:text-orange-300">
+        "Amazing resource using @astrodotbuild and @tailwindcss! I got it
+        a week ago and have found the contents really useful. 5/5
+        </p>
+        <p class="text-xs mt-2 text-zinc-500">
+        <span class="block text-xs">Alonso</span>
+        <span class="block text-xs"> Entrepreneur</span>
+        </p>
+    </div>
+    </div>
+</div>
+
+<div
+    class="lg:col-span-2 xl:col-span-1 h-full flex flex-col justify-between lg:row-span-2 ring-1 dark:ring-white/10 ring-primary/5 bg-white dark:bg-secondary shadow-xl dark:shadow-thick rounded-3xl p-8">
+    <p
+    class="text-xl tracking-tight font-medium text-primary dark:text-white md:text-3xl"
+    >
+    As a digital designer, my expertise lies in crafting distinctive
+    visual identities for digital products.
+    <br />
+    <br />
+    I hold the belief that an engaging design begins with shared values, transparent
+    communication, and a genuine respect for the audience.
+    </p>
+    <p class="text-primary dark:text-white mt-4">Michael Andreuzza</p>
+</div>
+{% endblock content %}
