@@ -84,5 +84,4 @@ function preloadTheme() {
 }
 
 document.addEventListener("DOMContentLoaded", () => init());
-document.addEventListener("astro:after-swap", () => init());
 preloadTheme();
