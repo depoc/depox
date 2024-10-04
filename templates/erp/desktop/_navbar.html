@@ -53,11 +53,104 @@
     
     <!--user edit button-->
     <div class="absolute top-5 right-4 p-4 text-xl leading-5">
-        <p class="text-black dark:text-white">
-            <button id="userEditButton">
-                ...
-            </button>
-        </p>
+            <div class="relative inline-block group">
+                <button 
+                    id="UserEditDropdown" 
+                    class="text-black dark:text-white">
+                    ...
+                </button>
+
+                <!--dropdown-->
+                <div class="absolute -top-1">
+                    <div
+                        class="
+                            relative
+                            ml-5
+                            left-0
+                            hidden
+                            group-hover:block
+                            aspect-square
+                            ring-1 
+                            ring-primary/5 hover:ring-primary/5
+                            dark:ring-white/10 dark:hover:ring-white/20
+                            duration-300
+                            transition-all
+                            group
+                            end-0 z-10 w-[125px]
+                            divide-y divide-black/10 dark:divide-white/15
+                            rounded-lg
+                            border border-black/10 
+                            bg-white/25 dark:bg-secondary/75
+                            backdrop-blur-md     
+                            shadow-md"
+                        role="menu">
+
+                        <div class="p-1">
+                        <a
+                            href="#"
+                            class="
+                            block
+                            rounded-md
+                            px-4 py-1
+                            text-[13px]
+                            text-zinc-500 dark:text-zinc-200
+                            hover:bg-zinc-200 hover:text-zinc-600 
+                            dark:hover:bg-primary dark:hover:text-zinc-200"
+                            role="menuitem">
+                            alterar email
+                        </a>
+
+                        <a
+                            href="#"
+                            class="
+                            block
+                            rounded-md
+                            px-4 py-1
+                            text-[13px]
+                            text-zinc-500 dark:text-zinc-200
+                            hover:bg-zinc-200 hover:text-zinc-600 
+                            dark:hover:bg-primary dark:hover:text-zinc-200"
+                            role="menuitem">
+                            alterar nome
+                        </a>
+
+                        <a
+                            href="#"
+                            class="
+                            block
+                            rounded-md
+                            px-4 py-1
+                            text-[13px]
+                            text-zinc-500 dark:text-zinc-200
+                            hover:bg-zinc-200 hover:text-zinc-600 
+                            dark:hover:bg-primary dark:hover:text-zinc-200"
+                            role="menuitem">
+                            alterar senha
+                        </a>                        
+                        </div>
+
+                        <div class="p-1">
+                            <button
+                                type="submit"
+                                id="userEditButton"
+                                class="
+                                    flex
+                                    w-full
+                                    items-center
+                                    gap-2
+                                    rounded-md
+                                    px-4 py-1
+                                    text-[13px] 
+                                    text-zinc-500 dark:text-zinc-200
+                                    hover:bg-zinc-200 hover:text-zinc-600 
+                                    dark:hover:bg-primary dark:hover:text-zinc-200"
+                                role="menuitem">          
+                                ver mais
+                            </button>
+                        </div>
+                    </div>
+                </div>          
+            </div>
     </div>
 
     <!--date and time-->
