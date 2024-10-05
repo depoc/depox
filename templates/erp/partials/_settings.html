@@ -70,7 +70,7 @@
         </span>
 
         <!--ajustes text-->
-        <div class="p-4 sm:p-8">
+        <div class="p-4 sm:p-4">
             <p 
                 class="
                     text-4xl
@@ -78,19 +78,6 @@
                     font-semibold
                     text-black dark:text-white">
                 <kbd>ajustes</kbd>
-            </p>
-            <p
-                class="
-                    hidden
-                    sm:block
-                    text-xs
-                    sm:text-sm
-                    text-center
-                    text-zinc-500 dark:text-zinc-500">
-                    gerencie e atualize as informações da equipe,
-                    <span class="inline md:block">
-                        da empresa e as configurações gerais do sistema.
-                    </span> 
             </p>
         </div>
 
@@ -141,6 +128,54 @@
                 <kbd>equipe</kbd>
             </button>        
         </div>
+
+        <div>
+            <!-- Common styles -->
+            <div 
+                class="
+                    border
+                    border-zinc-300 dark:border-zinc-400
+                    ml-auto mr-auto
+                    rounded-md
+                    md:w-10/12
+                    lg:w-1/2
+                    mt-8">
+                <!-- nome -->
+                <div 
+                    class="
+                        relative flex 
+                        items-center justify-between
+                        pt-2 px-2">
+                    <kbd class="text-xs text-zinc-700">nome</kbd>
+                    <p class="text-xs text-zinc-700 dark:text-zinc-100">Hugo Cordeiro Belém</p>
+                </div>
+
+                <hr class="border-none my-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
+                
+                <!--email-->
+                <div 
+                    class="
+                        relative flex
+                        items-center justify-between
+                        pb-2 px-2">
+                    <kbd class="text-xs text-zinc-700">email</kbd>
+                    <p class="text-xs text-zinc-700 dark:text-zinc-100">hugo@depoc.com.br</p>
+                </div>         
+                
+                <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
+                
+                <!--usuário-->
+                <div 
+                    class="
+                        relative flex
+                        items-center justify-between
+                        pb-2 px-2">
+                    <kbd class="text-xs text-zinc-700">usuário</kbd>
+                    <p class="text-xs text-zinc-700 dark:text-zinc-100">hugo@depoc</p>
+                </div>                    
+            </div>
+        </div>
+                         
 
         <!--delete account button-->  
         <div class="absolute bottom-5 left-5 text-sm leading-5">
