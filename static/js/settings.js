@@ -1,10 +1,12 @@
-const settingsButton = document.getElementById('settingsButton');
+const settingsButtons = document.querySelectorAll('#settingsButton');
 const settings = document.getElementById('settings');
 const closeSettings = document.getElementById('closeSettings');
 
-settingsButton.addEventListener('click', () => {
-  settings.classList.remove('hidden');
-  settings.classList.add('flex');
+settingsButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    settings.classList.remove('hidden');
+    settings.classList.add('flex');
+  });
 });
 
 closeSettings.addEventListener('click', () => {
@@ -17,10 +19,8 @@ settings.addEventListener('click', (event) => {
   }
 });
 
-// Add event listener for the 'u' key
 document.addEventListener('keydown', (event) => {
   if (event.key === 'a') {
-    // Toggle the visibility of the settings modal
     if (settings.classList.contains('hidden')) {
       settings.classList.remove('hidden');
       settings.classList.add('flex');
