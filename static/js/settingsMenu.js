@@ -26,19 +26,19 @@ userButton.addEventListener('click', () => {
   hideAllSections(); // Hide other sections
   resetButtonStyles();
   userSection.classList.remove('hidden'); // Show the user settings section
-  userButton.classList.add('bg-zinc-50');
+  userButton.classList.add('bg-zinc-50'); // Apply style to clicked button
 });
 
 empresaButton.addEventListener('click', () => {
   hideAllSections();
   resetButtonStyles();
-  empresaSection.classList.remove('hidden');
-  userButton.classList.add('bg-zinc-50');
+  empresaSection.classList.remove('hidden'); // Show the empresa settings section
+  empresaButton.classList.add('bg-zinc-50'); // Apply style to clicked button
 });
 
 equipeButton.addEventListener('click', () => {
   hideAllSections();
   resetButtonStyles();
-  equipeSection.classList.remove('hidden');
-  userButton.classList.add('bg-zinc-50');
+  equipeSection.classList.remove('hidden'); // Show the equipe settings section
+  equipeButton.classList.add('bg-zinc-50'); // Apply style to clicked button
 });
