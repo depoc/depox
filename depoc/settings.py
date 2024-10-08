@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'users.apps.UsersConfig',
+    'erp.apps.ErpConfig',
 ]
 
 AUTH_USER_MODEL = 'users.User'

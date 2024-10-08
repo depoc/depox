@@ -3,9 +3,11 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 module.exports = {
   content: [
+    './erp/templates/erp/**/*.html',
+    './erp/templates/erp/*.html',
     './templates/**/*.html',
-    '/templates/*.html',
-    '/static/js/*.js',
+    './templates/*.html',
+    './static/js/*.js',
   ],
   darkMode: 'selector', // Enable selector strategy for dark mode
   theme: {
