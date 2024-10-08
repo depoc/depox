@@ -8,7 +8,7 @@ urlpatterns = [
     path('', include('users.urls')),
 
     path(
-        'erp/', 
+        '', 
         TemplateView.as_view(template_name='erp/index.html'),
         name="erpIndex",
     ),
