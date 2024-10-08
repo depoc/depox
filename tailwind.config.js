@@ -5,6 +5,7 @@ module.exports = {
   content: [
     './templates/**/*.html',
     '/templates/*.html',
+    '/static/js/*.js',
   ],
   darkMode: 'selector', // Enable selector strategy for dark mode
   theme: {
