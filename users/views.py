@@ -30,5 +30,5 @@ def signin(request):
             messages.error(request, 'dados incorretos')
 
     context = {}
-    return render(request, 'users/signIn.html', context)
+    return render(request, 'users/login.html', context)
 
