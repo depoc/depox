@@ -55,8 +55,11 @@ class CustomUserChangeForm(UserChangeForm):
         for name, field in self.fields.items():
             field.widget.attrs.update({
                 'class': '''
+                    w-full
                     text-xs
+                    text-end
+                    bg-transparent
                     text-black/40
                     dark:text-white/40
-                    focus:outline-none''',
+                    outline-none''',
             })
