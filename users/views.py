@@ -47,6 +47,8 @@ def register(request):
 
             login(request, user)
             return redirect('erp:index')
+        else:
+            messages.error(request, 'dados inválidos')
 
     context = {'form': form}
     return render(request, 'users/register.html', context)
