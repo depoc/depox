@@ -1,4 +1,5 @@
 {% load static %}
+{% load filters %}
 
 <div
     id="settings"
@@ -113,7 +114,7 @@
                     ring-1
                     hover:ring-black hover:text-black
                     dark:hover:ring-zinc-300 dark:hover:text-zinc-300">
-                <kbd>{{ first_name }}</kbd>
+                <kbd>{{ request.user.name | first_name }}</kbd>
             </button>
 
             <button id="settingsEmpresaButton"
