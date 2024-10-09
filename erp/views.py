@@ -18,7 +18,7 @@ class Settings:
         return context
 
 
-@login_required(login_url='login')
+@login_required(login_url='users:login')
 def erp(request):
     context = Settings.user(request)
 
