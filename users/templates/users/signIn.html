@@ -56,7 +56,6 @@
             </p>
         </div>
 
-
         <form
             action="{% url "users:signIn" %}"
             method="POST"
@@ -99,6 +98,17 @@
             </div>
         </form>
         
+        {% if messages %}
+        <ul class="messages text-center">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+              <span class="inline-flex items-start rounded-md px-2 py-1 mt-8 text-xs text-red-500">
+                {{ message }}
+              </span>        
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}        
 
     </div>
 </div>
