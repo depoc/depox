@@ -24,7 +24,11 @@ document.addEventListener('keydown', (event) => {
     if (settings.classList.contains('hidden')) {
       settings.classList.remove('hidden');
       settings.classList.add('flex');
-    } else {
+    }
+  }
+  if (event.key === 'Escape') { 
+    if (settings.classList.contains('flex')) {
+      settings.classList.remove('flex');
       settings.classList.add('hidden');
     }
   }
