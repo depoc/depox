@@ -1,7 +1,20 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+
+from users.forms import CustomUserChangeForm
 
 
-class ErpView(LoginRequiredMixin, TemplateView):
-    login_url = '/login/'
-    template_name = 'erp/index.html'
+@login_required(login_url='login')
+def erp(request):
+    user = request.user
+    form = CustomUserChangeForm(instance=user)
+
+    if request.method == "POST":
+        form = CustomUserChangeForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('erp:index')
+
+    context = {'form': form}
+
+    return render(request, 'erp/index.html', context) 

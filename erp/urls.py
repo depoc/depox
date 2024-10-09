@@ -4,5 +4,5 @@ from . import views
 
 app_name = 'erp'
 urlpatterns = [
-    path('', views.ErpView.as_view(), name='index')
+    path('', views.erp, name='index')
 ]
