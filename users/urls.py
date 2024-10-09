@@ -7,6 +7,7 @@ from . import views
 app_name = 'users'
 urlpatterns = [
     path('login/', views.signin, name='login'),
+    path('cadastro/', views.register, name='register'),
     path(
         'sair/',
         LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL),
