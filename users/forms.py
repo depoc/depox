@@ -13,8 +13,8 @@ class CustomUserCreationForm(UserCreationForm):
             'name',
         ]
         labels = {
-            'email': 'e-mail',
-            'name': 'nome'
+            'email': 'email',
+            'name': 'nome',
         }
 
     def __init__(self, *args, **kwargs):
@@ -24,65 +24,12 @@ class CustomUserCreationForm(UserCreationForm):
         for name, field in self.fields.items():
             field.widget.attrs.update({
                 'autofocus': True,
-                'placeholder': name,
+                'placeholder': field.label.lower(),
                 'class': 
-                ''' peer h-8 w-64 p-0 border-none bg-transparent
-                    placeholder-transparent focus:border-transparent
-                    focus:outline-none focus:ring-0 sm:text-sm ''',
+                ''' w-full
+                    p-2
+                    text-xs
+                    bg-transparent
+                    outline-none
+                    text-black/80 dark:text-white/40''',
             })
-
-
-class CustomUserChangeForm(UserChangeForm):
-    password = None
-    class Meta:
-        model = User
-        fields = [
-            'email',
-            'name',
-            'username'
-        ]
-        labels = {
-            'email': 'e-mail',
-            'name': 'nome',
-            'username': 'nome de usuário',
-        }
-    
-
-    def __init__(self, *args, **kwargs):
-        super(CustomUserChangeForm, self).__init__(*args, **kwargs)
-
-        for name, field in self.fields.items():
-            field.widget.attrs.update({
-                'placeholder': name,
-                'class': 
-                ''' peer h-8 w-64 p-0 border-none bg-transparent
-                    placeholder-transparent focus:border-transparent
-                    focus:outline-none focus:ring-0 sm:text-sm ''',
-            })    
-
-
-class CustomPasswordChangeForm(PasswordChangeForm):
-    fields = [
-        ('old_password', 'senha antiga'),
-        ('new_password1', 'nova senha'),
-        ('new_password2', 'confirmar nova senha'),
-    ]
-
-    for name, label in fields:
-        locals()[name] = forms.CharField(
-            label=(label),
-            strip=False,
-            widget=forms.PasswordInput(
-                attrs={
-                    'autofocus': True,
-                    'placeholder': label,
-                    'autocomplete': 'current-password' \
-                        if name == 'old_password' else 'off',
-                    'class': 
-                    ''' peer h-8 w-64 p-0 border-none bg-transparent
-                        placeholder-transparent focus:border-transparent
-                        focus:outline-none focus:ring-0 sm:text-sm ''',
-                }
-            ),
-        )
-
