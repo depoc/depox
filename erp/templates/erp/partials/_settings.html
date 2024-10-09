@@ -41,18 +41,18 @@
                             bg-zinc-200
                             dark:text-zinc-100
                             dark:bg-tertiary">
-                            HB
+                            {{ request.user.name | first }}
                         </button>
                     </div>
                     <div class="text-sm leading-5">
                         <p class="font-semibold text-primary dark:text-white">
                         <a href="#">
                             <span class="absolute inset-0"></span>
-                            Hugo Belém
+                            {{ request.user.name }}
                         </a>
                         </p>
                         <p class="text-zinc-500 dark:text-zinc-400">
-                            depoc
+                            {{ request.user.email }}
                         </p>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                     ring-1
                     hover:ring-black hover:text-black
                     dark:hover:ring-zinc-300 dark:hover:text-zinc-300">
-                <kbd>hugo</kbd>
+                <kbd>{{ first_name }}</kbd>
             </button>
 
             <button id="settingsEmpresaButton"
