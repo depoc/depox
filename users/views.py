@@ -1,10 +1,12 @@
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
 from .models import User
 from .forms import (
     CustomUserCreationForm,
+    CustomUserChangeForm,
 )
 
 
@@ -52,3 +54,19 @@ def register(request):
 
     context = {'form': form}
     return render(request, 'users/register.html', context)
+
+
+@login_required(login_url='users:login')
+def user(request):
+    user = request.user
+    form = CustomUserChangeForm(instance=user)
+
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=user)
+        if form.is_valid():
+            login(request, user)
+            return redirect('erp:index')
+    
+    context = {'form': form}
+
+    return render(request, 'erp/partials/_settings.html', context)
