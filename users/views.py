@@ -56,15 +56,15 @@ def register(request):
     return render(request, 'users/register.html', context)
 
 
-@login_required(login_url='users:login')
+@login_required(login_url='login')
 def user(request):
     user = request.user
     form = CustomUserChangeForm(instance=user)
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = CustomUserChangeForm(request.POST, instance=user)
         if form.is_valid():
-            login(request, user)
+            form.save()
             return redirect('erp:index')
     
     context = {'form': form}
