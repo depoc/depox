@@ -33,3 +33,30 @@ class CustomUserCreationForm(UserCreationForm):
                     outline-none
                     text-black/80 dark:text-white/40''',
             })
+
+
+class CustomUserChangeForm(UserChangeForm):
+    password = None
+    class Meta:
+        model = User
+        fields = [
+            'email',
+            'name',
+            'username'
+        ]
+        labels = {
+            'name': 'nome',
+            'username': 'usuário',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(CustomUserChangeForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({
+                'class': '''
+                    text-xs
+                    text-black/40
+                    dark:text-white/40
+                    focus:outline-none''',
+            })
