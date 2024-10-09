@@ -159,7 +159,7 @@
                         items-center justify-between
                         pt-2 px-2">
                     <kbd class="text-xs text-zinc-700 dark:text-zinc-400">nome</kbd>
-                    <p class="text-xs text-black/40 dark:text-white/40">Hugo Cordeiro Belém</p>
+                    <p class="text-xs text-black/40 dark:text-white/40">{{ request.user.name }}</p>
                 </div>
 
                 <hr class="border-none my-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
@@ -171,7 +171,7 @@
                         items-center justify-between
                         pb-2 px-2">
                     <kbd class="text-xs text-zinc-700 dark:text-zinc-400">email</kbd>
-                    <p class="text-xs text-black/40 dark:text-white/40">hugo@depoc.com.br</p>
+                    <p class="text-xs text-black/40 dark:text-white/40">{{ request.user.email }}</p>
                 </div>         
                 
                 <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
@@ -183,7 +183,11 @@
                         items-center justify-between
                         pb-2 px-2">
                     <kbd class="text-xs text-zinc-700 dark:text-zinc-400">usuário</kbd>
-                    <p class="text-xs text-black/40 dark:text-white/40">hugo@depoc</p>
+                    {% if not request.user.username %}
+                    <p class="text-xs text-black/40 dark:text-white/40">-</p>
+                    {% else %}
+                    <p class="text-xs text-black/40 dark:text-white/40">{{ request.user.username }}</p>
+                    {% endif %}
                 </div>     
 
                 <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
