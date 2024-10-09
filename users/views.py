@@ -11,7 +11,7 @@ from .forms import (
 def signin(request):
 
     if request.user.is_authenticated:
-        return redirect('erpIndex')
+        return redirect('erp:index')
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -25,7 +25,7 @@ def signin(request):
 
         if user is not None:
             login(request, user)
-            return redirect('erpIndex')
+            return redirect('erp:index')
         else:
             messages.error(request, 'dados incorretos')
 
