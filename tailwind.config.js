@@ -5,6 +5,7 @@ module.exports = {
   content: [
     './users/templates/users/**/*.html',
     './users/templates/users/*.html',
+    './users/forms.py',
 
     './erp/templates/erp/**/*.html',
     './erp/templates/erp/*.html',
