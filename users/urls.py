@@ -12,5 +12,6 @@ urlpatterns = [
         'sair/',
         LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL),
         name='logout'
-    ),    
+    ),
+    path('excluir/', views.delete, name='delete')
 ]
