@@ -55,7 +55,7 @@
                     text-center
                     font-semibold
                     text-black dark:text-white">
-                <kbd>login</kbd>
+                <kbd>entrar</kbd>
             </p>
         </div>
 
@@ -73,7 +73,7 @@
                         type="text" 
                         id="username" 
                         name="username" 
-                        class="w-full text-xs text-black/80 dark:text-white/60 p-2 bg-transparent outline-none" 
+                        class="w-full text-xs text-black/80 dark:text-white/60 dark:placeholder:text-white/60 p-2 bg-transparent outline-none" 
                         placeholder="email ou usuário" />
                 </div>
             </div>
@@ -86,10 +86,16 @@
                         type="password" 
                         id="password" 
                         name="password" 
-                        class="w-full text-xs text-black/80 dark:text-white/60 p-2 bg-transparent outline-none" 
+                        class="w-full text-xs text-black/80 dark:text-white/60 dark:placeholder:text-white/60 p-2 bg-transparent outline-none" 
                         placeholder="senha" />
                 </div>
             </div>
+            <p class="text-end">
+                <a  href="#" 
+                    class="mt-2 text-xs text-zinc-400 dark:text-zinc-500">
+                    esqueci senha
+                </a>     
+            </p>       
         
             <!-- Submit Button -->
             <div class="mt-4 text-start">
@@ -102,18 +108,25 @@
         </form>
         
         {% if messages %}
-        <ul class="messages text-center">
+        <ul class="messages text-start">
             {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-              <span class="inline-flex items-start rounded-md px-2 py-1 mt-8 text-xs text-red-500">
-                {{ message }}
+              <span class="inline-flex items-start mt-8 text-xs text-zinc-500 dark:text-zinc-400">
+                {{ message }} :(
               </span>        
             </li>
             {% endfor %}
         </ul>
         {% endif %}        
 
-        <p class="mt-14"></p>
+        <p class="mt-14 text-xs text-zinc-400 dark:text-zinc-500">
+            não possui conta?
+            <a
+                href="{% url "users:register" %}"
+                class="text-xs text-zinc-500 dark:text-zinc-400">
+                criar conta
+            </a>
+        </p>
     </div>
 </div>
 
