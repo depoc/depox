@@ -12,34 +12,18 @@ class Settings:
         form = CustomUserChangeForm(instance=user)
 
         if request.method == 'POST':
-            if 'form' in request.POST:
                 form = CustomUserChangeForm(request.POST, instance=user)
                 if form.is_valid():
                     form.save()
 
         context = {'form': form}
         return context
-    
-    def password(request):
-        user = request.user
-        password_change_form = PasswordChangeForm
 
-        if request.method == 'POST':
-            if 'password_change_form' in request.POST:
-                password_change_form = PasswordChangeForm(user=user)
-                if password_change_form.is_valid():
-                    password_change_form.save()
-                else:
-                    print(password_change_form.errors)
-
-        context = {'password_change_form': password_change_form}
-        return context
 
 
 @login_required(login_url='users:login')
 def erp(request):
     context = Settings.user(request)
-    context.update(Settings.password(request))
 
     return render(request, 'erp/index.html', context)
 
