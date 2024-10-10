@@ -31,7 +31,7 @@ class CustomUserCreationForm(UserCreationForm):
                     text-xs
                     bg-transparent
                     outline-none
-                    placeholder:text-white/60
+                    dark:placeholder:text-white/60
                     text-black/80 dark:text-white/60''',
             })
 
