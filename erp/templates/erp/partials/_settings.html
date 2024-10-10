@@ -397,34 +397,37 @@
             </div>            
         </div>
 
-        <!--delete account button-->  
-        <div class="absolute bottom-5 left-6 text-sm leading-5">
-            <button
-                class="
-                    group
-                    flex 
-                    h-[26px] w-24
-                    items-center justify-center 
-                    aspect-square rounded-md 
-                    dark:shadow-thick 
-                    ring-1 
-                    ring-primary/15 hover:ring-primary/10
-                    dark:ring-white/10 dark:hover:ring-white/20
-                    duration-300 
-                    transition-all
-                    bg-white dark:bg-tertiary
-                    hover:bg-zinc-100 dark:hover:bg-primary">
-                <span 
+        <!--delete account button-->
+        <form action="{% url "users:delete" %}" method="POST">
+            {% csrf_token %}
+            <div class="absolute bottom-5 left-6 text-sm leading-5">
+                <button
                     class="
-                    text-[13px]
-                    text-zinc-400 
-                    hover:text-zinc-600 
-                    dark:text-zinc-500
-                    dark:hover:text-zinc-400">
-                    excluir conta
-                </span>
-            </button>
-        </div>    
+                        group
+                        flex 
+                        h-[26px] w-24
+                        items-center justify-center 
+                        aspect-square rounded-md 
+                        dark:shadow-thick 
+                        ring-1 
+                        ring-primary/15 hover:ring-primary/10
+                        dark:ring-white/10 dark:hover:ring-white/20
+                        duration-300 
+                        transition-all
+                        bg-white dark:bg-tertiary
+                        hover:bg-zinc-100 dark:hover:bg-primary">
+                    <span 
+                        class="
+                            text-[13px]
+                            text-zinc-400 
+                            hover:text-zinc-600 
+                            dark:text-zinc-500
+                            dark:hover:text-zinc-400">
+                        excluir conta
+                    </span>
+                </button>
+            </div>
+        </form>
 
         <!--theme button swith-->
         <div 
