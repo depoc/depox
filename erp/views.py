@@ -20,6 +20,16 @@ class Settings:
 
 @login_required(login_url='users:login')
 def erp(request):
-    context = Settings.user(request)
+    user = request.user
+    form = CustomUserChangeForm(instance=user)
 
-    return render(request, 'erp/index.html', context) 
+    if request.method == "POST":
+        form = CustomUserChangeForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+        else:
+            print(form.errors)
+
+    context = {'form': form}
+
+    return render(request, 'erp/index.html', context)
