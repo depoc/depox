@@ -1,5 +1,4 @@
 from django.urls import path
-from django.contrib.auth import views as auth_views
 
 from . import views
 
@@ -9,7 +8,7 @@ urlpatterns = [
 
     path(
         'alterar-senha/',
-        auth_views.PasswordChangeView.as_view(),
+        views.CustomPasswordChangeView.as_view(),
         name='password_change',
     ),
 ]

@@ -201,10 +201,9 @@
                         items-center justify-between
                         pb-2 px-2">
                     <kbd class="text-xs text-zinc-700 dark:text-zinc-400">alterar senha</kbd>
-                    <button
-                        id="passwordButton"
+                    <a
+                        href="{% url "erp:password_change" %}"
                         class="
-                        passwordButton
                         text-xs 
                         rounded-md
                         px-[5px] py-[1px]
@@ -214,7 +213,7 @@
                         hover:bg-zinc-50 dark:hover:bg-primary
                         text-black/60 dark:text-white/70">
                         •••
-                    </button>
+                    </a>
                 </div>                                   
             </div>
         </div>
