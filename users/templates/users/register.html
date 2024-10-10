@@ -18,9 +18,10 @@
             dark:ring-white/15
             bg-white/100 dark:bg-secondary
             p-6 
-            sm:w-7/12 sm:h-4/5
-            w-11/12 h-5/6
+            sm:w-4/12
+            w-10/12 
             rounded-xl
+            shadow-xl
             relative">
 
         <button id="closeSettings" class="absolute top-4 right-4 text-lg text-black px-4 py-2 rounded"></button>
@@ -47,10 +48,10 @@
         </span>
 
         <!--text-->
-        <div class="p-4 sm:p-4">
+        <div class="p-4 sm:p-4 mt-4">
             <p 
                 class="
-                    text-4xl
+                    text-3xl
                     text-center
                     font-semibold
                     text-black dark:text-white">
@@ -61,7 +62,7 @@
         <form
             action="{% url "users:register" %}"
             method="POST"
-            class="ml-auto mr-auto mt-8 md:w-10/12 lg:w-1/2">
+            class="ml-auto mr-auto mt-6">
             {% csrf_token %}
 
             <!-- Email or Username Input -->
@@ -78,7 +79,7 @@
                 <button 
                     type="submit" 
                     class="text-xs rounded-md px-4 py-1 ring-1 ring-black/80 dark:ring-white/70 bg-white dark:bg-tertiary hover:bg-zinc-50 dark:hover:bg-primary text-black/80 dark:text-white/70">
-                    criar
+                    criar conta
                 </button>
             </div>
         </form>
@@ -94,6 +95,15 @@
             {% endfor %}
         </ul>
         {% endif %}        
+
+        <p class="mt-14 text-xs text-zinc-400 dark:text-zinc-500">
+            já possui conta?
+            <a
+                href="{% url "users:login" %}"
+                class="text-xs text-zinc-500 dark:text-zinc-400">
+                entrar
+            </a>
+        </p>
 
     </div>
 </div>
