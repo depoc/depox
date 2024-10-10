@@ -12,7 +12,6 @@ class Settings:
             form = CustomUserChangeForm(request.POST, instance=user)
             if form.is_valid():
                 form.save()
-                return redirect('erp:index')
 
         context = {'form': form}
         return context
@@ -20,16 +19,6 @@ class Settings:
 
 @login_required(login_url='users:login')
 def erp(request):
-    user = request.user
-    form = CustomUserChangeForm(instance=user)
-
-    if request.method == "POST":
-        form = CustomUserChangeForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-        else:
-            print(form.errors)
-
-    context = {'form': form}
+    context = Settings.user(request)
 
     return render(request, 'erp/index.html', context)
