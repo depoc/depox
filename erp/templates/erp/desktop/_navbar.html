@@ -87,7 +87,7 @@
 
                         <div class="p-1">
                         <a
-                            href="#"
+                            href="{% url "erp:index" %}"
                             class="
                             block
                             rounded-md
@@ -97,26 +97,13 @@
                             hover:bg-black/5 hover:text-zinc-600 
                             dark:hover:bg-tertiary dark:hover:text-zinc-200"
                             role="menuitem">
-                            editar nome
+                            😗
                         </a>
 
-                        <a
+                        <button
                             href="#"
                             class="
-                            block
-                            rounded-md
-                            px-4 py-1
-                            text-[13px]
-                            text-zinc-500 dark:text-zinc-400
-                            hover:bg-black/5 hover:text-zinc-600 
-                            dark:hover:bg-tertiary dark:hover:text-zinc-200"
-                            role="menuitem">
-                            alterar email
-                        </a>
-
-                        <a
-                            href="#"
-                            class="
+                            passwordButton
                             block
                             rounded-md
                             px-4 py-1
@@ -126,27 +113,50 @@
                             dark:hover:bg-tertiary dark:hover:text-zinc-200"
                             role="menuitem">
                             alterar senha
-                        </a>                        
+                        </button>                        
+
+
+                        <button
+                            type="submit"
+                            id="settingsButton"
+                            class="
+                                flex
+                                w-full
+                                items-center
+                                gap-2
+                                rounded-md
+                                px-4 py-1
+                                text-[13px] 
+                                text-zinc-500 dark:text-zinc-400
+                                hover:bg-black/5 hover:text-zinc-600 
+                                dark:hover:bg-tertiary dark:hover:text-zinc-200"
+                            role="menuitem">          
+                            ajustes
+                        </button>
                         </div>
 
                         <div class="p-1">
-                            <button
-                                type="submit"
-                                id="settingsButton"
-                                class="
-                                    flex
-                                    w-full
-                                    items-center
-                                    gap-2
-                                    rounded-md
-                                    px-4 py-1
-                                    text-[13px] 
-                                    text-zinc-500 dark:text-zinc-400
-                                    hover:bg-black/5 hover:text-zinc-600 
-                                    dark:hover:bg-tertiary dark:hover:text-zinc-200"
-                                role="menuitem">          
-                                ajustes
-                            </button>
+                            <form 
+                                action="{% url "users:logout" %}"
+                                method="POST">
+                                {% csrf_token %}
+                                <button
+                                    type="submit"
+                                    class="
+                                        flex
+                                        w-full
+                                        items-center
+                                        gap-2
+                                        rounded-md
+                                        px-4 py-1
+                                        text-[13px] 
+                                        text-zinc-500 dark:text-zinc-400
+                                        hover:bg-black/5 hover:text-zinc-600 
+                                        dark:hover:bg-tertiary dark:hover:text-zinc-200"
+                                    role="menuitem">          
+                                    sair
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>          
