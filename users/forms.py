@@ -19,7 +19,7 @@ class CustomUserCreationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
-        self.fields['password2'].label = 'confirmar senha'
+        self.fields['password2'].label = 'confirme senha'
 
         for name, field in self.fields.items():
             field.widget.attrs.update({
