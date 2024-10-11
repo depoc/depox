@@ -13,6 +13,8 @@ class CompanyForm(ModelForm):
 
         for name, field in self.fields.items():
             field.widget.attrs.update({
+                'autofocus': True,
+                'placeholder': '...',
                 'class': '''
                     w-fit
                     text-xs
