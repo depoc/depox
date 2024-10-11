@@ -27,14 +27,17 @@ class Settings:
         success_url = reverse_lazy('erp:index')
 
     def company(request) -> dict:
-        company = request.user.company
+        user = request.user
+        company = user.company
         form = CompanyForm(instance=company)
 
         if request.method == 'POST':
             if 'company-form' in request.POST:
                 form = CompanyForm(request.POST, instance=company)
                 if form.is_valid():
-                    form.save()
+                    company = form.save()
+                    user.company = company
+                    user.save()
 
         context = {'company_form': form}
         return context
