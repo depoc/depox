@@ -4,8 +4,9 @@ from .models import Company
 
 
 class CompanyForm(ModelForm):
-    model = Company
-    fields = '__all__'
+    class Meta:
+        model = Company
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super(CompanyForm, self).__init__(*args, **kwargs)
@@ -13,7 +14,7 @@ class CompanyForm(ModelForm):
         for name, field in self.fields.items():
             field.widget.attrs.update({
                 'class': '''
-                    w-full
+                    w-fit
                     text-xs
                     text-end
                     bg-transparent
