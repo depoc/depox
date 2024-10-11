@@ -36,7 +36,7 @@ class Settings:
                 if form.is_valid():
                     form.save()
 
-        context = {'CompanyForm': form}
+        context = {'company_form': form}
         return context
 
     
@@ -44,5 +44,6 @@ class Settings:
 @login_required(login_url='users:login')
 def erp(request):
     context = Settings.user(request)
+    context.update(Settings.company(request))
 
     return render(request, 'erp/index.html', context)
