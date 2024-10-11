@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
+from erp.models import Company
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -24,6 +26,11 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     username = models.CharField(
         max_length=100, unique=True, blank=True, null=True
+    )
+    company = models.ForeignKey(
+        Company,
+        on_delete=models.CASCADE,
+        null=True, blank=True
     )
 
     USERNAME_FIELD = 'email'
