@@ -244,6 +244,7 @@
 
         <!--empresa settings-->    
         <div class="hidden" id="empresaSettings">
+            {% if request.user.company %}
             <div 
                 class="
                     border
@@ -255,7 +256,6 @@
                     lg:w-1/2
                     mt-8">
 
-                {% if request.user.company %}
                 <form action="{% url "erp:index" %}" method="POST">
                     {% csrf_token %}
                     <div
@@ -308,11 +308,9 @@
                     </div>
 
                     <button type="submit" class="hidden" name="company-form"></button>
-                </form>
-                {% endif %}                                  
+                </form>                                 
             </div>  
-            
-            {% if request.user.company %}
+
             <div 
                 class="
                     border
@@ -351,6 +349,45 @@
                     </button>                    
                 </div>                                                     
             </div>
+
+            {% else %}
+            <div 
+                class="
+                    border
+                    border-zinc-300 dark:border-zinc-700
+                    bg-black/5 dark:bg-tertiary
+                    ml-auto mr-auto
+                    rounded-md
+                    md:w-10/12
+                    lg:w-1/2
+                    mt-8">
+                <!--endereço-->
+                <div 
+                    class="
+                        relative flex 
+                        items-center justify-between
+                        p-2 px-2">
+                    <kbd class="text-xs text-black/60 dark:text-white/60">
+                        cadastrar empresa
+                    </kbd>
+                    <button
+                        id="companyButton"
+                        class="
+                        companyButton
+                        text-xs
+                        font-light
+                        rounded-md
+                        px-[5px]
+                        ring-1
+                        ring-black/10 dark:ring-white/70
+                        bg-white dark:bg-tertiary
+                        hover:bg-zinc-50 dark:hover:bg-primary
+                        text-black/80 dark:text-white/70">
+                        +
+                    </button>                    
+                </div>                                                     
+            </div>
+
             {% endif %}                   
         </div>
         
