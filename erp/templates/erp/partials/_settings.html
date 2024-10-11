@@ -254,53 +254,61 @@
                     md:w-10/12
                     lg:w-1/2
                     mt-8">
-                <!--razao social-->
-                <div 
-                    class="
-                        relative flex 
-                        items-center justify-between
-                        pt-2 px-2">
-                    <kbd class="text-xs text-zinc-700 dark:text-zinc-400">razão social</kbd>
-                    <p class="text-xs text-black/40 dark:text-white/40">DEPOC.COM.BR LTDA</p>
-                </div>
 
-                <hr class="border-none my-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
-                
-                <!--fantasia-->
-                <div 
-                    class="
-                        relative flex
-                        items-center justify-between
-                        pb-2 px-2">
-                    <kbd class="text-xs text-zinc-700 dark:text-zinc-400">fantasia</kbd>
-                    <p class="text-xs text-black/40 dark:text-white/40">DEPOC</p>
-                </div>    
-                
-                <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
-                
-                <!--cnpj-->
-                <div 
-                    class="
-                        relative flex
-                        items-center justify-between
-                        pb-2 px-2">
-                    <kbd class="text-xs text-zinc-700 dark:text-zinc-400">cnpj</kbd>
-                    <p class="text-xs text-black/40 dark:text-white/40">28.296.912/0001-71</p>
-                </div>     
-                
-                <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
-                
-                <!--ie-->
-                <div 
-                    class="
-                        relative flex
-                        items-center justify-between
-                        pb-2 px-2">
-                    <kbd class="text-xs text-zinc-700 dark:text-zinc-400">inscrição estadual</kbd>
-                    <p class="text-xs text-black/40 dark:text-white/40">9825321</p>
-                </div>                     
-                                      
-            </div>   
+                <form action="{% url "erp:index" %}" method="POST">
+                    {% csrf_token %}
+                    <div
+                        class="
+                            relative flex 
+                            items-center justify-between
+                            pt-2 px-2">
+                        <kbd class="whitespace-nowrap text-xs text-zinc-700 dark:text-zinc-400">razão social</kbd>
+                        {{ company_form.razao_social }}
+                    </div>
+
+                    <hr class="border-none my-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
+                    
+                    <!--fantasia-->
+                    <div 
+                        class="
+                            relative flex
+                            items-center justify-between
+                            pb-2 px-2">
+                        <kbd class="text-xs text-zinc-700 dark:text-zinc-400">fantasia</kbd>
+                        {{ company_form.fantasia }}
+                    </div>         
+                    
+                    <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
+                    
+                    <!--cnpj-->
+                    <div 
+                        class="
+                            relative flex
+                            items-center justify-between
+                            pb-2 px-2">
+                        <kbd class="text-xs text-zinc-700 dark:text-zinc-400">cnpj</kbd>
+                        <p class="text-xs text-black/40 dark:text-white/40">
+                            {{ company_form.cnpj }}
+                        </p>
+                    </div>
+
+                    <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
+                    
+                    <!--ie-->
+                    <div 
+                        class="
+                            relative flex
+                            items-center justify-between
+                            pb-2 px-2">
+                        <kbd class="text-xs text-zinc-700 dark:text-zinc-400">inscrição estadual</kbd>
+                        <p class="text-xs text-black/40 dark:text-white/40">
+                            {{ company_form.ie }}
+                        </p>
+                    </div>
+
+                    <button type="submit" class="hidden" name="company-form"></button>
+                </form>                                   
+            </div>  
             
             <div 
                 class="
@@ -319,11 +327,11 @@
                         items-center justify-between
                         p-2 px-2">
                     <kbd class="text-xs text-black/40 dark:text-white/40">
-                        Rua da Independência, 35
+                        {{ user.company.endereco }}, {{user.company.numero}}
                         <br>
-                        Timorante, Exu - PE
+                        {{ user.company.bairro }}, {{ user.company.cidade }} - {{ user.company.uf }}
                         <br>
-                        56234-000
+                        {{ user.company.cep }}
                     </kbd>
                     <button
                         class="
@@ -338,8 +346,8 @@
                         text-black/60 dark:text-white/70">
                         •••
                     </button>                    
-                </div>                                                  
-            </div>                     
+                </div>                                                     
+            </div>               
         </div>
         
         <!--equipe settings-->        
@@ -499,5 +507,27 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var cnpjField = document.querySelector('input[name="cnpj"]');
+        
+        // Format CNPJ field on page load (if it already has a value)
+        if (cnpjField.value) {
+            cnpjField.value = formatCNPJ(cnpjField.value);
+        }
+
+        // Optional: Add formatting while typing
+        cnpjField.addEventListener('input', function() {
+            cnpjField.value = formatCNPJ(cnpjField.value);
+        });
+
+        function formatCNPJ(cnpj) {
+            // Remove all non-digit characters
+            cnpj = cnpj.replace(/\D/g, '');
+            // Format as 00.000.000/0000-00
+            return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+        }
+    });
+</script>
 <script src="{% static "js/settings.js" %}"></script>
 <script src="{% static "js/settingsMenu.js" %}"></script>
