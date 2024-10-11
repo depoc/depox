@@ -8,7 +8,7 @@ urlpatterns = [
 
     path(
         'alterar-senha/',
-        views.CustomPasswordChangeView.as_view(),
+        views.Settings.PasswordChange.as_view(),
         name='password_change',
     ),
 ]
