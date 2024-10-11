@@ -85,10 +85,10 @@
         </form>
         
         {% if messages %}
-        <ul class="messages text-center">
+        <ul class="messages text-start">
             {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-              <span class="inline-flex items-start rounded-md px-2 py-1 mt-8 text-xs text-red-500">
+              <span class="inline-flex items-start rounded-md py-1 mt-8 text-xs text-zinc-500 dark:text-zinc-400">
                 {{ message }}
               </span>        
             </li>
