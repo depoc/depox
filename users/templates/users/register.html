@@ -72,6 +72,20 @@
                     {{field}}
                 </div>
             </div>
+                {% if field.errors %}
+                {% for error in field.errors %}
+                    <p>
+                        <span 
+                            class="
+                                inline-flex
+                                text-xs 
+                                text-zinc-500 
+                                dark:text-zinc-400">
+                        • {{ error | lower | cut:"." | cut:"esta senha é muito curta ela" }}
+                        </span>    
+                    </p>
+                {% endfor %}
+                {% endif %}        
             {% endfor %}
         
             <!-- Submit Button -->
@@ -83,18 +97,6 @@
                 </button>
             </div>
         </form>
-        
-        {% if messages %}
-        <ul class="messages text-start">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-              <span class="inline-flex items-start rounded-md py-1 mt-8 text-xs text-zinc-500 dark:text-zinc-400">
-                {{ message }}
-              </span>        
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}        
 
         <p class="mt-14 text-xs text-zinc-400 dark:text-zinc-500">
             já possui conta?
