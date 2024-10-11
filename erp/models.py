@@ -4,7 +4,7 @@ class Company(models.Model):
     razao_social = models.CharField(max_length=255, blank=True, null=True)
     fantasia = models.CharField(max_length=255, blank=True, null=True)
     cnpj = models.CharField(
-        max_length=50, blank=True, primary_key=True
+        max_length=50, primary_key=True
     )
     ie = models.CharField(max_length=50, blank=True, null=True)
     endereco = models.CharField(max_length=255, blank=True, null=True)
