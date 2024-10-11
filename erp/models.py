@@ -1,10 +1,13 @@
 from django.db import models
+from django.core.validators import MinLengthValidator
+
 
 class Company(models.Model):
     razao_social = models.CharField(max_length=255, blank=True, null=True)
     fantasia = models.CharField(max_length=255, blank=True, null=True)
     cnpj = models.CharField(
-        max_length=50, primary_key=True
+        max_length=50, primary_key=True, 
+        validators=[MinLengthValidator(14)]
     )
     ie = models.CharField(max_length=50, blank=True, null=True)
     endereco = models.CharField(max_length=255, blank=True, null=True)
