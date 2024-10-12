@@ -67,7 +67,8 @@ class CustomUserChangeForm(UserChangeForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.username = user.username.lower()
+        if user.username:
+            user.username = user.username.lower()
         if commit:
             user.save()
         return user            
