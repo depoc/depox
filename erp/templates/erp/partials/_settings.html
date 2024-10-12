@@ -661,7 +661,7 @@
             {% endif %}      
 
             <!--membro form--> 
-            <form action="" method="POST">   
+            <form action="{% url "erp:index" %}"  method="POST">   
                 {% csrf_token %}    
                 <div 
                     id="membro-form"
@@ -709,35 +709,14 @@
                             <p class="text-xs text-black/40 dark:text-white/40">
                                 {{ member_form.username | lower }}
                             </p>
-                        </div>     
+                        </div>
 
                         <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
 
-                        <!--senha-->
-                        <div 
-                            class="
-                                relative flex
-                                items-center justify-between
-                                pb-2 px-2">
-                            <kbd class="text-xs text-zinc-700 dark:text-zinc-400">senha</kbd>
-                            <p class="text-xs text-black/40 dark:text-white/40">
-                                {{ member_form.password1 }}
-                            </p>
-                        </div>    
-
-                        <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
-                        
-                        <!--confirmar senha-->
-                        <div 
-                            class="
-                                relative flex
-                                items-center justify-between
-                                pb-2 px-2">
-                            <kbd class="text-xs text-zinc-700 dark:text-zinc-400">confirmar senha</kbd>
-                            <p class="text-xs text-black/40 dark:text-white/40">
-                                {{ member_form.password2 }}
-                            </p>
-                        </div>                          
+                        <p class="text-left text-xs text-black/40 dark:text-white/40 mb-2 px-2">
+                            clique em esqueci senha ao fazer primeiro login
+                        </p>
+               
                 </div>
                 <button type="submit" class="hidden" name="member-form"></button>      
             </form>            
