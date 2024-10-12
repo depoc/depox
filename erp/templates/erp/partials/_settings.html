@@ -504,7 +504,7 @@
 
                 </div>     
                 
-                <!--contato + button-->
+                <!--membro + button-->
                 <a id="toggle-contato-button" class="cursor-pointer">
                 <div 
                     id="div-contato-button"
@@ -592,7 +592,46 @@
         <!--equipe settings-->        
         <div class="hidden" id="equipeSettings">
             {% if user.company %}
+                <div 
+                    class="
+                        border
+                        border-zinc-300 dark:border-zinc-700
+                        bg-black/5 dark:bg-tertiary
+                        ml-auto mr-auto
+                        rounded-md
+                        md:w-10/12
+                        lg:w-1/2
+                        mt-8">
+                    <!--equipe list-->
+                    {% for member in team %}
+                    <div 
+                        class="
+                            relative flex 
+                            items-center justify-between
+                            p-2">
+                        <kbd class="text-xs text-zinc-700 dark:text-zinc-400">{{ member.name | first_name | lower }}</kbd>
+                        <p class="text-xs text-black/40 dark:text-white/40">{{ member }}</p>
+                    </div>
+
+                    {% if not forloop.last %}
+                    <hr class="border-none h-[1px] bg-zinc-300 dark:bg-zinc-600">
+                    {% endif %}
+                    {% endfor %}    
+                    
+                    {% else %}
+                    <p class="text-black/40 dark:text-white/40 text-xs text-center mt-8">
+                        complete cadastro da empresa
+                        <br>
+                        para gerenciar equipe
+                    </p>
+            {% endif %}  
+        </div>  
+
+        <!--membro + button-->
+        {% if user.company %}
+        <a id="toggle-membro-button" class="cursor-pointer">
             <div 
+                id="div-membro-button"
                 class="
                     border
                     border-zinc-300 dark:border-zinc-700
@@ -601,51 +640,72 @@
                     rounded-md
                     md:w-10/12
                     lg:w-1/2
-                    mt-8">
-                <!--equipe1-->
-                {% for member in team %}
+                    mt-2">
+
                 <div 
                     class="
                         relative flex 
                         items-center justify-between
-                        pt-2 px-2">
-                    <kbd class="text-xs text-zinc-700 dark:text-zinc-400">{{ member.name | first_name | lower }}</kbd>
-                    <p class="text-xs text-black/40 dark:text-white/40">{{ member }}</p>
-                </div>
+                        p-2 px-2">
+                    <kbd class="text-xs text-zinc-700 dark:text-white/50">
+                        adicionar membro
+                    </kbd>
+                    <button
+                        type="button"
+                        id="toggle-membro-button"
+                        class="
+                        ml-auto
+                        text-xs
+                        text-black/50
+                        dark:text-white/50">
+                        +                                         
+                    </button>                    
+                </div>                                                     
+            </div> 
+        </a>
+        {% endif %}      
 
-                <hr class="border-none mt-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
-
-                {% endfor %}
-
-                <!--adicionar membro-->
+        <!--membro form-->          
+        <div 
+            id="membro-form"
+            class="
+                hidden
+                border
+                border-zinc-300 dark:border-zinc-700
+                bg-white/5 dark:bg-secondary
+                ml-auto mr-auto
+                rounded-md
+                md:w-10/12
+                lg:w-1/2
+                mt-2">
+                
+                <!--celular-->
+                <div 
+                    class="
+                        mt-2
+                        relative flex
+                        items-center justify-between
+                        pb-2 px-2">
+                    <kbd class="text-xs text-zinc-700 dark:text-zinc-400">celular</kbd>
+                    {{ company_form.celular }}
+                </div>         
+                
+                <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
+                
+                <!--email-->
                 <div 
                     class="
                         relative flex
                         items-center justify-between
-                        pb-2 px-2 mt-2">
-                    <kbd class="text-xs text-zinc-700 dark:text-zinc-400">adicionar membro</kbd>
-                    <button
-                        class="
-                        text-xs 
-                        rounded-md
-                        px-[5px] py-[1px]
-                        ring-1
-                        ring-black/10 dark:ring-white/70
-                        bg-white dark:bg-tertiary
-                        hover:bg-zinc-50 dark:hover:bg-primary
-                        text-black/60 dark:text-white/70">
-                        +
-                    </button>
-                </div>                                   
-            </div>
-            {% else %}
-            <p class="text-black/40 dark:text-white/40 text-xs text-center mt-8">
-                complete cadastro da empresa
-                <br>
-                para gerenciar equipe
-            </p>
-            {% endif %}    
+                        pb-2 px-2">
+                    <kbd class="text-xs text-zinc-700 dark:text-zinc-400">email</kbd>
+                    <p class="text-xs text-black/40 dark:text-white/40">
+                        {{ company_form.email }}
+                    </p>
+                </div>      
         </div>
+        <button type="submit" class="hidden" name="equipe-form"></button>                
+        </div>      
 
         <!--delete account button-->
         <form action="{% url "erp:delete" %}" method="POST">
@@ -745,28 +805,7 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var cnpjField = document.querySelector('input[name="cnpj"]');
-        
-        // Format CNPJ field on page load (if it already has a value)
-        if (cnpjField.value) {
-            cnpjField.value = formatCNPJ(cnpjField.value);
-        }
-
-        // Optional: Add formatting while typing
-        cnpjField.addEventListener('input', function() {
-            cnpjField.value = formatCNPJ(cnpjField.value);
-        });
-
-        function formatCNPJ(cnpj) {
-            // Remove all non-digit characters
-            cnpj = cnpj.replace(/\D/g, '');
-            // Format as 00.000.000/0000-00
-            return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
-        }
-    });
-</script>
 <script src="{% static "js/company.js" %}"></script>
 <script src="{% static "js/settings.js" %}"></script>
+<script src="{% static "js/formatCNPJ.js" %}"></script>
 <script src="{% static "js/settingsMenu.js" %}"></script>
