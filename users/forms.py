@@ -64,3 +64,10 @@ class CustomUserChangeForm(UserChangeForm):
                     dark:text-white/40
                     outline-none''',
             })
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.username = user.username.lower()
+        if commit:
+            user.save()
+        return user            
