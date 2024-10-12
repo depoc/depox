@@ -591,6 +591,7 @@
         
         <!--equipe settings-->        
         <div class="hidden" id="equipeSettings">
+            {% if user.company %}
             <div 
                 class="
                     border
@@ -612,20 +613,8 @@
                 </div>
 
                 <hr class="border-none my-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
-                
-                <!--equipe2-->
-                <div 
-                    class="
-                        relative flex
-                        items-center justify-between
-                        pb-2 px-2">
-                    <kbd class="text-xs text-zinc-700 dark:text-zinc-400">gerente</kbd>
-                    <p class="text-xs text-black/40 dark:text-white/40">dani@depoc</p>
-                </div>         
-                
-                <hr class="border-none mb-2 h-[1px] bg-zinc-300 dark:bg-zinc-600">
 
-                <!--senha-->
+                <!--adicionar membro-->
                 <div 
                     class="
                         relative flex
@@ -645,7 +634,14 @@
                         +
                     </button>
                 </div>                                   
-            </div>            
+            </div>
+            {% else %}
+            <p class="text-black/40 dark:text-white/40 text-xs text-center mt-8">
+                complete cadastro da empresa
+                <br>
+                para gerenciar equipe
+            </p>
+            {% endif %}    
         </div>
 
         <!--delete account button-->
