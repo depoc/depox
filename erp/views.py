@@ -47,9 +47,12 @@ class Settings:
 
     def team(request) -> dict:
         company = request.user.company
-        team = company.user_set.all()
+        context = {}
 
-        context = {'team': team}
+        if company:
+            team = company.user_set.all()
+            context.update({'team': team})
+
         return context
 
 
