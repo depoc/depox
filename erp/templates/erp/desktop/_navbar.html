@@ -1,3 +1,5 @@
+{% load filters %}
+
 <div
     class="
         ring-1 
@@ -40,7 +42,7 @@
                     <p class="font-semibold text-primary dark:text-white">
                     <a href="#">
                         <span class="absolute inset-0"></span>
-                        {{ request.user.name }}
+                        {{ request.user.name | first_name | capfirst }}
                     </a>
                     </p>
                     <p class="text-zinc-500 dark:text-zinc-400">
