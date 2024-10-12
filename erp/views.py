@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 
 from users.forms import CustomUserChangeForm
 from .forms import CompanyForm
+from .models import Company
 
 
 class Settings:
@@ -26,6 +27,7 @@ class Settings:
         template_name = 'erp/partials/_password.html'
         success_url = reverse_lazy('erp:index')
 
+
     def company(request) -> dict:
         user = request.user
         company = user.company
@@ -41,12 +43,22 @@ class Settings:
 
         context = {'company_form': form}
         return context
+    
+
+    def team(request) -> dict:
+        company = request.user.company
+        team = company.user_set.all()
+
+        context = {'team': team}
+        return context
+
 
 
 @login_required(login_url='users:login')
 def erp(request):
     context = Settings.user(request)
     context.update(Settings.company(request))
+    context.update(Settings.team(request))
 
     return render(request, 'erp/index.html', context)
 
