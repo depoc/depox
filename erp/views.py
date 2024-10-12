@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 
 from users.forms import CustomUserChangeForm
-from .forms import CompanyForm
+from .forms import CompanyForm, MemberCreationForm
 from .models import Company
 
 
@@ -56,12 +56,28 @@ class Settings:
         return context
 
 
+    def member(request) -> dict:
+        company = request.user.company
+        form = MemberCreationForm()
+
+        if request.method == 'POST':
+                if 'member-form' in request.POST:
+                    form = CustomUserChangeForm(request.POST)
+                    if form.is_valid():
+                        member = form.save(commit=False)
+                        member.company = company
+                        member.save()
+
+        context = {'member_form': form}
+        return context
+
 
 @login_required(login_url='users:login')
 def erp(request):
     context = Settings.user(request)
     context.update(Settings.company(request))
     context.update(Settings.team(request))
+    context.update(Settings.member(request))
 
     return render(request, 'erp/index.html', context)
 
