@@ -6,6 +6,8 @@ app_name = 'erp'
 urlpatterns = [
     path('', views.erp, name='index'),
 
+    path('excluir/', views.delete, name='delete'),
+
     path(
         'alterar-senha/',
         views.Settings.PasswordChange.as_view(),

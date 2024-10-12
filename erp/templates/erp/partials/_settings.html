@@ -649,7 +649,7 @@
         </div>
 
         <!--delete account button-->
-        <form action="{% url "users:delete" %}" method="POST">
+        <form action="{% url "erp:delete" %}" method="POST">
             {% csrf_token %}
             <div class="absolute bottom-5 left-6 text-sm leading-5">
                 <button

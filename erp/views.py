@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
 from users.forms import CustomUserChangeForm
@@ -42,7 +42,6 @@ class Settings:
         context = {'company_form': form}
         return context
 
-    
 
 @login_required(login_url='users:login')
 def erp(request):
@@ -50,3 +49,17 @@ def erp(request):
     context.update(Settings.company(request))
 
     return render(request, 'erp/index.html', context)
+
+
+@login_required(login_url='users:login')
+def delete(request):
+    user = request.user
+    company = user.company
+
+    if request.method == 'POST':
+        if company:
+            company.delete()
+        else:
+            user.delete()
+            
+        return redirect('users:register')

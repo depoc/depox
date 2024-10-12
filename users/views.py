@@ -54,10 +54,3 @@ def register(request):
     return render(request, 'users/register.html', context)
 
 
-@login_required(login_url='users:login')
-def delete(request):
-    user = request.user
-
-    if request.method == 'POST':
-        user.delete()
-        return redirect('users:register')
