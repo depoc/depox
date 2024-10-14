@@ -4,11 +4,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 
 from users.forms import CustomUserChangeForm
+from users.models import User
 from .forms import CompanyForm, MemberCreationForm
 from .models import Company
 
 
 class Settings:
+    class PasswordChange(PasswordChangeView):
+        template_name = 'erp/partials/_password.html'
+        success_url = reverse_lazy('erp:index')
+
+
     def user(request) -> dict:
         user = request.user
         form = CustomUserChangeForm(instance=user)
@@ -21,11 +27,19 @@ class Settings:
 
         context = {'form': form}
         return context
-    
 
-    class PasswordChange(PasswordChangeView):
-        template_name = 'erp/partials/_password.html'
-        success_url = reverse_lazy('erp:index')
+
+    def account_delete(request):
+        user = request.user
+        company = user.company
+
+        if request.method == 'POST':
+            if company:
+                company.delete()
+            else:
+                user.delete()
+                
+            return redirect('users:register')
 
 
     def company(request) -> dict:
@@ -70,6 +84,16 @@ class Settings:
 
         context = {'member_form': form}
         return context
+    
+
+    def member_delete(request, pk) -> dict:
+        user = User.objects.get(pk=pk)
+
+        if request.method == 'POST':
+            if 'member-delete' in request.POST:
+                user.delete()
+
+            return redirect('erp:index')   
 
 
 @login_required(login_url='users:login')
@@ -82,15 +106,5 @@ def erp(request):
     return render(request, 'erp/index.html', context)
 
 
-@login_required(login_url='users:login')
-def delete(request):
-    user = request.user
-    company = user.company
 
-    if request.method == 'POST':
-        if company:
-            company.delete()
-        else:
-            user.delete()
-            
-        return redirect('users:register')
+    
