@@ -6,7 +6,13 @@ app_name = 'erp'
 urlpatterns = [
     path('', views.erp, name='index'),
 
-    path('excluir/', views.delete, name='delete'),
+    path('excluir/', views.Settings.account_delete, name='delete'),
+
+    path(
+        'membro/<int:pk>/excluir',
+         views.Settings.member_delete, 
+         name='member_delete'
+    ),
 
     path(
         'alterar-senha/',
