@@ -602,6 +602,7 @@
                             items-center justify-between
                             p-2">
                         <kbd class="text-xs text-zinc-700 dark:text-zinc-400">{{ member.email }}</kbd>
+                        {% if forloop.counter != 1 %}
                         <form action="{% url "erp:member_delete" member.id %}" method="POST">
                             {% csrf_token %}
                             <button name="member-delete" class="text-xs text-black/40 dark:text-white/40">
@@ -610,6 +611,7 @@
                                 </svg>                                  
                             </button>
                         </form>
+                        {% endif %}
                     </div>
 
                     {% if not forloop.last %}
