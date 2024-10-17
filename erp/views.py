@@ -29,7 +29,7 @@ class Settings:
         return context
 
 
-    def account_delete(request):
+    def account_delete(request) -> None:
         user = request.user
         company = user.company
 
@@ -72,10 +72,12 @@ class Settings:
 
     def member(request) -> dict:
         company = request.user.company
+        # this form gives a different style to the input fields
         form = MemberCreationForm()
 
         if request.method == 'POST':
                 if 'member-form' in request.POST:
+                    # this form creates new members without a password
                     form = CustomUserChangeForm(request.POST)
                     if form.is_valid():
                         member = form.save(commit=False)
@@ -86,7 +88,7 @@ class Settings:
         return context
     
 
-    def member_delete(request, pk) -> dict:
+    def member_delete(request, pk) -> None:
         user = User.objects.get(pk=pk)
 
         if request.method == 'POST':
@@ -94,14 +96,21 @@ class Settings:
                 user.delete()
 
             return redirect('erp:index')   
+        
+    
+    def context(request) -> dict:
+        context = {}
+        context.update(Settings.user(request))
+        context.update(Settings.company(request))
+        context.update(Settings.team(request))
+        context.update(Settings.member(request))
+
+        return context
 
 
 @login_required(login_url='users:login')
 def erp(request):
-    context = Settings.user(request)
-    context.update(Settings.company(request))
-    context.update(Settings.team(request))
-    context.update(Settings.member(request))
+    context = Settings.context(request)
 
     return render(request, 'erp/index.html', context)
 
