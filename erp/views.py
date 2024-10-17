@@ -1,12 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
 from users.forms import CustomUserChangeForm
 from users.models import User
 from .forms import CompanyForm, MemberCreationForm
-from .models import Company
 
 
 class Settings:
