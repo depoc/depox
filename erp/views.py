@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
@@ -39,7 +40,8 @@ def member_delete(request, pk) -> None:
     return redirect('erp:index')   
     
 
-class PasswordChange(PasswordChangeView):
+class PasswordChange(LoginRequiredMixin, PasswordChangeView):
     template_name = 'erp/common/_password.html'
-    success_url = reverse_lazy('erp:index')    
+    success_url = reverse_lazy('erp:index')   
+    login_url = 'users:login' 
 
