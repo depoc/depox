@@ -3,108 +3,9 @@ from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
-from users.forms import CustomUserChangeForm
 from users.models import User
-from .forms import CompanyForm, MemberCreationForm
 
-
-class Settings:
-    class PasswordChange(PasswordChangeView):
-        template_name = 'erp/partials/_password.html'
-        success_url = reverse_lazy('erp:index')
-
-
-    def user(request) -> dict:
-        user = request.user
-        form = CustomUserChangeForm(instance=user)
-
-        if request.method == 'POST':
-                if 'user-form' in request.POST:
-                    form = CustomUserChangeForm(request.POST, instance=user)
-                    if form.is_valid():
-                        form.save()
-
-        context = {'form': form}
-        return context
-
-
-    def account_delete(request) -> None:
-        user = request.user
-        company = user.company
-
-        if request.method == 'POST':
-            if company:
-                company.delete()
-            else:
-                user.delete()
-                
-            return redirect('users:register')
-
-
-    def company(request) -> dict:
-        user = request.user
-        company = user.company
-        form = CompanyForm(instance=company)
-
-        if request.method == 'POST':
-            if 'company-form' in request.POST:
-                form = CompanyForm(request.POST, instance=company)
-                if form.is_valid():
-                    company = form.save()
-                    user.company = company
-                    user.save()
-
-        context = {'company_form': form}
-        return context
-    
-
-    def team(request) -> dict:
-        company = request.user.company
-        context = {}
-
-        if company:
-            team = company.user_set.all()
-            context.update({'team': team})
-
-        return context
-
-
-    def member(request) -> dict:
-        company = request.user.company
-        # this form gives a different style to the input fields
-        form = MemberCreationForm()
-
-        if request.method == 'POST':
-                if 'member-form' in request.POST:
-                    # this form creates new members without a password
-                    form = CustomUserChangeForm(request.POST)
-                    if form.is_valid():
-                        member = form.save(commit=False)
-                        member.company = company
-                        member.save()
-
-        context = {'member_form': form}
-        return context
-    
-
-    def member_delete(request, pk) -> None:
-        user = User.objects.get(pk=pk)
-
-        if request.method == 'POST':
-            if 'member-delete' in request.POST:
-                user.delete()
-
-            return redirect('erp:index')   
-        
-    
-    def context(request) -> dict:
-        context = {}
-        context.update(Settings.user(request))
-        context.update(Settings.company(request))
-        context.update(Settings.team(request))
-        context.update(Settings.member(request))
-
-        return context
+from .services import Settings    
 
 
 @login_required(login_url='users:login')
@@ -114,5 +15,31 @@ def erp(request):
     return render(request, 'erp/index.html', context)
 
 
+@login_required(login_url='users:login')
+def account_delete(request) -> None:
+    user = request.user
+    company = user.company
 
+    if request.method == 'POST':
+        if company:
+            company.delete()
+        else:
+            user.delete()
+            
+    return redirect('users:register')
+
+
+@login_required(login_url='users:login')
+def member_delete(request, pk) -> None:
+    user = User.objects.get(pk=pk)
+
+    if request.method == 'POST' and 'member-delete' in request.POST:
+        user.delete()
+
+    return redirect('erp:index')   
     
+
+class PasswordChange(PasswordChangeView):
+    template_name = 'erp/partials/_password.html'
+    success_url = reverse_lazy('erp:index')    
+
