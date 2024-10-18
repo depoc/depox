@@ -40,6 +40,6 @@ def member_delete(request, pk) -> None:
     
 
 class PasswordChange(PasswordChangeView):
-    template_name = 'erp/partials/_password.html'
+    template_name = 'erp/common/_password.html'
     success_url = reverse_lazy('erp:index')    
 
