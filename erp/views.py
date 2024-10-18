@@ -17,7 +17,7 @@ def erp(request):
 
 
 @login_required(login_url='users:login')
-def account_delete(request) -> None:
+def account_delete(request):
     user = request.user
     company = user.company
 
@@ -31,7 +31,7 @@ def account_delete(request) -> None:
 
 
 @login_required(login_url='users:login')
-def member_delete(request, pk) -> None:
+def member_delete(request, pk):
     user = User.objects.get(pk=pk)
 
     if request.method == 'POST' and 'member-delete' in request.POST:
