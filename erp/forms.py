@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm
 from django.forms import ModelForm
 
 from .models import Company
@@ -29,7 +29,7 @@ class CompanyForm(ModelForm):
             })    
 
 
-class MemberCreationForm(UserCreationForm):
+class MemberCreationForm(UserChangeForm):
     class Meta:
         model = User
         fields = [

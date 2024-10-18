@@ -48,7 +48,7 @@ class Settings:
         form = MemberCreationForm()
 
         if request.method == 'POST' and 'member-form' in request.POST:
-            form = CustomUserChangeForm(request.POST)
+            form = MemberCreationForm(request.POST)
             if form.is_valid():
                 member = form.save(commit=False)
                 member.company = company
