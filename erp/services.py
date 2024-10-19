@@ -54,8 +54,13 @@ class Settings:
                 member.company = company
                 member.save()
 
-        if company:
-            team = company.user_set.all()                        
+        context = {'member_form': form}
 
-        return {'member_form': form, 'team': team}
+        if company:
+            team = company.user_set.all()
+            if team:
+                context['team'] = team
+                return context
+            
+        return context
     
