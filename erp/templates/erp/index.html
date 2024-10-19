@@ -25,7 +25,7 @@
         hover:shadow-md
         flex 
         flex-col 
-        sm:col-span-1
+        md:col-span-1
         col-span-2
         justify-between 
         items-start
@@ -161,13 +161,13 @@
     </div>
 </a>
 
-<!--produtos-->
+<!--receber-->
 <a 
     href="#" 
     class="
         ring-1
         ring-primary/5
-        dark:ring-white/10 
+        dark:ring-white/10
         dark:hover:ring-white/20
         duration-300         
         bg-white 
@@ -199,9 +199,10 @@
                     dark:bg-tertiary
                     dark:text-zinc-100 
                     dark:border-white/20">
-                p
+                r
             </kbd>
         </div>
+        
         <!--mobile top-left text-->
         <div 
             class="
@@ -209,7 +210,7 @@
                 top-4 left-4 text-sm
                 block lg:hidden
                 text-zinc-400 dark:text-white/40">
-            cadastro
+            financeiro
         </div>     
 
         <!--bottom-right SVG-->
@@ -222,7 +223,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 class="size-4 text-zinc-300 dark:text-white/40">
                 <path
-                    d="M12 88.4314C12 39.5921 51.5921 0 100.431 0C149.271 0 188.863 39.5921 188.863 88.4314V192C188.863 196.418 185.281 200 180.863 200H20C15.5817 200 12 196.418 12 192V88.4314Z">
+                    d="M99.9647 96.4182C152.547 96.4182 195.676 57.5059 199.904 7.9969C200.279 3.59465 196.662 -7.42775e-07 192.244 0L7.68592 3.10268e-05C3.26764 3.17695e-05 -0.350008 3.59468 0.0259045 7.99694C4.25352 57.5059 47.383 96.4182 99.9647 96.4182ZM100.035 103.582C47.4535 103.582 4.32412 142.494 0.0965162 192.003C-0.279395 196.405 3.33825 200 7.75653 200L192.314 200C196.732 200 200.35 196.405 199.974 192.003C195.747 142.494 152.617 103.582 100.035 103.582Z">
                 </path>
             </svg>
         </div>
@@ -230,7 +231,7 @@
         <!--bottom-left text-->
         <div class="absolute mt-10 bottom-4 left-4">
             <p class="text-[22px] md:text-3xl text-black dark:text-white">
-                produtos
+                receber
             </p>
         </div>
     </div>
@@ -311,13 +312,13 @@
     </div>
 </a>
 
-<!--receber-->
+<!--produtos-->
 <a 
     href="#" 
     class="
         ring-1
         ring-primary/5
-        dark:ring-white/10
+        dark:ring-white/10 
         dark:hover:ring-white/20
         duration-300         
         bg-white 
@@ -349,7 +350,7 @@
                     dark:bg-tertiary
                     dark:text-zinc-100 
                     dark:border-white/20">
-                r
+                p
             </kbd>
         </div>
         <!--mobile top-left text-->
@@ -359,7 +360,7 @@
                 top-4 left-4 text-sm
                 block lg:hidden
                 text-zinc-400 dark:text-white/40">
-            financeiro
+            cadastro
         </div>     
 
         <!--bottom-right SVG-->
@@ -372,7 +373,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 class="size-4 text-zinc-300 dark:text-white/40">
                 <path
-                    d="M99.9647 96.4182C152.547 96.4182 195.676 57.5059 199.904 7.9969C200.279 3.59465 196.662 -7.42775e-07 192.244 0L7.68592 3.10268e-05C3.26764 3.17695e-05 -0.350008 3.59468 0.0259045 7.99694C4.25352 57.5059 47.383 96.4182 99.9647 96.4182ZM100.035 103.582C47.4535 103.582 4.32412 142.494 0.0965162 192.003C-0.279395 196.405 3.33825 200 7.75653 200L192.314 200C196.732 200 200.35 196.405 199.974 192.003C195.747 142.494 152.617 103.582 100.035 103.582Z">
+                    d="M12 88.4314C12 39.5921 51.5921 0 100.431 0C149.271 0 188.863 39.5921 188.863 88.4314V192C188.863 196.418 185.281 200 180.863 200H20C15.5817 200 12 196.418 12 192V88.4314Z">
                 </path>
             </svg>
         </div>
@@ -380,60 +381,30 @@
         <!--bottom-left text-->
         <div class="absolute mt-10 bottom-4 left-4">
             <p class="text-[22px] md:text-3xl text-black dark:text-white">
-                receber
+                produtos
             </p>
         </div>
     </div>
 </a>
 
+<!--caixa-->
+{% include "erp/common/_caixa.html" %}
+
+<!--empty-->
 <div
     class="
-    ring-1 ring-primary/5 dark:ring-white/10
-    bg-white dark:bg-secondary dark:shadow-thick
+    ring-1 
+    ring-primary/5 
+    dark:ring-white/10
+    bg-white dark:bg-secondary
+    dark:shadow-thick
     rounded-lg
     p-8 h-full 
-    lg:col-span-2
-    flex flex-col justify-between">
+    col-span-2
+    flex flex-col
+    justify-between">
 
 </div>
-
-<!--big box-->
-<a
-    href="#"
-    class="
-        p-8 
-        ring-1
-        ring-primary/5
-        hover:ring-primary/10            
-        dark:ring-white/10
-        dark:hover:ring-white/20    
-        duration-300     
-        bg-white 
-        dark:bg-secondary         
-        rounded-lg 
-        hover:shadow-md
-        dark:shadow-thick
-        lg:grid-cols-none        
-        row-span-2
-        lg:row-start-2
-        lg:col-start-2
-        xl:row-start-3
-        xl:col-start-3        
-        col-span-2 
-        lg:gap-0
-        flex
-        flex-col
-        justify-between
-        group 
-        h-full
-        md:grid 
-        md:grid-cols-2
-        md:items-center 
-        md:gap-12">
-
-
-        
-</a>
 
 {% comment %} 
 <div
