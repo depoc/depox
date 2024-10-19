@@ -24,21 +24,6 @@ function init() {
       toggleButtons(); // Call toggleButtons after changing the theme
     });
   });
-
-  const systemThemeButton = document.getElementById("system-theme-button");
-
-  systemThemeButton?.addEventListener("click", () => {
-    localStorage.setItem("theme", "system");
-    toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
-    toggleButtons(); // Call toggleButtons after changing the theme
-  });
-
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
-    if (localStorage.theme === "system") {
-      toggleTheme(event.matches);
-      toggleButtons(); // Call toggleButtons after changing the theme
-    }
-  });
 }
 
 function toggleTheme(dark) {
