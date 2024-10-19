@@ -1,0 +1,88 @@
+<a
+    href="#"
+    class="
+        p-4
+        ring-1
+        ring-primary/5
+        hover:ring-primary/10            
+        dark:ring-white/10
+        dark:hover:ring-white/20    
+        duration-300     
+        bg-white 
+        dark:bg-secondary         
+        rounded-lg 
+        hover:shadow-md
+        dark:shadow-thick
+        lg:grid-cols-none        
+        row-span-2
+        row-start-2
+        col-span-2         
+        lg:row-start-1
+        lg:col-start-2
+        xl:row-start-1
+        xl:col-start-3        
+        lg:gap-0
+        flex
+        relative
+        flex-col
+        justify-between
+        min-h-[150px]">
+    
+    <div>
+        <!--desktop top-left shortcut-->
+        <div class="absolute top-4 left-4 text-sm hidden lg:block">
+            <kbd 
+                class="
+                    px-[5px] py-[2px]
+                    text-xs
+                    text-zinc-500
+                    bg-zinc-200 border 
+                    border-zinc-300 
+                    rounded-md
+                    dark:bg-tertiary
+                    dark:text-zinc-100 
+                    dark:border-white/20">
+                f
+            </kbd>
+        </div>
+        
+        <!--mobile top-left text-->
+        <div 
+            class="
+                absolute
+                top-4 left-4 text-sm
+                block lg:hidden
+                text-zinc-400 dark:text-white/40">
+            caixa
+        </div>     
+
+        <!--bottom-right SVG-->
+        <div class="absolute bottom-6 right-4">
+            <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-4 text-zinc-300 dark:text-white/40">
+                <path
+                    d="M99.9647 96.4182C152.547 96.4182 195.676 57.5059 199.904 7.9969C200.279 3.59465 196.662 -7.42775e-07 192.244 0L7.68592 3.10268e-05C3.26764 3.17695e-05 -0.350008 3.59468 0.0259045 7.99694C4.25352 57.5059 47.383 96.4182 99.9647 96.4182ZM100.035 103.582C47.4535 103.582 4.32412 142.494 0.0965162 192.003C-0.279395 196.405 3.33825 200 7.75653 200L192.314 200C196.732 200 200.35 196.405 199.974 192.003C195.747 142.494 152.617 103.582 100.035 103.582Z">
+                </path>
+            </svg>
+        </div>
+
+        <!--bottom-left text-->
+        <div class="absolute mt-10 bottom-4 left-4">
+            <p class="hidden lg:block text-lg text-zinc-400 dark:text-white/40">
+                caixa
+            </p>
+            <p class="text-[22px] md:text-3xl text-black dark:text-white">
+                <span class="text-sm md:text-lg text-zinc-400">
+                    R$
+                </span>
+                1.592
+            </p>
+        </div>
+    </div>
+
+</a>
