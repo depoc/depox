@@ -11,4 +11,11 @@ document.getElementById('toggle-membro-button').addEventListener('click', functi
     areaMemberButton.classList.toggle('border-black/30');
     areaMemberButton.classList.toggle('dark:border-white/60');
 
+    // Toggle visibility of the SVGs
+    const toggleSvg = document.getElementById('membro-toggle-svg');
+    const hiddenSvg = document.getElementById('membro-hidden-svg');
+    
+    toggleSvg.classList.toggle('hidden');
+    hiddenSvg.classList.toggle('hidden');    
+
 });
