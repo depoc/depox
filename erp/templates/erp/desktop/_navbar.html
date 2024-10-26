@@ -40,7 +40,7 @@
                 </div>
                 <div class="text-sm leading-5">
                     <p class="font-semibold text-primary dark:text-white">
-                    <a href="#">
+                    <a href="{% url "erp:index" %}">
                         <span class="absolute inset-0"></span>
                         {{ request.user.name | first_name | capfirst }}
                     </a>
@@ -57,11 +57,12 @@
     <div class="absolute top-0 right-0 p-4 text-xl leading-5">
             <div class="relative inline-block group">
                 <button 
-                    id="UserEditDropdown" 
+                    id="settingsButton" 
                     class="text-black dark:text-white">
                     ...
                 </button>
 
+                {% comment %}
                 <!--dropdown-->
                 <div class="absolute -top-1">
                     <div
@@ -160,7 +161,8 @@
                             </form>
                         </div>
                     </div>
-                </div>          
+                </div>
+                {% endcomment %}                   
             </div>
     </div>
 
