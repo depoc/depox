@@ -20,6 +20,7 @@ class CompanyForm(ModelForm):
                 'placeholder': '...',
                 'class': '''
                     w-fit
+                    text-ellipsis
                     text-xs
                     text-end
                     bg-transparent
@@ -49,6 +50,7 @@ class MemberCreationForm(UserChangeForm):
                     w-fit
                     text-xs
                     text-end
+                    text-ellipsis
                     bg-transparent
                     text-black/40
                     dark:text-white/40

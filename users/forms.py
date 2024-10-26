@@ -29,6 +29,7 @@ class CustomUserCreationForm(UserCreationForm):
                 ''' w-full
                     p-2
                     text-xs
+                    text-ellipsis
                     bg-transparent
                     outline-none
                     dark:placeholder:text-white/60
@@ -59,6 +60,7 @@ class CustomUserChangeForm(UserChangeForm):
                     w-full
                     text-xs
                     text-end
+                    text-ellipsis
                     bg-transparent
                     text-black/40
                     dark:text-white/40
