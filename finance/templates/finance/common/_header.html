@@ -1,0 +1,29 @@
+{% load filters %}
+
+<div
+    class="
+        static
+        col-span-2
+        lg:col-span-1
+        rounded-lg p-4">
+
+      <!--user info-->
+    <a class="w-full" id="settingsButton">
+        <div class="relative flex items-center gap-4">
+            <div class="flex justify-center">
+                <button
+                    id="settingsButton"
+                    class="
+                    w-9 h-9
+                    rounded-md
+                    text-zinc-700
+                    bg-black/5
+                    dark:text-zinc-100
+                    dark:bg-tertiary">
+                    {{ request.user.name | first }}
+                </button>
+            </div>
+        </div>
+    </a>
+    
+</div>
