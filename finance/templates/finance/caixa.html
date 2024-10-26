@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% load filters %}
+
+{% block content %}
+
+{% include "erp/mobile/_header.html" %}
+{% include "erp/mobile/_menu.html" %}
+
+<div
+    class="
+        rounded-lg
+        justify-between 
+        dark:shadow-thick 
+        items-end 
+        md:flex 
+        flex-col
+        hidden
+        p-4
+        h-full
+        relative">
+
+    <!--user info-->
+    <div class="w-full">
+        <p 
+            class="
+            text-xl font-normal lg:text-8xl tracking-tight 
+            text-primary dark:text-white"> 
+
+            <div class="relative flex items-center gap-x-4">
+                <div class="flex gap-x-1 justify-center">
+                    <button
+                        id="settingsButton"
+                        class="
+                        w-9 h-9
+                        rounded-md
+                        text-zinc-700
+                        bg-black/5
+                        dark:text-zinc-100
+                        dark:bg-tertiary">
+                        {{ request.user.name | first }}
+                    </button>
+                </div>
+            </div>
+        </p>
+    </div>
+
+</div>
+
+{% include "erp/common/_settings.html" %}
+
+{% endblock content %}
