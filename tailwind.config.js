@@ -14,6 +14,7 @@ module.exports = {
     './templates/**/*.html',
     './templates/*.html',
     
+    './static/js/erp/*.js',    
     './static/js/*.js',
   ],
   darkMode: 'selector', // Enable selector strategy for dark mode
