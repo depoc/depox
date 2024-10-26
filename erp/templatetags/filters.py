@@ -5,7 +5,9 @@ register = template.Library()
 @register.filter
 def first_name(name) -> str:
     first_name = name.split()[0].lower() if name else ''
-    return first_name
+    if first_name == 'depoc':
+        return 'DEPOC'
+    return first_name.capitalize()
 
 @register.filter
 def user(name) -> str:

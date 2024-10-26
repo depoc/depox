@@ -42,7 +42,7 @@
                     <p class="font-semibold text-primary dark:text-white">
                     <a href="{% url "erp:index" %}">
                         <span class="absolute inset-0"></span>
-                        {{ request.user.name | first_name | capfirst }}
+                        {{ request.user.name | first_name }}
                     </a>
                     </p>
                     <p class="text-zinc-500 dark:text-zinc-400">
