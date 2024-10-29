@@ -11,6 +11,9 @@ module.exports = {
     './erp/templates/erp/**/*.html',
     './erp/templates/erp/*.html',
 
+    './finance/templates/finance/**/*.html',
+    './finance/templates/finance/*.html',   
+
     './templates/**/*.html',
     './templates/*.html',
     
@@ -126,6 +129,16 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    // ...
+    function ({ addUtilities }) {
+      addUtilities({
+        '.no-scrollbar': {
+          '-ms-overflow-style': 'none', /* IE and Edge */
+          'scrollbar-width': 'none', /* Firefox */
+        },
+        '.no-scrollbar::-webkit-scrollbar': {
+          display: 'none', /* Chrome, Safari, and Edge */
+        },
+      });
+    },
   ],
 }
