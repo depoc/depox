@@ -2,10 +2,10 @@
 
 <div
     class="
-        static
         col-span-2
-        lg:col-span-1
-        rounded-lg p-4">
+        rounded-lg
+        h-fit
+        p-4">
 
     <!--user info-->
     <a class="w-full" id="settingsButton">
@@ -25,5 +25,88 @@
             </div>
         </div>
     </a>
+
+    <div
+    class="
+        rounded-lg 
+        lg:grid-cols-none        
+        row-span-2
+        row-start-2
+        col-span-2         
+        lg:row-start-2
+        lg:col-start-1
+        xl:row-start-2     
+        lg:gap-0
+        relative
+        justify-between">
+    
+    <div class="mt-6">        
+        <!--bottom-left text-->
+        <div class="top-0">
+            <p class="text-sm sm:text-lg text-zinc-400 dark:text-white/40">
+                saldo total
+            </p>    
+            <p class="text-[22px] sm:text-2xl text-black dark:text-white">
+                <span class="text-sm sm:text-lg text-zinc-400">
+                    R$
+                </span>
+                1.592,00
+            </p>
+        </div>
+
+        <!--transaction buttons-->
+        <div
+            class="
+                mt-4
+                w-fit
+                grid grid-cols-3 gap-2">
+
+            <button id=""
+                class="
+                    rounded-md
+                    text-[13px]
+                    px-3 py-0.5
+                    ring-1 ring-zinc-400 dark:ring-zinc-500
+                    text-zinc-400 dark:text-zinc-500
+                    hover:ring-black hover:text-black
+                    dark:hover:ring-zinc-300 dark:hover:text-zinc-300">
+                <svg class="w-[14px] sm:w-[15px] h-[14px] sm:h-[15px] text-zinc-600 dark:text-zinc-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
+                </svg>   
+                    
+            </button>
+
+            <button id=""
+                class="
+                    rounded-md
+                    text-[13px]
+                    px-3 py-0.5
+                    ring-1 ring-zinc-400 dark:ring-zinc-500
+                    text-zinc-400 dark:text-zinc-500
+                    hover:ring-black hover:text-black
+                    dark:hover:ring-zinc-300 dark:hover:text-zinc-300">
+                    <svg class="w-[14px] sm:w-[15px] h-[14px] sm:h-[15px] text-zinc-600 dark:text-zinc-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/>
+                    </svg>                  
+            </button>
+
+            <button id=""
+                class="
+                    rounded-md
+                    text-[13px]
+                    px-3 py-0.5
+                    ring-1 ring-zinc-400 dark:ring-zinc-500
+                    text-zinc-400 dark:text-zinc-500
+                    hover:ring-black hover:text-black
+                    dark:hover:ring-zinc-300 dark:hover:text-zinc-300">
+                    <svg class="w-[14px] sm:w-[15px] h-[14px] sm:h-[15px] text-zinc-600 dark:text-zinc-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16h13M4 16l4-4m-4 4 4 4M20 8H7m13 0-4 4m4-4-4-4"/>
+                    </svg>                                      
+            </button>      
+        </div> 
+    </div>
+
+</div>    
     
 </div>
+
