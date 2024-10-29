@@ -2,12 +2,22 @@
 {% load static %}
 {% load filters %}
 
-{% block content %}
+{% block page %}
 
-{% include "finance/common/_header.html" %}
-{% include "finance/common/_balance.html" %}
+<div
+class="
+  list-none
+  grid grid-cols-2 gap-2
+  md:grid-cols-2
+  lg:grid-cols-2 lg:grid-rows-2
+  xl:grid-cols-2 xl:grid-rows-2">
 
-{% include "erp/mobile/_menu.html" %}
-{% include "erp/common/_settings.html" %}
+    {% include "finance/common/_header.html" %}
+    {% include "finance/common/_accounts.html" %}
 
-{% endblock content %}
+    {% include "erp/mobile/_menu.html" %}
+    {% include "erp/common/_settings.html" %}
+
+</div>
+
+{% endblock page %}
