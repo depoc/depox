@@ -17,7 +17,7 @@ class Company(models.Model):
     cidade = models.CharField(max_length=255, blank=True, null=True)
     uf = models.CharField(max_length=2, blank=True, null=True)    
     cep = models.CharField(max_length=8, blank=True, null=True)
-    celular = models.CharField(max_length=11, blank=True, null=True)
+    celular = models.CharField(max_length=14, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     logo = models.ImageField(
         blank=True, null=True,
