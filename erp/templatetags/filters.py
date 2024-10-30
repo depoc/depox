@@ -16,6 +16,14 @@ def user(name) -> str:
         return first_name
     else:
         return 'eu'
+    
+@register.filter
+def company(fantasia) -> str:
+    fantasia = fantasia.split()[0].lower() if fantasia else ''
+    if len(fantasia) <= 9:
+        return fantasia
+    else:
+        return 'cnpj'    
 
 @register.filter
 def format_cnpj(cnpj):
