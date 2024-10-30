@@ -20,6 +20,12 @@ settings.addEventListener('click', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
+  if (event.target.tagName === 'INPUT' || 
+    event.target.tagName === 'TEXTAREA' || 
+    event.target.isContentEditable) {
+    return;
+  }
+
   if (event.key.toLowerCase() === 'a' ) {
     if (settings.classList.contains('hidden')) {
       settings.classList.remove('hidden');

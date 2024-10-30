@@ -20,6 +20,12 @@ modal.addEventListener('click', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
+  if (event.target.tagName === 'INPUT' || 
+    event.target.tagName === 'TEXTAREA' || 
+    event.target.isContentEditable) {
+    return;
+  }
+
   if (event.key.toLowerCase() === 'm') {
     if (modal.classList.contains('hidden')) {
       modal.classList.remove('hidden');
