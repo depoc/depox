@@ -20,7 +20,7 @@ settings.addEventListener('click', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'a') {
+  if (event.key.toLowerCase() === 'a' ) {
     if (settings.classList.contains('hidden')) {
       settings.classList.remove('hidden');
       settings.classList.add('flex');
