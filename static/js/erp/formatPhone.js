@@ -15,6 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Remove all non-digit characters
         phone = phone.replace(/\D/g, '');
         // Format as 00.000.000/0000-00
-        return phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        return phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1)$2-$3');
     }
 });
