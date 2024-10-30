@@ -269,7 +269,7 @@
                             relative flex 
                             items-center justify-between
                             p-2 px-2">
-                        <kbd class="text-xs text-zinc-700 dark:text-white/50">
+                        <kbd class="text-xs text-zinc-700 dark:text-zinc-400">
                             empresa
                         </kbd>
                         <button
@@ -377,7 +377,7 @@
                             relative flex 
                             items-center justify-between
                             p-2 px-2">
-                        <kbd class="text-xs text-zinc-700 dark:text-white/50">
+                        <kbd class="text-xs text-zinc-700 dark:text-zinc-400">
                             endereço
                         </kbd>
                         <button
@@ -526,7 +526,7 @@
                             relative flex 
                             items-center justify-between
                             p-2 px-2">
-                        <kbd class="text-xs text-zinc-700 dark:text-white/50">
+                        <kbd class="text-xs text-zinc-700 dark:text-zinc-400">
                             contato
                         </kbd>
                         <button
@@ -614,7 +614,7 @@
                             relative flex 
                             items-center justify-between
                             p-1 px-2">
-                        <kbd class="text-xs text-zinc-700 dark:text-zinc-400">{{ member.email }}</kbd>  
+                        <kbd class="text-xs text-zinc-700 dark:text-zinc-400">{{ member.name }}</kbd>  
                         <form action="{% url "erp:member_delete" member.id %}" method="POST">
                             {% csrf_token %}
                             {% if forloop.counter != 1 %}
