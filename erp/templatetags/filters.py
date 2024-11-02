@@ -33,3 +33,9 @@ def company(fantasia) -> str:
 @register.filter
 def format_cnpj(cnpj):
     return f'{cnpj[:2]}.{cnpj[2:5]}.{cnpj[5:8]}/{cnpj[8:12]}-{cnpj[12:14]}'
+
+@register.filter
+def format_money(number):
+    money = f"{number:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+    
+    return money
