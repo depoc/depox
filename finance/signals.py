@@ -9,6 +9,6 @@ from .models import BankAccount
 def create_bank_account(sender, instance, created, **kwargs):
     if created:
         BankAccount.objects.create(
-            bank = 'caixa',
+            name = 'caixa',
             company=instance,
         )
