@@ -22,11 +22,13 @@ def user(name) -> str:
     
 @register.filter
 def company(fantasia) -> str:
-    fantasia = fantasia.split()[0].lower() if fantasia else ''
-    if len(fantasia) <= 9:
-        return fantasia
-    else:
-        return 'cnpj'    
+    if fantasia:
+        fantasia = fantasia.split()[0].lower() if fantasia else ''
+        if len(fantasia) <= 9:
+            return fantasia
+        else:
+            return 'cnpj'
+    return 'cnpj'
 
 @register.filter
 def format_cnpj(cnpj):
