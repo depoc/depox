@@ -80,7 +80,11 @@
                 <span class="text-sm md:text-lg text-zinc-400">
                     R$
                 </span>
-                1.592
+                {% for bank in user.company.banks.all %}
+                    {% if bank.name == 'caixa' %}
+                        {{ bank.saldo }}
+                    {% endif %}
+                {% endfor %}
             </p>
         </div>
     </div>
