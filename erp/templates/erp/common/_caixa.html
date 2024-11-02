@@ -1,3 +1,4 @@
+{% load filters %}
 <a
     href="{% url "finance:caixa" %}"
     class="
@@ -82,7 +83,7 @@
                 </span>
                 {% for bank in user.company.banks.all %}
                     {% if bank.name == 'caixa' %}
-                        {{ bank.saldo }}
+                        {{ bank.saldo | format_money }}
                     {% endif %}
                 {% endfor %}
             </p>
