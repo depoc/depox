@@ -26,7 +26,7 @@ class Company(models.Model):
 
     def __str__(self):
         if self.cnpj:
-            return f'cnpj {self.cnpj}'
+            return f'{self.fantasia} [{self.cnpj}]'
         else:
             return f'cadastro incompleto'
         
