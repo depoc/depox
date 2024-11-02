@@ -13,6 +13,7 @@
         flex">
 
         <div class="overflow-x-auto flex gap-2 no-scrollbar">
+            {% for bank in user.company.banks.all  %}
             <button id=""
                 class="
                 p-4
@@ -28,7 +29,7 @@
                     absolute
                     text-sm text-black/40 dark:text-white/40
                     top-4">
-                    nubank
+                    {{ bank.name | lower }}
                 </p>           
                 <p
                     class="
@@ -36,61 +37,12 @@
                     text-sm text-black/40 dark:text-white/40
                     bottom-4">
                     R$
-                    <span class="text-black dark:text-white text-lg">492,00</span>
+                    <span class="text-black dark:text-white text-lg">
+                        {{ bank.saldo }}
+                    </span>
                 </p>
             </button>
-            <button id=""
-                class="
-                p-4
-                relative  
-                rounded-lg
-                bg-white 
-                dark:bg-secondary         
-                min-h-[150px] sm:min-h-[200px]
-                min-w-[150px] sm:min-w-[200px]
-                flex-shrink-0">     
-                <p 
-                    class="
-                    absolute
-                    text-sm text-black/40 dark:text-white/40
-                    top-4">
-                    bradesco
-                </p>           
-                <p
-                    class="
-                    absolute
-                    text-sm text-black/40 dark:text-white/40
-                    bottom-4">
-                    R$
-                    <span class="text-black dark:text-white text-lg">200,00</span>
-                </p>
-            </button>
-            <button id=""
-                class="
-                p-4
-                relative  
-                rounded-lg
-                bg-white 
-                dark:bg-secondary         
-                min-h-[150px] sm:min-h-[200px]
-                min-w-[150px] sm:min-w-[200px]
-                flex-shrink-0">     
-                <p 
-                    class="
-                    absolute
-                    text-sm text-black/40 dark:text-white/40
-                    top-4">
-                    banco do brasil
-                </p>           
-                <p
-                    class="
-                    absolute
-                    text-sm text-black/40 dark:text-white/40
-                    bottom-4">
-                    R$
-                    <span class="text-black dark:text-white text-lg">900,00</span>
-                </p>
-            </button> 
+            {% endfor %}
             <!--+-->
             <button id=""
                 class="
