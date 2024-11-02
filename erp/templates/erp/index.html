@@ -388,7 +388,9 @@
 </a>
 
 <!--caixa-->
+{% if user.company.banks %}
 {% include "erp/common/_caixa.html" %}
+{% endif %}
 
 <!--empty / hidden on sm-->
 <div
