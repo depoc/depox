@@ -107,15 +107,12 @@ module.exports = {
         thick: "0px 7px 32px rgb(0 0 0 / 35%);",
       },
       colors: {
-        // Gray
         "primary": "#101010",
         "secondary": "#1a1a1a",
         "tertiary": "#262626",
-        // Purple
-        //primary:"#080118",
-        //secondary:"#140d23",
-        //tertiary:"#1d1333",
-        white:"#ececec",
+
+        "off":"#ececec",
+        "background":"#f7f7f5",
       },
       borderRadius: {
         "4xl": "2rem",
