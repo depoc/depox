@@ -2,13 +2,14 @@
 
 <div
     class="
+        relative
         col-span-2
         rounded-lg
-        h-fit
-        p-2 sm:p-4">      
+
+        p-1 sm:p-4">      
 
     <!--user info-->
-    <a class="w-full" id="settingsButton">
+    <p class="w-full" id="settingsButton">
         <div class="relative flex items-center">
             <div class="flex justify-center">
                 <button
@@ -24,80 +25,73 @@
                 </button>
             </div>
         </div>
-    </a>
+    </p>
 
+    <!--transaction buttons-->
     <div
-    class="
-        rounded-lg 
-        lg:grid-cols-none        
-        row-span-2
-        row-start-2
-        col-span-2         
-        lg:row-start-2
-        lg:col-start-1
-        xl:row-start-2     
-        lg:gap-0
-        relative
-        justify-between">
-    
-    <div class="mt-6">        
-        <!--saldo total-->
-        <div class="top-0">
-            <p class="text-[15px] sm:text-lg text-zinc-500 dark:text-white/50">
-                saldo total
-            </p>    
-            <p class="text-[22px] sm:text-2xl text-black dark:text-white">
-                <span class="text-sm sm:text-lg text-zinc-500 dark:text-white/50">
-                    R$
-                </span>
-                {{ saldo_total | format_money }}
-            </p>
-        </div>
+        class="
+            absolute
+            grid
+            grid-cols-3 gap-3
+            right-1 sm:right-4 top-1
+            mt-2 sm:mt-3
+            w-fit">
 
-        <!--transaction buttons-->
-        <div
+        <button id=""
             class="
-                mt-2 sm:mt-3
-                w-full md:w-fit
-                grid grid-cols-3 gap-3">
+                rounded-full
+                p-[6px]
+                bg-black/10 dark:bg-background
+                hover:bg-black/5 dark:hover:bg-background/90">
+            <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-zinc-500 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m-7 7V5"/>
+            </svg>   
+                
+        </button>
 
-            <button id=""
-                class="
-                    rounded-full
-                    p-[6px] px-2 sm:px-4
-                    bg-tertiary dark:bg-background
-                    hover:bg-black/65 dark:hover:bg-white/80">
-                <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-white dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m-7 7V5"/>
-                </svg>   
-                    
-            </button>
+        <button id=""
+            class="
+                rounded-full
+                p-[6px]
+                bg-black/10 dark:bg-background
+                hover:bg-black/5 dark:hover:bg-background/90">
+            <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-zinc-500 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                </svg>                  
+        </button>
 
-            <button id=""
-                class="
-                    rounded-full
-                    p-[6px] px-2 sm:px-4
-                    bg-tertiary dark:bg-background
-                    hover:bg-black/65 dark:hover:bg-white/80">
-                <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-white dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
-                    </svg>                  
-            </button>
+        <button id=""
+            class="
+                rounded-full
+                p-[6px]
+                bg-black/10 dark:bg-background
+                hover:bg-black/5 dark:hover:bg-background/90">
+            <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-zinc-500 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16h13M4 16l4-4m-4 4 4 4M20 8H7m13 0-4 4m4-4-4-4"/>
+                </svg>                                      
+        </button>      
+    </div>     
 
-            <button id=""
-                class="
-                    rounded-full
-                    p-[6px] px-2 sm:px-4
-                    bg-tertiary dark:bg-background
-                    hover:bg-black/65 dark:hover:bg-white/80">
-                <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-white dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16h13M4 16l4-4m-4 4 4 4M20 8H7m13 0-4 4m4-4-4-4"/>
-                    </svg>                                      
-            </button>      
-        </div> 
-    </div>
-
-</div>    
+     <!--saldo total-->
+    <div
+        class="
+            rounded-lg 
+            justify-between">
+    
+        <div class="mt-6">
+            <div class="">
+                <p class="text-[15px] sm:text-lg text-zinc-500 dark:text-white/50">
+                    saldo total
+                </p>    
+                <p class="text-[22px] sm:text-2xl text-black dark:text-white">
+                    <span class="text-sm sm:text-lg text-zinc-500 dark:text-white/50">
+                        R$
+                    </span>
+                    {{ saldo_total | format_money }}
+                </p>
+            </div>
+        </div>
+    </div>    
     
 </div>
 
