@@ -13,7 +13,7 @@ def first_name(name) -> str:
 def user(name) -> str:
     first_name = name.split()[0].lower() if name else ''
     if first_name == 'depoc':
-        return 'eu'
+        return 'admin'
 
     if len(first_name) <= 9:
         return first_name

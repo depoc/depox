@@ -1,9 +1,10 @@
 {% load static %}
+{% load filters %}
 
 <div class="
     overflow-hidden
     mt-1
-    sm:px-4
+    sm:px-3
     col-span-2
     relative">
 
@@ -19,26 +20,27 @@
                 p-4
                 relative  
                 rounded-lg
+                border border-black/5
                 bg-white 
                 dark:bg-secondary         
                 min-h-[150px] sm:min-h-[200px]
                 min-w-[150px] sm:min-w-[200px]
                 flex-shrink-0">     
-                <p 
+                <kbd 
                     class="
                     absolute
-                    text-sm text-black/40 dark:text-white/40
-                    top-4">
+                    text-sm sm:text-[17px] text-black/40 dark:text-white/50
+                    top-4 left-4">
                     {{ bank.name | lower }}
-                </p>           
+                </kbd>           
                 <p
                     class="
                     absolute
-                    text-sm text-black/40 dark:text-white/40
-                    bottom-4">
+                    text-sm text-black/40 dark:text-white/50
+                    bottom-4 left-4">
                     R$
                     <span class="text-black dark:text-white text-lg">
-                        {{ bank.saldo }}
+                        {{ bank.saldo | format_money }}
                     </span>
                 </p>
             </button>
@@ -50,7 +52,6 @@
                 border-black/5 dark:border-white/5
                 relative  
                 rounded-lg
-                bg-zinc-200 
                 dark:bg-primary         
                 min-h-[150px] sm:min-h-[200px]
                 min-w-[150px] sm:min-w-[200px]
