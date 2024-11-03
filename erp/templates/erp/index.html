@@ -19,13 +19,14 @@
         dark:ring-white/10 
         dark:hover:ring-white/20
         duration-300         
-        bg-white 
+        bg-background
+        shadow-sm 
         dark:bg-secondary 
         dark:shadow-thick p-8 
         hover:shadow-md
         flex 
         flex-col 
-        md:col-span-1
+        md:col-span-2
         col-span-2
         justify-between 
         items-start
@@ -43,7 +44,7 @@
                     px-[5px] py-[2px]
                     text-xs
                     text-zinc-500
-                    bg-black/5 border 
+                     border 
                     border-zinc-300 
                     rounded-md
                     dark:bg-tertiary
@@ -95,7 +96,8 @@
         dark:ring-white/10 
         dark:hover:ring-white/20
         duration-300         
-        bg-white 
+        bg-background 
+        shadow-sm
         dark:bg-secondary 
         dark:shadow-thick p-8 
         hover:shadow-md
@@ -118,7 +120,7 @@
                     px-[5px] py-[2px]
                     text-xs
                     text-zinc-500
-                    bg-black/5 border 
+                    border 
                     border-zinc-300 
                     rounded-md
                     dark:bg-tertiary
@@ -161,16 +163,17 @@
     </div>
 </a>
 
-<!--receber-->
+ <!--produtos-->
 <a 
     href="#" 
     class="
         ring-1
         ring-primary/5
-        dark:ring-white/10
+        dark:ring-white/10 
         dark:hover:ring-white/20
         duration-300         
-        bg-white 
+        bg-background 
+        shadow-sm
         dark:bg-secondary 
         dark:shadow-thick p-8 
         hover:shadow-md
@@ -193,7 +196,83 @@
                     px-[5px] py-[2px]
                     text-xs
                     text-zinc-500
-                    bg-black/5 border 
+                    border 
+                    border-zinc-300 
+                    rounded-md
+                    dark:bg-tertiary
+                    dark:text-white/60
+                    dark:border-white/20">
+                p
+            </kbd>
+        </div>
+        <!--mobile top-left text-->
+        <div 
+            class="
+                absolute
+                top-4 left-4 text-sm
+                block lg:hidden
+                text-zinc-400 dark:text-white/40">
+            cadastro
+        </div>     
+
+        <!--bottom-right SVG-->
+        <div class="absolute bottom-6 right-4">
+            <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 200 200"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-4 text-zinc-300 dark:text-white/40">
+                <path
+                    d="M12 88.4314C12 39.5921 51.5921 0 100.431 0C149.271 0 188.863 39.5921 188.863 88.4314V192C188.863 196.418 185.281 200 180.863 200H20C15.5817 200 12 196.418 12 192V88.4314Z">
+                </path>
+            </svg>
+        </div>
+
+        <!--bottom-left text-->
+        <div class="absolute mt-10 bottom-4 left-4">
+            <p class="text-[22px] md:text-3xl text-black dark:text-white">
+                produtos
+            </p>
+        </div>
+    </div>
+</a>
+
+<!--receber-->
+<a 
+    href="#" 
+    class="
+        ring-1
+        ring-primary/5
+        dark:ring-white/10
+        dark:hover:ring-white/20
+        duration-300         
+        bg-background 
+        shadow-sm
+        dark:bg-secondary 
+        dark:shadow-thick p-8 
+        hover:shadow-md
+        flex 
+        flex-col 
+        justify-between 
+        items-start
+        rounded-lg
+        overflow-hidden
+        text-left 
+        relative    
+        min-h-[150px]">
+
+    
+    <div>
+        <!--desktop top-right shortcut-->
+        <div class="absolute top-4 left-4 text-sm hidden lg:block">
+            <kbd 
+                class="
+                    px-[5px] py-[2px]
+                    text-xs
+                    text-zinc-500
+                    border 
                     border-zinc-300 
                     rounded-md
                     dark:bg-tertiary
@@ -246,7 +325,8 @@
         dark:ring-white/10
         dark:hover:ring-white/20
         duration-300         
-        bg-white 
+        bg-background 
+        shadow-sm
         dark:bg-secondary 
         dark:shadow-thick p-8 
         hover:shadow-md
@@ -269,7 +349,7 @@
                     px-[5px] py-[2px]
                     text-xs
                     text-zinc-500
-                    bg-black/5 border 
+                    border 
                     border-zinc-300 
                     rounded-md
                     dark:bg-tertiary
@@ -312,86 +392,12 @@
     </div>
 </a>
 
-<!--produtos-->
-<a 
-    href="#" 
-    class="
-        ring-1
-        ring-primary/5
-        dark:ring-white/10 
-        dark:hover:ring-white/20
-        duration-300         
-        bg-white 
-        dark:bg-secondary 
-        dark:shadow-thick p-8 
-        hover:shadow-md
-        flex 
-        flex-col 
-        justify-between 
-        items-start
-        rounded-lg
-        overflow-hidden
-        text-left 
-        relative    
-        min-h-[150px]">
-
-    
-    <div>
-        <!--desktop top-right shortcut-->
-        <div class="absolute top-4 left-4 text-sm hidden lg:block">
-            <kbd 
-                class="
-                    px-[5px] py-[2px]
-                    text-xs
-                    text-zinc-500
-                    bg-black/5 border 
-                    border-zinc-300 
-                    rounded-md
-                    dark:bg-tertiary
-                    dark:text-white/60
-                    dark:border-white/20">
-                p
-            </kbd>
-        </div>
-        <!--mobile top-left text-->
-        <div 
-            class="
-                absolute
-                top-4 left-4 text-sm
-                block lg:hidden
-                text-zinc-400 dark:text-white/40">
-            cadastro
-        </div>     
-
-        <!--bottom-right SVG-->
-        <div class="absolute bottom-6 right-4">
-            <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 200 200"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                class="size-4 text-zinc-300 dark:text-white/40">
-                <path
-                    d="M12 88.4314C12 39.5921 51.5921 0 100.431 0C149.271 0 188.863 39.5921 188.863 88.4314V192C188.863 196.418 185.281 200 180.863 200H20C15.5817 200 12 196.418 12 192V88.4314Z">
-                </path>
-            </svg>
-        </div>
-
-        <!--bottom-left text-->
-        <div class="absolute mt-10 bottom-4 left-4">
-            <p class="text-[22px] md:text-3xl text-black dark:text-white">
-                produtos
-            </p>
-        </div>
-    </div>
-</a>
-
 <!--caixa-->
 {% if user.company.banks %}
 {% include "erp/common/_caixa.html" %}
 {% endif %}
 
+{% comment %} 
 <!--empty / hidden on sm-->
 <div
     class="
@@ -408,7 +414,6 @@
 
 </div>
 
-{% comment %} 
 <div
     class="
         ring-1 dark:ring-white/10 ring-primary/5 flex flex-col 
