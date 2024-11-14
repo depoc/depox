@@ -122,6 +122,15 @@ module.exports = {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
+      transitionProperty: {
+        'opacity': 'opacity',
+      },
+      transitionTimingFunction: {
+        'custom': 'ease-in-out',
+      },
+      transitionDuration: {
+        'fade': '300ms',
+      },      
     },
   },
   plugins: [
