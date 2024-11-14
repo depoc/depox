@@ -39,3 +39,24 @@ document.addEventListener('keydown', (event) => {
     }
   }
 });
+
+let lastScrollPosition = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScrollPosition = window.scrollY;
+  const bottomOffset = 100; // Adjust this value if needed
+
+  // Calculate if near bottom
+  const nearBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - bottomOffset);
+
+  if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 0) {
+    // Scrolling down, hide button
+    modalButton.classList.add('hidden');
+  } else if (currentScrollPosition < lastScrollPosition && !nearBottom) {
+    // Scrolling up and not near the bottom, show button
+    modalButton.classList.remove('hidden');
+  }
+
+  // Update last scroll position
+  lastScrollPosition = currentScrollPosition;
+});
