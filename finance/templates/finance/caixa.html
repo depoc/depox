@@ -39,7 +39,7 @@ class="
       <div class="overflow-x-auto">
         <table class="min-w-full bg-white text-sm">
           <tbody class="">
-            <tr>
+            <tr class="cursor-pointer" onclick="openModal()">
               <td class="px-4 py-4">
                 <button
                 class="
@@ -67,7 +67,7 @@ class="
               </td>
             </tr>
 
-            <tr>
+            <tr class="cursor-pointer" onclick="openModal()">
               <td class="px-4 py-4">
                 <button
                 class="
@@ -95,7 +95,7 @@ class="
               </td>
             </tr>
 
-            <tr>
+            <tr class="cursor-pointer" onclick="openModal()">
               <td class="px-4 py-4">
                 <button
                 class="
@@ -124,48 +124,7 @@ class="
             </tr>
           </tbody>
         </table>
-      </div>   
-
-      {% comment %}
-      <div class="overflow-x-auto rounded-t-lg">
-        <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-          <thead class="ltr:text-left rtl:text-right">
-            <tr>
-              <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Entrada/Saida</th>
-              <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Data</th>
-              <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Valor</th>
-              <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Cliente</th>
-              <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Histórico</th>
-              <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Categoria</th>
-              <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Marcadores</th>
-            </tr>
-          </thead>
-
-          <tbody class="divide-y divide-gray-200">
-            <tr>
-              <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">John Doe</td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">Web Developer</td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-            </tr>
-
-            <tr>
-              <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Jane Doe</td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">04/11/1980</td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">Web Designer</td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">$100,000</td>
-            </tr>
-
-            <tr>
-              <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Gary Barlow</td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">Singer</td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">$20,000</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
-      {% endcomment %}
 
       <div class="rounded-b-lg border-t border-gray-200 px-0 py-2">
         <ol class="flex justify-end gap-3 text-xs font-medium">
