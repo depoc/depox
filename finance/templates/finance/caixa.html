@@ -14,6 +14,8 @@ class="
 
     {% include "finance/common/_header.html" %}
     {% include "finance/common/_accounts.html" %}
+    {% include "finance/common/_history.html" %}
+
 
     {% include "erp/common/_menu.html" %}
     {% include "erp/common/_settings.html" %}
@@ -39,7 +41,7 @@ class="
       <div class="overflow-x-auto">
         <table class="min-w-full bg-white text-sm">
           <tbody class="">
-            <tr class="cursor-pointer" onclick="openModal()">
+            <tr class="cursor-pointer" onclick="historyButton()">
               <td class="px-4 py-4">
                 <button
                 class="
@@ -67,7 +69,7 @@ class="
               </td>
             </tr>
 
-            <tr class="cursor-pointer" onclick="openModal()">
+            <tr class="cursor-pointer" onclick="historyButton()">
               <td class="px-4 py-4">
                 <button
                 class="
@@ -95,7 +97,7 @@ class="
               </td>
             </tr>
 
-            <tr class="cursor-pointer" onclick="openModal()">
+            <tr class="cursor-pointer" onclick="historyButton()">
               <td class="px-4 py-4">
                 <button
                 class="

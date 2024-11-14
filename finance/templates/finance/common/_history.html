@@ -1,0 +1,48 @@
+{% load static %}
+
+<div
+    id="history"
+    class="
+        hidden
+        fixed
+        inset-0 z-50 
+        justify-center items-center
+        bg-black/70
+        backdrop-blur-md">
+  
+    <div 
+      class=
+        "ring-1
+        ring-primary/10
+        dark:ring-white/15
+        bg-white dark:bg-secondary
+        p-4
+        lg:w-6/12 sm:h-3/4
+        md:w-8/12
+        w-11/12 h-5/6
+        rounded-lg
+        relative">
+  
+      <button id="closeHistory" class="absolute top-4 right-4 text-lg text-black px-4 py-2 rounded"></button>
+  
+    <!--bottom-left-->  
+    <div class="absolute bottom-4 left-4 text-sm leading-5">
+        <p
+            class="
+                group
+                flex 
+                h-fit w-fit
+                items-center justify-center 
+                aspect-square rounded-md">
+            <a href="{% url "erp:index" %}">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+                </svg>                                  
+            </a>
+        </p>
+    </div>     
+  
+    </div>
+</div>
+ 
+<script src="{% static "js/finance/history.js" %}"></script>
