@@ -44,7 +44,7 @@ let lastScrollPosition = 0;
 
 window.addEventListener('scroll', () => {
   const currentScrollPosition = window.scrollY;
-  const bottomOffset = 100; // Adjust this value if needed
+  const bottomOffset = 50; // Adjust this value if needed
 
   // Calculate if near bottom
   const nearBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - bottomOffset);
