@@ -18,9 +18,9 @@
         dark:ring-white/15
         bg-white dark:bg-secondary
         p-4
-        lg:w-6/12 sm:h-3/4
+        lg:w-5/12 sm:h-3/5
         md:w-8/12
-        w-11/12 h-5/6
+        w-11/12 h-[75%]
         rounded-lg
         relative">
   
@@ -36,29 +36,12 @@
                 <div class="relative flex items-center gap-4">
                 </div>
             </p>
-        </div>   
-  
-        <!--empty bottom-left info-->  
-        <div class="absolute bottom-4 left-4 text-sm leading-5">
-            <p
-                class="
-                    group
-                    flex 
-                    h-fit w-fit
-                    items-center justify-center 
-                    aspect-square rounded-md">
-                <a href="{% url "erp:index" %}">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
-                    </svg>                                  
-                </a>
-            </p>
-        </div>     
+        </div>       
 
         <form action="{% url "finance:caixa" %}" method="POST" class="">
             {% csrf_token %}
 
-            <div class="relative justify-center items-center px-4 pt-4 pb-2">
+            <div class="relative justify-center items-center px-1 pt-4 pb-2">
                 <label class="flex text-black/40 dark:text-white/50 text-4xl text-start">
                     R$
                     <input
@@ -71,7 +54,7 @@
                 </label>
             </div>
 
-            <div class="px-4 flex justify-start items-center">
+            <div class="px-1 flex justify-start items-center">
                 <p class="text-black/50 dark:text-white/50 text-xs">
                     <kbd>14 NOV, 2024</kbd>
                 </p>
@@ -128,15 +111,43 @@
                 </dl>
             </div>
 
-            <div class="mt-10 sm:mt-20 w-fit px-3 py-0 ml-auto mr-auto ring-1 ring-black/10 rounded-lg text-center bg-transparent">
-                <button 
-                    class="text-black dark:text-white font-semibold w-full text-2xl"
-                    type="submit"
-                    name="add-transaction">
-                    <kbd>receber</kbd>
-                </button>
-            </div>
+            <!--bottom-right svg-->  
+            <div class="absolute bottom-5 right-4 text-sm leading-5">
+                <p
+                    class="
+                        ring-1 ring-black/10 dark:ring-white/10
+                        px-2
+                        group
+                        flex 
+                        w-fit
+                        items-center justify-center 
+                        rounded-md">
+                    <button
+                        type="submit" 
+                        name="add-transaction"
+                        class="text-sm font-semibold text-black items-center dark:text-white">
+                        receber                                  
+                    </button>
+                </p>
+            </div>                   
         </form>
+
+        <!--bottom-left svg-->  
+        <div class="absolute bottom-4 left-4 text-sm leading-5">
+            <p
+                class="
+                    group
+                    flex 
+                    h-fit w-fit
+                    items-center justify-center 
+                    aspect-square rounded-md">
+                <a href="{% url "erp:index" %}">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+                    </svg>                                  
+                </a>
+            </p>
+        </div>         
   
     </div>
 </div>
