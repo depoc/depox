@@ -17,6 +17,7 @@ class TransactionsForm(ModelForm):
                 'class': '''
                     w-fit
                     placeholder:text-black/40 dark:placeholder:text-white/50
+                    appearance-none w-full sm:w-1/2 text-center outline-none bg-transparent
                     bg-transparent
                     outline-none''',
             })            

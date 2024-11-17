@@ -41,7 +41,14 @@
         <form action="{% url "finance:caixa" %}" method="POST" class="">
             {% csrf_token %}
 
-            <div class="relative justify-center items-center px-1 pt-4 pb-2">
+            <input
+                name="tipo"
+                id="tipo"
+                value="entrada"
+                class="text-white dark:text-secondary bg-transparent outline-none text-xs text-start">
+            </input>
+
+            <div class="relative justify-center items-center px-1 pt-1 pb-2">
                 <label class="flex text-black/40 dark:text-white/50 text-4xl text-start">
                     R$
                     <input
@@ -64,14 +71,7 @@
                 <dl class="-my-3 divide-y divide-black/5 text-sm">
                   <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-1 sm:gap-4">
                     <dt class="text-black/60 dark:text-white/50 text-base sm:text-lg w-full text-center">
-                        <select
-                            name="conta"
-                            id="conta"
-                            class="appearance-none w-full sm:w-1/2 text-center outline-none bg-transparent">
-                            {% for bank in banks %}
-                            <option value="{{ bank }}">{{ bank }}</option>
-                            {% endfor %}
-                        </select>
+                        {{ transaction.conta }}
                     </dt>
                   </div>
                 </dl>

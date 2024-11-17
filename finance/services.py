@@ -31,5 +31,7 @@ class Finance:
                 form = TransactionsForm(request.POST)
                 if form.is_valid():
                      form.save()
+                else:
+                     print(form.errors)
 
         return {'transaction': form}
