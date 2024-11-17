@@ -61,11 +61,13 @@
             <div class="relative justify-center items-center px-4 pt-8 pb-2">
                 <label class="flex text-black/40 dark:text-white/50 text-4xl text-start">
                     R$
-                    <p
-                        class="px-2 w-fit text-4xl outline-none bg-transparent text-black dark:text-white"
-                        id="valor">
-                        {{ transaction.valor }}
-                    </p>
+                    <input
+                        class="px-2 w-fit text-4xl outline-none bg-transparent text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/50"
+                        name="valor"
+                        id="valor"
+                        inputmode="decimal"
+                        placeholder="00,00">
+                    </input>
                 </label>
             </div>
         </form>
@@ -74,3 +76,14 @@
 </div>
 
 <script src="{% static "js/finance/transaction.js" %}"></script>
+<script src="https://unpkg.com/imask"></script>
+<script>
+    const valorInput = document.getElementById('valor');
+    IMask(valorInput, {
+        mask: Number,
+        scale: 2,            // Number of decimal places
+        thousandsSeparator: '.', // Thousands separator
+        radix: ',',           // Decimal separator
+        padFractionalZeros: true, // Ensure 2 decimal places
+    });
+</script>
