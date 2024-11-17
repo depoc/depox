@@ -20,7 +20,7 @@ class Finance:
         saldos = [bank.saldo for bank in banks]
         saldo_total = sum(saldos)
         
-        return {'saldo_total': saldo_total}
+        return {'saldo_total': saldo_total, 'banks': banks}
     
 
     @staticmethod

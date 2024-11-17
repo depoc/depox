@@ -16,7 +16,7 @@ class BankAccount(models.Model):
     )
 
     def __str__(self):
-        return f'{self.company.fantasia} [{self.company.cnpj}] - {self.name}'
+        return f'{self.name}'
 
 
 class Transactions(models.Model):
