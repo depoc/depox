@@ -19,7 +19,7 @@ function hideAllSections() {
 // Function to reset button styles
 function resetButtonStyles() {
   Object.values(buttons).forEach(button => {
-    button.classList.add('ring-zinc-400', 'text-zinc-400', 'dark:ring-zinc-500', 'dark:text-zinc-500');
+    button.classList.add('ring-black/15', 'text-zinc-500', 'dark:ring-white/20', 'dark:text-white/45');
     button.classList.remove('ring-black', 'text-black', 'dark:ring-zinc-300', 'dark:text-zinc-300');
   });
 }
@@ -29,7 +29,7 @@ function showSection(sectionKey) {
   hideAllSections();
   resetButtonStyles();
   sections[sectionKey].classList.remove('hidden');
-  buttons[sectionKey].classList.remove('ring-zinc-400', 'text-zinc-400', 'dark:ring-zinc-500', 'dark:text-zinc-500');
+  buttons[sectionKey].classList.remove('ring-black/15', 'text-zinc-500', 'dark:ring-white/20', 'dark:text-white/45');
   buttons[sectionKey].classList.add('ring-black', 'text-black', 'dark:ring-zinc-300', 'dark:text-zinc-300');
 }
 
