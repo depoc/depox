@@ -15,12 +15,8 @@ class TransactionsForm(ModelForm):
             field.widget.attrs.update({
                 'autofocus': True,
                 'class': '''
-                    w-fit
                     placeholder:text-black/40 dark:placeholder:text-white/50
-                    appearance-none w-full sm:w-1/2 text-center outline-none bg-transparent
+                    appearance-none w-full sm:w-1/2 text-center
                     bg-transparent
                     outline-none''',
             })            
-
-        if 'valor' in self.fields:
-            self.fields['valor'].widget.attrs.update({'placeholder': '00,00'})            

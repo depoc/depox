@@ -25,7 +25,7 @@ class Transactions(models.Model):
     valor = models.DecimalField(
         max_digits=10, decimal_places=2, blank=True, null=True,
     )
-    conta = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
+    conta = models.ForeignKey(BankAccount, on_delete=models.CASCADE, default='conta')
     contato = models.CharField(max_length=255, blank=True, null=True)
     descricao = models.CharField(max_length=255, blank=False, null=False)
     categoria = models.CharField(max_length=255, blank=True, null=True)
