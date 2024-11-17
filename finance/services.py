@@ -25,13 +25,19 @@ class Finance:
 
     @staticmethod
     def add_transactions(request) -> dict:
-        form = TransactionsForm
+        form = TransactionsForm()
 
         if request.method == 'POST' and 'add-transaction' in request.POST:
-                form = TransactionsForm(request.POST)
-                if form.is_valid():
-                     form.save()
-                else:
-                     print(form.errors)
+            post_data = request.POST.copy()
+            valor = post_data.get('valor', '')
+            valor_cleaned = valor.replace('.', '').replace(',', '.')
+            post_data['valor'] = valor_cleaned
+            
+            form = TransactionsForm(post_data)
+            
+            if form.is_valid():
+                form.save()
+            else:
+                print(form.errors)
 
         return {'transaction': form}
