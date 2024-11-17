@@ -11,103 +11,156 @@
         rounded-lg
         w-full 
         p-4">
-
-    <p class="text-sm text-black/40 dark:text-white/30">
-    <kbd>14 NOV</kbd>
-    </p>    
+       
     <div class="overflow-x-auto no-scrollbar">
-        <table class="min-w-full table-fixed bg-white dark:bg-secondary text-sm">
-            <tbody>
-                <tr class="cursor-pointer hover:bg-background dark:hover:bg-black/20" onclick="historyButton()">
-                    <td class="px-4 py-5 text-left w-[5%] rounded-s-3xl">
-                        <button class="rounded-full p-[6px] border border-black/80 dark:border-white/65">
-                            <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-black dark:text-white/65" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m-7 7V5"/>
-                            </svg>
-                        </button>
-                    </td>
-                    <td class="whitespace-nowrap px-4 py-4 text-start text-gray-700 dark:text-white/65">R$ 700,00</td>
-                    <td class="whitespace-nowrap px-4 py-4 text-end sm:text-start text-gray-700 dark:text-white/65">
-                        <span class="ring-1 ring-black/15 dark:ring-white/20 rounded-[3px] p-[5px] text-xs">
-                            <kbd>caixa</kbd>
-                        </span>
-                    </td>
-                    <td class="whitespace-nowrap px-4 py-4 text-start text-gray-700 dark:text-white/65 hidden sm:table-cell font-semibold">paulo alves de lucena</td>
-                    <td class="whitespace-nowrap px-4 py-4 text-start text-gray-700 dark:text-white/65 hidden sm:table-cell italic">pagamento aluguel loja</td>
-                    <td class="whitespace-nowrap px-4 py-4 text-right w-[5%] text-gray-700 dark:text-white/65 hidden sm:table-cell rounded-e-3xl">
-                        <span class="ring-1 ring-black/15 dark:ring-white/20 rounded-full p-[8px] text-xs">
-                            <kbd>alugueis</kbd>
-                        </span>
-                    </td>
-                </tr>
+        <div>
+            <table class="min-w-full table-fixed text-start text-sm">
+                <colgroup>
+                    <col class="w-fit">
+                    <col class="w-full sm:w-fit">
+                    <col class="w-fit">
+                    <col class="w-fit">
+                    <col class="w-fit">
+                    <col class="w-fit">
+                </colgroup>
 
-                <tr class="cursor-pointer hover:bg-background dark:hover:bg-black/20" onclick="historyButton()">
-                    <td class="px-4 py-5 text-left w-[5%] rounded-s-3xl">
-                        <button class="rounded-full p-[6px] border border-black/80 dark:border-white/65">
-                            <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-black dark:text-white/65" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m-7 7V5"/>
-                            </svg>
-                        </button>
-                    </td>
-                    <td class="whitespace-nowrap px-4 py-4 text-start text-gray-700 dark:text-white/65">R$ 1.000,00</td>
-                    <td class="whitespace-nowrap px-4 py-4 text-end sm:text-start text-gray-700 dark:text-white/65">
-                        <span class="ring-1 ring-black/15 dark:ring-white/20 rounded-[3px] p-[5px] text-xs">
-                            <kbd>nubank</kbd>
-                        </span>
-                    </td>
-                    <td class="whitespace-nowrap px-4 py-4 text-start text-gray-700 dark:text-white/65 hidden sm:table-cell font-semibold">daniele alana monteiro de souza</td>
-                    <td class="whitespace-nowrap px-4 py-4 text-start text-gray-700 dark:text-white/65 hidden sm:table-cell italic">pagamento salário</td>
-                    <td class="whitespace-nowrap px-4 py-4 text-right w-[5%] text-gray-700 dark:text-white/65 hidden sm:table-cell rounded-e-3xl">
-                        <span class="ring-1 ring-black/15 dark:ring-white/20 rounded-full p-[8px] text-xs">
-                            <kbd>funcionários</kbd>
-                        </span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>       
-    </div>
+                <!-- primeira body -->
+                <thead>
+                    <tr>
+                        <th colspan="6" class="text-sm font-normal text-black/40 dark:text-white/30 text-left">
+                            <kbd>15 NOV</kbd>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cursor-pointer hover:bg-background dark:hover:bg-black/20" onclick="historyButton()">
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 rounded-s-3xl">
+                            <button class="rounded-full p-[6px] border border-black/60 dark:border-white/65">
+                                <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-black/60 dark:text-white/65" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m-7 7V5"/>
+                                </svg>
+                            </button>
+                        </td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">R$ 700,00</td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">
+                            <span class="ring-1 ring-black/15 dark:ring-white/20 rounded-md px-[6px] py-[2px] text-[13px] sm:text-sm">
+                                <kbd>caixa</kbd>
+                            </span>
+                        </td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 font-semibold hidden sm:table-cell">paulo alves de lucena</td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 italic hidden sm:table-cell">pagamento aluguel loja</td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 rounded-e-3xl hidden sm:table-cell">
+                            <span class="bg-background dark:bg-white/10 ring-1 ring-black/15 dark:ring-white/20 rounded-full px-[8px] py-[2px] text-sm">
+                                <kbd>aluguel</kbd>
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr class="cursor-pointer hover:bg-background dark:hover:bg-black/20" onclick="historyButton()">
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 rounded-s-3xl">
+                            <button class="rounded-full p-[6px] border border-black/60 dark:border-white/65">
+                                <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-black/60 dark:text-white/65" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m-7 7V5"/>
+                                </svg>
+                            </button>
+                        </td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">R$ 1.000,00</td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">
+                            <span class="ring-1 ring-black/15 dark:ring-white/20 rounded-md px-[6px] py-[2px] text-[13px] sm:text-sm">
+                                <kbd>nubank</kbd>
+                            </span>
+                        </td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 font-semibold hidden sm:table-cell">daniele alana monteiro de souza</td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 italic hidden sm:table-cell">pagamento salário</td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 rounded-e-3xl hidden sm:table-cell">
+                            <span class="bg-background dark:bg-white/10 ring-1 ring-black/15 dark:ring-white/20 rounded-full px-[8px] py-[2px] text-sm">
+                                <kbd>funcionários</kbd>
+                            </span>
+                        </td>
+                    </tr>                    
+                </tbody>  
+
+                <tbody>
+                    <tr class="h-8"></tr>
+                </tbody>
+
+                <!-- segundo body -->
+                <thead>
+                    <tr>
+                        <th colspan="6" class="text-sm font-normal text-black/40 dark:text-white/30 text-left">
+                            <kbd>14 NOV</kbd>
+                        </th>
+                    </tr>
+                </thead>                
+                <tbody>
+                    <tr class="cursor-pointer hover:bg-background dark:hover:bg-black/20" onclick="historyButton()">
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 rounded-s-3xl">
+                            <button class="rounded-full p-[6px] border border-black/60 dark:border-white/65">
+                                <svg class="w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] text-black/60 dark:text-white/65" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m-7 7V5"/>
+                                </svg>
+                            </button>
+                        </td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">R$ 81,35</td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">
+                            <span class="ring-1 ring-black/15 dark:ring-white/20 rounded-md px-[6px] py-[2px] text-[13px] sm:text-sm">
+                                <kbd>nubank</kbd>
+                            </span>
+                        </td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 font-semibold hidden sm:table-cell">mercantil felizardo</td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 italic hidden sm:table-cell">produtos de limpeza</td>
+                        <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 rounded-e-3xl hidden sm:table-cell">
+                            <span class="bg-background dark:bg-white/10 ring-1 ring-black/15 dark:ring-white/20 rounded-full px-[8px] py-[2px] text-sm">
+                                <kbd>serviços gerais</kbd>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>                  
+            </table>
+        </div>
+    </div> 
 
     <div class="rounded-b-lg border-t border-gray-200 dark:border-white/10 px-0 pt-4">
-    <ol class="flex justify-end gap-3 text-xs font-medium">
-        <li class="block size-5 rounded border border-black/60 dark:border-white/80 text-center leading-5 text-black/60 dark:text-white/80">
-        1
-        </li>
+        <ol class="flex justify-end gap-3 text-xs font-medium">
+            <li class="block size-5 rounded border border-black/60 dark:border-white/80 text-center leading-5 text-black/60 dark:text-white/80">
+            1
+            </li>
 
-        <li>
-        <a
-            href="#"
-            class="block size-5 rounded border border-black/20 dark:border-white/20 text-center leading-5 text-black/25 dark:text-white/25">
-            2
-        </a>
-        </li>
+            <li>
+            <a
+                href="#"
+                class="block size-5 rounded border border-black/20 dark:border-white/20 text-center leading-5 text-black/25 dark:text-white/25">
+                2
+            </a>
+            </li>
 
-        <li>
-        <a
-            href="#"
-            class="block size-5 rounded border border-black/20 dark:border-white/20 text-center leading-5 text-black/25 dark:text-white/25">
-            3
-        </a>
-        </li>
-        
-        <li>
-        <a
-            href="#"
-            class="block size-5 rounded border border-black/20 dark:border-white/20 text-center leading-5 text-black/25 dark:text-white/25">
-            4
-        </a>
-        </li>          
+            <li>
+            <a
+                href="#"
+                class="block size-5 rounded border border-black/20 dark:border-white/20 text-center leading-5 text-black/25 dark:text-white/25">
+                3
+            </a>
+            </li>
+            
+            <li>
+            <a
+                href="#"
+                class="block size-5 rounded border border-black/20 dark:border-white/20 text-center leading-5 text-black/25 dark:text-white/25">
+                4
+            </a>
+            </li>          
 
-        <li>
-        <a
-            href="#"
-            class="inline-flex size-5 items-center justify-center text-gray-900 rtl:rotate-180">
-            <span class="sr-only">Next Page</span>
-            <svg class="w-5 h-5 text-black/30 dark:text-white/30" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 12H5m14 0-4 4m4-4-4-4"/>
-            </svg>                
-        </a>
-        </li>
-    </ol>
+            <li>
+            <a
+                href="#"
+                class="inline-flex size-5 items-center justify-center text-gray-900 rtl:rotate-180">
+                <span class="sr-only">Next Page</span>
+                <svg class="w-5 h-5 text-black/30 dark:text-white/30" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 12H5m14 0-4 4m4-4-4-4"/>
+                </svg>                
+            </a>
+            </li>
+        </ol>
     </div>
 
     </div>
