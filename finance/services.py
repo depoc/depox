@@ -1,4 +1,5 @@
 from .models import BankAccount
+from .forms import TransactionsForm
 
 
 class Finance:
@@ -6,6 +7,7 @@ class Finance:
     def context(request) -> dict:
         context = {}
         context.update(Finance.get_balance_context(request))
+        context.update(Finance.add_transactions(request))
 
         return context
 
@@ -19,3 +21,15 @@ class Finance:
         saldo_total = sum(saldos)
         
         return {'saldo_total': saldo_total}
+    
+
+    @staticmethod
+    def add_transactions(request) -> dict:
+        form = TransactionsForm
+
+        if request.method == 'POST' and 'add-transaction' in request.POST:
+                form = TransactionsForm(request.POST)
+                if form.is_valid():
+                     form.save()
+
+        return {'transaction': form}
