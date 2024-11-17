@@ -29,6 +29,10 @@ class CompanyForm(ModelForm):
                     outline-none''',
             })    
 
+        for field_name in ['cnpj', 'ie', 'numero', 'cep', 'celular']:
+            if field_name in self.fields:
+                self.fields[field_name].widget.attrs['inputmode'] = 'decimal'
+
 
 class MemberCreationForm(UserChangeForm):
     class Meta:
