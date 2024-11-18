@@ -285,11 +285,11 @@
                                 <kbd>{{ transaction.conta }}</kbd>
                             </span>
                         </td>
-                        <td class="whitespace-normal p-4 text-black/60 dark:text-white/65 font-semibold hidden sm:table-cell">{{ transaction.contato }}</td>
-                        <td class="whitespace-normal p-4 text-black/60 dark:text-white/65 italic hidden sm:table-cell">{{ transaction.descricao }}</td>
+                        <td class="whitespace-normal p-4 text-black/60 dark:text-white/65 font-semibold hidden sm:table-cell">{{ transaction.contato | lower }}</td>
+                        <td class="whitespace-normal p-4 text-black/60 dark:text-white/65 italic hidden sm:table-cell">{{ transaction.descricao | lower }}</td>
                         <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 rounded-e-3xl hidden sm:table-cell ">
                             <span class="bg-background dark:bg-white/10 ring-1 ring-black/15 dark:ring-white/20 rounded-full px-[8px] py-[2px] text-[13px]">
-                                <kbd>{{ transaction.categoria }}</kbd>
+                                <kbd>{{ transaction.categoria | lower }}</kbd>
                             </span>
                         </td>
                     </tr>      
