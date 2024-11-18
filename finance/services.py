@@ -19,7 +19,7 @@ class Finance:
         """
         Lida com a lógica de adicionar transações e calcula o saldo total das contas bancárias.
         """
-        form = TransactionsForm()
+        form = TransactionsForm(user=request.user)
         conta = request.POST.get('conta')
         tipo = request.POST.get('tipo')
 
@@ -55,7 +55,7 @@ class Finance:
             valor = float(valor_cleaned) * (-1)
             post_data['valor'] = valor
 
-        form = TransactionsForm(post_data)
+        form = TransactionsForm(post_data, user=request.user)
         if form.is_valid():
             form.save()
 

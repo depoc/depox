@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from .models import Transactions
+from .models import Transactions, BankAccount
 
 
 class TransactionsForm(ModelForm):
@@ -9,7 +9,10 @@ class TransactionsForm(ModelForm):
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
         super(TransactionsForm, self).__init__(*args, **kwargs)
+
+        self.fields['conta'].queryset = BankAccount.objects.filter(company=user.company)
 
         for name, field in self.fields.items():
             field.widget.attrs.update({
