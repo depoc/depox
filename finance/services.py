@@ -80,6 +80,7 @@ class Finance:
         balanco = (recebimentos) - (-pagamentos)
 
         return {
+            'transactions': transactions,
             'pagamentos': pagamentos,
             'recebimentos': recebimentos,
             'balanco': balanco
