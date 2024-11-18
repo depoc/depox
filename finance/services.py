@@ -1,5 +1,5 @@
 from django.shortcuts import redirect
-from .models import BankAccount
+from .models import BankAccount, Transactions
 from .forms import TransactionsForm
 
 
@@ -11,6 +11,7 @@ class Finance:
         """
         context = {}
         context.update(Finance.add_transactions(request))
+        context.update(Finance.get_cash_flow(request))
         return context
 
     @staticmethod
@@ -59,3 +60,27 @@ class Finance:
             form.save()
 
         return form
+
+    @staticmethod
+    def get_cash_flow(request) -> dict:
+        company = request.user.company
+        banks = BankAccount.objects.filter(company=company)
+        transactions = Transactions.objects.filter(conta__in=banks)
+
+        recebimentos = 0
+        for transaction in transactions:
+            if transaction.tipo == 'receber':
+                recebimentos += transaction.valor
+
+        pagamentos = 0
+        for transaction in transactions:
+            if transaction.tipo == 'pagar':
+                pagamentos += transaction.valor
+
+        balanco = (recebimentos) - (-pagamentos)
+
+        return {
+            'pagamentos': pagamentos,
+            'recebimentos': recebimentos,
+            'balanco': balanco
+        }    

@@ -110,7 +110,7 @@
                     bottom-0 left-2">
                     R$
                     <span class="text-black dark:text-white text-base sm:text-lg">
-                        243,50
+                        {{ recebimentos }}
                     </span>
                 </p>                
             </button>    
@@ -142,11 +142,44 @@
                     bottom-0 left-2">
                     R$
                     <span class="text-black dark:text-white text-base sm:text-lg">
-                        983,39
+                        {{ pagamentos }}
                     </span>
                 </p>                
             </button>    
             
+            {% if balanco > 0 %}
+            <button id=""
+                class="
+                ring-1 ring-green-600/20 dark:ring-green-500/45
+                p-4
+                relative  
+                rounded-lg
+                shadow-sm
+                bg-green-100/50
+                dark:bg-green-900/40
+                min-h-[50px] sm:min-h-[60px]
+                min-w-[150px] sm:min-w-[200px]">   
+                <p
+                    class="
+                    absolute
+                    p-1
+                    text-xs sm:text-sm text-green-600/90 dark:text-green-200/50
+                    top-0 left-2">
+                    balanço da semana
+                </p>                      
+                <p
+                    class="
+                    absolute
+                    p-1
+                    text-xs sm:text-sm text-green-600/90 dark:text-green-200/50
+                    bottom-0 left-2">
+                        R$
+                    <span class="text-green-600 dark:text-green-300/80 text-base sm:text-lg">
+                        {{ balanco }}
+                    </span>
+                </p>                
+            </button>      
+            {% else %}
             <button id=""
                 class="
                 ring-1 ring-red-600/10 dark:ring-red-500/45
@@ -174,10 +207,11 @@
                     bottom-0 left-2">
                         R$
                     <span class="text-red-500 dark:text-red-100/90 text-base sm:text-lg">
-                        -739,89
+                        {{ balanco }}
                     </span>
                 </p>                
             </button>               
+            {% endif %}       
         </div>    
     </div>
 </div>
