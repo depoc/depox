@@ -31,4 +31,4 @@ class Transactions(models.Model):
     categoria = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
-        return f'{self.tipo}: {self.valor} - {self.conta}' 
+        return f'R${self.valor} --- {self.created.date()}' 
