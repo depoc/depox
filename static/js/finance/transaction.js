@@ -1,10 +1,20 @@
 const transaction = document.getElementById('transaction');
 const transactionButton = document.getElementById('transactionButton');
+const saidaButton = document.getElementById('saidaButton');
 const closeTransaction = document.getElementById('closeTransaction');
+
+const tipo = document.getElementById('tipo');
 
 transactionButton.addEventListener('click', () => {
     transaction.classList.remove('hidden');
-    transaction.classList.add('flex')
+    transaction.classList.add('flex');
+    tipo.value = 'entrada'
+})
+
+saidaButton.addEventListener('click', () => {
+  transaction.classList.remove('hidden');
+  transaction.classList.add('flex');
+  tipo.value = 'saida'
 })
 
 closeTransaction.addEventListener('click', () => {
