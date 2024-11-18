@@ -10,7 +10,7 @@
         flex">
         
         <div class="overflow-x-auto px-2 pb-1 pt-6 sm:pt-8 flex gap-3 no-scrollbar">
-        <button id=""
+        <a id="" href="{% url "finance:caixa"%}?data=hoje"
             class="
             tracking-wide
             px-3 sm:px-3 py-[1.5px] sm:py-[3px]
@@ -23,7 +23,8 @@
             dark:bg-primary         
             flex-shrink-0">    
             <span class="">hoje</span>
-        </button>  
+        </a>  
+
         <button id=""
             class="
             tracking-wide
@@ -38,6 +39,7 @@
             flex-shrink-0">  
             <span class="">semana</span>
         </button>  
+
         <button id=""
             class="
             tracking-wide
@@ -51,7 +53,8 @@
             dark:bg-primary         
             flex-shrink-0">    
             <span class="">novembro</span>
-        </button>    
+        </button>   
+
         <button id=""
             class="
             tracking-wide

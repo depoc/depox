@@ -11,7 +11,6 @@ class Finance:
     def context(request) -> dict:
         context = {}
         context.update(Finance.add_transactions(request))
-        context.update(Finance.get_cash_flow(request))
         context.update(Finance.get_transactions_by_date(request))
         return context
 
@@ -61,34 +60,6 @@ class Finance:
             form.save()
 
         return form
-
-    @staticmethod
-    def get_cash_flow(request) -> dict:
-        company = request.user.company
-        banks = BankAccount.objects.filter(company=company)
-        transactions = Transactions.objects \
-            .filter(conta__in=banks) \
-            .order_by('-created')
-
-        recebimentos = 0
-        for transaction in transactions:
-            if transaction.tipo == 'receber':
-                recebimentos += transaction.valor
-
-        pagamentos = 0
-        for transaction in transactions:
-            if transaction.tipo == 'pagar':
-                pagamentos += transaction.valor
-
-        balanco = (recebimentos) - (-pagamentos)
-
-        return {
-            'transactions': transactions,
-            'pagamentos': pagamentos,
-            'recebimentos': recebimentos,
-            'balanco': balanco,
-            'current_date': now,
-        }    
     
     @staticmethod
     def get_transactions_by_date(request) -> dict:
@@ -101,15 +72,42 @@ class Finance:
             .filter(conta__in=banks)
             .annotate(date=TruncDate('created'))
             .order_by('-created')
-        )
+        )                         
+
+        if request.GET.get('data') == 'hoje':
+            transactions = transactions.filter(created__date=today)
 
         transactions_group = {}
         for transaction in transactions:
             date = transaction.date
             if date not in transactions_group:
                 transactions_group[date] = []
-            transactions_group[date].append(transaction)     
+            transactions_group[date].append(transaction)   
 
-        return {
+        context = {
             'transactions_group': transactions_group,
-        }    
+            'current_date': now,            
+        }
+        context.update(Finance._get_balance(transactions))
+
+        return context                 
+
+    @staticmethod
+    def _get_balance(transactions) -> dict:
+        recebimentos = 0
+        for transaction in transactions:
+            if transaction.tipo == 'receber':
+                recebimentos += transaction.valor
+
+        pagamentos = 0
+        for transaction in transactions:
+            if transaction.tipo == 'pagar':
+                pagamentos += transaction.valor
+
+        balanco = (recebimentos) - (-pagamentos)
+
+        return {          
+            'pagamentos': pagamentos,
+            'recebimentos': recebimentos,
+            'balanco': balanco,
+        }                    
