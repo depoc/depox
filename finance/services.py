@@ -8,9 +8,6 @@ from .forms import TransactionsForm
 class Finance:
     @staticmethod
     def context(request) -> dict:
-        """
-        Gera o contexto geral para as views relacionadas a finanças.
-        """
         context = {}
         context.update(Finance.add_transactions(request))
         context.update(Finance.get_cash_flow(request))
