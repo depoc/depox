@@ -45,12 +45,14 @@ class Finance:
         post_data = request.POST.copy()
         valor = post_data.get('valor', '')
         valor_cleaned = valor.replace('.', '').replace(',', '.')
-        post_data['valor'] = valor_cleaned
 
         if tipo == 'entrada':
-            saldo = float(bank.saldo) + float(valor_cleaned)
-            bank.saldo = saldo
-            bank.save()
+            valor = float(valor_cleaned)
+            post_data['valor'] = valor
+
+        if tipo == 'saida':
+            valor = float(valor_cleaned) * (-1)
+            post_data['valor'] = valor
 
         form = TransactionsForm(post_data)
         if form.is_valid():
