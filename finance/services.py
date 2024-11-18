@@ -46,11 +46,11 @@ class Finance:
         valor = post_data.get('valor', '')
         valor_cleaned = valor.replace('.', '').replace(',', '.')
 
-        if tipo == 'entrada':
+        if tipo == 'receber':
             valor = float(valor_cleaned)
             post_data['valor'] = valor
 
-        if tipo == 'saida':
+        if tipo == 'pagar':
             valor = float(valor_cleaned) * (-1)
             post_data['valor'] = valor
 

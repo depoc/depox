@@ -1,6 +1,7 @@
 const transaction = document.getElementById('transaction');
 const transactionButton = document.getElementById('transactionButton');
 const saidaButton = document.getElementById('saidaButton');
+const transferirButton = document.getElementById('transferirButton');
 const closeTransaction = document.getElementById('closeTransaction');
 
 const tipo = document.getElementById('tipo');
@@ -8,13 +9,19 @@ const tipo = document.getElementById('tipo');
 transactionButton.addEventListener('click', () => {
     transaction.classList.remove('hidden');
     transaction.classList.add('flex');
-    tipo.value = 'entrada'
+    tipo.value = 'receber'
 })
 
 saidaButton.addEventListener('click', () => {
   transaction.classList.remove('hidden');
   transaction.classList.add('flex');
-  tipo.value = 'saida'
+  tipo.value = 'pagar'
+})
+
+transferirButton.addEventListener('click', () => {
+  transaction.classList.remove('hidden');
+  transaction.classList.add('flex');
+  tipo.value = 'transferir'
 })
 
 closeTransaction.addEventListener('click', () => {
