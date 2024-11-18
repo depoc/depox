@@ -65,7 +65,9 @@ class Finance:
     def get_cash_flow(request) -> dict:
         company = request.user.company
         banks = BankAccount.objects.filter(company=company)
-        transactions = Transactions.objects.filter(conta__in=banks)
+        transactions = Transactions.objects \
+            .filter(conta__in=banks) \
+            .order_by('-created')
 
         recebimentos = 0
         for transaction in transactions:
