@@ -1,3 +1,6 @@
+from django.db.models import Q
+from django.utils.timezone import now
+
 from .models import BankAccount, Transactions
 from .forms import TransactionsForm
 
@@ -11,7 +14,6 @@ class Finance:
         context = {}
         context.update(Finance.add_transactions(request))
         context.update(Finance.get_cash_flow(request))
-        context.update(Finance.get_current_date())
         return context
 
     @staticmethod
@@ -85,11 +87,7 @@ class Finance:
             'transactions': transactions,
             'pagamentos': pagamentos,
             'recebimentos': recebimentos,
-            'balanco': balanco
+            'balanco': balanco,
+            'current_date': now,
         }    
     
-    @staticmethod
-    def get_current_date() -> dict:
-        from django.utils.timezone import now
-
-        return {'current_date': now}
