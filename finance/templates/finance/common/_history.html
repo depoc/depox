@@ -247,7 +247,7 @@
                 <thead>
                     <tr>
                         <th colspan="6" class="text-sm font-normal text-black/40 dark:text-white/45 text-left">
-                            <kbd>15 NOV</kbd>
+                            <kbd>{{ current_date|date:"d M" | upper }}</kbd>
                         </th>
                     </tr>
                 </thead>
@@ -288,8 +288,8 @@
                         <td class="whitespace-normal p-4 text-black/60 dark:text-white/65 font-semibold hidden sm:table-cell">{{ transaction.contato | lower }}</td>
                         <td class="whitespace-normal p-4 text-black/60 dark:text-white/65 italic hidden sm:table-cell">{{ transaction.descricao | lower }}</td>
                         <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 rounded-e-3xl hidden sm:table-cell ">
-                            <span class="bg-background dark:bg-white/10 ring-1 ring-black/15 dark:ring-white/20 rounded-full px-[8px] py-[2px] text-[13px]">
-                                <kbd>{{ transaction.categoria | lower }}</kbd>
+                            <span class="bg-background dark:bg-white/10 ring-1 ring-black/15 dark:ring-white/20 rounded-full px-[8px] py-[2px] text-[12px]">
+                                {{ transaction.created | date:"d M, Y" | upper }}
                             </span>
                         </td>
                     </tr>      
