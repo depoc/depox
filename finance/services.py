@@ -1,5 +1,6 @@
-from django.db.models import Q
 from django.utils.timezone import now
+from django.db.models import Count
+from django.db.models.functions import TruncDate
 
 from .models import BankAccount, Transactions
 from .forms import TransactionsForm
@@ -11,6 +12,7 @@ class Finance:
         context = {}
         context.update(Finance.add_transactions(request))
         context.update(Finance.get_cash_flow(request))
+        context.update(Finance.get_transactions_by_date(request))
         return context
 
     @staticmethod
@@ -88,3 +90,26 @@ class Finance:
             'current_date': now,
         }    
     
+    @staticmethod
+    def get_transactions_by_date(request) -> dict:
+        today = now().date()
+        company = request.user.company
+        banks = BankAccount.objects.filter(company=company)
+
+        transactions = (
+            Transactions.objects
+            .filter(conta__in=banks)
+            .annotate(date=TruncDate('created'))
+            .order_by('-created')
+        )
+
+        transactions_group = {}
+        for transaction in transactions:
+            date = transaction.date
+            if date not in transactions_group:
+                transactions_group[date] = []
+            transactions_group[date].append(transaction)     
+
+        return {
+            'transactions_group': transactions_group,
+        }    
