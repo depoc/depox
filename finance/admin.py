@@ -6,11 +6,7 @@ from .models import BankAccount, Transactions
 class TransactionsInline(admin.StackedInline):
     model = Transactions
     extra = 0
-    ordering = ('-created',)
-
-    # def get_queryset(self, request):
-    #     qs = super().get_queryset(request)
-    #     return qs.filter(tipo='receber')    
+    ordering = ('-created',)  
 
 
 class BankAccountAdmin(admin.ModelAdmin):
@@ -19,7 +15,7 @@ class BankAccountAdmin(admin.ModelAdmin):
 
 
 class TransactionsAdmin(admin.ModelAdmin):
-    list_display = ('tipo', 'valor', 'conta', 'created')
+    list_display = ('descricao', 'valor', 'conta', 'created')
 
 admin.site.register(BankAccount, BankAccountAdmin)
 admin.site.register(Transactions, TransactionsAdmin)
