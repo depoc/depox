@@ -83,16 +83,22 @@ class Finance:
             .filter(conta__in=banks)
             .annotate(date=TruncDate('created'))
             .order_by('-created')
-        )                         
+        )                        
 
-        if request.GET.get('data') == 'hoje':
+        conta = request.GET.get('banco')
+        data = request.GET.get('data')
+
+        if conta:
+            transactions = transactions.filter(conta=conta)        
+
+        if data == 'hoje':
             transactions = transactions.filter(created__date=today)
-        elif request.GET.get('data') == 'semana':
+        elif data == 'semana':
             transactions = transactions.filter(
                 created__date__gte=start_of_week,
                 created__date__lte=end_of_week,
             )
-        elif request.GET.get('data') == 'mes':
+        elif data == 'mes':
             transactions = transactions.filter(
                 created__date__gte=start_of_month,
                 created__date__lte=end_of_month,

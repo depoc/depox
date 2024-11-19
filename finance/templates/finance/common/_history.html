@@ -12,7 +12,7 @@
         flex">
         
         <div class="overflow-x-auto px-2 pb-1 pt-6 sm:pt-8 flex gap-3 no-scrollbar">
-        <a id="todos" href="{% url "finance:caixa" %}?data=todos"
+        <a id="todos" href="?data=todos{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
             class="
             tracking-wide
             px-3 sm:px-3 py-[1.5px] sm:py-[3px]
@@ -32,7 +32,7 @@
             <span class="">todos</span>
         </a> 
 
-        <a id="hoje" href="{% url "finance:caixa" %}?data=hoje"
+        <a id="hoje" href="?data=hoje{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
             class="
             tracking-wide
             px-3 sm:px-3 py-[1.5px] sm:py-[3px]
@@ -52,7 +52,7 @@
             <span>hoje</span>
         </a> 
 
-        <a id="semana" href="{% url "finance:caixa" %}?data=semana"
+        <a id="semana" href="?data=semana{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
             class="
             tracking-wide
             px-3 sm:px-3 py-[1.5px] sm:py-[3px]
@@ -72,7 +72,7 @@
             <span class="">semana</span>
         </a>  
 
-        <a id="mes" href="{% url "finance:caixa" %}?data=mes"
+        <a id="mes" href="?data=mes{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
             class="
             tracking-wide
             px-3 sm:px-3 py-[1.5px] sm:py-[3px]
@@ -90,7 +90,21 @@
             relative  
             rounded-full flex-shrink-0">  
             <span class="">{{ current_date|date:"F" | lower }}</span>
-        </a>                                            
+        </a>      
+        
+        <a id="limpar" href="{% url "finance:caixa" %}"
+            class="
+            tracking-wide
+            px-3 sm:px-3 py-[1.5px] sm:py-[3px]
+            ring-1
+            text-[13px]
+            text-black/40 dark:text-white/55
+            ring-black/10 dark:ring-white/20
+            dark:bg-primary
+            relative  
+            rounded-full flex-shrink-0">  
+            <span class="">limpar</span>
+        </a>         
         </div>    
     </div>
 </div>
