@@ -6,6 +6,9 @@ import uuid
 
 
 class BankAccount(models.Model):
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, primary_key=True, editable=False
+        )        
     created = models.DateTimeField(auto_now_add=True)
     company = models.ForeignKey(
         Company, on_delete=models.CASCADE, related_name='banks',
@@ -22,6 +25,9 @@ class BankAccount(models.Model):
 
 
 class Transactions(models.Model):
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, primary_key=True, editable=False
+        )        
     created = models.DateTimeField(auto_now_add=True)
     tipo = models.CharField(max_length=255, blank=True, null=True)
     valor = models.DecimalField(
