@@ -1,3 +1,5 @@
+{% load static %}
+
 <!--filter buttons-->    
 <div class="
     overflow-hidden
@@ -10,65 +12,85 @@
         flex">
         
         <div class="overflow-x-auto px-2 pb-1 pt-6 sm:pt-8 flex gap-3 no-scrollbar">
-        <a id="" href="{% url "finance:caixa"%}?data=hoje"
+        <a id="hoje" href="{% url "finance:caixa" %}?data=hoje"
             class="
             tracking-wide
             px-3 sm:px-3 py-[1.5px] sm:py-[3px]
             ring-1
             text-[13px]
-            text-black/40 dark:text-white/55
-            ring-black/10 dark:ring-white/20
+            {% if request.GET.data == 'hoje' %}
+                bg-blue-50 dark:bg-blue-950
+                text-blue-500 dark:text-blue-200
+                ring-blue-500 dark:ring-blue-500
+            {% else %}
+                text-black/40 dark:text-white/55
+                ring-black/10 dark:ring-white/20
+                dark:bg-primary
+            {% endif %}
             relative  
-            rounded-full
-            dark:bg-primary         
-            flex-shrink-0">    
-            <span class="">hoje</span>
+            rounded-full flex-shrink-0">    
+            <span>hoje</span>
+        </a> 
+
+        <a id="semana" href="{% url "finance:caixa" %}?data=semana"
+            class="
+            tracking-wide
+            px-3 sm:px-3 py-[1.5px] sm:py-[3px]
+            ring-1
+            text-[13px]
+            {% if request.GET.data == 'semana' %}
+                bg-blue-50 dark:bg-blue-950
+                text-blue-500 dark:text-blue-200
+                ring-blue-500 dark:ring-blue-500
+            {% else %}
+                text-black/40 dark:text-white/55
+                ring-black/10 dark:ring-white/20
+                dark:bg-primary
+            {% endif %}
+            relative  
+            rounded-full flex-shrink-0">     
+            <span class="">semana</span>
         </a>  
 
-        <button id=""
+        <a id="mes" href="{% url "finance:caixa" %}?data=mes"
             class="
             tracking-wide
             px-3 sm:px-3 py-[1.5px] sm:py-[3px]
             ring-1
             text-[13px]
-            bg-blue-50 dark:bg-blue-950
-            text-blue-500 dark:text-blue-200
-            ring-blue-500 dark:ring-blue-500
+            {% if request.GET.data == 'mes' %}
+                bg-blue-50 dark:bg-blue-950
+                text-blue-500 dark:text-blue-200
+                ring-blue-500 dark:ring-blue-500
+            {% else %}
+                text-black/40 dark:text-white/55
+                ring-black/10 dark:ring-white/20
+                dark:bg-primary
+            {% endif %}
             relative  
-            rounded-full        
-            flex-shrink-0">  
-            <span class="">semana</span>
-        </button>  
-
-        <button id=""
-            class="
-            tracking-wide
-            px-3 sm:px-3 py-[1.5px] sm:py-[3px]
-            ring-1
-            text-[13px]
-            text-black/40 dark:text-white/55
-            ring-black/10 dark:ring-white/20
-            relative  
-            rounded-full
-            dark:bg-primary         
-            flex-shrink-0">    
+            rounded-full flex-shrink-0">  
             <span class="">novembro</span>
-        </button>   
+        </a>   
 
-        <button id=""
+        <a id="periodo" href="{% url "finance:caixa" %}?data=periodo"
             class="
             tracking-wide
             px-3 sm:px-3 py-[1.5px] sm:py-[3px]
             ring-1
             text-[13px]
-            text-black/40 dark:text-white/55
-            ring-black/10 dark:ring-white/20
+            {% if request.GET.data == 'periodo' %}
+                bg-blue-50 dark:bg-blue-950
+                text-blue-500 dark:text-blue-200
+                ring-blue-500 dark:ring-blue-500
+            {% else %}
+                text-black/40 dark:text-white/55
+                ring-black/10 dark:ring-white/20
+                dark:bg-primary
+            {% endif %}
             relative  
-            rounded-full
-            dark:bg-primary         
-            flex-shrink-0">  
+            rounded-full flex-shrink-0">  
             <span class="">período</span>
-        </button>                                          
+        </a>                                          
         </div>    
     </div>
 </div>
@@ -355,3 +377,5 @@
 
     </div>
 </div>
+
+<script src="{% static "js/finance/filter.js" %}"></script>
