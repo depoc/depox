@@ -17,7 +17,7 @@ document.addEventListener('keydown', function(event) {
         return;
     }
 
-    if (event.key.toLowerCase() === 'i') {
+    if (event.key.toLowerCase() === 'h') {
         window.location.href = '/erp';
     }
 });
