@@ -1,5 +1,5 @@
 from django.utils.timezone import now, localtime
-from django.db.models import Count
+from datetime import datetime, timedelta
 from django.db.models.functions import TruncDate
 
 from .models import BankAccount, Transactions
@@ -64,6 +64,10 @@ class Finance:
     @staticmethod
     def get_transactions_by_date(request) -> dict:
         today = localtime(now()).date()
+        start_of_week = today - timedelta(days=today.weekday() + 1 if today.weekday() != 6 else 0)
+        end_of_week = start_of_week + timedelta(days=6)
+
+
         company = request.user.company
         banks = BankAccount.objects.filter(company=company)
 
@@ -76,6 +80,11 @@ class Finance:
 
         if request.GET.get('data') == 'hoje':
             transactions = transactions.filter(created__date=today)
+        elif request.GET.get('data') == 'semana':
+            transactions = transactions.filter(
+                created__date__gte=start_of_week,
+                created__date__lte=end_of_week,
+            )
 
         transactions_group = {}
         for transaction in transactions:
