@@ -64,9 +64,16 @@ class Finance:
     @staticmethod
     def get_transactions_by_date(request) -> dict:
         today = localtime(now()).date()
-        start_of_week = today - timedelta(days=today.weekday() + 1 if today.weekday() != 6 else 0)
+        start_of_week = today - timedelta(days=today.weekday())
         end_of_week = start_of_week + timedelta(days=6)
+        start_of_month = today.replace(day=1)
 
+        if today.month == 12:
+            next_month = today.replace(year=today.year + 1, month=1, day=1)
+        else:
+            next_month = today.replace(month=today.month + 1, day=1)
+            
+        end_of_month = next_month - timedelta(days=1)        
 
         company = request.user.company
         banks = BankAccount.objects.filter(company=company)
@@ -85,6 +92,11 @@ class Finance:
                 created__date__gte=start_of_week,
                 created__date__lte=end_of_week,
             )
+        elif request.GET.get('data') == 'mes':
+            transactions = transactions.filter(
+                created__date__gte=start_of_month,
+                created__date__lte=end_of_month,
+            )    
 
         transactions_group = {}
         for transaction in transactions:
