@@ -39,3 +39,9 @@ def format_money(number):
     money = f"{number:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
     
     return money
+
+@register.filter
+def absolute_value(value):
+    result = abs(value)
+
+    return result

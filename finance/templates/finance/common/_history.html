@@ -1,4 +1,5 @@
 {% load static %}
+{% load filters %}
 
 <!--filter buttons-->    
 <div class="
@@ -330,7 +331,7 @@
                             onclick="historyButton(this)" 
                             data-conta="{{ transaction.conta }}" 
                             data-tipo="{{ transaction.tipo }}" 
-                            data-valor="{{ transaction.valor }}" 
+                            data-valor="{{ transaction.valor | absolute_value }}" 
                             data-contato="{{ transaction.contato }}" 
                             data-descricao="{{ transaction.descricao | lower }}" 
                             data-categoria="{{ transaction.categoria | lower }}"
@@ -360,7 +361,7 @@
                                 </button>
                             </td>
                             {% endif %}
-                            <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">R$ {{ transaction.valor }}</td>
+                            <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">R$ {{ transaction.valor | absolute_value }}</td>
                             <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 text-end sm:text-start sm:rounded-none rounded-e-3xl">
                                 <span class="ring-1 ring-black/15 dark:ring-white/20 rounded-md px-[6px] py-[2px] text-[13px] sm:text-sm">
                                     <kbd>{{ transaction.conta }}</kbd>
