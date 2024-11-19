@@ -1,8 +1,10 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from erp.services import Settings
 from .services import Finance
+
+from .models import Transactions, BankAccount
 
 
 def has_company(user):
@@ -14,3 +16,12 @@ def caixa(request):
     context.update(Finance.context(request))
 
     return render(request, 'finance/caixa.html', context)
+
+@login_required(login_url='users:login')
+def delete_transaction(request, pk):
+    transaction = Transactions.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        transaction.delete()
+
+    return redirect('finance:caixa') 

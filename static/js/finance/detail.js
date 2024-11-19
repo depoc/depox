@@ -6,6 +6,7 @@ function historyButton(row) {
   history.classList.add('flex')
 
   // Access data attributes
+  const id = row.getAttribute('data-id');
   const conta = row.getAttribute('data-conta');
   let tipo = row.getAttribute('data-tipo');
   const valor = row.getAttribute('data-valor');
@@ -23,6 +24,7 @@ function historyButton(row) {
   }
 
   // Populate modal fields
+  document.getElementById('modal-id').textContent = id;
   document.getElementById('modal-conta').textContent = conta;
   document.getElementById('modal-tipo').textContent = tipo;
   document.getElementById('modal-valor').textContent = valor;
@@ -30,6 +32,11 @@ function historyButton(row) {
   document.getElementById('modal-descricao').textContent = descricao;
   document.getElementById('modal-categoria').textContent = categoria;  
   document.getElementById('modal-created').textContent = created;  
+
+  // Update form action dynamically
+  const form = document.getElementById('delete-transaction-form');
+  const actionUrl = "lancamento/0/excluir/".replace('0', id);
+  form.setAttribute('action', actionUrl);
   }
 
 closeHistory.addEventListener('click', () => {
