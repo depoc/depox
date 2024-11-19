@@ -110,7 +110,7 @@
     </div>
 </div>
 
-
+<!--balance info-->
 <div class="
     overflow-hidden
     sm:px-3
@@ -150,7 +150,7 @@
                     bottom-0 left-2">
                     R$
                     <span class="text-black dark:text-white text-base sm:text-lg">
-                        {{ recebimentos }}
+                        {{ recebimentos | format_money }}
                     </span>
                 </p>                
             </button>    
@@ -182,7 +182,7 @@
                     bottom-0 left-2">
                     R$
                     <span class="text-black dark:text-white text-base sm:text-lg">
-                        {{ pagamentos }}
+                        {{ pagamentos | format_money}}
                     </span>
                 </p>                
             </button>    
@@ -215,7 +215,7 @@
                     bottom-0 left-2">
                         R$
                     <span class="text-green-600 dark:text-green-300/80 text-base sm:text-lg">
-                        {{ balanco }}
+                        {{ balanco | format_money }}
                     </span>
                 </p>                
             </button>      
@@ -247,7 +247,7 @@
                     bottom-0 left-2">
                         R$
                     <span class="text-red-500 dark:text-red-100/90 text-base sm:text-lg">
-                        {{ balanco }}
+                        {{ balanco | format_money }}
                     </span>
                 </p>                
             </button>
@@ -279,7 +279,7 @@
                     bottom-0 left-2">
                     R$
                     <span class="text-black dark:text-white text-base sm:text-lg">
-                        {{ balanco }}
+                        {{ balanco | format_money }}
                     </span>
                 </p>                
             </button>                         
@@ -332,7 +332,7 @@
                             data-id="{{ transaction.id }}"
                             data-conta="{{ transaction.conta }}" 
                             data-tipo="{{ transaction.tipo }}" 
-                            data-valor="{{ transaction.valor | absolute_value }}" 
+                            data-valor="{{ transaction.valor | absolute_value | format_money }}" 
                             data-contato="{{ transaction.contato }}" 
                             data-descricao="{{ transaction.descricao | lower }}" 
                             data-categoria="{{ transaction.categoria | lower }}"
@@ -362,7 +362,7 @@
                                 </button>
                             </td>
                             {% endif %}
-                            <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">R$ {{ transaction.valor | absolute_value }}</td>
+                            <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">R$ {{ transaction.valor | absolute_value | format_money }}</td>
                             <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 text-end sm:text-start sm:rounded-none rounded-e-3xl">
                                 <span class="ring-1 ring-black/15 dark:ring-white/20 rounded-md px-[6px] py-[2px] text-[13px] sm:text-sm">
                                     <kbd>{{ transaction.conta }}</kbd>
