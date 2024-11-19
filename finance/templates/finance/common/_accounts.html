@@ -14,15 +14,23 @@
 
         <div class="overflow-x-auto p-1 flex gap-2 no-scrollbar">
             {% for bank in user.company.banks.all  %}
-            <button id=""
+            <a id="" href="?banco={{ bank.id }}{% if request.GET.data %}&data={{ request.GET.data }}{% endif %}"
                 class="
-                ring-1 ring-black/5 dark:ring-white/10
+                {% if request.GET.banco == bank.id|stringformat:'s' %}
+                    ring-1 
+                    ring-black/5 dark:ring-white/10s
+                    bg-black/5 
+                    dark:bg-secondary     
+                {% else %}
+                    ring-1 
+                    ring-black/5 dark:ring-white/10
+                    bg-white 
+                    dark:bg-secondary     
+                {% endif %}                
                 p-4
                 relative  
                 rounded-lg
-                shadow-sm
-                bg-white 
-                dark:bg-secondary         
+                shadow-sm    
                 min-h-[150px] sm:min-h-[200px]
                 min-w-[150px] sm:min-w-[200px]
                 flex-shrink-0">     
@@ -63,7 +71,7 @@
                     </span>
                 </p>                
                 {% endif %}
-            </button>
+            </a>
             {% endfor %}
             <!--+-->
             <button id=""
