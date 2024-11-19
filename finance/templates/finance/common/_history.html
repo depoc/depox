@@ -326,7 +326,15 @@
 
                     {% for transaction in transactions %}
                     <tbody>
-                        <tr class="cursor-pointer hover:bg-background dark:hover:bg-black/20" onclick="historyButton()">
+                        <tr class="cursor-pointer hover:bg-background dark:hover:bg-black/20" 
+                            onclick="historyButton(this)" 
+                            data-conta="{{ transaction.conta }}" 
+                            data-tipo="{{ transaction.tipo }}" 
+                            data-valor="{{ transaction.valor }}" 
+                            data-contato="{{ transaction.contato }}" 
+                            data-descricao="{{ transaction.descricao | lower }}" 
+                            data-categoria="{{ transaction.categoria | lower }}"
+                            data-created="{{ transaction.created|date:"d M, Y • H:i" | upper }}">                            
                             {% if transaction.tipo == 'pagar' %}
                             <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 rounded-s-3xl">
                                 <button class="rounded-full p-[6px] border border-black/60 dark:border-white/65">
@@ -384,6 +392,8 @@
                         tracking-wide">
                         👀
                     </p>
+                    <p class="text-start text-xs text-black/20 dark:text-white/20">
+                        {{ current_date|date:"d M, Y" | upper }}</p>
                 {% endif %} 
 
             </table>
