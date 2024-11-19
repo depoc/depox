@@ -18,7 +18,7 @@ class TransactionsForm(ModelForm):
             field.widget.attrs.update({
                 'autofocus': True,
                 'class': '''
-                    placeholder:text-black/40 dark:placeholder:text-white/50
+                    placeholder:text-black dark:placeholder:text-white
                     appearance-none w-full sm:w-1/2 text-center
                     bg-transparent
                     outline-none''',

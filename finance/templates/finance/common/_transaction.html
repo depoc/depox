@@ -47,10 +47,10 @@
             </input>
 
             <div class="relative justify-center items-center px-1 pt-0 pb-2">
-                <label class="flex text-black/40 dark:text-white/50 text-4xl text-start">
+                <label class="flex text-black dark:text-white text-4xl text-start">
                     R$
                     <input
-                        class="px-1 w-fit text-4xl outline-none bg-transparent text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/50"
+                        class="px-1 w-fit text-4xl outline-none bg-transparent text-black dark:text-white placeholder:text-black dark:placeholder:text-white"
                         name="valor"
                         id="valor"
                         inputmode="decimal"
@@ -68,17 +68,17 @@
             <div class="flow-root rounded-lg bg-background dark:bg-secondary ring-1 ring-black/10 dark:ring-white/20 py-2 mt-8 sm:mt-10">
                 <dl class="-my-3 divide-y divide-black/5 text-sm">
                   <div class="p-3">
-                    <dt class="text-black/60 dark:text-white/50 text-base">
+                    <dt class="text-black/70 dark:text-white/70 text-sm">
                         {{ transaction.conta }}
                     </dt>
                   </div>
                 </dl>
             </div>
 
-            <div class="flow-root rounded-lg bg-white dark:bg-secondary ring-1 ring-black/10 dark:ring-white/20 py-2 mt-4 sm:mt-6">
+            <div class="flow-root rounded-lg bg-background dark:bg-secondary ring-1 ring-black/10 dark:ring-white/20 py-2 mt-4 sm:mt-6">
                 <dl class="-my-3 divide-y divide-black/5 dark:divide-white/5 text-sm">              
                   <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="text-black/60 dark:text-white/50">contato</dt>
+                    <dt class="text-black/70 dark:text-white/70">contato</dt>
                     <input
                         name="contato"
                         id="contato"
@@ -88,7 +88,7 @@
                   </div>
               
                   <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="text-black/60 dark:text-white/50">descrição</dt>
+                    <dt class="text-black/70 dark:text-white/70">descrição</dt>
                     <input
                         name="descricao"
                         id="descricao"
@@ -98,7 +98,7 @@
                   </div>
               
                   <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="text-black/60 dark:text-white/50">categoria</dt>
+                    <dt class="text-black/70 dark:text-white/70">categoria</dt>
                     <input
                         name="categoria"
                         id="categoria"
@@ -110,7 +110,7 @@
             </div>
 
             <!--bottom-right svg-->  
-            <div class="absolute bottom-4 right-4 text-sm leading-5">
+            <div class="absolute bottom-4 right-3 text-sm leading-5">
                 <p
                     class="
                         px-2
@@ -123,7 +123,7 @@
                         type="submit" 
                         name="add-transaction"
                         class="text-sm font-semibold text-black items-center dark:text-white">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-black/75 dark:text-white/75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 11.917 9.724 16.5 19 7.5"/>
                         </svg>                                                            
                     </button>
@@ -141,7 +141,7 @@
                     items-center justify-center 
                     aspect-square rounded-md">
                 <a id="closeTransaction" href="javascript:history.back()">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-black/75 dark:text-white/75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
                     </svg>                                  
                 </a>
