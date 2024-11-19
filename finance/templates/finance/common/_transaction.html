@@ -24,8 +24,6 @@
         rounded-lg
         relative">
   
-        <button id="closeTransaction" class="absolute top-4 right-4 text-lg text-black px-4 py-2 rounded"></button>
-
         <!--empty top-left info-->
         <div class="w-full">
             <p 
@@ -45,10 +43,10 @@
                 name="tipo"
                 id="tipo"
                 value=""
-                class="px-1 text-black/50 dark:text-white/50 bg-transparent outline-none text-[13px] text-start">
+                class="px-1 text-black/45 dark:text-white/40 bg-transparent outline-none tracking-widest text-[14px] sm:text-[15px] text-start">
             </input>
 
-            <div class="relative justify-center items-center px-1 pt-1 pb-2">
+            <div class="relative justify-center items-center px-1 pt-0 pb-2">
                 <label class="flex text-black/40 dark:text-white/50 text-4xl text-start">
                     R$
                     <input
@@ -112,21 +110,22 @@
             </div>
 
             <!--bottom-right svg-->  
-            <div class="absolute bottom-5 right-4 text-sm leading-5">
+            <div class="absolute bottom-4 right-4 text-sm leading-5">
                 <p
                     class="
-                        ring-1 ring-black/10 dark:ring-white/10
                         px-2
                         group
                         flex 
                         w-fit
                         items-center justify-center 
-                        rounded-md">
+                        rounded-full">
                     <button
                         type="submit" 
                         name="add-transaction"
                         class="text-sm font-semibold text-black items-center dark:text-white">
-                        salvar                                  
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 11.917 9.724 16.5 19 7.5"/>
+                        </svg>                                                            
                     </button>
                 </p>
             </div>                   
@@ -141,7 +140,7 @@
                     h-fit w-fit
                     items-center justify-center 
                     aspect-square rounded-md">
-                <a href="{% url "erp:index" %}">
+                <a id="closeTransaction" href="javascript:history.back()">
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
                     </svg>                                  
