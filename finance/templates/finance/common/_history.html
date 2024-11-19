@@ -282,6 +282,7 @@
                     <col class="w-fit">
                 </colgroup>            
 
+                {% if transactions_group %}
                 {% for date, transactions in transactions_group.items %}
                     <thead>
                         <tr>
@@ -341,7 +342,18 @@
                         <tr class="h-8"></tr>
                     </tbody>     
                     {% endif %}   
-                {% endfor %}     
+                {% endfor %}    
+
+                {% else %}
+                    <p class="
+                        p-4
+                        text-4xl
+                        text-center
+                        tracking-wide">
+                        👀
+                    </p>
+                {% endif %} 
+
             </table>
         </div>
     </div> 
