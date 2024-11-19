@@ -1,4 +1,4 @@
-from django.utils.timezone import now
+from django.utils.timezone import now, localtime
 from django.db.models import Count
 from django.db.models.functions import TruncDate
 
@@ -63,7 +63,7 @@ class Finance:
     
     @staticmethod
     def get_transactions_by_date(request) -> dict:
-        today = now().date()
+        today = localtime(now()).date()
         company = request.user.company
         banks = BankAccount.objects.filter(company=company)
 
