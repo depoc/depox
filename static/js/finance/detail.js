@@ -7,12 +7,20 @@ function historyButton(row) {
 
   // Access data attributes
   const conta = row.getAttribute('data-conta');
-  const tipo = row.getAttribute('data-tipo');
+  let tipo = row.getAttribute('data-tipo');
   const valor = row.getAttribute('data-valor');
   const contato = row.getAttribute('data-contato');
   const descricao = row.getAttribute('data-descricao');
   const categoria = row.getAttribute('data-categoria');
   const created = row.getAttribute('data-created');
+
+  if (tipo === "receber") {
+    tipo = "recebimento";
+  } else if (tipo === "pagar") {
+    tipo = "pagamento"
+  } else {
+    tipo = "transferência"
+  }
 
   // Populate modal fields
   document.getElementById('modal-conta').textContent = conta;
