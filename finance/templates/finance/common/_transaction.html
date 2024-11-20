@@ -22,19 +22,7 @@
         md:w-8/12
         w-11/12 h-[75%]
         rounded-lg
-        relative">
-  
-        <!--empty top-left info-->
-        <div class="w-full">
-            <p 
-                class="
-                text-xl font-normal lg:text-8xl tracking-tight 
-                text-primary dark:text-white"> 
-                    
-                <div class="relative flex items-center gap-4">
-                </div>
-            </p>
-        </div>       
+        relative"> 
 
         <form action="{% url "finance:caixa" %}" method="POST" class="">
             {% csrf_token %}
