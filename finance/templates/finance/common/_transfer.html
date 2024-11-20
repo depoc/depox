@@ -38,7 +38,7 @@
                 <label class="flex text-black dark:text-white text-4xl text-start">
                     R$
                     <input
-                        class="px-1 w-fit text-4xl outline-none bg-transparent text-black dark:text-white placeholder:text-black dark:placeholder:text-white"
+                        class="valor px-1 w-fit text-4xl outline-none bg-transparent text-black dark:text-white placeholder:text-black dark:placeholder:text-white"
                         name="valor"
                         id="valor"
                         inputmode="decimal"
@@ -154,12 +154,14 @@
 <script src="{% static "js/finance/transfer.js" %}"></script>
 <script src="https://unpkg.com/imask"></script>
 <script>
-    const valorInput = document.getElementById('valor');
-    IMask(valorInput, {
-        mask: Number,
-        scale: 2,            // Number of decimal places
-        thousandsSeparator: '.', // Thousands separator
-        radix: ',',           // Decimal separator
-        padFractionalZeros: true, // Ensure 2 decimal places
+    const valorInputs = document.querySelectorAll('.valor');
+    valorInputs.forEach(input => {
+        IMask(input, {
+            mask: Number,
+            scale: 2,
+            thousandsSeparator: '.',
+            radix: ',',
+            padFractionalZeros: true,
+        });
     });
 </script>
