@@ -54,4 +54,4 @@ class Transactions(models.Model):
     )    
 
     def __str__(self):
-        return f'R${self.valor} --- {self.created.date()}' 
+        return f'{self.descricao}' 
