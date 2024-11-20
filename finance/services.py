@@ -80,8 +80,6 @@ class Finance:
                 linked=transaction,
                 )                     
                 transfer_to_destination_account.save()
-        else:
-            print(form.errors)
 
         return form
     
