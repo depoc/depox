@@ -20,14 +20,10 @@ class Finance:
         Lida com a lógica de adicionar transações e calcula o saldo total das contas bancárias.
         """
         form = TransactionsForm(user=request.user)
-        conta = request.POST.get('conta')
         tipo = request.POST.get('tipo')
 
-        if conta:
-            bank = BankAccount.objects.get(id=conta)
-
         if request.method == 'POST' and 'add-transaction' in request.POST:
-            form = Finance._process_transaction(request, form, bank, tipo)
+            form = Finance._process_transaction(request, form, tipo)
 
         # Dados da empresa e bancos
         company = request.user.company
@@ -39,7 +35,7 @@ class Finance:
         return {'transaction': form, 'saldo_total': saldo_total, 'banks': banks}
 
     @staticmethod
-    def _process_transaction(request, form, bank, tipo) -> TransactionsForm:
+    def _process_transaction(request, form, tipo) -> TransactionsForm:
         """
         Processa uma transação, atualiza o saldo do banco e salva o formulário de transação.
         """
@@ -52,14 +48,38 @@ class Finance:
                 valor = float(valor_cleaned)
                 post_data['valor'] = valor
 
-            if tipo == 'pagar':
+            elif tipo == 'pagar':
                 valor = float(valor_cleaned) * (-1)
                 post_data['valor'] = valor
+
+            elif tipo == 'transferir':
+                valor = float(valor_cleaned) * (-1)
+                post_data['valor'] = valor      
+                post_data['contato'] = '...'
+
+                origin_account = BankAccount.objects.get(id=post_data['conta'])
+                destination_account = BankAccount.objects.get(id=post_data['conta2'])
+                
+                post_data['descricao'] = f'transferência enviada → {destination_account}'
+
+                transfer_to_destination_account = Transactions(
+                    tipo = 'transferir',
+                    valor = valor * (-1),
+                    conta = destination_account,
+                    contato = '...',
+                    descricao = f'transferência recebida ← {origin_account}',
+                    categoria = 'transferência',
+                    created_by = request.user,
+                )                
 
         post_data['created_by'] = request.user
         form = TransactionsForm(post_data, user=request.user)
         if form.is_valid() and valor != 0:
             form.save()
+            if tipo == 'transferir':
+                transfer_to_destination_account.save()
+        else:
+            print(form.errors)
 
         return form
     
