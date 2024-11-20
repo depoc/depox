@@ -56,8 +56,9 @@ class Finance:
                 valor = float(valor_cleaned) * (-1)
                 post_data['valor'] = valor
 
+        post_data['created_by'] = request.user
         form = TransactionsForm(post_data, user=request.user)
-        if form.is_valid():
+        if form.is_valid() and valor != 0:
             form.save()
 
         return form

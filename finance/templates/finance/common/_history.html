@@ -329,6 +329,7 @@
                     <tbody>
                         <tr class="cursor-pointer hover:bg-background dark:hover:bg-black/20" 
                             onclick="historyButton(this)" 
+                            data-created-by="{{ transaction.created_by }}"
                             data-id="{{ transaction.id }}"
                             data-conta="{{ transaction.conta }}" 
                             data-tipo="{{ transaction.tipo }}" 

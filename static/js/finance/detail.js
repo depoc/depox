@@ -6,6 +6,7 @@ function historyButton(row) {
   history.classList.add('flex')
 
   // Access data attributes
+  const createdBy = row.getAttribute('data-created-by');
   const id = row.getAttribute('data-id');
   const conta = row.getAttribute('data-conta');
   let tipo = row.getAttribute('data-tipo');
@@ -24,6 +25,7 @@ function historyButton(row) {
   }
 
   // Populate modal fields
+  document.getElementById('modal-created-by').textContent = createdBy;
   document.getElementById('modal-id').textContent = id;
   document.getElementById('modal-conta').textContent = conta;
   document.getElementById('modal-tipo').textContent = tipo;
