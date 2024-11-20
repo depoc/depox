@@ -19,7 +19,7 @@ class TransactionsForm(ModelForm):
                 'autofocus': True,
                 'class': '''
                     placeholder:text-black dark:placeholder:text-white
-                    appearance-none w-full sm:w-1/2 text-center
+                    appearance-none w-full sm:w-1/2
                     bg-transparent
                     outline-none''',
             })            
