@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 
 from erp.models import Company
 
@@ -31,7 +32,11 @@ class Transactions(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     tipo = models.CharField(max_length=255, blank=True, null=True)
     valor = models.DecimalField(
-        max_digits=10, decimal_places=2, blank=False, null=False,
+        max_digits=10,
+        decimal_places=2,
+        blank=False,
+        null=False,
+        validators=[MinValueValidator(0.001)],
     )
     conta = models.ForeignKey(
         BankAccount, on_delete=models.CASCADE, default='conta',
