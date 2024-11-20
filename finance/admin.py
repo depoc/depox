@@ -16,6 +16,7 @@ class BankAccountAdmin(admin.ModelAdmin):
 
 class TransactionsAdmin(admin.ModelAdmin):
     list_display = ('descricao', 'valor', 'conta', 'created')
+    ordering = ['-created']
 
 admin.site.register(BankAccount, BankAccountAdmin)
 admin.site.register(Transactions, TransactionsAdmin)
