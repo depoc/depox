@@ -32,3 +32,10 @@ def update_bank_account_balance_on_delete(sender, instance, **kwargs):
         total_debit = Transactions.objects.filter(conta=bank_account).aggregate(Sum('valor'))['valor__sum'] or 0
         bank_account.saldo = total_debit
         bank_account.save()        
+
+@receiver(post_save, sender=Transactions)
+def link_transfer_transaction(sender, instance, created, **kwargs):
+    linked_transaction = instance.linked
+    if created and linked_transaction:
+        linked_transaction.linked = instance
+        linked_transaction.save()
