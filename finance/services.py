@@ -61,9 +61,8 @@ class Finance:
                     .get(id=post_data['conta2'])                   
                 
                 post_data['valor'] = valor      
-                post_data['contato'] = '...'                
-                post_data['descricao'] = f' \
-                    transferência enviada → {destination_account}'          
+                post_data['contato'] = request.user.name              
+                post_data['descricao'] = f'enviada → {destination_account}'          
 
         post_data['created_by'] = request.user
         form = TransactionsForm(post_data, user=request.user)
@@ -74,8 +73,8 @@ class Finance:
                 tipo = 'transferir',
                 valor = valor * (-1),
                 conta = destination_account,
-                contato = '...',
-                descricao = f'transferência recebida ← {origin_account}',
+                contato = request.user.name,
+                descricao = f'recebida ← {origin_account}',
                 categoria = 'transferência',
                 created_by = request.user,
                 linked=transaction,
