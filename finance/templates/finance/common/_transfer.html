@@ -57,7 +57,7 @@
                 <dl class="-my-3 divide-y divide-black/5">
                   <div class="p-3">
                     <dt class="text-black/70 dark:text-white/70 text-sm text-start">
-                        {{ transaction.conta }}
+                        {{ transaction.conta | lower }}
                     </dt>
                   </div>
                 </dl>
@@ -74,7 +74,7 @@
                             class="w-full bg-transparent text-start outline-none appearance-none">
                             <option value="">conta destino</option>
                             {% for bank in banks %}
-                            <option value="{{ bank.id }}">{{ bank.name }}</option>
+                            <option value="{{ bank.id }}">{{ bank.name | lower }}</option>
                             {% endfor %}
                         </select>
                     </dt>
