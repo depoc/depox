@@ -196,7 +196,12 @@ class Finance:
         # atualiza as transações automaticamento ao criar nova conta
         context.update(Finance.get_transactions_by_date(request)) 
         # atualize bancos automaticamente ao criar nova conta
-        context.update(Finance.add_transactions(request))
+        company = request.user.company
+        banks = BankAccount.objects.filter(company=company).order_by('-saldo')
 
-        context.update({'bank_account_form': form, 'saldo_total': saldo_total})
+        context.update({
+            'bank_account_form': form,
+            'saldo_total': saldo_total,
+            'banks': banks
+            })
         return context
