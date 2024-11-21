@@ -193,8 +193,10 @@ class Finance:
         # atualiza o saldo total automaticamento ao criar nova conta
         banks = BankAccount.objects.filter(company=request.user.company)
         saldo_total = sum(bank.saldo for bank in banks)
-        # atualiza o transações automaticamento ao criar nova conta
-        context.update(Finance.get_transactions_by_date(request))   
+        # atualiza as transações automaticamento ao criar nova conta
+        context.update(Finance.get_transactions_by_date(request)) 
+        # atualize bancos automaticamente ao criar nova conta
+        context.update(Finance.add_transactions(request))
 
         context.update({'bank_account_form': form, 'saldo_total': saldo_total})
         return context
