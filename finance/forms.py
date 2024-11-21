@@ -23,3 +23,9 @@ class TransactionsForm(ModelForm):
                     bg-transparent
                     outline-none''',
             })            
+
+
+class BankAccountForm(ModelForm):
+    class Meta:
+        model = BankAccount
+        fields = '__all__'

@@ -1,9 +1,9 @@
 from django.utils.timezone import now, localtime
-from datetime import datetime, timedelta
+from datetime import timedelta
 from django.db.models.functions import TruncDate
 
 from .models import BankAccount, Transactions
-from .forms import TransactionsForm
+from .forms import TransactionsForm, BankAccountForm
 
 
 class Finance:
@@ -12,6 +12,7 @@ class Finance:
         context = {}
         context.update(Finance.add_transactions(request))
         context.update(Finance.get_transactions_by_date(request))
+        context.update(Finance.add_bank_account(request))
         return context
 
     @staticmethod
@@ -160,3 +161,40 @@ class Finance:
             'recebimentos': recebimentos,
             'balanco': balanco,
         }                    
+    
+    @staticmethod
+    def add_bank_account(request) -> dict:
+        form = BankAccountForm()      
+
+        post_data = request.POST.copy()
+        saldo = post_data.get('saldo', '')
+        post_data['company'] = request.user.company
+        post_data['saldo'] = 0
+
+        if request.method == 'POST' and 'add-account' in request.POST:
+            form = BankAccountForm(post_data)
+            if form.is_valid():
+                bank_account = form.save()
+
+            if saldo:
+                saldo_cleaned = saldo.replace('.', '').replace(',', '.')     
+                transaction = Transactions(
+                        tipo='receber',
+                        valor=saldo_cleaned,
+                        conta=bank_account,
+                        contato='...',
+                        descricao='saldo inicial',
+                        categoria='...',
+                        created_by=request.user,
+                    )     
+                transaction.save()           
+
+        context = {} 
+        # atualiza o saldo total automaticamento ao criar nova conta
+        banks = BankAccount.objects.filter(company=request.user.company)
+        saldo_total = sum(bank.saldo for bank in banks)
+        # atualiza o transações automaticamento ao criar nova conta
+        context.update(Finance.get_transactions_by_date(request))   
+
+        context.update({'bank_account_form': form, 'saldo_total': saldo_total})
+        return context
