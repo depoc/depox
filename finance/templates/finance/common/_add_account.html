@@ -26,57 +26,64 @@
 
         <form action="{% url "finance:caixa" %}" method="POST" class="">
             {% csrf_token %}
+            <div
+                class="px-1 my-6 text-4xl text-start tracking-normal sm:tracking-widest text-black/10 dark:text-white/10">
+                <kbd>nova conta</kbd>
+            </div>
 
-            <input
-                name="tipo"
-                id="tipo"
-                value="adicionar conta"
-                class="px-1 text-black/45 dark:text-white/40 bg-transparent outline-none tracking-widest text-[14px] sm:text-[15px] text-start">
-            </input>
+            <div
+                class="px-1 text-sm text-start text-black/70 dark:text-white/70">
+                <p>saldo inicial</p>
+            </div>
 
             <div class="relative justify-center items-center px-1 pt-0 pb-2">
-                <label class="flex text-black dark:text-white text-4xl text-start">
+                <label class="flex text-black/40 dark:text-white/40 text-3xl">
                     R$
                     <input
-                        class="valor px-1 w-fit text-4xl outline-none bg-transparent text-black dark:text-white placeholder:text-black dark:placeholder:text-white"
-                        name="valor"
-                        id="valor"
+                        class="valor px-1 w-fit text-3xl outline-none bg-transparent text-black/40 dark:text-white/40 placeholder:text-black/40 dark:placeholder:text-white/40"
+                        name="saldo"
+                        id="saldo"
                         inputmode="decimal"
                         placeholder="0,00">
                     </input>
                 </label>
-            </div>
+            </div>      
 
-            <div class="px-1 flex justify-start items-center">
-                <p class="text-black/50 dark:text-white/50 text-xs">
-                    <kbd>{{ current_date|date:"d M, Y" | upper }}</kbd>
-                </p>
-            </div>           
-
-            <div class="flow-root rounded-lg bg-background dark:bg-secondary ring-1 ring-black/10 dark:ring-white/20 py-2 mt-4 sm:mt-4">
+            <div class="flow-root rounded-lg bg-background dark:bg-secondary ring-1 ring-black/10 dark:ring-white/20 py-2 mt-2">
                 <dl class="-my-3 divide-y divide-black/5 dark:divide-white/5 text-sm">
               
                   <div class="grid grid-cols-1 gap-1 p-3">
-                    <dt class="text-black/70 dark:text-white/70">descrição</dt>
+                    <dt class="text-black/70 dark:text-white/70">nome</dt>
                     <input
-                        name="descricao"
-                        id="descricao"
-                        value="transferência entre contas"
+                        name="nome"
+                        id="nome"
+                        value=""
                         placeholder="..."
-                        class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
+                        class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
                     </input>
                   </div>
               
-                  <div class="hidden grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="text-black/70 dark:text-white/70">categoria</dt>
+                  <div class="grid grid-cols-1 gap-1 p-3">
+                    <dt class="text-black/70 dark:text-white/70">agência</dt>
                     <input
-                        name="categoria"
-                        id="categoria"
-                        value="transferência"
+                        name="agencia"
+                        id="agencia"
+                        value=""
                         placeholder="..."
-                        class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start sm:text-end">
+                        class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
                     </input>
                   </div>
+
+                  <div class="grid grid-cols-1 gap-1 p-3">
+                    <dt class="text-black/70 dark:text-white/70">conta</dt>
+                    <input
+                        name="conta"
+                        id="conta"
+                        value=""
+                        placeholder="..."
+                        class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
+                    </input>
+                  </div>                  
                 </dl>
             </div>
 
@@ -123,3 +130,16 @@
 </div>
 
 <script src="{% static "js/finance/addAccount.js" %}"></script>
+<script src="https://unpkg.com/imask"></script>
+<script>
+    const valorInputs = document.querySelectorAll('.valor');
+    valorInputs.forEach(input => {
+        IMask(input, {
+            mask: Number,
+            scale: 2,
+            thousandsSeparator: '.',
+            radix: ',',
+            padFractionalZeros: true,
+        });
+    });
+</script>

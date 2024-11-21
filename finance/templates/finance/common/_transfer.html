@@ -152,16 +152,3 @@
 </div>
 
 <script src="{% static "js/finance/transfer.js" %}"></script>
-<script src="https://unpkg.com/imask"></script>
-<script>
-    const valorInputs = document.querySelectorAll('.valor');
-    valorInputs.forEach(input => {
-        IMask(input, {
-            mask: Number,
-            scale: 2,
-            thousandsSeparator: '.',
-            radix: ',',
-            padFractionalZeros: true,
-        });
-    });
-</script>
