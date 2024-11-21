@@ -35,13 +35,13 @@
                 min-h-[150px] sm:min-h-[200px]
                 min-w-[150px] sm:min-w-[200px]
                 flex-shrink-0">     
-                <kbd 
+                <p 
                     class="
                     absolute
                     text-sm sm:text-[17px] text-black/40 dark:text-white/50
                     top-4 left-4">
                     {{ bank.name | lower }}
-                </kbd>
+                </p>
                 {% if bank.saldo|stringformat:"s"|length == 10 or bank.saldo|stringformat:"s"|length == 11 %} 
                 <p
                     class="

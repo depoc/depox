@@ -4,21 +4,20 @@ register = template.Library()
 
 @register.filter
 def first_name(name) -> str:
-    first_name = name.split()[0].lower() if name else ''
-    if first_name == 'depoc':
-        return 'DEPOC'
-    return first_name.capitalize()
+    first_name = name.split()[0].upper() if name else ''
+    return first_name
 
 @register.filter
-def user(name) -> str:
-    first_name = name.split()[0].lower() if name else ''
-    if first_name == 'depoc':
-        return 'admin'
+def bank_account(name) -> str:
+    if name:
+        name = str(name).lower()
+        bank_name = name.split()
+        bank_last_name = bank_name[len(bank_name)-1]
 
-    if len(first_name) <= 9:
-        return first_name
-    else:
-        return 'eu'
+        if len(name) <= 10:
+            return name
+        else:
+            return bank_last_name
     
 @register.filter
 def company(fantasia) -> str:
