@@ -4,18 +4,20 @@
 <div id="editBankAccount" 
     class="
     overflow-hidden
-    sm:px-7 -mt-[141px]
+    px-4 sm:px-7
     col-span-2    
     hidden
     fixed
     inset-0 z-50 
-    justify-center items-end sm:items-center
+    justify-center items-center
     dark:bg-black/25 backdrop-blur-sm">
 
     <div class="
         relative
         overflow-auto
-        flex">
+        flex
+        w-full min-h-[150px] sm:min-h-[200px]
+        rounded-lg">
 
         <div class="overflow-x-auto px-1 pt-1 pb-5 flex gap-2 no-scrollbar">
             {% for bank in banks  %}
