@@ -12,7 +12,9 @@ class TransactionsForm(ModelForm):
         user = kwargs.pop('user')
         super(TransactionsForm, self).__init__(*args, **kwargs)
 
-        self.fields['conta'].queryset = BankAccount.objects.filter(company=user.company)
+        self.fields['conta'].queryset = BankAccount.objects \
+            .filter(company=user.company) \
+            .order_by('-saldo')
 
         for name, field in self.fields.items():
             field.widget.attrs.update({
