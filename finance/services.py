@@ -28,7 +28,7 @@ class Finance:
 
         # Dados da empresa e bancos
         company = request.user.company
-        banks = BankAccount.objects.filter(company=company)
+        banks = BankAccount.objects.filter(company=company).order_by('-saldo')
 
         # Cálculo do saldo total
         saldo_total = sum(bank.saldo for bank in banks)

@@ -13,7 +13,7 @@
         flex">
 
         <div class="overflow-x-auto px-1 pt-1 pb-5 flex gap-2 no-scrollbar">
-            {% for bank in user.company.banks.all  %}
+            {% for bank in banks  %}
             <a id="" href="?banco={{ bank.id }}{% if request.GET.data %}&data={{ request.GET.data }}{% endif %}"
                 class="
                 {% if request.GET.banco == bank.id|stringformat:'s' %}
