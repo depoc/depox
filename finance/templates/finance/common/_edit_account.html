@@ -35,6 +35,14 @@
                 h-full w-full
                 flex-shrink-0">     
 
+                {% if forloop.first %}
+                <div class="px-4 w-full top-0">
+                    <p class="text-center text-[13px] text-black/40 dark:text-white/40">
+                        arraste para o lado
+                    </p>
+                </div>   
+                {% endif %}             
+
                 <form action="{% url "finance:caixa" %}" method="POST" class="">
                     {% csrf_token %}
                     <div
