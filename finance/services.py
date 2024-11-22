@@ -13,6 +13,7 @@ class Finance:
         context.update(Finance.add_transactions(request))
         context.update(Finance.get_transactions_by_date(request))
         context.update(Finance.add_bank_account(request))
+        context.update(Finance.edit_bank_account(request))
         return context
 
     @staticmethod
@@ -205,3 +206,29 @@ class Finance:
             'banks': banks
             })
         return context
+
+    @staticmethod
+    def edit_bank_account(request) -> dict:
+        edit_bank_form = BankAccountForm()
+
+        post_data = request.POST.copy()
+        saldo = post_data.get('saldo', '')
+        saldo_cleaned = saldo.replace('.', '').replace(',', '.')
+
+        bank = BankAccount.objects.get(name="caixa")        
+
+        if saldo:
+            saldo = float(saldo_cleaned)
+            post_data['saldo'] = saldo
+            
+        if request.method == 'POST' and 'edit-account' in request.POST:
+            
+            bank_id = post_data['id']
+            bank = BankAccount.objects.get(id=bank_id)
+            edit_bank_form = BankAccountForm(post_data, instance=bank)
+            if edit_bank_form.is_valid():
+                edit_bank_form.save()
+            else:
+                print(edit_bank_form.errors)
+
+        return {'edit_bank_form': edit_bank_form}
