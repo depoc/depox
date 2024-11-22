@@ -84,7 +84,7 @@
                             <input
                                 name="agencia"
                                 id="agencia"
-                                {% if bank.conta == "None" %}value="{{ bank.conta }}" {% endif %}
+                                {% if bank.agencia %}value="{{ bank.agencia }}" {% endif %}
                                 placeholder="..."
                                 class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
                             </input>
@@ -95,7 +95,7 @@
                             <input
                                 name="conta"
                                 id="conta"
-                                {% if bank.conta == "None" %}value="{{ bank.conta }}" {% endif %}
+                                {% if bank.conta %}value="{{ bank.conta }}" {% endif %}
                                 placeholder="..."
                                 class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
                             </input>
