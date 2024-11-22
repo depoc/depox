@@ -4,43 +4,34 @@
 <div id="editBankAccount" 
     class="
     overflow-hidden
-    px-4 sm:px-7
     col-span-2    
     hidden
     fixed
     inset-0 z-50 
     justify-center items-center
-    dark:bg-black/25 backdrop-blur-sm">
+    bg-background/20 dark:bg-black/40 backdrop-blur-md">
 
     <div class="
         relative
         overflow-auto
         flex
-        w-full min-h-[150px] sm:min-h-[200px]
+        min-h-[150px] max-w-[260px] sm:min-h-fit sm:max-w-[410px]
         rounded-lg">
 
-        <div class="overflow-x-auto px-1 pt-1 pb-5 flex gap-2 no-scrollbar">
+        <div class="overflow-x-auto p-2 py-4 flex gap-3 no-scrollbar">
             {% for bank in banks  %}
-            <a id="" href="?banco={{ bank.id }}{% if request.GET.data %}&data={{ request.GET.data }}{% endif %}"
+            <a
                 class="
-                {% if request.GET.banco == bank.id|stringformat:'s' %}
-                    ring-1 
-                    shadow-lg shadow-black/10
-                    ring-black/10 dark:ring-white/30
-                    bg-white/60
-                    dark:bg-white/5     
-                {% else %}
-                    ring-1 
-                    shadow-sm
-                    ring-black/15 dark:ring-white/20
-                    bg-white 
-                    dark:bg-secondary     
-                {% endif %}                
+                ring-1 
+                shadow-lg dark:shadow-thick shadow-black/10 dark:shadow-primary
+                ring-black/20 dark:ring-white/30
+                bg-white
+                dark:bg-black                   
                 p-4
                 relative  
                 rounded-lg 
-                min-h-[150px] sm:min-h-[200px]
-                min-w-[150px] sm:min-w-[200px]
+                min-h-[300px] sm:min-h-[400px]
+                min-w-[250px] sm:min-w-[400px]
                 flex-shrink-0">     
                 <p 
                     class="
