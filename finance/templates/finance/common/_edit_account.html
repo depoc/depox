@@ -15,7 +15,7 @@
         relative
         overflow-auto
         flex
-        shadow-xl rounded-2xl ring-1 ring-black/10 dark:ring-white/15
+        shadow-xl rounded-2xl ring-1 ring-black/10 dark:ring-white/20
         h-[75%] w-11/12
         sm:h-3/5 lg:w-4/12 md:w-7/12">
 
@@ -24,7 +24,7 @@
             <div
                 class="
                 ring-1 
-                ring-black/5 dark:ring-white/30
+                ring-black/5 dark:ring-white/10
                 bg-white
                 dark:bg-black      
                 shadow-md         
@@ -37,8 +37,8 @@
                 <form action="{% url "finance:caixa" %}" method="POST" class="">
                     {% csrf_token %}
                     <div
-                        class="px-1 mt-6 text-[26px] sm:text-[30px] text-start tracking-normal sm:tracking-normal text-black/70 dark:text-white/80">
-                        <kbd>{{ bank.name | lower }}</kbd>
+                        class="px-1 mt-6 text-4xl leading-none text-start tracking-normal sm:tracking-normal text-black/70 dark:text-white/80">
+                        <span>{{ bank.name | lower }}</span>
                     </div>
 
                     <div class="relative justify-center items-center px-1 mb-8">
