@@ -35,13 +35,15 @@
                 h-full w-full
                 flex-shrink-0">     
 
+                {% if banks|length > 1 %}
                 {% if forloop.first %}
                 <div class="px-4 w-full top-0">
                     <p class="text-center text-[13px] text-black/40 dark:text-white/40">
                         arraste para o lado
                     </p>
-                </div>   
-                {% endif %}         
+                </div>    
+                {% endif %}   
+                {% endif %}   
                 
                 <form action="{% url "finance:caixa" %}" method="POST" class="">
                     {% csrf_token %}
@@ -174,25 +176,8 @@
                 </form>                 
 
             </div>
-            {% endfor %}    
-            
-            <div
-                class="
-                snap-always snap-center
-                ring-1 
-                ring-black/5 dark:ring-white/5
-                bg-white/0
-                dark:bg-black      
-                shadow-md         
-                p-4
-                relative  
-                rounded-2xl
-                h-full w-full
-                flex-shrink-0">           
-
-                <input class="bg-transparent">            
-
-            </div>                                 
+            {% endfor %}
+            <input class="bg-transparent">              
         </div>        
         
         <!--empty closeHistory button-->  
