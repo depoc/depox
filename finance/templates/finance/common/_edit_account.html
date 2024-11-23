@@ -60,7 +60,6 @@
                                 value="{{ bank.saldo | format_money }}"
                                 inputmode="decimal"
                                 placeholder="0,00">
-                            </input>
                         </label>
                     </div>   
         
@@ -76,7 +75,6 @@
                                 value="{{ bank.name | lower }}"
                                 placeholder="..."
                                 class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
-                            </input>
                           </div>
                       
                           <div class="grid grid-cols-1 gap-1 p-3">
@@ -87,7 +85,6 @@
                                 {% if bank.agencia %}value="{{ bank.agencia }}" {% endif %}
                                 placeholder="..."
                                 class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
-                            </input>
                           </div>
         
                           <div class="grid grid-cols-1 gap-1 p-3">
@@ -98,7 +95,6 @@
                                 {% if bank.conta %}value="{{ bank.conta }}" {% endif %}
                                 placeholder="..."
                                 class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
-                            </input>
                           </div>  
 
                           <div class="hidden grid-cols-1 gap-1 p-3">
@@ -109,7 +105,6 @@
                                 value="{{ bank.id }}"
                                 placeholder="..."
                                 class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
-                            </input>
                           </div>   
 
                           <div class="hidden grid-cols-1 gap-1 p-3">
@@ -120,7 +115,6 @@
                                 value="{{ bank.company.cnpj }}"
                                 placeholder="..."
                                 class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
-                            </input>
                           </div>                            
                         </dl>
                     </div>
@@ -180,7 +174,25 @@
                 </form>                 
 
             </div>
-            {% endfor %}                         
+            {% endfor %}    
+            
+            <div
+                class="
+                snap-always snap-center
+                ring-1 
+                ring-black/5 dark:ring-white/5
+                bg-white/0
+                dark:bg-black      
+                shadow-md         
+                p-4
+                relative  
+                rounded-2xl
+                h-full w-full
+                flex-shrink-0">           
+
+                <input class="bg-transparent">            
+
+            </div>                                 
         </div>        
         
         <!--empty closeHistory button-->  
