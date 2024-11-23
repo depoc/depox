@@ -213,9 +213,7 @@ class Finance:
 
         post_data = request.POST.copy()
         saldo = post_data.get('saldo', '')
-        saldo_cleaned = saldo.replace('.', '').replace(',', '.')
-
-        bank = BankAccount.objects.get(name="caixa")        
+        saldo_cleaned = saldo.replace('.', '').replace(',', '.')      
 
         if saldo:
             saldo = float(saldo_cleaned)
