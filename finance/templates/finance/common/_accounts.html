@@ -18,7 +18,7 @@
         overflow-auto
         flex">
 
-        <div class="overflow-x-auto px-1 pt-1 pb-5 flex gap-2 no-scrollbar snap-x snap-mandatory">
+        <div class="overflow-x-auto px-1 pt-1 pb-5 flex gap-2 no-scrollbar">
             {% for bank in banks  %}
             <a id="" href="?banco={{ bank.id }}{% if request.GET.data %}&data={{ request.GET.data }}{% endif %}"
                 class="
@@ -35,7 +35,6 @@
                     bg-white 
                     dark:bg-secondary     
                 {% endif %}    
-                snap-start snap-normal            
                 p-4
                 relative  
                 rounded-lg 
