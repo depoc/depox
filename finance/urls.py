@@ -11,4 +11,9 @@ urlpatterns = [
         views.delete_transaction,
         name='delete_transaction',
     ),
+    path(
+        'banco/<str:pk>/excluir/',
+        views.delete_bank,
+        name='delete_bank'
+    ),
 ]

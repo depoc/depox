@@ -25,3 +25,16 @@ def delete_transaction(request, pk):
         transaction.delete()
 
     return redirect('finance:caixa') 
+
+@login_required
+def delete_bank(request, pk):
+    bank = BankAccount.objects.get(pk=pk)
+    transactions = Transactions.objects.filter(conta=bank)
+
+    if request.method == 'POST' and 'delete-bank' in request.POST:
+        if not transactions:
+            bank.delete()
+        else:
+            print('banco possui lançamentos, para')
+
+    return redirect('finance:caixa')
