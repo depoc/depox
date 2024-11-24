@@ -1,6 +1,7 @@
 document.addEventListener('keydown', function(event) {
     if (event.target.tagName === 'INPUT' || 
         event.target.tagName === 'TEXTAREA' || 
+        event.target.tagName === 'SELECT' || 
         event.target.isContentEditable) {
         return;
     }
@@ -13,6 +14,7 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('keydown', function(event) {
     if (event.target.tagName === 'INPUT' || 
         event.target.tagName === 'TEXTAREA' || 
+        event.target.tagName === 'SELECT' || 
         event.target.isContentEditable) {
         return;
     }

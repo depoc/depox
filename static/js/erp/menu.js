@@ -22,6 +22,7 @@ modal.addEventListener('click', (event) => {
 document.addEventListener('keydown', (event) => {
   if (event.target.tagName === 'INPUT' || 
     event.target.tagName === 'TEXTAREA' || 
+    event.target.tagName === 'SELECT' || 
     event.target.isContentEditable) {
     return;
   }
