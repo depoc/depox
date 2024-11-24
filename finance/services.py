@@ -38,31 +38,25 @@ class Finance:
 
     @staticmethod
     def _process_transaction(request, form, tipo) -> TransactionsForm:
-        """
-        Processa uma transação, atualiza o saldo do banco e salva o formulário de transação.
-        """
         post_data = request.POST.copy()
-        valor = post_data.get('valor', '')
-        valor_cleaned = valor.replace('.', '').replace(',', '.')
 
-        if valor:
+        if valor := post_data.get('valor', ''):
+            valor_cleaned = float(valor.replace('.', '').replace(',', '.'))
+            
             if tipo == 'receber':
-                valor = float(valor_cleaned)
-                post_data['valor'] = valor
+                post_data['valor'] = valor_cleaned
 
             elif tipo == 'pagar':
-                valor = float(valor_cleaned) * (-1)
-                post_data['valor'] = valor
+                post_data['valor'] = -valor_cleaned
 
             elif tipo == 'transferir':
-                valor = float(valor_cleaned) * (-1)
+                post_data['valor'] = -valor_cleaned 
 
                 origin_account = BankAccount.objects \
                     .get(id=post_data['conta'])
                 destination_account = BankAccount.objects \
                     .get(id=post_data['conta2'])                   
-                
-                post_data['valor'] = valor      
+                     
                 post_data['contato'] = request.user.name              
                 post_data['descricao'] = f'enviada → {destination_account}'          
 
@@ -73,7 +67,7 @@ class Finance:
             if tipo == 'transferir':
                 transfer_to_destination_account = Transactions(
                 tipo = 'transferir',
-                valor = valor * (-1),
+                valor = -valor_cleaned,
                 conta = destination_account,
                 contato = request.user.name,
                 descricao = f'recebida ← {origin_account}',
@@ -210,17 +204,13 @@ class Finance:
     @staticmethod
     def edit_bank_account(request) -> dict:
         edit_bank_form = BankAccountForm()
-
         post_data = request.POST.copy()
-        saldo = post_data.get('saldo', '')
-        saldo_cleaned = saldo.replace('.', '').replace(',', '.')      
 
-        if saldo:
-            saldo = float(saldo_cleaned)
-            post_data['saldo'] = saldo
+        if saldo := post_data.get('saldo', ''):
+            saldo_cleaned = float(saldo.replace('.', '').replace(',', '.'))      
+            post_data['saldo'] = saldo_cleaned
             
         if request.method == 'POST' and 'edit-account' in request.POST:
-            
             bank_id = post_data['id']
             bank = BankAccount.objects.get(id=bank_id)
             edit_bank_form = BankAccountForm(post_data, instance=bank)
