@@ -67,7 +67,7 @@ class Finance:
             if tipo == 'transferir':
                 transfer_to_destination_account = Transactions(
                 tipo = 'transferir',
-                valor = -valor_cleaned,
+                valor = valor_cleaned,
                 conta = destination_account,
                 contato = request.user.name,
                 descricao = f'recebida ← {origin_account}',
