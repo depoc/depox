@@ -24,7 +24,7 @@ def delete_transaction(request, pk):
     if request.method == 'POST':
         transaction.delete()
 
-    return redirect('finance:caixa') 
+    return redirect(request.META.get('HTTP_REFERER', 'finance:caixa')) 
 
 @login_required
 def delete_bank(request, pk):
