@@ -38,7 +38,7 @@ class Transactions(models.Model):
         null=False,
     )
     conta = models.ForeignKey(
-        BankAccount, on_delete=models.PROTECT, default='conta',
+        BankAccount, on_delete=models.PROTECT,
     )
     contato = models.CharField(max_length=255, blank=True, null=True)
     descricao = models.CharField(max_length=255, blank=False, null=False)
