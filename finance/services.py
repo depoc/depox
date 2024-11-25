@@ -20,20 +20,15 @@ class Finance:
 
     @staticmethod
     def add_transactions(request) -> dict:
-        """
-        Lida com a lógica de adicionar transações e calcula o saldo total das contas bancárias.
-        """
         form = TransactionsForm(user=request.user)
         tipo = request.POST.get('tipo')
 
         if request.method == 'POST' and 'add-transaction' in request.POST:
             form = Finance._process_transaction(request, form, tipo)
 
-        # Dados da empresa e bancos
         company = request.user.company
         banks = BankAccount.objects.filter(company=company).order_by('-saldo')
 
-        # Cálculo do saldo total
         saldo_total = sum(bank.saldo for bank in banks)
 
         return {'transaction': form, 'saldo_total': saldo_total, 'banks': banks}
@@ -188,7 +183,7 @@ class Finance:
                             created_by=request.user,
                         )          
 
-        # Update context with relevant data
+        # update context with fresh data when a new bank is created
         company = request.user.company
         banks = BankAccount.objects.filter(company=company).order_by('-saldo')
         saldo_total = sum(bank.saldo for bank in banks)
@@ -199,7 +194,7 @@ class Finance:
             'banks': banks,
         }
 
-        # Merge additional transaction data
+        # merge additional transaction data
         context.update(Finance.get_transactions_by_date(request))
 
         return context
