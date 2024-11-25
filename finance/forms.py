@@ -15,6 +15,9 @@ class TransactionsForm(ModelForm):
         self.fields['conta'].queryset = BankAccount.objects \
             .filter(company=user.company) \
             .order_by('-saldo')
+        
+        default_conta = self.fields['conta'].queryset.first()
+        self.initial['conta'] = default_conta        
 
         for name, field in self.fields.items():
             field.widget.attrs.update({
