@@ -2,6 +2,8 @@ from django.utils.timezone import now, localtime
 from datetime import timedelta
 from django.db.models.functions import TruncDate
 
+from decimal import Decimal, InvalidOperation
+
 from .models import BankAccount, Transactions
 from .forms import TransactionsForm, BankAccountForm
 
@@ -41,7 +43,10 @@ class Finance:
         post_data = request.POST.copy()
 
         if valor := post_data.get('valor', ''):
-            valor_cleaned = float(valor.replace('.', '').replace(',', '.'))
+            try:
+                valor_cleaned = Decimal(valor.replace('.', '').replace(',', '.'))
+            except InvalidOperation:
+                raise ValueError("invalid monetary value format")
             
             if tipo == 'receber':
                 post_data['valor'] = valor_cleaned
@@ -207,8 +212,11 @@ class Finance:
         post_data = request.POST.copy()
 
         if saldo := post_data.get('saldo', ''):
-            saldo_cleaned = float(saldo.replace('.', '').replace(',', '.'))      
-            post_data['saldo'] = saldo_cleaned
+            try:
+                saldo_cleaned = Decimal(saldo.replace('.', '').replace(',', '.'))
+                post_data['saldo'] = saldo_cleaned
+            except InvalidOperation:
+                raise ValueError("invalid monetary value format")            
             
         if request.method == 'POST' and 'edit-account' in request.POST:
             bank_id = post_data['id']
