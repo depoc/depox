@@ -165,35 +165,42 @@ class Finance:
     @staticmethod
     def add_bank_account(request) -> dict:
         form = BankAccountForm()      
-
         post_data = request.POST.copy()
         saldo = post_data.get('saldo', '')
-        post_data['company'] = request.user.company
-        post_data['saldo'] = 0
 
         if request.method == 'POST' and 'add-account' in request.POST:
+            post_data['company'] = request.user.company
+            post_data['saldo'] = 0
             form = BankAccountForm(post_data)
+
             if form.is_valid():
                 bank_account = form.save()
 
-            if saldo:
-                saldo_cleaned = saldo.replace('.', '').replace(',', '.')     
-                transaction = Transactions(
-                        tipo='receber',
-                        valor=saldo_cleaned,
-                        conta=bank_account,
-                        contato='...',
-                        descricao='saldo inicial',
-                        categoria='...',
-                        created_by=request.user,
-                    )     
-                transaction.save()           
+                if saldo:
+                    saldo_cleaned = saldo.replace('.', '').replace(',', '.')     
+                    Transactions.objects.create(
+                            tipo='receber',
+                            valor=saldo_cleaned,
+                            conta=bank_account,
+                            contato='...',
+                            descricao='saldo inicial',
+                            categoria='...',
+                            created_by=request.user,
+                        )          
 
-        context = {'bank_account_form': form,} 
-        # atualiza o saldo total e bancos automaticamento ao criar nova conta
-        context.update(Finance.add_transactions(request))
-        # atualiza as transações automaticamento ao criar nova conta
-        context.update(Finance.get_transactions_by_date(request)) 
+        # Update context with relevant data
+        company = request.user.company
+        banks = BankAccount.objects.filter(company=company).order_by('-saldo')
+        saldo_total = sum(bank.saldo for bank in banks)
+
+        context = {
+            'bank_account_form': form,
+            'saldo_total': saldo_total,
+            'banks': banks,
+        }
+
+        # Merge additional transaction data
+        context.update(Finance.get_transactions_by_date(request))
 
         return context
 
