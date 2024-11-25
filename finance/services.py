@@ -1,6 +1,7 @@
 from django.utils.timezone import now, localtime
-from datetime import timedelta
 from django.db.models.functions import TruncDate
+
+from datetime import timedelta
 
 from decimal import Decimal, InvalidOperation
 
@@ -20,8 +21,8 @@ class Finance:
 
     @staticmethod
     def add_transactions(request) -> dict:
-        form = TransactionsForm(user=request.user)
-        tipo = request.POST.get('tipo')
+        form: TransactionsForm = TransactionsForm(user=request.user)
+        tipo: str | None = request.POST.get('tipo')
 
         if request.method == 'POST' and 'add-transaction' in request.POST:
             form = Finance._process_transaction(request, form, tipo)
@@ -29,7 +30,8 @@ class Finance:
         company = request.user.company
         banks = BankAccount.objects.filter(company=company).order_by('-saldo')
 
-        saldo_total = sum(bank.saldo for bank in banks)
+        saldos: list = [bank.saldo for bank in banks]
+        saldo_total: Decimal = Decimal(sum(saldos))
 
         return {'transaction': form, 'saldo_total': saldo_total, 'banks': banks}
 
@@ -122,7 +124,7 @@ class Finance:
                 created__date__lte=end_of_month,
             )    
 
-        transactions_group = {}
+        transactions_group: dict = {}
         for transaction in transactions:
             date = transaction.date
             if date not in transactions_group:
@@ -186,7 +188,8 @@ class Finance:
         # update context with fresh data when a new bank is created
         company = request.user.company
         banks = BankAccount.objects.filter(company=company).order_by('-saldo')
-        saldo_total = sum(bank.saldo for bank in banks)
+        saldos: list = [bank.saldo for bank in banks]
+        saldo_total: Decimal = Decimal(sum(saldos))
 
         context = {
             'bank_account_form': form,

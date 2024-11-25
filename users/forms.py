@@ -38,7 +38,6 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomUserChangeForm(UserChangeForm):
-    password = None
     class Meta:
         model = User
         fields = [
@@ -46,6 +45,7 @@ class CustomUserChangeForm(UserChangeForm):
             'name',
             'username'
         ]
+        exclude = ['password']
         labels = {
             'name': 'nome',
             'username': 'usuário',

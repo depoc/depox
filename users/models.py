@@ -9,9 +9,7 @@ from .managers import UserManager
 class User(AbstractUser):
     name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
-    username = models.CharField(
-        max_length=100, unique=True, blank=True, null=True
-    )
+    username = models.CharField(max_length=100, unique=True, blank=True)
     company = models.ForeignKey(
         Company,
         on_delete=models.CASCADE,
@@ -21,5 +19,5 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-    objects = UserManager()
+    objects = UserManager() # type: ignore
 
