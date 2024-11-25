@@ -26,7 +26,7 @@ def delete_transaction(request, pk):
 
     return redirect(request.META.get('HTTP_REFERER', 'finance:caixa')) 
 
-@login_required
+@login_required(login_url='users:login')
 def delete_bank(request, pk):
     bank = BankAccount.objects.get(pk=pk)
     transactions = Transactions.objects.filter(conta=bank)
