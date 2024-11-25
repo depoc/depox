@@ -30,7 +30,7 @@ class Transactions(models.Model):
         default=uuid.uuid4, unique=True, primary_key=True, editable=False
         )        
     created = models.DateTimeField(auto_now_add=True)
-    tipo = models.CharField(max_length=255, blank=True, null=True)
+    tipo = models.CharField(max_length=255, blank=False, null=False)
     valor = models.DecimalField(
         max_digits=10,
         decimal_places=2,
@@ -44,7 +44,7 @@ class Transactions(models.Model):
     descricao = models.CharField(max_length=255, blank=False, null=False)
     categoria = models.CharField(max_length=255, blank=True, null=True)
     created_by = models.ForeignKey(
-        User, on_delete=models.PROTECT, related_name='transactions')
+        User, on_delete=models.CASCADE, related_name='transactions')
     linked = models.OneToOneField(
         'Transactions',
         on_delete=models.CASCADE,
