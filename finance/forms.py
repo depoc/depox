@@ -15,6 +15,8 @@ class TransactionsForm(ModelForm):
         self.fields['conta'].queryset = BankAccount.objects \
             .filter(company=user.company) \
             .order_by('-saldo')
+        
+        self.fields['conta'].empty_label = None
 
         for name, field in self.fields.items():
             field.widget.attrs.update({
