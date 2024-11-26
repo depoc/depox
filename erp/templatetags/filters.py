@@ -16,8 +16,8 @@ def bank_account(name) -> str:
 
         if len(name) <= 10:
             return name
-        else:
-            return bank_last_name
+
+    return bank_last_name
     
 @register.filter
 def company(fantasia) -> str:

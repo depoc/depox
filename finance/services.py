@@ -1,6 +1,7 @@
 from django.utils.timezone import now, localtime
-from datetime import timedelta
 from django.db.models.functions import TruncDate
+
+from datetime import timedelta
 
 from decimal import Decimal, InvalidOperation
 
@@ -10,7 +11,7 @@ from .forms import TransactionsForm, BankAccountForm
 
 class Finance:
     @staticmethod
-    def context(request) -> dict:
+    def context(request) -> dict[str, object]:
         context = {}
         context.update(Finance.add_transactions(request))
         context.update(Finance.get_transactions_by_date(request))
@@ -19,22 +20,18 @@ class Finance:
         return context
 
     @staticmethod
-    def add_transactions(request) -> dict:
-        """
-        Lida com a lógica de adicionar transações e calcula o saldo total das contas bancárias.
-        """
-        form = TransactionsForm(user=request.user)
-        tipo = request.POST.get('tipo')
+    def add_transactions(request) -> dict[str, object]:
+        form: TransactionsForm = TransactionsForm(user=request.user)
+        tipo: str = request.POST.get('tipo')
 
         if request.method == 'POST' and 'add-transaction' in request.POST:
             form = Finance._process_transaction(request, form, tipo)
 
-        # Dados da empresa e bancos
         company = request.user.company
         banks = BankAccount.objects.filter(company=company).order_by('-saldo')
 
-        # Cálculo do saldo total
-        saldo_total = sum(bank.saldo for bank in banks)
+        saldos: list = [bank.saldo for bank in banks]
+        saldo_total: Decimal = Decimal(sum(saldos))
 
         return {'transaction': form, 'saldo_total': saldo_total, 'banks': banks}
 
@@ -44,7 +41,7 @@ class Finance:
 
         if valor := post_data.get('valor', ''):
             try:
-                valor_cleaned = Decimal(valor.replace('.', '').replace(',', '.'))
+                valor_cleaned = abs(Decimal(valor.replace('.', '').replace(',', '.')))
             except InvalidOperation:
                 raise ValueError("invalid monetary value format")
             
@@ -67,7 +64,7 @@ class Finance:
 
         post_data['created_by'] = request.user
         form = TransactionsForm(post_data, user=request.user)
-        if form.is_valid() and valor != 0:
+        if form.is_valid() and valor_cleaned != 0:
             transaction = form.save()
             if tipo == 'transferir':
                 transfer_to_destination_account = Transactions(
@@ -85,7 +82,7 @@ class Finance:
         return form
     
     @staticmethod
-    def get_transactions_by_date(request) -> dict:
+    def get_transactions_by_date(request) -> dict[str, object]:
         today = localtime(now()).date()
         start_of_week = today - timedelta(days=today.weekday())
         end_of_week = start_of_week + timedelta(days=6)
@@ -127,7 +124,7 @@ class Finance:
                 created__date__lte=end_of_month,
             )    
 
-        transactions_group = {}
+        transactions_group: dict = {}
         for transaction in transactions:
             date = transaction.date
             if date not in transactions_group:
@@ -143,7 +140,7 @@ class Finance:
         return context                 
 
     @staticmethod
-    def _get_balance(transactions) -> dict:
+    def _get_balance(transactions) -> dict[str, object]:
         recebimentos = 0
         for transaction in transactions:
             if transaction.tipo == 'receber':
@@ -163,7 +160,7 @@ class Finance:
         }                    
     
     @staticmethod
-    def add_bank_account(request) -> dict:
+    def add_bank_account(request) -> dict[str, object]:
         form = BankAccountForm()      
         post_data = request.POST.copy()
         saldo = post_data.get('saldo', '')
@@ -188,10 +185,11 @@ class Finance:
                             created_by=request.user,
                         )          
 
-        # Update context with relevant data
+        # update context with fresh data when a new bank is created
         company = request.user.company
         banks = BankAccount.objects.filter(company=company).order_by('-saldo')
-        saldo_total = sum(bank.saldo for bank in banks)
+        saldos: list = [bank.saldo for bank in banks]
+        saldo_total: Decimal = Decimal(sum(saldos))
 
         context = {
             'bank_account_form': form,
@@ -199,13 +197,13 @@ class Finance:
             'banks': banks,
         }
 
-        # Merge additional transaction data
+        # merge additional transaction data
         context.update(Finance.get_transactions_by_date(request))
 
         return context
 
     @staticmethod
-    def edit_bank_account(request) -> dict:
+    def edit_bank_account(request) -> dict[str, object]:
         edit_bank_form = BankAccountForm()
         post_data = request.POST.copy()
 
