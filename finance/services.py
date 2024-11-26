@@ -174,7 +174,9 @@ class Finance:
                 bank_account = form.save()
 
                 if saldo:
-                    saldo_cleaned = saldo.replace('.', '').replace(',', '.')     
+                    saldo_cleaned = abs(Decimal(
+                        saldo.replace('.', '').replace(',', '.')
+                    ))
                     Transactions.objects.create(
                             tipo='receber',
                             valor=saldo_cleaned,
