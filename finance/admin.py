@@ -17,6 +17,7 @@ class BankAccountAdmin(admin.ModelAdmin):
 class TransactionsAdmin(admin.ModelAdmin):
     list_display = ('descricao', 'valor', 'conta', 'created')
     ordering = ['-created']
+    readonly_fields = ('conta', 'created_by', 'created')
 
 
 admin.site.register(BankAccount, BankAccountAdmin)

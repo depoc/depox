@@ -41,12 +41,16 @@ class Transactions(models.Model):
         BankAccount, on_delete=models.PROTECT,
     )
     contato = models.CharField(
-        max_length=255, blank=False, null=False, default='...'
+        max_length=255, blank=False, null=False, default='...',
     )
     descricao = models.CharField(max_length=255, blank=False, null=False)
     categoria = models.CharField(max_length=255, blank=True, null=True)
     created_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='transactions')
+        User,
+        on_delete=models.CASCADE,
+        related_name='transactions',
+        editable=False,
+    )
     linked = models.OneToOneField(
         'Transactions',
         on_delete=models.CASCADE,
