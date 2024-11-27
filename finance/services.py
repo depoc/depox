@@ -225,4 +225,8 @@ class Finance:
             else:
                 print(edit_bank_form.errors)
 
-        return {'edit_bank_form': edit_bank_form}
+        # update context with fresh data when a new bank is edited
+        company = request.user.company
+        banks = BankAccount.objects.filter(company=company).order_by('-saldo')                
+
+        return {'edit_bank_form': edit_bank_form, 'banks': banks}
