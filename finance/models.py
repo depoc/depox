@@ -49,7 +49,6 @@ class Transactions(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='transactions',
-        editable=False,
     )
     linked = models.OneToOneField(
         'Transactions',
