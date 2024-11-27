@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load filters %}
+
+{% block page %}
+
+<div
+class="
+  list-none
+  grid grid-cols-2 gap-2
+  md:grid-cols-2
+  lg:grid-cols-2 lg:grid-rows-1
+  xl:grid-cols-2 xl:grid-rows-1">
+
+    {% include "finance/common/_header.html" %}
+    {% include "finance/common/_accounts.html" %}
+    {% include "finance/common/_detail.html" %}
+
+    {% include "finance/common/_history.html" %}
+    {% include "finance/common/_transaction.html" %}
+    {% include "finance/common/_transfer.html" %}
+    {% include "finance/common/_add_account.html" %}    
+    {% include "finance/common/_edit_account.html" %}    
+
+    {% include "erp/common/_menu.html" %}
+    {% include "erp/common/_settings.html" %}
+</div>
+
+{% endblock page %}

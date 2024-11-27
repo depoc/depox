@@ -15,7 +15,7 @@ def caixa(request):
     context = Settings.context(request)
     context.update(Finance.context(request))
 
-    return render(request, 'finance/caixa.html', context)
+    return render(request, 'finance/main.html', context)
 
 @login_required(login_url='users:login')
 def delete_transaction(request, pk):
