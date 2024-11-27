@@ -27,13 +27,7 @@ class Finance:
         if request.method == 'POST' and 'add-transaction' in request.POST:
             form = Finance._process_transaction(request, form, tipo)
 
-        company = request.user.company
-        banks = BankAccount.objects.filter(company=company).order_by('-saldo')
-
-        saldos: list = [bank.saldo for bank in banks]
-        saldo_total: Decimal = Decimal(sum(saldos))
-
-        return {'transaction': form, 'saldo_total': saldo_total, 'banks': banks}
+        return {'transaction': form}
 
     @staticmethod
     def _process_transaction(request, form, tipo) -> TransactionsForm:
@@ -105,11 +99,11 @@ class Finance:
             .order_by('-created')
         )                        
 
-        conta = request.GET.get('banco')
+        banco = request.GET.get('banco')
         data = request.GET.get('data')
 
-        if conta:
-            transactions = transactions.filter(conta=conta)        
+        if banco:
+            transactions = transactions.filter(conta=banco)        
 
         if data == 'hoje':
             transactions = transactions.filter(created__date=today)
@@ -187,19 +181,9 @@ class Finance:
                             created_by=request.user,
                         )          
 
-        # update context with fresh data when a new bank is created
-        company = request.user.company
-        banks = BankAccount.objects.filter(company=company).order_by('-saldo')
-        saldos: list = [bank.saldo for bank in banks]
-        saldo_total: Decimal = Decimal(sum(saldos))
+        context = {'bank_account_form': form,}
 
-        context = {
-            'bank_account_form': form,
-            'saldo_total': saldo_total,
-            'banks': banks,
-        }
-
-        # merge additional transaction data
+        # update context with fresh transaction data
         context.update(Finance.get_transactions_by_date(request))
 
         return context
@@ -223,10 +207,6 @@ class Finance:
             if edit_bank_form.is_valid():
                 edit_bank_form.save()
             else:
-                print(edit_bank_form.errors)
+                print(edit_bank_form.errors)              
 
-        # update context with fresh data when a new bank is edited
-        company = request.user.company
-        banks = BankAccount.objects.filter(company=company).order_by('-saldo')                
-
-        return {'edit_bank_form': edit_bank_form, 'banks': banks}
+        return {'edit_bank_form': edit_bank_form}
