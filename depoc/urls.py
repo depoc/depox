@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('users.urls')),
     path('erp/', include('erp.urls')),
     path('caixa/', include('finance.urls')),
+    path('contatos/', include('contacts.urls')),
 
     # temporary: while the index page is not built
     path(
