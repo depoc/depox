@@ -15,8 +15,8 @@ class BankAccount(models.Model):
         Company, on_delete=models.CASCADE, related_name='banks',
     )
     name = models.CharField(max_length=255)
-    agencia = models.CharField(max_length=255, blank=True, null=True)
-    conta = models.CharField(max_length=255, blank=True, null=True)
+    agencia = models.CharField(max_length=255, blank=True)
+    conta = models.CharField(max_length=255, blank=True)
     saldo = models.DecimalField(
         max_digits=10, decimal_places=2, blank=True, null=True, default=0,
     )
@@ -44,7 +44,7 @@ class Transactions(models.Model):
         max_length=255, blank=False, null=False, default='...',
     )
     descricao = models.CharField(max_length=255, blank=False, null=False)
-    categoria = models.CharField(max_length=255, blank=True, null=True)
+    categoria = models.CharField(max_length=255, blank=True)
     created_by = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
