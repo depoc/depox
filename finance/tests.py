@@ -100,7 +100,7 @@ class TransactionsTestCase(TestCase):
             tipo='entrada',
             valor=100,
             conta=self.conta,
-            contato=None,
+            contato='hugo',
             descricao='Teste',
             categoria=None,
             created_by=self.user,
