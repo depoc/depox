@@ -6,10 +6,35 @@ __pycache__
 *.pyo
 *.pyd
 
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
 # Django 
 *.log
 db.sqlite3
+db.sqlite3-journal
 media
+local_settings.py
 
 # OS generated files
 .DS_Store
@@ -19,3 +44,8 @@ static/images/logos/*
 
 # Ignore auto-generated CSS files
 static/output.css
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
