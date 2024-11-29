@@ -60,6 +60,35 @@
   </section>
 
   <script src="{% static "js/themeSwitch.js" %}"></script>
-  <script src="{% static "js/shortcuts.js" %}"></script>
+  <script>
+      const urls = {
+          caixa: "{% url 'finance:caixa' %}",
+          contatos: "{% url 'contacts:main' %}",
+          erp: "{% url 'erp:index' %}"
+      };
+  </script>
+  <script>
+    document.addEventListener('keydown', function(event) {
+        if (event.target.tagName === 'INPUT' || 
+            event.target.tagName === 'TEXTAREA' || 
+            event.target.tagName === 'SELECT' || 
+            event.target.isContentEditable) {
+            return;
+        }
+        
+        if (event.key.toLowerCase() === 'f') {
+            window.location.href = `${urls.caixa}?data=todos`;
+        }
+
+        if (event.key.toLowerCase() === 'c') {
+            window.location.href = `${urls.contatos}?filtro=todos`;
+        }
+
+        if (event.key.toLowerCase() === 'h') {
+            window.location.href = urls.erp;
+        }    
+    });
+  </script>
+
 </body>
 </html>
