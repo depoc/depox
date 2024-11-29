@@ -1,0 +1,543 @@
+{% load static %}
+{% load filters %}
+
+<div class="
+    mt-4
+    sm:px-3
+    col-span-2
+    relative">
+
+    <!--filter buttons-->    
+    <div class="
+        overflow-hidden
+        mt-20
+        w-full
+        items-center justify-between
+        relative">
+
+        <div class="
+            justify-start
+            relative
+            overflow-auto
+            flex">
+            
+            <div class="overflow-x-auto px-1 py-1 pb-1 flex gap-3 no-scrollbar">
+            <a id="todos" href="?filtro=clientes{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
+                class="
+                tracking-wide
+                px-3 sm:px-3 sm:py-[5px]
+                ring-1
+                text-[13px]
+                {% if request.GET.filtro == 'clientes' %}
+                    bg-blue-50 dark:bg-blue-950
+                    text-blue-500 dark:text-blue-200
+                    ring-blue-500 dark:ring-blue-500
+                {% else %}
+                    text-black/40 dark:text-background/55
+                    ring-black/10 dark:ring-white/20
+                    hover:bg-black/5 dark:hover:bg-tertiary
+                    dark:bg-primary
+                {% endif %}
+                relative  
+                rounded-full flex-shrink-0">  
+                <span class="">clientes</span>
+            </a> 
+
+            <a id="hoje" href="?filtro=fornecedores{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
+                class="
+                tracking-wide
+                px-3 sm:px-3 sm:py-[5px]
+                ring-1
+                text-[13px]
+                {% if request.GET.filtro == 'fornecedores' %}
+                    bg-blue-50 dark:bg-blue-950
+                    text-blue-500 dark:text-blue-200
+                    ring-blue-500 dark:ring-blue-500
+                {% else %}
+                    text-black/40 dark:text-white/55
+                    ring-black/10 dark:ring-white/20
+                    hover:bg-black/5 dark:hover:bg-tertiary
+                    dark:bg-primary
+                {% endif %}
+                relative  
+                rounded-full flex-shrink-0">    
+                <span>fornecedores</span>
+            </a> 
+
+            <a id="semana" href="?filtro=vendedores{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
+                class="
+                tracking-wide
+                px-3 sm:px-3 sm:py-[5px]
+                ring-1
+                text-[13px]
+                {% if request.GET.filtro == 'vendedores' %}
+                    bg-blue-50 dark:bg-blue-950
+                    text-blue-500 dark:text-blue-200
+                    ring-blue-500 dark:ring-blue-500
+                {% else %}
+                    text-black/40 dark:text-white/55
+                    ring-black/10 dark:ring-white/20
+                    hover:bg-black/5 dark:hover:bg-tertiary
+                    dark:bg-primary
+                {% endif %}
+                relative  
+                rounded-full flex-shrink-0">     
+                <span class="">vendedores</span>
+            </a>         
+
+            <a id="semana" href="?filtro=personalizar{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
+                class="
+                tracking-wide
+                px-3 sm:px-3 sm:py-[5px]
+                ring-1
+                text-[13px]
+                {% if request.GET.filtro == 'personalizar' %}
+                    bg-blue-50 dark:bg-blue-950
+                    text-blue-500 dark:text-blue-200
+                    ring-blue-500 dark:ring-blue-500
+                {% else %}
+                    text-black/40 dark:text-white/55
+                    ring-black/10 dark:ring-white/20
+                    hover:bg-black/5 dark:hover:bg-tertiary                    
+                    dark:bg-primary
+                {% endif %}
+                relative  
+                rounded-full flex-shrink-0">     
+                <span class="">•</span>
+            </a>                     
+            </div>    
+        </div>
+    </div>
+
+    <!--count-->
+    <div class="
+        mt-4
+        overflow-hidden
+        col-span-2
+        relative">
+
+        <div class="
+            relative
+            overflow-auto
+            flex">
+
+            <div class="overflow-x-auto p-1 flex gap-2 no-scrollbar">
+                <div id=""
+                    class="
+                    ring-1 ring-black/5 dark:ring-white/10
+                    p-4
+                    relative  
+                    rounded-lg
+                    shadow-sm
+                    bg-background
+                    dark:bg-secondary         
+                    min-h-[50px] sm:min-h-[60px]
+                    min-w-[150px] sm:min-w-[200px]">   
+                    <p
+                        class="
+                        absolute
+                        p-1
+                        text-xs sm:text-sm text-black/40 dark:text-white/50
+                        top-0 left-2">
+                        clientes
+                    </p>                      
+                    <p
+                        class="
+                        absolute
+                        p-1
+                        text-xs sm:text-sm text-black/40 dark:text-white/50
+                        bottom-0 left-2">
+                        <span class="text-black dark:text-white text-base sm:text-lg">
+                            4
+                        </span>
+                    </p>                
+                </div>
+
+                <div id=""
+                    class="
+                    ring-1 ring-black/5 dark:ring-white/10
+                    p-4
+                    relative  
+                    rounded-lg
+                    shadow-sm
+                    bg-background
+                    dark:bg-secondary         
+                    min-h-[50px] sm:min-h-[60px]
+                    min-w-[150px] sm:min-w-[200px]">   
+                    <p
+                        class="
+                        absolute
+                        p-1
+                        text-xs sm:text-sm text-black/40 dark:text-white/50
+                        top-0 left-2">
+                        fornecedores
+                    </p>                      
+                    <p
+                        class="
+                        absolute
+                        p-1
+                        text-xs sm:text-sm text-black/40 dark:text-white/50
+                        bottom-0 left-2">
+                        <span class="text-black dark:text-white text-base sm:text-lg">
+                            1
+                        </span>
+                    </p>                
+                </div>    
+                
+                <div id=""
+                    class="
+                    ring-1 ring-black/5 dark:ring-white/10
+                    p-4
+                    relative  
+                    rounded-lg
+                    shadow-sm
+                    bg-background
+                    dark:bg-secondary         
+                    min-h-[50px] sm:min-h-[60px]
+                    min-w-[150px] sm:min-w-[200px]">   
+                    <p
+                        class="
+                        absolute
+                        p-1
+                        text-xs sm:text-sm text-black/40 dark:text-white/50
+                        top-0 left-2">
+                        vendedores
+                    </p>                      
+                    <p
+                        class="
+                        absolute
+                        p-1
+                        text-xs sm:text-sm text-black/40 dark:text-white/50
+                        bottom-0 left-2">
+                        <span class="text-black dark:text-white text-base sm:text-lg">
+                            0
+                        </span>
+                    </p>                
+                </div>                 
+            </div>    
+        </div>
+    </div>    
+
+    <div class="
+        mt-4 px-1
+        grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+        gap-2">
+
+        <div
+            class="
+            p-2
+            outline-none
+            ring-1
+            ring-black/5 dark:ring-white/10
+            hover:shadow-lg dark:shadow-thick
+            relative
+            rounded-xl
+            bg-white/50
+            dark:bg-secondary/50 
+            min-h-[150px]
+            w-full
+            flex-shrink-0">
+
+            <div class="flex items-center justify-between h-[30px] w-full rounded-xl mb-[5px]">
+                <button class="bg-black/5 dark:bg-tertiary w-fit px-4 py-1 rounded-full">
+                    <p
+                        class="
+                        text-nowrap text-xs font-medium tracking-wide
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        87 98124-7276
+                    </p>
+                </button>  
+                <div class="w-fit h-fit">
+                    <p
+                        class="
+                        text-nowrap text-xs font-medium
+                        text-black/40 dark:text-white/60
+                        truncate">
+                        <kbd>1</kbd>
+                    </p>
+                </div>                             
+            </div>        
+
+            <button class="flex justify-start items-end bg-black/5 dark:bg-tertiary w-full h-[130px] p-0 rounded-xl">  
+                <div class="px-3 py-2">
+                    <p
+                        class="
+                        text-start text-sm mb-8
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        •                       
+                    </p> 
+                    
+                    <p
+                        class="
+                        text-start text-lg font-medium
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        Aldo
+                        <p class="text-start text-xs text-black/40 dark:text-white/40 truncate">
+                            Francisco Aldo Moreira Belém Júnior 
+                        </p>          
+                        <p class="text-start text-xs text-black/40 dark:text-white/40 truncate">
+                            322.745.936-85
+                        </p>                                                   
+                    </p>                       
+                </div>                    
+            </button>
+        </div>  
+
+        <div
+            class="
+            p-2
+            outline-none
+            ring-1
+            ring-black/5 dark:ring-white/10
+            hover:shadow-lg
+            relative
+            rounded-xl
+            bg-white/50
+            dark:bg-secondary/50    
+            min-h-[150px]
+            w-full
+            flex-shrink-0">
+
+            <div class="flex items-center justify-between h-[30px] w-full rounded-xl mb-[5px]">
+                <button class="bg-black/5 dark:bg-tertiary w-fit px-4 py-1 rounded-full">
+                    <p
+                        class="
+                        text-nowrap text-xs font-medium tracking-wide
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        87 98144-9178
+                    </p>
+                </button>  
+                <div class="w-fit h-fit">
+                    <p
+                        class="
+                        text-nowrap text-xs font-medium
+                        text-black/40 dark:text-white/60
+                        truncate">
+                        <kbd>2</kbd>
+                    </p>
+                </div>                             
+            </div>        
+
+            <button class="flex justify-start items-end bg-black/5 dark:bg-tertiary w-full h-[130px] p-0 rounded-xl">  
+                <div class="px-3 py-2">
+                    <p
+                        class="
+                        text-start text-sm mb-8
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        •                       
+                    </p> 
+                    
+                    <p
+                        class="
+                        text-start text-lg font-medium
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        Maria Belém
+                        <p class="text-start text-xs text-black/40 dark:text-white/40 truncate">
+                            Maria Cordeiro Belém 
+                        </p>          
+                        <p class="text-start text-xs text-black/40 dark:text-white/40 truncate">
+                            243.986.274-09
+                        </p>                                                   
+                    </p>                       
+                </div>                    
+            </button>
+        </div>  
+        
+        <div
+            class="
+            p-2
+            outline-none
+            ring-1
+            ring-black/5 dark:ring-white/10
+            hover:shadow-lg
+            relative
+            rounded-xl
+            bg-white/50
+            dark:bg-secondary/50    
+            min-h-[150px]
+            w-full
+            flex-shrink-0">
+
+            <div class="flex items-center justify-between h-[30px] w-full rounded-xl mb-[5px]">
+                <button class="bg-black/5 dark:bg-tertiary w-fit px-4 py-1 rounded-full">
+                    <p
+                        class="
+                        text-nowrap text-xs font-medium tracking-wide
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        87 98234-2385
+                    </p>
+                </button>  
+                <div class="w-fit h-fit">
+                    <p
+                        class="
+                        text-nowrap text-xs font-medium
+                        text-black/40 dark:text-white/60
+                        truncate">
+                        <kbd>3</kbd>
+                    </p>
+                </div>                             
+            </div>        
+
+            <button class="flex justify-start items-end bg-black/5 dark:bg-tertiary w-full h-[130px] p-0 rounded-xl">  
+                <div class="px-3 py-2">
+                    <p
+                        class="
+                        text-start text-sm mb-8
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        •                       
+                    </p> 
+                    
+                    <p
+                        class="
+                        text-start text-lg font-medium
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        Vaninha
+                        <p class="text-start text-xs text-black/40 dark:text-white/40 truncate">
+                            Maria Aparecida de Sena 
+                        </p>          
+                        <p class="text-start text-xs text-black/40 dark:text-white/40 truncate">
+                            753.123.432-67
+                        </p>                                                   
+                    </p>                       
+                </div>                    
+            </button>
+        </div>          
+
+        <div
+            class="
+            p-2
+            outline-none
+            ring-1
+            ring-black/5 dark:ring-white/10
+            hover:shadow-lg
+            relative
+            rounded-xl
+            bg-white/50
+            dark:bg-secondary/50    
+            min-h-[150px]
+            w-full
+            flex-shrink-0">
+
+            <div class="flex items-center justify-between h-[30px] w-full rounded-xl mb-[5px]">
+                <button class="bg-black/5 dark:bg-tertiary w-fit px-4 py-1 rounded-full">
+                    <p
+                        class="
+                        text-nowrap text-xs font-medium tracking-wide
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        87 86922-3123
+                    </p>
+                </button>  
+                <div class="w-fit h-fit">
+                    <p
+                        class="
+                        text-nowrap text-xs font-medium
+                        text-black/40 dark:text-white/60
+                        truncate">
+                        <kbd>4</kbd>
+                    </p>
+                </div>                             
+            </div>        
+
+            <button class="flex justify-start items-end bg-black/5 dark:bg-tertiary w-full h-[130px] p-0 rounded-xl">  
+                <div class="px-3 py-2">
+                    <p
+                        class="
+                        text-start text-sm mb-8
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        •                       
+                    </p> 
+                    
+                    <p
+                        class="
+                        text-start text-lg font-medium
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        Maria de Cícero
+                        <p class="text-start text-xs text-black/40 dark:text-white/40 truncate">
+                            Cícero Alves de Sena 
+                        </p>          
+                        <p class="text-start text-xs text-black/40 dark:text-white/40 truncate">
+                            853.745.936-85
+                        </p>                                                   
+                    </p>                       
+                </div>                    
+            </button>
+        </div>  
+        
+        <div
+            class="
+            p-2
+            outline-none
+            ring-1
+            ring-black/5 dark:ring-white/10
+            hover:shadow-lg
+            relative
+            rounded-xl
+            bg-white/50
+            dark:bg-secondary/50    
+            min-h-[150px]
+            w-full
+            flex-shrink-0">
+
+            <div class="flex items-center justify-between h-[30px] w-full rounded-xl mb-[5px]">
+                <button class="bg-black/5 dark:bg-tertiary w-fit px-4 py-1 rounded-full">
+                    <p
+                        class="
+                        text-nowrap text-xs font-medium tracking-wide
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        11 63952-1263
+                    </p>
+                </button>  
+                <div class="w-fit h-fit">
+                    <p
+                        class="
+                        text-nowrap text-xs font-medium
+                        text-black/40 dark:text-white/60
+                        truncate">
+                        <kbd>5</kbd>
+                    </p>
+                </div>                             
+            </div>        
+
+            <button class="flex justify-start items-end bg-black/5 dark:bg-tertiary w-full h-[130px] p-0 rounded-xl">  
+                <div class="px-3 py-2">
+                    <p
+                        class="
+                        text-start text-sm mb-8
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        •                       
+                    </p> 
+                    
+                    <p
+                        class="
+                        text-start text-lg font-medium
+                        text-black/55 dark:text-white/60
+                        truncate">
+                        Dimensão Galpões
+                        <p class="text-start text-xs text-black/40 dark:text-white/40 truncate">
+                            DIMENSAO PATRIMONIAL LTDA
+                        </p>          
+                        <p class="text-start text-xs text-black/40 dark:text-white/40 truncate">
+                            11.753.016/0001-91
+                        </p>                                                   
+                    </p>                       
+                </div>                    
+            </button>
+        </div>          
+                                     
+      
+    </div>
+</div>

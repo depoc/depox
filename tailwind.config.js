@@ -6,13 +6,16 @@ module.exports = {
     './users/templates/users/**/*.html',
     './users/templates/users/*.html',
     './users/forms.py',
-    './erp/forms.py',
 
     './erp/templates/erp/**/*.html',
     './erp/templates/erp/*.html',
+    './erp/forms.py',
 
     './finance/templates/finance/**/*.html',
     './finance/templates/finance/*.html',   
+
+    './contacts/templates/contacts/**/*.html',
+    './contacts/templates/contacts/*.html',   
 
     './templates/**/*.html',
     './templates/*.html',
