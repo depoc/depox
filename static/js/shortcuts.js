@@ -11,7 +11,7 @@ document.addEventListener('keydown', function(event) {
     }
 
     if (event.key.toLowerCase() === 'c') {
-        window.location.href = '/contatos';
+        window.location.href = '/contatos/?filtro=todos';
     }
 
     if (event.key.toLowerCase() === 'h') {
