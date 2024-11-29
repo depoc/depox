@@ -30,11 +30,11 @@
         but it beggins the flash white mode on dark
         {% endcomment %}
         (function() {
-            const userTheme = localStorage.getItem("theme") || "dark";
+            const userTheme = localStorage.getItem("theme");
             if (userTheme === "dark") {
                 document.documentElement.classList.add("dark");
             } else {
-                document.documentElement.classList.remove("dark");
+                document.documentElement.classList.add("light");
             }
         })();
     </script>      
