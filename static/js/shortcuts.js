@@ -7,7 +7,7 @@ document.addEventListener('keydown', function(event) {
     }
     
     if (event.key.toLowerCase() === 'f') {
-        window.location.href = '/caixa';
+        window.location.href = '/caixa/?data=todos';
     }
 
     if (event.key.toLowerCase() === 'c') {
