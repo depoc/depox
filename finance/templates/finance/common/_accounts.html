@@ -46,7 +46,7 @@
                     absolute
                     text-sm sm:text-[15px] text-black/40 dark:text-white/50
                     top-4 left-4">
-                    {{ bank.name | lower }}
+                    {{ bank.nome | lower }}
                 </p>
                 {% if bank.saldo|stringformat:"s"|length == 10 or bank.saldo|stringformat:"s"|length == 11 %} 
                 <p

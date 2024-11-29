@@ -14,7 +14,7 @@ class BankAccount(models.Model):
     company = models.ForeignKey(
         Company, on_delete=models.CASCADE, related_name='banks',
     )
-    name = models.CharField(max_length=255)
+    nome = models.CharField(max_length=255)
     agencia = models.CharField(max_length=255, blank=True)
     conta = models.CharField(max_length=255, blank=True)
     saldo = models.DecimalField(
@@ -22,7 +22,7 @@ class BankAccount(models.Model):
     )
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.nome}'
 
 
 class Transactions(models.Model):

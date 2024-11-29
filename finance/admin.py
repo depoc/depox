@@ -10,7 +10,7 @@ class TransactionsInline(admin.StackedInline):
 
 
 class BankAccountAdmin(admin.ModelAdmin):
-    list_display = ('name', 'company', 'saldo')
+    list_display = ('nome', 'company', 'saldo')
     inlines = [TransactionsInline]
 
 

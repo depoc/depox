@@ -80,7 +80,7 @@
                     R$
                 </span>
                 {% for bank in user.company.banks.all %}
-                    {% if bank.name == 'caixa' %}
+                    {% if bank.nome == 'caixa' %}
                         {{ bank.saldo | format_money }}
                     {% endif %}
                 {% endfor %}
