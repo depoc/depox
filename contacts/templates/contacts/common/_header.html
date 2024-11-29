@@ -8,7 +8,7 @@
         mt-2">      
 
     <!--back button-->
-    <div class="absolute top-1 left-0 sm:left-3 flex items-center">
+    <div class="absolute top-1 left-0 sm:left-3 flex items-center z-10">
         <div class="flex justify-center">
             <a 
                 href="{% url "erp:index" %}"
@@ -33,6 +33,7 @@
         <a
             href="{% url "finance:caixa" %}"
             class="
+            z-10
             relative  
             rounded-full">        
             <svg class="size-[30px] fill-black dark:fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
