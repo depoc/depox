@@ -76,7 +76,7 @@
                             class="w-full bg-transparent text-start outline-none appearance-none">
                             <option value="">conta destino</option>
                             {% for bank in banks %}
-                            <option value="{{ bank.id }}">{{ bank.name | lower }}</option>
+                            <option value="{{ bank.id }}">{{ bank.nome | lower }}</option>
                             {% endfor %}
                         </select>
                     </dt>
