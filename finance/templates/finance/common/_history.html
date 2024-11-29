@@ -363,7 +363,7 @@
                                 </button>
                             </td>
                             {% endif %}
-                            <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65">R$ {{ transaction.valor | absolute_value | format_money }}</td>
+                            <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 font-semibold sm:font-normal">R$ {{ transaction.valor | absolute_value | format_money }}</td>
                             <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 text-end sm:text-start sm:rounded-none rounded-e-3xl">
                                 <span class="ring-1 ring-black/15 dark:ring-white/20 rounded-md px-[6px] py-[2px] text-[13px] sm:text-sm">
                                     <kbd>{{ transaction.conta | bank_account }}</kbd>
