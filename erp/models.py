@@ -21,7 +21,7 @@ class Company(models.Model):
     email = models.EmailField(blank=True, null=True)
     logo = models.ImageField(
         blank=True, null=True,
-        upload_to='images/logo',
+        upload_to='media/logos',
     )
 
     def __str__(self):
