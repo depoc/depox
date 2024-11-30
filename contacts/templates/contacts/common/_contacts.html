@@ -1,4 +1,5 @@
 {% load static %}
+{% load contacts %}
 
 <div class="
     sm:px-3
@@ -254,7 +255,7 @@
                         text-nowrap text-xs font-medium tracking-wide
                         text-black/40 dark:text-white/60
                         truncate">
-                        {{ contact.celular }}
+                        {{ contact.celular | format_phone_number }}
                     </p>
                 </button>  
                 <div class="w-fit h-fit">
