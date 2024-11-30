@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'erp.apps.ErpConfig',
     'finance.apps.FinanceConfig',
     'contacts.apps.ContactsConfig',
+    'shared',
 ]
 
 AUTH_USER_MODEL = 'users.User'

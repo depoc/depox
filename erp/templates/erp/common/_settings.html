@@ -1,5 +1,5 @@
 {% load static %}
-{% load filters %}
+{% load erp %}
 
 <div
     id="settings"
@@ -131,7 +131,7 @@
                     ring-1 ring-black dark:ring-zinc-300
                     hover:ring-black hover:text-black
                     dark:hover:ring-zinc-300 dark:hover:text-zinc-300">
-                <kbd>{{ request.user.company.fantasia | company }}</kbd>
+                <kbd>{{ request.user.company.fantasia | format_fantasia }}</kbd>
             </button>
 
             <button id="settingsEquipeButton"
