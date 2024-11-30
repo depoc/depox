@@ -255,7 +255,11 @@
                         text-nowrap text-xs font-medium tracking-wide
                         text-black/40 dark:text-white/60
                         truncate">
+                        {% if contact.celular %}
                         {{ contact.celular | format_phone_number }}
+                        {% else %}
+                        cadastrar celular
+                        {% endif %}
                     </p>
                 </button>  
                 <div class="w-fit h-fit">
