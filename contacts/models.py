@@ -17,7 +17,7 @@ class Contacts(models.Model):
     tipo = models.CharField(max_length=255, blank=True)
     status = models.CharField(max_length=255, blank=True)
 
-    celular = models.CharField(max_length=14, blank=True)
+    celular = models.CharField(max_length=15, blank=True)
     email = models.EmailField(blank=True)
 
     endereco = models.CharField(max_length=255, blank=True)
