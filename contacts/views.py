@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from .services import ContactsLogic
 
 
+@login_required(login_url='users:login')
 def contacts(request):
     context = {}
     context.update(ContactsLogic.get_contacts(request))
