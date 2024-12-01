@@ -58,8 +58,6 @@ function preloadTheme() {
 
   if (userTheme === "light" || userTheme === "dark") {
     toggleTheme(userTheme === "dark");
-  } else {
-    toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
   }
   toggleButtons(); // Call toggleButtons to adjust visibility based on the initial theme
 }

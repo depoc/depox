@@ -25,16 +25,10 @@
       sizes="16x16" 
       href={% static "assets/favicon-16x16.png" %}>
     <script>
-        {% comment %}
-        if I remove this code it stops flashing the dark mode while on light mode
-        but it beggins the flash white mode on dark
-        {% endcomment %}
         (function() {
             const userTheme = localStorage.getItem("theme");
             if (userTheme === "dark") {
                 document.documentElement.classList.add("dark");
-            } else {
-                document.documentElement.classList.add("light");
             }
         })();
     </script>      
