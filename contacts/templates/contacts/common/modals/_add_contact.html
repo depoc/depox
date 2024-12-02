@@ -19,8 +19,8 @@
         shadow-xl   
         lg:w-5/12 
         md:w-8/12
-        sm:w-11/12 sm:h-auto
-        w-full h-auto
+        sm:w-11/12 sm:h-[75%]
+        w-full h-[85%]
         rounded-t-4xl sm:rounded-2xl
         relative">
 
@@ -288,25 +288,32 @@
                         <dt class="text-black/70 dark:text-white/70">cep</dt>
                         <input
                             name="cep"
+                            id="contact-cep"
+                            value=""
+                            size="10"
+                            maxlength="9"
                             inputmode="decimal"
                             placeholder="..."
+                            onblur="pesquisacep(this.value);"
                             class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
                         </input>
                       </div>                                                                                                                     
                     </dl>
                 </div>                  
                 
-                <div id="contact-endereco-form" class="flow-root mt-4 mb-24 px-6 sm:px-8">
+                <div id="contact-endereco-form" class="flow-root mt-4 px-6 sm:px-8">
                     <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
                   
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
                         <dt class="text-black/70 dark:text-white/70">endereco</dt>
                         <input
                             name="endereco"
+                            id="contact-endereco"
                             placeholder="..."
                             class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
                         </input>
                       </div>
+
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
                         <dt class="text-black/70 dark:text-white/70">número</dt>
                         <input
@@ -315,41 +322,40 @@
                             placeholder="..."
                             class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
                         </input>
-                      </div>    
+                      </div>   
+
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
                         <dt class="text-black/70 dark:text-white/70">bairro</dt>
                         <input
                             name="bairro"
+                            id="contact-bairro"
                             placeholder="..."
                             class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
                         </input>
-                      </div>  
+                      </div>    
+
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
-                        <dt class="text-black/70 dark:text-white/70">complemento</dt>
-                        <input
-                            name="complemento"
-                            placeholder="..."
-                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
-                        </input>
-                      </div>       
-                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
-                        <dt class="text-black/70 dark:text-white/70">estado</dt>
+                        <dt class="text-black/70 dark:text-white/70">uf</dt>
                         <input
                             name="uf"
+                            id="contact-uf"
                             placeholder="..."
                             class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
                         </input>
-                      </div>                        
+                      </div> 
+
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
                         <dt class="text-black/70 dark:text-white/70">cidade</dt>
                         <input
                             name="cidade"
+                            id="contact-cidade"
                             placeholder="..."
                             class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
                         </input>
-                      </div>                                                                                                                     
+                      </div>   
+
                     </dl>
-                </div>  
+                </div>              
                 
                 <!--bottom-left endereco-button button-->    
                 <div class="absolute bottom-4 left-6 sm:left-4 text-sm leading-5">
@@ -459,4 +465,70 @@
 <script src="{% static "js/contacts/addContact.js" %}"></script>
 <script src="{% static "js/contacts/cpf&cnpj.js" %}"></script>
 <script src="{% static "js/contacts/addContactPages.js" %}"></script>
-  
+<script>
+    
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('contact-endereco').value=("");
+            document.getElementById('contact-bairro').value=("");
+            document.getElementById('contact-cidade').value=("");
+            document.getElementById('contact-uf').value=("");
+            
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('contact-endereco').value=(conteudo.logradouro);
+            document.getElementById('contact-bairro').value=(conteudo.bairro);
+            document.getElementById('contact-cidade').value=(conteudo.localidade);
+            document.getElementById('contact-uf').value=(conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('contact-endereco').value="...";
+                document.getElementById('contact-bairro').value="...";
+                document.getElementById('contact-cidade').value="...";
+                document.getElementById('contact-uf').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+</script>
