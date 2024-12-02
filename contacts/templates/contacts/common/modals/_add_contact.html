@@ -6,7 +6,7 @@
         hidden
         fixed
         inset-0 z-50 
-        justify-center items-center
+        justify-center items-end sm:items-center
         bg-background/20 dark:bg-black/40
         backdrop-blur-md">
   
@@ -16,20 +16,233 @@
         ring-primary/10
         dark:ring-white/15
         bg-white dark:bg-secondary
-        shadow-xl
-        p-4   
+        shadow-xl   
         lg:w-5/12 
         md:w-8/12
-        sm:w-11/12 sm:h-3/5
-        w-11/12 h-[75%]
-        rounded-2xl
+        sm:w-11/12 sm:h-4/5
+        w-full h-[85%]
+        rounded-t-4xl sm:rounded-2xl
         relative">
 
         <form action="{% url "contacts:main" %}?filtro=todos" method="POST">
             {% csrf_token %}
 
+            <input name="company" id="company" class="hidden">
+
+            <section id="personalInfo" class="">
+                <div class="relative leading-5 w-full">
+                    <p
+                        class="
+                        text-lg text-black/75 dark:text-white/75
+                        flex 
+                        mt-6 mb-4
+                        items-center justify-center">
+                        <kbd>adicionar contato</kbd>                                                        
+                    </p>
+                </div>
+
+                <div>
+                    <span id="ProgressLabel" class="sr-only">Loading</span>
+                  
+                    <span
+                      role="progressbar"
+                      aria-labelledby="ProgressLabel"
+                      aria-valuemin="0"
+                      aria-valuenow="33"
+                      aria-valuemax="100"
+                      class="block rounded-full bg-gray-200 dark:bg-white/20">
+
+                      <span class="block h-[2px] bg-black dark:bg-white/75" style="width: 33%"></span>
+                    </span>                      
+                </div>   
+
+                <div class="relative leading-5 w-full">
+                    <p
+                        class="
+                        text-sm font-semibold text-black/75 dark:text-white/75
+                        flex 
+                        mt-6 sm:mt-10
+                        items-center justify-center">
+                        1 • 3
+                    </p>
+                </div>     
+                
+                <div class="relative leading-5 w-full">
+                    <p
+                        class="
+                        text-4xl text-black/75 dark:text-white/75
+                        flex 
+                        mt-1
+                        items-center justify-center">
+                        dados gerais
+                    </p>
+                </div>       
+                
+                <fieldset class="grid grid-cols-3 gap-1 w-fit mt-6 px-6 sm:px-8">
+                    <legend class="sr-only">Tipo de Pessoa</legend>
+                  
+                    <div>
+                      <label
+                        for="pf"
+                        class="
+                        block cursor-pointer w-fit rounded-lg p-1 px-1
+                        text-sm text-black/30 dark:text-white/45
+                        underline underline-offset-4 decoration-1 decoration-black/30 dark:decoration-white/45
+                        has-[:checked]:decoration-2
+                        has-[:checked]:decoration-black/75 has-[:checked]:text-black/75           
+                        dark:has-[:checked]:decoration-white/75">
+                        <div>
+                          <p class="">CPF</p>
+                        </div>
+                  
+                        <input
+                          type="radio"
+                          name="tipo"
+                          value="pf"
+                          id="pf"
+                          class="sr-only"
+                          checked
+                        />
+                      </label>
+                    </div>
+                  
+                    <div>
+                      <label
+                        for="pj"
+                        class="
+                        block cursor-pointer w-fit rounded-lg p-1 px-[6px]
+                        text-sm text-black/30 dark:text-white/45
+                        underline underline-offset-4 decoration-1 decoration-black/30 dark:decoration-white/45
+                        has-[:checked]:decoration-2
+                        has-[:checked]:decoration-black/75 has-[:checked]:text-black/75
+                        dark:has-[:checked]:decoration-white/75">
+                        <div>
+                          <p class="">CNPJ</p>
+                        </div>
+                  
+                        <input
+                          type="radio"
+                          name="tipo"
+                          value="pj"
+                          id="pj"
+                          class="sr-only"
+                        />
+                      </label>
+                    </div>
+                </fieldset>                
+                
+                <div class="flow-root mt-4 px-6 sm:px-8">
+                    <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                  
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt id="nome-label" class="text-black/70 dark:text-white/70">nome</dt>
+                        <input
+                            name="nome"
+                            id="nome"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt id="apelido-label" class="text-black/70 dark:text-white/70">apelido</dt>
+                        <input
+                            name="apelido"
+                            id="apelido"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>    
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt id="cpf-cnpj-label" class="text-black/70 dark:text-white/70">cpf</dt>
+                        <input
+                            name="cpf_cnpj"
+                            id="cpf_cnpj"
+                            inputmode="decimal"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>                                           
+                    </dl>
+                </div>
+
+                <div id="contribuinte-checkbox" class="px-2 sm:px-1">
+                    <fieldset class="flex gap-2 px-4 sm:px-7 mt-4">                  
+                        <div>
+                            <label
+                            for="contribuinte"
+                            class=
+                            "w-36 p-2 px-3
+                            flex cursor-pointer items-center gap-4 rounded-lg 
+                            bg-background/50 dark:bg-tertiary ring-1 ring-black/10 
+                            transition 
+                            has-[:checked]:ring-black/20">
+
+                            <div class="flex items-center">
+                                <input type="checkbox" class="rounded-lg border-gray-200 accent-current" id="contribuinte" name="contribuinte" />
+                            </div>
+
+                            <div>
+                                <span class="text-sm text-black/70 dark:text-white/70"> contribuinte </span>
+                            </div>
+                            </label>
+                        </div>
+                    
+                        <div class="grid grid-cols-3 sm:grid-cols-3 w-fit gap-1 p-2 px-3 rounded-lg dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                            <label id="ie-label" class="text-black/70 dark:text-white/70 col-span-1">ie</label>
+                            <input
+                                name="ie"
+                                id="ie"
+                                placeholder="..."
+                                inputmode="decimal"
+                                class="text-black/40 dark:text-white/40 bg-transparent outline-none col-span-2 text-end">
+                            </input>
+                        </div>
+                    </fieldset>                
+                    
+                    <div class="flow-root mt-4 px-4 sm:px-7">
+                        <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                            <dt id="im-label" class="text-black/70 dark:text-white/70">inscrição municipal</dt>
+                            <input
+                                name="im"
+                                id="im"
+                                placeholder="..."
+                                inputmode="decimal"
+                                class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                            </input>
+                        </div>                                             
+                        </dl>
+                    </div>     
+                </div>    
+                
+                <!--bottom-right next-contact-1 button-->    
+                <div class="absolute bottom-4 right-4 text-sm leading-5">
+                    <button
+                        class="
+                        group
+                        flex 
+                        p-1
+                        items-center justify-center 
+                        aspect-square rounded-md 
+                        dark:shadow-thick 
+                        ring-1 
+                        ring-primary/15 hover:ring-primary/10
+                        dark:ring-white/10 dark:hover:ring-white/20
+                        duration-300 
+                        transition-all
+                        bg-white dark:bg-tertiary
+                        hover:bg-zinc-100 dark:hover:bg-primary"  
+                        type="button"
+                        id="next-contact-1">
+                        <svg class="size-[18px] stroke-black/55 dark:stroke-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>                                                                                 
+                    </button>
+                </div>    
+            </section>     
+
             <!--bottom-right submit button-->    
-            <div class="absolute bottom-4 right-4 text-sm leading-5">
+            <div class="hidden absolute bottom-4 right-4 text-sm leading-5">
                 <button
                     class="
                     group
@@ -54,11 +267,8 @@
             </div>    
         </form>
 
-
-  
-
-        <!--bottom-left closeAddContact button-->  
-        <div class="absolute bottom-4 left-4 text-sm leading-5">
+        <!--top-left closeAddContact button-->  
+        <div class="absolute hidden top-6 left-4 text-sm leading-5">
             <div
                 class="
                 group
@@ -86,3 +296,35 @@
 </div>
  
 <script src="{% static "js/contacts/addContact.js" %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pfRadio = document.getElementById('pf');
+      const pjRadio = document.getElementById('pj');
+      const nomeLabel = document.getElementById('nome-label');
+      const apelidoLabel = document.getElementById('apelido-label');
+      const cpfCnpjLabel = document.getElementById('cpf-cnpj-label');
+      const checkbox = document.getElementById('contribuinte-checkbox');
+  
+      const toggleForms = () => {
+        if (pfRadio.checked) {
+          nomeLabel.textContent = 'nome';
+          apelidoLabel.textContent = 'apelido';
+          cpfCnpjLabel.textContent = 'cpf';
+          checkbox.classList.add('hidden');
+        } else if (pjRadio.checked) {
+          nomeLabel.textContent = 'razão social';
+          apelidoLabel.textContent = 'fantasia';
+          cpfCnpjLabel.textContent = 'cnpj';
+          checkbox.classList.remove('hidden');
+        }
+      };
+  
+      // Initial toggle
+      toggleForms();
+  
+      // Listen for changes
+      pfRadio.addEventListener('change', toggleForms);
+      pjRadio.addEventListener('change', toggleForms);
+    });
+  </script>
+  
