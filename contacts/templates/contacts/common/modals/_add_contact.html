@@ -19,8 +19,8 @@
         shadow-xl   
         lg:w-5/12 
         md:w-8/12
-        sm:w-11/12 sm:h-4/5
-        w-full h-[85%]
+        sm:w-11/12 sm:h-auto
+        w-full h-auto
         rounded-t-4xl sm:rounded-2xl
         relative">
 
@@ -131,7 +131,7 @@
                     </div>
                 </fieldset>                
                 
-                <div class="flow-root mt-4 px-6 sm:px-8">
+                <div id="pf-form" class="flow-root mt-4 mb-24 px-6 sm:px-8">
                     <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
                   
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
@@ -165,7 +165,7 @@
                     </dl>
                 </div>
 
-                <div id="contribuinte-checkbox" class="px-2 sm:px-1">
+                <div id="contribuinte-checkbox" class="px-2 sm:px-1 mb-24">
                     <fieldset class="flex gap-2 px-4 sm:px-7 mt-4">                  
                         <div>
                             <label
@@ -299,6 +299,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
       const pfRadio = document.getElementById('pf');
+      const pfForm = document.getElementById('pf-form');
       const pjRadio = document.getElementById('pj');
       const nomeLabel = document.getElementById('nome-label');
       const apelidoLabel = document.getElementById('apelido-label');
@@ -311,11 +312,13 @@
           apelidoLabel.textContent = 'apelido';
           cpfCnpjLabel.textContent = 'cpf';
           checkbox.classList.add('hidden');
+          pfForm.classList.add('mb-24');
         } else if (pjRadio.checked) {
           nomeLabel.textContent = 'razão social';
           apelidoLabel.textContent = 'fantasia';
           cpfCnpjLabel.textContent = 'cnpj';
           checkbox.classList.remove('hidden');
+          pfForm.classList.remove('mb-24');
         }
       };
   
