@@ -23,7 +23,7 @@ class Contacts(models.Model):
     endereco = models.CharField(max_length=255, blank=True)
     numero = models.PositiveIntegerField(blank=True, null=True)
     bairro = models.CharField(max_length=255, blank=True)
-    complemento = models.CharField(max_length=255, blank=True)
+    complemento = models.CharField(max_length=30, blank=True)
     cidade = models.CharField(max_length=255, blank=True)
     uf = models.CharField(max_length=2, blank=True)    
     cep = models.CharField(max_length=9, blank=True)
