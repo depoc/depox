@@ -177,10 +177,11 @@
                             flex cursor-pointer items-center gap-4 rounded-lg 
                             bg-background/50 dark:bg-tertiary ring-1 ring-black/10 
                             transition 
-                            has-[:checked]:ring-black/20">
+                            has-[:checked]:bg-[rgba(0,0,0,0.05)] dark:has-[:checked]:bg-white/10">
 
                             <div class="flex items-center">
-                                <input type="checkbox" class="rounded-lg border-gray-200 accent-current" id="contribuinte" name="contribuinte" />
+                                <input type="checkbox" class="peer hidden rounded-lg border-gray-200 accent-current" id="contribuinte" name="contribuinte" />
+                                <div class="w-4 h-4 rounded-[5px] bg-white dark:bg-white/50 border border-gray-300 dark:border-gray-300/60 peer-checked:bg-black"></div>
                             </div>
 
                             <div>
