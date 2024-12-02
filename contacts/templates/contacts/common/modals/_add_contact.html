@@ -29,18 +29,18 @@
 
             <input name="company" id="company" class="hidden">
 
-            <section id="personalInfo" class="">
-                <div class="relative leading-5 w-full">
-                    <p
-                        class="
-                        text-lg text-black/75 dark:text-white/75
-                        flex 
-                        mt-6 mb-4
-                        items-center justify-center">
-                        <kbd>adicionar contato</kbd>                                                        
-                    </p>
-                </div>
+            <div class="relative leading-5 w-full">
+                <p
+                    class="
+                    text-lg text-black/75 dark:text-white/75
+                    flex 
+                    mt-6 mb-4
+                    items-center justify-center">
+                    <kbd>adicionar contato</kbd>                                                        
+                </p>
+            </div>            
 
+            <section id="dados-gerais" class="">
                 <div>
                     <span id="ProgressLabel" class="sr-only">Loading</span>
                   
@@ -51,10 +51,10 @@
                       aria-valuenow="33"
                       aria-valuemax="100"
                       class="block rounded-full bg-gray-200 dark:bg-white/20">
-
+    
                       <span class="block h-[2px] bg-black dark:bg-white/75" style="width: 33%"></span>
                     </span>                      
-                </div>   
+                </div>  
 
                 <div class="relative leading-5 w-full">
                     <p
@@ -218,7 +218,7 @@
                     </div>     
                 </div>    
                 
-                <!--bottom-right next-contact-1 button-->    
+                <!--bottom-right dados-gerais-button button-->    
                 <div class="absolute bottom-4 right-6 sm:right-4 text-sm leading-5">
                     <button
                         class="
@@ -236,13 +236,171 @@
                         bg-white dark:bg-tertiary
                         hover:bg-zinc-100 dark:hover:bg-primary"  
                         type="button"
-                        id="next-contact-1">
+                        id="dados-gerais-button">
                         <svg class="size-[18px] stroke-black/55 dark:stroke-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                         </svg>                          
                     </button>
                 </div>    
-            </section>     
+            </section>   
+            
+            <section id="contact-endereco" class="hidden">
+                <div>
+                    <span id="ProgressLabel" class="sr-only">Loading</span>
+                  
+                    <span
+                      role="progressbar"
+                      aria-labelledby="ProgressLabel"
+                      aria-valuemin="0"
+                      aria-valuenow="66"
+                      aria-valuemax="100"
+                      class="block rounded-full bg-gray-200 dark:bg-white/20">
+    
+                      <span class="block h-[2px] bg-black dark:bg-white/75" style="width: 66%"></span>
+                    </span>                      
+                </div>  
+
+                <div class="relative leading-5 w-full">
+                    <p
+                        class="
+                        text-sm font-semibold text-black/75 dark:text-white/75
+                        flex 
+                        mt-6 sm:mt-10
+                        items-center justify-center">
+                        2 • 3
+                    </p>
+                </div>     
+                
+                <div class="relative leading-5 w-full">
+                    <p
+                        class="
+                        text-4xl text-black/75 dark:text-white/75
+                        flex 
+                        mt-1
+                        items-center justify-center">
+                        endereço
+                    </p>
+                </div>      
+                
+                <div id="contact-endereco-form" class="flow-root mt-4 px-6 sm:px-8">
+                    <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">cep</dt>
+                        <input
+                            name="cep"
+                            inputmode="decimal"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>                                                                                                                     
+                    </dl>
+                </div>                  
+                
+                <div id="contact-endereco-form" class="flow-root mt-4 mb-24 px-6 sm:px-8">
+                    <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                  
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">endereco</dt>
+                        <input
+                            name="endereco"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">número</dt>
+                        <input
+                            name="numero"
+                            inputmode="decimal"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>    
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">bairro</dt>
+                        <input
+                            name="bairro"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>  
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">complemento</dt>
+                        <input
+                            name="complemento"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>       
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">estado</dt>
+                        <input
+                            name="uf"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>                        
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">cidade</dt>
+                        <input
+                            name="cidade"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>                                                                                                                     
+                    </dl>
+                </div>  
+                
+                <!--bottom-left endereco-button button-->    
+                <div class="absolute bottom-4 left-6 sm:left-4 text-sm leading-5">
+                    <button
+                        class="
+                        group
+                        flex 
+                        p-1
+                        items-center justify-center 
+                        aspect-square rounded-md 
+                        dark:shadow-thick 
+                        ring-1 
+                        ring-primary/15 hover:ring-primary/10
+                        dark:ring-white/10 dark:hover:ring-white/20
+                        duration-300 
+                        transition-all
+                        bg-white dark:bg-tertiary
+                        hover:bg-zinc-100 dark:hover:bg-primary"  
+                        type="button"
+                        id="endereco-back-button">
+                        <svg class="size-[18px] stroke-black/55 dark:stroke-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                        </svg>                                                   
+                    </button>
+                </div>                
+
+                <!--bottom-right next-contact-2 button-->    
+                <div class="absolute bottom-4 right-6 sm:right-4 text-sm leading-5">
+                    <button
+                        class="
+                        group
+                        flex 
+                        p-1
+                        items-center justify-center 
+                        aspect-square rounded-md 
+                        dark:shadow-thick 
+                        ring-1 
+                        ring-primary/15 hover:ring-primary/10
+                        dark:ring-white/10 dark:hover:ring-white/20
+                        duration-300 
+                        transition-all
+                        bg-white dark:bg-tertiary
+                        hover:bg-zinc-100 dark:hover:bg-primary"  
+                        type="button"
+                        id="next-contact-2">
+                        <svg class="size-[18px] stroke-black/55 dark:stroke-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                        </svg>                          
+                    </button>
+                </div>    
+            </section>                
 
             <!--bottom-right submit button-->    
             <div class="hidden absolute bottom-4 right-4 text-sm leading-5">
@@ -299,38 +457,6 @@
 </div>
  
 <script src="{% static "js/contacts/addContact.js" %}"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const pfRadio = document.getElementById('pf');
-      const pfForm = document.getElementById('pf-form');
-      const pjRadio = document.getElementById('pj');
-      const nomeLabel = document.getElementById('nome-label');
-      const apelidoLabel = document.getElementById('apelido-label');
-      const cpfCnpjLabel = document.getElementById('cpf-cnpj-label');
-      const checkbox = document.getElementById('contribuinte-checkbox');
-  
-      const toggleForms = () => {
-        if (pfRadio.checked) {
-          nomeLabel.textContent = 'nome';
-          apelidoLabel.textContent = 'apelido';
-          cpfCnpjLabel.textContent = 'cpf';
-          checkbox.classList.add('hidden');
-          pfForm.classList.add('mb-24');
-        } else if (pjRadio.checked) {
-          nomeLabel.textContent = 'razão social';
-          apelidoLabel.textContent = 'fantasia';
-          cpfCnpjLabel.textContent = 'cnpj';
-          checkbox.classList.remove('hidden');
-          pfForm.classList.remove('mb-24');
-        }
-      };
-  
-      // Initial toggle
-      toggleForms();
-  
-      // Listen for changes
-      pfRadio.addEventListener('change', toggleForms);
-      pjRadio.addEventListener('change', toggleForms);
-    });
-  </script>
+<script src="{% static "js/contacts/cpf&cnpj.js" %}"></script>
+<script src="{% static "js/contacts/addContactPages.js" %}"></script>
   
