@@ -1,0 +1,36 @@
+{% load static %}
+
+<div
+    id="addContact"
+    class="
+        hidden
+        fixed
+        inset-0 z-50 
+        justify-center items-end sm:items-center
+        bg-background/20 dark:bg-black/40
+        backdrop-blur-md">
+  
+    <div 
+      class=
+        "ring-1
+        ring-primary/10
+        dark:ring-white/15
+        bg-white dark:bg-secondary
+        shadow-xl
+        p-4   
+        lg:w-5/12 sm:h-3/5
+        md:w-8/12
+        w-full sm:w-11/12 h-[75%]
+        rounded-t-4xl sm:rounded-2xl
+        relative">
+  
+        <!--empty closeaddContact button-->  
+        <div class="absolute top-4 left-5 sm:left-4 text-sm leading-5">
+            <button id="closeAddContact">             
+            </button>
+        </div>     
+
+    </div>
+</div>
+ 
+<script src="{% static "js/contacts/addContact.js" %}"></script>
