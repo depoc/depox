@@ -1,4 +1,6 @@
 from .models import Contacts
+from .forms import ContactsForm
+
 from finance.models import Transactions
 
 
@@ -7,6 +9,7 @@ class ContactsLogic:
     def get_context(request) -> dict[str, object]:
         context = {}
         context.update(ContactsLogic.get_contacts(request))
+        context.update(ContactsLogic.add_contact(request))
 
         return context
     
@@ -15,3 +18,18 @@ class ContactsLogic:
         contacts = Contacts.objects.all().order_by('nome')
 
         return {'contacts': contacts}
+    
+    @staticmethod
+    def add_contact(request) -> dict[str, object]:
+        form = ContactsForm()
+        post_data = request.POST.copy()
+        company = request.user.company
+        post_data['company'] = company
+
+        if request.method == 'POST' and 'add-contact' in request.POST:
+            form = ContactsForm(post_data)
+            if form.is_valid():
+                form.save()
+
+        return {'addContactForm': form}
+    
