@@ -7,6 +7,6 @@ from .services import ContactsLogic
 @login_required(login_url='users:login')
 def contacts(request):
     context = {}
-    context.update(ContactsLogic.get_contacts(request))
+    context.update(ContactsLogic.get_context(request))
 
     return render(request, 'contacts/main.html', context)
