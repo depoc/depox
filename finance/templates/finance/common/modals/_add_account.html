@@ -28,8 +28,8 @@
         <form action="{% url "finance:caixa" %}" method="POST" class="">
             {% csrf_token %}
             <div
-                class="px-1 mt-4 mb-6 text-4xl text-start tracking-normal sm:tracking-widest text-black/10 dark:text-white/10">
-                <kbd>nova conta</kbd>
+                class="px-1 mt-4 mb-6 text-4xl text-start text-black/75 dark:text-white/75">
+                nova conta
             </div>
 
             <div
@@ -57,8 +57,8 @@
                     <dt class="text-black/70 dark:text-white/70">nome</dt>
                     <input
                         required
-                        name="name"
-                        id="name"
+                        name="nome"
+                        id="nome"
                         value=""
                         placeholder="..."
                         class="text-black/40 dark:text-white/40 placeholder:text-black/40 placeholder:dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start">
