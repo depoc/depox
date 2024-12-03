@@ -572,7 +572,7 @@
                     </dl>
                 </div>  
                 
-                <div class="flow-root mt-4 px-6 sm:px-8">
+                <div id="datePickerDiv" class="flow-root mt-4 px-6 sm:px-8">
                     <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
                         <dt class="text-black/70 dark:text-white/70">aniversário</dt>
@@ -702,7 +702,8 @@
             disableMobile: "true",
             mode: "single",  
             clickOpens: true,        
-            position: "above center",     
+            position: "above center",  
+            positionElement: document.querySelector("#datePickerDiv")   
         });
     });
 </script>
