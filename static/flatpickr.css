@@ -1,0 +1,167 @@
+/* ==========================
+   Estilos Gerais para o Flatpickr
+========================== */
+
+/* Estilos personalizados para o Flatpickr */
+.flatpickr-calendar {
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #ffffff2e; /* Cor de fundo clara */
+    backdrop-filter: blur(8px);
+    color: rgba(0, 0, 0, 0.6); /* Texto preto com opacidade reduzida */
+    font-family: sans-serif;
+    font-weight: normal;
+    text-transform: lowercase; /* Texto em minúsculas */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  /* Estilo do cabeçalho do mês */
+  .flatpickr-calendar .flatpickr-month {
+    background-color: transparent;
+    backdrop-filter: blur(8px);
+    color: rgba(0, 0, 0, 0.8); /* Cor do texto do cabeçalho */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .flatpickr-calendar .flatpickr-month .flatpickr-monthDropdown-months:hover {
+    background-color: transparent;
+  }
+  
+  /* Estilo das células de dia */
+  .flatpickr-calendar .flatpickr-day {
+    border-radius: 4rem;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.6); /* Texto preto com opacidade reduzida */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Efeito de hover nas células de dia */
+  .flatpickr-calendar .flatpickr-day:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Leve destaque no hover */
+    color: rgba(0, 0, 0, 0.9); /* Texto mais escuro no hover */
+  }
+  
+  /* Estilo das células de dia - Dia Atual */
+  .flatpickr-calendar .flatpickr-day.today {
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  /* Estilo das células de dia - Selecionado */
+  .flatpickr-calendar .flatpickr-day.selected {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    color: black;
+  }
+  
+  /* ==========================
+     Estilos para Navegação
+  ========================== */
+  
+  /* Estilo dos botões de navegação (próximo e anterior) */
+  .flatpickr-calendar .flatpickr-prev-month,
+  .flatpickr-calendar .flatpickr-next-month {
+    color: rgba(0, 0, 0, 0.6); /* Cor dos botões no modo claro */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Target the previous/next month arrows */
+  .flatpickr-calendar .flatpickr-months .flatpickr-next-month svg,
+  .flatpickr-calendar .flatpickr-months .flatpickr-prev-month svg {
+    fill: rgba(0, 0, 0, 0.5); /* Cor das setas */
+  }
+  
+  /* ==========================
+     Estilos para o Modo Escuro
+  ========================== */
+  
+  /* Estilos para o modo escuro */
+  .dark .flatpickr-calendar {
+    background-color: rgba(0, 0, 0, 0.1); /* Fundo escuro */
+    color: rgba(255, 255, 255, 0.8); /* Texto claro */
+    border-color: rgb(255, 255, 255, 0.2); /* Bordas mais claras */
+    box-shadow: none;
+  }
+  
+  /* Estilo das células de dia no modo escuro */
+  .dark .flatpickr-calendar .flatpickr-day {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Efeito de hover nas células de dia no modo escuro */
+  .dark .flatpickr-calendar .flatpickr-day:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 1); /* Texto mais claro no hover */
+  }
+  
+  /* Estilo do cabeçalho do mês no modo escuro */
+  .dark .flatpickr-calendar .flatpickr-month {
+    backdrop-filter: blur(8px);
+    color: rgba(255, 255, 255, 0.9);
+    background-color: transparent;
+  }
+  
+  /* Estilo das células de dia - Dia Atual no modo escuro */
+  .dark .flatpickr-calendar .flatpickr-day.today {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+  }
+  
+  /* Estilo das células de dia - Selecionado no modo escuro */
+  .dark .flatpickr-calendar .flatpickr-day.selected {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+  
+  /* Estilo do texto nas semanas no modo escuro */
+  .dark .flatpickr-weekdays .flatpickr-weekdaycontainer span.flatpickr-weekday {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* ==========================
+     Estilos para os Pseudo-elementos (triângulo)
+  ========================== */
+  
+  /* Target the triangle created by the ::before or ::after pseudo-element */
+  .dark .flatpickr-calendar::after,
+  .dark .flatpickr-calendar::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid transparent;
+  }
+  
+  /* ==========================
+     Outras Personalizações
+  ========================== */
+  
+  /* Hides the SVG icon next to the year */
+  .flatpickr-calendar .flatpickr-year {
+    display: none !important;
+  }
+  
+  /* Estilo dos botões de navegação no modo escuro */
+  .dark .flatpickr-calendar .flatpickr-prev-month svg,
+  .dark .flatpickr-calendar .flatpickr-next-month svg {
+    fill: rgba(255, 255, 255, 0.7); 
+  }
+  
+  /* Removes month select svg arrow */
+  .flatpickr-current-month .flatpickr-monthDropdown-months {
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  
