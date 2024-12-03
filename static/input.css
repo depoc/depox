@@ -2,6 +2,199 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Estilos personalizados para o Flatpickr */
+.flatpickr-calendar {
+  /* Bordas arredondadas e fundo claro no modo claro */
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #ffffff2e; /* Cor de fundo clara */
+  backdrop-filter: blur(8px);
+  color: rgba(0, 0, 0, 0.6); /* Texto preto com opacidade reduzida */
+  font-family: sans-serif;
+  font-weight: normal;
+  text-transform: lowercase; /* Texto em minúsculas */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Estilo das células de dia */
+.flatpickr-calendar .flatpickr-day {
+  border-radius: 4rem;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.6); /* Texto preto com opacidade reduzida */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.flatpickr-calendar .flatpickr-day.today {
+  background-color: transparent; /* Change the background color */
+  color: black; /* Change the text color */
+  border: 1px solid black;
+}
+
+.dark .flatpickr-calendar .flatpickr-day.today {
+  background-color: transparent; /* Change the background color */
+  color: white; /* Change the text color */
+  border: 1px solid white;
+}
+
+/* Efeito de hover nas células de dia */
+.flatpickr-calendar .flatpickr-day:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Leve destaque no hover */
+  color: rgba(0, 0, 0, 0.9); /* Texto mais escuro no hover */
+}
+
+/* Estilo do cabeçalho do mês */
+.flatpickr-calendar .flatpickr-month {
+  background-color: transparent;
+  backdrop-filter: blur(8px);
+  color: rgba(0, 0, 0, 0.8); /* Cor do texto do cabeçalho */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.flatpickr-calendar .flatpickr-month .flatpickr-monthDropdown-months:hover {
+  background-color: transparent;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.flatpickr-calendar .flatpickr-month .numInputWrapper svg {
+  display: none;
+}
+
+.flatpickr-calendar .numInputWrapper:hover {
+  background-color: transparent;
+}
+
+.flatpickr-calendar .numInputWrapper span {
+  display: none;
+}
+
+/* Estilo dos botões de navegação (próximo e anterior) */
+.flatpickr-calendar .flatpickr-prev-month,
+.flatpickr-calendar .flatpickr-next-month {
+  color: rgba(0, 0, 0, 0.6); /* Cor dos botões no modo claro */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Hide the SVG icon next to the year */
+.flatpickr-calendar .flatpickr-year {
+  display: none !important; /* Hides the SVG icon */
+}
+
+/* Target the triangle created by the ::before or ::after pseudo-element */
+.dark .flatpickr-calendar::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; /* Adjust based on your design */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  
+  /* Remove the visible triangle by making the border transparent */
+  border-left: 8px solid transparent;  /* Left side of triangle */
+  border-right: 8px solid transparent; /* Right side of triangle */
+  border-top: 8px solid transparent;   /* Make the triangle transparent */
+}
+
+.dark .flatpickr-calendar::before {
+  border-top-color: transparent;
+  color: transparent;
+  background-color: transparent;
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid transparent;
+}
+
+/* Change the color of the selected date */
+.flatpickr-calendar .flatpickr-day.selected {
+  background-color: rgba(0, 0, 0, 0.1); /* Change to your desired background color */
+  border: none;
+  color: black; /* Change text color */
+}
+
+/* Dark mode selected date */
+.dark .flatpickr-calendar .flatpickr-day.selected {
+  background-color: rgba(255, 255, 255, 0.2); /* Lighter background in dark mode */
+  color: white; /* Text color in dark mode */
+}
+
+/* Target the previous month arrow's SVG */
+.flatpickr-calendar .flatpickr-months .flatpickr-next-month svg,
+.flatpickr-calendar .flatpickr-months .flatpickr-prev-month svg {
+  fill: rgba(0, 0, 0, 0.5); /* Change this to your desired color */
+}
+
+/* Dark mode styling for the previous month arrow */
+.dark .flatpickr-calendar .flatpickr-months .flatpickr-prev-month svg,
+.dark .flatpickr-calendar .flatpickr-months .flatpickr-next-month svg {
+  fill: rgba(255, 255, 255, 0.7); /* Lighter color in dark mode */
+}
+
+/* Estilos para o modo escuro */
+.dark .flatpickr-calendar {
+  background-color: rgba(0, 0, 0, 0.1); /* Fundo escuro */
+  color: rgba(255, 255, 255, 0.8); /* Texto claro */
+  border-color: rgb(255, 255, 255, 0.2); /* Bordas mais claras */
+  box-shadow: none;
+}
+
+.dark .flatpickr-calendar .flatpickr-day {
+  color: rgba(255, 255, 255, 0.8); /* Texto claro nas células */
+}
+
+.dark .flatpickr-calendar .flatpickr-day:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Destaque no hover */
+  color: rgba(255, 255, 255, 1); /* Texto mais claro no hover */
+}
+
+.dark .flatpickr-calendar .flatpickr-month {
+  backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.9);
+  background-color: transparent;
+}
+
+.dark .flatpickr-weekdays .flatpickr-weekdaycontainer span.flatpickr-weekday {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark .flatpickr-calendar .flatpickr-month .flatpickr-monthDropdown-months:hover {
+  background-color: transparent;
+}
+
+.dark .flatpickr-calendar .numInputWrapper:hover {
+  background-color: transparent;
+}
+
+.dark .flatpickr-calendar .numInputWrapper span {
+  display: none;
+}
+
+/* Estilo das células de dia no modo escuro */
+.dark .flatpickr-calendar .flatpickr-day {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Efeito de hover nas células de dia no modo escuro */
+.dark .flatpickr-calendar .flatpickr-day:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Hover mais suave no modo escuro */
+  color: rgba(255, 255, 255, 1); /* Texto claro no hover */
+}
+
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -21,9 +214,4 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
-/* Hide arrows for Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
 }

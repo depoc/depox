@@ -578,12 +578,15 @@
                         <dt class="text-black/70 dark:text-white/70">aniversário</dt>
                         <input
                             type="date"
-                            name="aniversario"
+                            name="nascimento"
                             id="contact-aniversario"
                             value=""
+                            placeholder="selecione data"
                             class="
-                            text-black/0
-                            bg-transparent outline-none sm:col-span-2 text-end">
+                            flatpickr
+                            text-black/40 dark:text-white/40
+                            bg-transparent outline-none sm:col-span-2 text-end
+                            placeholder:text-black/40 dark:placeholder:text-white/40">
                         </input>
                       </div>                              
                     </dl>
@@ -689,6 +692,16 @@
 <script src="{% static "js/contacts/addContact.js" %}"></script>
 <script src="{% static "js/contacts/cpf&cnpj.js" %}"></script>
 <script src="{% static "js/contacts/addContactPages.js" %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        flatpickr(".flatpickr", {
+            dateFormat: "d/m/Y", // Customize the date format as needed
+            locale: "pt",
+        });
+    });
+</script>
+
 <script>
     
     function limpa_formulário_cep() {
