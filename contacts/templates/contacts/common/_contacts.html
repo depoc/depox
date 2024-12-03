@@ -145,6 +145,7 @@
         grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
         gap-3">
 
+        {% for contact in recent_contacts %}
         <div
             class="
             p-2
@@ -167,7 +168,11 @@
                         text-nowrap text-xs font-medium tracking-wide
                         text-black/40 dark:text-white/60
                         truncate">
-                        87 98124-7276
+                        {% if contact.celular %}
+                        {{ contact.celular | format_phone_number }}
+                        {% else %}
+                        cadastrar celular
+                        {% endif %}
                     </p>
                 </button>  
                 <div class="w-fit h-fit">
@@ -176,7 +181,7 @@
                         text-nowrap text-xs font-medium
                         text-black/40 dark:text-white/60
                         truncate">
-                        <kbd>87</kbd>
+                        <kbd>{{ contact.id }}</kbd>
                     </p>
                 </div>                             
             </div>        
@@ -199,7 +204,7 @@
                         text-start text-lg font-medium
                         text-black/55 dark:text-white
                         truncate">
-                        Hugo Belém                                    
+                        {{ contact.apelido }}                                
                     </p>      
 
                     
@@ -211,17 +216,18 @@
                         truncate">
                         
                         <span class="">
-                            Hugo Cordeiro Belém
+                            {{ contact.nome }}
                         </span>          
                         <span class="line-clamp-1">
-                            322.745.936-85
+                            {{ contact.cpf_cnpj | format_cpf_cnpj }}
                         </span>                                                   
                     </div>                       
                 </div>                    
             </button>
         </div>  
-                    
-    </div>
+        {% endfor %}
+      
+    </div> 
 
     <p class="text-lg text-black/30 dark:text-white/50 mt-6 px-3">
         todos

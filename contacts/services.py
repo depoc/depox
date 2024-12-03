@@ -15,9 +15,11 @@ class ContactsLogic:
     
     @staticmethod
     def get_contacts(request) -> dict[str, object]:
-        contacts = Contacts.objects.all().order_by('nome')
+        contacts = Contacts.objects.all().order_by('apelido')
 
-        return {'contacts': contacts}
+        recent_contacts = Contacts.objects.all().order_by('-created')[0:2]
+
+        return {'contacts': contacts, 'recent_contacts': recent_contacts}
     
     @staticmethod
     def add_contact(request) -> dict[str, object]:
