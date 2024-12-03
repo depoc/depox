@@ -22,10 +22,18 @@
     background-color: transparent;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    text-transform: lowercase;
   }
   
+  /* Removes hover bg color */
   .flatpickr-calendar .flatpickr-month .flatpickr-monthDropdown-months:hover {
     background-color: transparent;
+  }
+
+  /* Style month text */
+  .flatpickr-calendar .flatpickr-month .flatpickr-monthDropdown-months {
+    text-transform: uppercase;
+    text-align: center;
   }
   
   /* Estilo das células de dia */
