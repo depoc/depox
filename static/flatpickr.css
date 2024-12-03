@@ -20,8 +20,6 @@
   /* Estilo do cabeçalho do mês */
   .flatpickr-calendar .flatpickr-month {
     background-color: transparent;
-    backdrop-filter: blur(8px);
-    color: rgba(0, 0, 0, 0.8); /* Cor do texto do cabeçalho */
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -102,9 +100,10 @@
   
   /* Estilo do cabeçalho do mês no modo escuro */
   .dark .flatpickr-calendar .flatpickr-month {
-    backdrop-filter: blur(8px);
-    color: rgba(255, 255, 255, 0.9);
     background-color: transparent;
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   
   /* Estilo das células de dia - Dia Atual no modo escuro */
@@ -147,10 +146,15 @@
   /* ==========================
      Outras Personalizações
   ========================== */
-  
-  /* Hides the SVG icon next to the year */
-  .flatpickr-calendar .flatpickr-year {
-    display: none !important;
+
+  /* Hide up and down arrows next to the year */
+  .flatpickr-calendar .numInputWrapper span {
+    display: none;
+  }
+
+  /* Remove hover from year */
+  .flatpickr-calendar .numInputWrapper:hover {
+    background-color: transparent;
   }
   
   /* Estilo dos botões de navegação no modo escuro */
