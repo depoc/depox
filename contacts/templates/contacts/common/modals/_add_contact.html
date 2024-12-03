@@ -6,7 +6,7 @@
         hidden
         fixed
         inset-0 z-50 
-        justify-center items-end sm:items-center
+        justify-center items-center
         bg-background/20 dark:bg-black/40
         backdrop-blur-md">
   
@@ -20,8 +20,8 @@
         lg:w-5/12 
         md:w-8/12
         sm:w-11/12 sm:h-[75%]
-        w-full h-[90%]
-        rounded-t-4xl sm:rounded-2xl
+        w-11/12 h-[90%]
+        rounded-2xl
         relative">
 
         <form action="{% url "contacts:main" %}?filtro=todos" method="POST">
@@ -34,7 +34,7 @@
                     class="
                     text-lg text-black/75 dark:text-white/75
                     flex 
-                    mt-6 mb-4
+                    mt-3 mb-2
                     items-center justify-center">
                     <kbd>adicionar contato</kbd>                                                        
                 </p>
