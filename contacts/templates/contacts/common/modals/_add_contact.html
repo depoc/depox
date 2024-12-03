@@ -6,7 +6,7 @@
         hidden
         fixed
         inset-0 z-50 
-        justify-center items-center
+        justify-center items-end sm:items-center
         bg-background/20 dark:bg-black/40
         backdrop-blur-md">
   
@@ -20,8 +20,8 @@
         lg:w-5/12 
         md:w-8/12
         sm:w-11/12 sm:h-[75%]
-        w-11/12 h-[85%]
-        rounded-2xl
+        w-full h-[90%]
+        rounded-t-4xl sm:rounded-2xl
         relative">
 
         <form action="{% url "contacts:main" %}?filtro=todos" method="POST">
@@ -216,7 +216,32 @@
                         </div>                                             
                         </dl>
                     </div>     
-                </div>    
+                </div>   
+                
+                <!--bottom-left svg-->  
+                <div class="absolute bottom-4 left-6 sm:left-4 text-sm leading-5">
+                    <p
+                        class="
+                        group
+                        flex 
+                        p-1
+                        items-center justify-center 
+                        aspect-square rounded-md 
+                        dark:shadow-thick 
+                        ring-1 
+                        ring-primary/15 hover:ring-primary/10
+                        dark:ring-white/10 dark:hover:ring-white/20
+                        duration-300 
+                        transition-all
+                        bg-white dark:bg-tertiary
+                        hover:bg-zinc-100 dark:hover:bg-primary">
+                        <button id="closeAddContact">
+                            <svg class="size-[18px] text-black/55 dark:text-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M6 18 17.94 6M18 18 6.06 6"/>
+                            </svg>                                                   
+                        </button>
+                    </p>
+                </div>                  
                 
                 <!--bottom-right dados-gerais-button button-->    
                 <div class="absolute bottom-4 right-6 sm:right-4 text-sm leading-5">
@@ -282,7 +307,7 @@
                     </p>
                 </div>      
                 
-                <div id="contact-endereco-form" class="flow-root mt-6 px-6 sm:px-8">
+                <div class="flow-root mt-6 px-6 sm:px-8">
                     <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
                         <dt class="text-black/70 dark:text-white/70">cep</dt>
@@ -301,7 +326,7 @@
                     </dl>
                 </div>                  
                 
-                <div id="contact-endereco-form" class="flow-root mt-4 px-6 sm:px-8">
+                <div class="flow-root mt-4 px-6 sm:px-8">
                     <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
                   
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
@@ -325,6 +350,16 @@
                       </div>   
 
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">complemento</dt>
+                        <input
+                            name="complemento"
+                            id="contact-complemento"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>                        
+
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
                         <dt class="text-black/70 dark:text-white/70">bairro</dt>
                         <input
                             name="bairro"
@@ -332,35 +367,38 @@
                             placeholder="..."
                             class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
                         </input>
-                      </div>    
-
-                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
-                        <dt class="text-black/70 dark:text-white/70">uf</dt>
-                        <input
-                            name="uf"
-                            id="contact-uf"
-                            placeholder="..."
-                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
-                        </input>
-                      </div> 
-
-                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
-                        <dt class="text-black/70 dark:text-white/70">cidade</dt>
-                        <input
-                            name="cidade"
-                            id="contact-cidade"
-                            placeholder="..."
-                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
-                        </input>
                       </div>   
 
                     </dl>
-                </div>              
+                </div>   
+
+                <div id="contribuinte-checkbox" class="px-2 sm:px-1 mb-24">
+                    <fieldset class="flex gap-2 px-4 sm:px-7 mt-4">                  
+                        <div class="flex items-center w-full gap-2 p-3 px-3 rounded-lg dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                            <label for="cidade" class="inline text-sm text-black/70 dark:text-white/70">cidade</label>
+                            <input
+                                name="cidade"
+                                id="contact-cidade"
+                                placeholder="..."
+                                class="w-full text-end text-sm text-black/40 dark:text-white/40 bg-transparent outline-none placeholder:text-black/70 dark:placeholder:text-white/70" />
+                        </div>
+                    
+                        <div class="w-fit flex-shrink-0 gap-1 p-3 px-3 rounded-lg dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                            <input
+                                name="uf"
+                                id="contact-uf"
+                                placeholder="uf"
+                                class="w-8 text-sm text-black/40 dark:text-white/40 bg-transparent outline-none text-center
+                                placeholder:text-black/70 dark:placeholder:text-white/70" />
+                        </div>
+                    </fieldset> 
+                </div>                                   
                 
                 <!--bottom-left endereco-back-button button-->    
                 <div class="absolute bottom-4 left-6 sm:left-4 text-sm leading-5">
                     <button
                         class="
+                        touch-none
                         group
                         flex 
                         p-1
@@ -386,6 +424,7 @@
                 <div class="absolute bottom-4 right-6 sm:right-4 text-sm leading-5">
                     <button
                         class="
+                        touch-none
                         group
                         flex 
                         p-1
@@ -550,6 +589,7 @@
                 <div class="absolute bottom-4 left-6 sm:left-4 text-sm leading-5">
                     <button
                         class="
+                        touch-none
                         group
                         flex 
                         p-1
@@ -615,7 +655,7 @@
                 transition-all
                 bg-white dark:bg-tertiary
                 hover:bg-zinc-100 dark:hover:bg-primary">
-                <button id="closeAddContact">
+                <button>
                     <svg class="size-[18px] text-black/55 dark:text-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M6 18 17.94 6M18 18 6.06 6"/>
                     </svg>                                                   
