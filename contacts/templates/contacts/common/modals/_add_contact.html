@@ -98,7 +98,7 @@
                   
                         <input
                           type="radio"
-                          name="tipo"
+                          name="pessoa"
                           value="pf"
                           id="pf"
                           class="sr-only"
@@ -124,7 +124,7 @@
                   
                         <input
                           type="radio"
-                          name="tipo"
+                          name="pessoa"
                           value="pj"
                           id="pj"
                           class="sr-only"
@@ -282,7 +282,7 @@
                     </p>
                 </div>      
                 
-                <div id="contact-endereco-form" class="flow-root mt-4 px-6 sm:px-8">
+                <div id="contact-endereco-form" class="flow-root mt-6 px-6 sm:px-8">
                     <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
                       <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
                         <dt class="text-black/70 dark:text-white/70">cep</dt>
@@ -357,7 +357,7 @@
                     </dl>
                 </div>              
                 
-                <!--bottom-left endereco-button button-->    
+                <!--bottom-left endereco-back-button button-->    
                 <div class="absolute bottom-4 left-6 sm:left-4 text-sm leading-5">
                     <button
                         class="
@@ -382,7 +382,7 @@
                     </button>
                 </div>                
 
-                <!--bottom-right next-contact-2 button-->    
+                <!--bottom-right endereco-next-button button-->    
                 <div class="absolute bottom-4 right-6 sm:right-4 text-sm leading-5">
                     <button
                         class="
@@ -400,16 +400,180 @@
                         bg-white dark:bg-tertiary
                         hover:bg-zinc-100 dark:hover:bg-primary"  
                         type="button"
-                        id="next-contact-2">
+                        id="endereco-next-button">
                         <svg class="size-[18px] stroke-black/55 dark:stroke-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                         </svg>                          
                     </button>
                 </div>    
-            </section>                
+            </section>        
+            
+            <section id="dados-comp" class="hidden">
+                <div>
+                    <span id="ProgressLabel" class="sr-only">Loading</span>
+                  
+                    <span
+                      role="progressbar"
+                      aria-labelledby="ProgressLabel"
+                      aria-valuemin="0"
+                      aria-valuenow="100"
+                      aria-valuemax="100"
+                      class="block rounded-full bg-gray-200 dark:bg-white/20">
+    
+                      <span class="block h-[2px] bg-black dark:bg-white/75" style="width: 100%"></span>
+                    </span>                      
+                </div>  
+
+                <div class="relative leading-5 w-full">
+                    <p
+                        class="
+                        text-sm font-semibold text-black/75 dark:text-white/75
+                        flex 
+                        mt-6 sm:mt-10
+                        items-center justify-center">
+                        3 • 3
+                    </p>
+                </div>     
+                
+                <div class="relative leading-5 w-full">
+                    <p
+                        class="
+                        text-4xl text-black/75 dark:text-white/75
+                        flex 
+                        mt-1
+                        items-center justify-center">
+                        outros
+                    </p>
+                </div>   
+                
+                <fieldset class="grid grid-cols-3 gap-0 w-fit mt-6 px-6 sm:px-8">
+                    <legend class="sr-only">Tipo de Contato</legend>
+                  
+                    <div>
+                      <label
+                        for="cliente"
+                        class="
+                        block cursor-pointer w-fit rounded-lg p-1
+                        text-sm text-black/30 dark:text-white/45
+                        underline underline-offset-4 decoration-1 decoration-black/30 dark:decoration-white/45
+                        has-[:checked]:decoration-2
+                        has-[:checked]:decoration-black/75 has-[:checked]:text-black/75  
+                        dark:has-[:checked]:text-white/75         
+                        dark:has-[:checked]:decoration-white/75">
+                        <div>
+                          <p class="">cliente</p>
+                        </div>
+                  
+                        <input
+                          type="radio"
+                          name="tipo"
+                          value="cliente"
+                          id="cliente"
+                          class="sr-only"
+                          checked
+                        />
+                      </label>
+                    </div>
+                  
+                    <div>
+                      <label
+                        for="fornecedor"
+                        class="
+                        block cursor-pointer w-fit rounded-lg p-1
+                        text-sm text-black/30 dark:text-white/45
+                        underline underline-offset-4 decoration-1 decoration-black/30 dark:decoration-white/45
+                        has-[:checked]:decoration-2
+                        has-[:checked]:decoration-black/75 has-[:checked]:text-black/75
+                        dark:has-[:checked]:text-white/75         
+                        dark:has-[:checked]:decoration-white/75">
+                        <div>
+                          <p class="">fornecedor</p>
+                        </div>
+                  
+                        <input
+                          type="radio"
+                          name="tipo"
+                          value="fornecedor"
+                          id="fornecedor"
+                          class="sr-only"
+                        />
+                      </label>
+                    </div>
+                </fieldset>                    
+                
+                <div class="flow-root mt-4 px-6 sm:px-8">
+                    <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">celular</dt>
+                        <input
+                            name="celular"
+                            id="contact-celular"
+                            value=""
+                            inputmode="decimal"
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>     
+                      
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">email</dt>
+                        <input
+                            type="email"
+                            name="email"
+                            id="contact-email"
+                            value=""
+                            placeholder="..."
+                            class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>                           
+                    </dl>
+                </div>  
+                
+                <div class="flow-root mt-4 px-6 sm:px-8">
+                    <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 p-3">
+                        <dt class="text-black/70 dark:text-white/70">aniversario</dt>
+                        <input
+                            type="date"
+                            name="aniversario"
+                            id="contact-aniversario"
+                            value=""
+                            class="
+                            text-black/0
+                            bg-transparent outline-none sm:col-span-2 text-end">
+                        </input>
+                      </div>                              
+                    </dl>
+                </div>               
+                
+                <!--bottom-left dados-comp-back-button button-->    
+                <div class="absolute bottom-4 left-6 sm:left-4 text-sm leading-5">
+                    <button
+                        class="
+                        group
+                        flex 
+                        p-1
+                        items-center justify-center 
+                        aspect-square rounded-md 
+                        dark:shadow-thick 
+                        ring-1 
+                        ring-primary/15 hover:ring-primary/10
+                        dark:ring-white/10 dark:hover:ring-white/20
+                        duration-300 
+                        transition-all
+                        bg-white dark:bg-tertiary
+                        hover:bg-zinc-100 dark:hover:bg-primary"  
+                        type="button"
+                        id="dados-comp-back-button">
+                        <svg class="size-[18px] stroke-black/55 dark:stroke-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                        </svg>                                                   
+                    </button>
+                </div>                               
+            </section>              
 
             <!--bottom-right submit button-->    
-            <div class="hidden absolute bottom-4 right-4 text-sm leading-5">
+            <div id="submit-contact-form" class="hidden absolute bottom-4 right-6 sm:right-4 text-sm leading-5">
                 <button
                     class="
                     group
