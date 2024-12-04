@@ -747,3 +747,36 @@
     };
 
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var cpfCnpjField = document.querySelector('input[name="cpf_cnpj"]');
+        
+        // Max digits for CPF (11) and CNPJ (14)
+        const maxDigits = 14;
+
+        // Format CPF/CNPJ field on page load (if it already has a value)
+        if (cpfCnpjField.value) {
+            cpfCnpjField.value = formatCpfCnpj(cpfCnpjField.value);
+        }
+    
+        // Add formatting while typing
+        cpfCnpjField.addEventListener('input', function() {
+            // Limit input to max digits
+            cpfCnpjField.value = cpfCnpjField.value.replace(/\D/g, '').slice(0, maxDigits);
+            // Format CPF or CNPJ
+            cpfCnpjField.value = formatCpfCnpj(cpfCnpjField.value);
+        });
+    
+        function formatCpfCnpj(value) {
+            // Remove all non-digit characters
+            value = value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                // Format as CPF: 000.000.000-00
+                return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+            } else {
+                // Format as CNPJ: 00.000.000/0000-00
+                return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+            }
+        }
+    });
+</script>
