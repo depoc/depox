@@ -15,7 +15,7 @@ class Contacts(models.Model):
     ie = models.IntegerField(blank=True, null=True)
     im = models.IntegerField(blank=True, null=True)
     tipo = models.CharField(max_length=255, blank=True)
-    status = models.CharField(max_length=255, blank=True)
+    status = models.CharField(max_length=255, blank=True, default='ativo')
 
     celular = models.CharField(max_length=15, blank=True)
     email = models.EmailField(blank=True)
