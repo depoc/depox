@@ -186,7 +186,7 @@
                 </div>                             
             </div>        
 
-            <a  href="{% url "contacts:main" %}?id={{ contact.id }}"
+            <a  href="{% url "contacts:edit_contact" contact.id %}"
                 class="flex flex-col justify-between items-start bg-black/5 dark:bg-tertiary w-full h-[130px] rounded-xl">  
                 <div class="px-3 py-2">
                     <div
@@ -280,7 +280,8 @@
                 </div>                             
             </div>        
 
-            <button class="contact-info-button flex flex-col justify-between items-start bg-black/5 dark:bg-tertiary w-full h-[130px] rounded-xl">  
+            <a  href="{% url "contacts:edit_contact" contact.id %}"
+                class="contact-info-button flex flex-col justify-between items-start bg-black/5 dark:bg-tertiary w-full h-[130px] rounded-xl">  
                 <div class="px-3 py-2">
                     <div
                         class="
@@ -317,7 +318,7 @@
                         </span>                                                   
                     </div>                       
                 </div>                    
-            </button>
+            </a>
         </form>
         </div>  
         {% endfor %}

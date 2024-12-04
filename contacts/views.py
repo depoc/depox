@@ -10,3 +10,9 @@ def contacts(request):
     context.update(ContactsLogic.get_context(request))
 
     return render(request, 'contacts/main.html', context)
+
+@login_required(login_url='users:login')
+def edit_contact(request, pk):
+    context = ContactsLogic.edit_contact(request, pk)
+
+    return render(request, 'contacts/common/_edit_contact.html', context)

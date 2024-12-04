@@ -1,3 +1,5 @@
+from django.shortcuts import get_object_or_404
+
 from .models import Contacts
 from .forms import ContactsForm
 
@@ -10,7 +12,6 @@ class ContactsLogic:
         context = {}
         context.update(ContactsLogic.get_contacts(request))
         context.update(ContactsLogic.add_contact(request))
-        context.update(ContactsLogic.edit_contact(request))
 
         return context
     
@@ -55,10 +56,7 @@ class ContactsLogic:
         return {'addContactForm': form}
     
     @staticmethod
-    def edit_contact(request) -> dict[str, object]:
-        if pk := request.GET.get('id'):
-            contact = Contacts.objects.get(pk=pk)
-            print(f'id do contato = {contact.apelido}')
-            return {'contact': contact}
-        
-        return {}
+    def edit_contact(request, pk) -> dict[str, object]:
+        contact = get_object_or_404(Contacts, pk=pk)
+
+        return {'contact': contact}
