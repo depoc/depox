@@ -10,6 +10,7 @@ class ContactsLogic:
         context = {}
         context.update(ContactsLogic.get_contacts(request))
         context.update(ContactsLogic.add_contact(request))
+        context.update(ContactsLogic.edit_contact(request))
 
         return context
     
@@ -53,3 +54,11 @@ class ContactsLogic:
 
         return {'addContactForm': form}
     
+    @staticmethod
+    def edit_contact(request) -> dict[str, object]:
+        if pk := request.GET.get('id'):
+            contact = Contacts.objects.get(pk=pk)
+            print(f'id do contato = {contact.apelido}')
+            return {'contact': contact}
+        
+        return {}
