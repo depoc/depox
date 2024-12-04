@@ -28,6 +28,24 @@ class ContactsLogic:
         company = request.user.company
         post_data['company'] = company
 
+        cpf_cnpj: str | None
+        if cpf_cnpj := post_data.get('cpf_cnpj'):
+            cpf_cnpj_cleaned = cpf_cnpj.replace('.', '') \
+                                       .replace('-', '') \
+                                       .replace('/', '')
+            post_data['cpf_cnpj'] = cpf_cnpj_cleaned
+
+        cep: str | None
+        if cep := post_data.get('cep'):
+            cep_cleaned = cep.replace('-', '')
+            post_data['cep'] = cep_cleaned
+
+        celular: str | None
+        if celular := post_data.get('celular'):
+            celular_cleaned = celular.replace(' ', '') \
+                                     .replace('-', '')
+            post_data['celular'] = celular_cleaned
+
         if request.method == 'POST' and 'add-contact' in request.POST:
             form = ContactsForm(post_data)
             if form.is_valid():
