@@ -16,7 +16,7 @@ def format_cpf_cnpj(cpf_cnpj: str) -> str:
         f'{cpf_cnpj[0:2]}.{cpf_cnpj[2:5]}.{cpf_cnpj[5:8]}'
         f'/{cpf_cnpj[8:12]}-{cpf_cnpj[12:14]}'
     )
-    return ''
+    return cnpj
 
 @register.filter
 def get_file_name(file) -> str:
