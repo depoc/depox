@@ -10,3 +10,10 @@ def format_money(number):
         .replace("X", ".")
     
     return money
+
+@register.filter
+def format_cep(cep: str) -> str:
+    if cep:
+        cep_formatted = f'{cep[0:5]}-{cep[5:8]}'
+        return cep_formatted
+    return cep
