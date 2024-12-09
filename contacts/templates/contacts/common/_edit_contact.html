@@ -64,8 +64,8 @@
       {{ contact.nome }}
     </p>
 
-    <div class="h-fit w-fit py-1 px-2 ml-auto mr-auto mt-2 rounded-lg bg-black/5 dark:text-tertiary">
-      <p class="text-xs text-center text-black/50 dark:text-white/40">
+    <div class="h-fit w-fit py-1 px-2 ml-auto mr-auto mt-2 rounded-lg bg-black/5 dark:bg-tertiary">
+      <p class="text-xs text-center text-black/50 dark:text-white/50">
         {{ contact.tipo }}
       </p>
     </div>
@@ -79,7 +79,7 @@
     p-4
     w-full sm:w-9/12
     rounded-lg
-    bg-white dark:bg-primary">
+    bg-white dark:bg-tertiary">
     <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
       {% if contact.cpf_cnpj|length == 11 %}
       <div class="grid grid-cols-1 gap-1 py-2">
@@ -138,7 +138,7 @@
     p-4
     w-full sm:w-9/12
     rounded-lg
-    bg-white dark:bg-primary">
+    bg-white dark:bg-tertiary">
     <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
       {% if contact.celular %}
       <div class="grid grid-cols-1 gap-1 py-2">
@@ -169,7 +169,7 @@
     p-4
     w-full sm:w-9/12
     rounded-lg
-    bg-white dark:bg-primary">
+    bg-white dark:bg-tertiary">
     <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
       {% if contact.endereco %}
       <div class="grid grid-cols-1 gap-1 py-2">
@@ -240,7 +240,7 @@
     p-4
     w-full sm:w-9/12
     rounded-lg
-    bg-white dark:bg-primary">
+    bg-white dark:bg-tertiary">
     <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
       <div class="grid grid-cols-1 gap-1 py-2">
         <dt class="font-medium text-black/70 dark:text-white/70">nascimento</dt>
@@ -261,7 +261,7 @@
     p-4
     w-full sm:w-9/12
     rounded-lg
-    bg-white dark:bg-primary">
+    bg-white dark:bg-tertiary">
     <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
       <div class="grid grid-cols-1 gap-1 py-2">
         <dt class="font-medium text-black/70 dark:text-white/70">observações</dt>
@@ -282,7 +282,7 @@
     p-4
     w-full sm:w-9/12
     rounded-lg
-    bg-white dark:bg-primary">
+    bg-white dark:bg-tertiary">
     <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
       <div class="grid grid-cols-1 gap-1 py-2">
         <dt class="font-medium text-black/70 dark:text-white/70">anexos</dt>
