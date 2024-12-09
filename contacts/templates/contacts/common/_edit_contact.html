@@ -1,18 +1,290 @@
 {% extends "base.html" %}
 {% load static %}
+{% load contacts %}
+{% load filters %}
 
 {% block page %}
 
 <div
-class="
-  list-none
-  grid grid-cols-2 gap-2
-  md:grid-cols-2
-  lg:grid-cols-2 lg:grid-rows-1
-  xl:grid-cols-2 xl:grid-rows-1">
+  class="
+    list-none
+    grid grid-cols-2 gap-2
+    md:grid-cols-2
+    lg:grid-cols-2 lg:grid-rows-1
+    xl:grid-cols-2 xl:grid-rows-1">
 
-  <h1>{{ contact.nome }}</h1>
-  <h1>{{ contact.cpf_cnpj }}</h1>
+  <div
+    class="
+      relative
+      col-span-2
+      rounded-lg
+      mt-2 p-4">      
+
+      <!--back button-->
+      <div class="absolute top-1 left-0 sm:left-3 flex items-center z-10">
+          <div class="flex justify-center">
+              <a 
+                  href="javascript:history.back()"
+                  class="w-9 h-9">
+                  <svg class="w-6 h-6 text-zinc-400 dark:text-white/60" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/>
+                  </svg> 
+              </a>
+          </div>
+      </div> 
+
+      <div
+        class="
+          absolute
+          items-center
+          hidden
+          grid-cols-1 gap-0
+          right-0 sm:right-3 top-0
+          w-fit">
+
+        <button
+            id=""
+            class="
+            z-10
+            relative  
+            rounded-full
+            outline-none">        
+            <span class="text-lg text-black/40 dark:text-white/50">editar</span>             
+        </button>    
+      </div>        
+  </div>
+  <!--$-->
+  <div class="col-span-2 px-1 sm:px-5 mt-4 sm:mt-10">
+    <p class="text-center text-base text-black/30 dark:text-white/40">
+      {{ contact.apelido }}
+    </p>
+    <p class="text-center text-4xl sm:text-4xl px-4 leading-none tracking-tighter text-black dark:text-white">
+      {{ contact.nome }}
+    </p>
+
+    <div class="h-fit w-fit py-1 px-2 ml-auto mr-auto mt-2 rounded-lg bg-black/5 dark:text-tertiary">
+      <p class="text-xs text-center text-black/50 dark:text-white/40">
+        {{ contact.tipo }}
+      </p>
+    </div>
+  </div>    
+  <!--$-->
+  <div 
+    class="
+    col-span-2
+    flow-root
+    mt-6 ml-auto mr-auto
+    p-4
+    w-full sm:w-11/12
+    rounded-lg
+    bg-white dark:bg-primary">
+    <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
+      {% if contact.pessoa == 'pf' %}
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">cpf</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.cpf_cnpj | format_cpf_cnpj }}</span>
+        </dd>
+      </div>
+      {% else %}
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">cnpj</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.cpf_cnpj | format_cpf_cnpj }}</span>
+        </dd>
+      </div>
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">contribuinte</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            {% if contact.contribuinte == 'on' %}
+            <span>sim</span>
+            {% else %}
+            <span>não</span>
+            {% endif %}
+        </dd>
+      </div>
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">inscrição estadual</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.ie }}</span>
+        </dd>
+      </div>
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">inscrição municipal</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.im }}</span>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+  </div>   
+  <!--$-->
+  {% if contact.celular or contact.email %}
+  <div 
+    class="
+    col-span-2
+    flow-root
+    mt-1 ml-auto mr-auto
+    p-4
+    w-full sm:w-11/12
+    rounded-lg
+    bg-white dark:bg-primary">
+    <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
+      {% if contact.celular %}
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">celular</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+          <span>{{ contact.celular | format_phone_number }}</span>
+        </dd>
+      </div>
+      {% endif %}
+      {% if contact.email %}
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">email</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.email }}</span>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+  </div>   
+  {% endif %}  
+  <!--$-->
+  {% if contact.endereco or contact.numero or contact.bairro or contact.complemento or contact.cidade or contact.uf or contact.cep %}
+  <div 
+    class="
+    col-span-2
+    flow-root
+    mt-1 ml-auto mr-auto
+    p-4
+    w-full sm:w-11/12
+    rounded-lg
+    bg-white dark:bg-primary">
+    <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
+      {% if contact.endereco %}
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">endereço</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+          <span>{{ contact.endereco }}</span>
+        </dd>
+      </div>
+      {% endif %}
+      {% if contact.numero %}
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">número</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.numero }}</span>
+        </dd>
+      </div>
+      {% endif %}
+      {% if contact.bairro %}
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">bairro</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.bairro }}</span>
+        </dd>
+      </div>  
+      {% endif %}
+      {% if contact.complemento %}  
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">complemento</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.complemento }}</span>
+        </dd>
+      </div> 
+      {% endif %}    
+      {% if contact.cidade %}
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">cidade</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.cidade }}</span>
+        </dd>
+      </div>  
+      {% endif %}
+      {% if contact.uf %}        
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">uf</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.uf }}</span>
+        </dd>
+      </div> 
+      {% endif %}       
+      {% if contact.cep %}
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">cep</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+            <span>{{ contact.cep | format_cep }}</span>
+        </dd>
+      </div>      
+      {% endif %}                   
+    </dl>
+  </div>  
+  {% endif %}
+  <!--$-->
+  {% if contact.nascimento %}
+  <div 
+    class="
+    col-span-2
+    flow-root
+    mt-1 ml-auto mr-auto
+    p-4
+    w-full sm:w-11/12
+    rounded-lg
+    bg-white dark:bg-primary">
+    <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">nascimento</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+          <span>{{ contact.nascimento }}</span>
+        </dd>
+      </div>   
+      {% endif %}                  
+    </dl>
+  </div>  
+  <!--$-->
+  {% if contact.observacoes %}
+  <div 
+    class="
+    col-span-2
+    flow-root
+    mt-1 ml-auto mr-auto
+    p-4
+    w-full sm:w-11/12
+    rounded-lg
+    bg-white dark:bg-primary">
+    <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">observações</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+          <span>{{ contact.observacoes }}</span>
+        </dd>
+      </div>  
+      {% endif %}                   
+    </dl>
+  </div> 
+  <!--$-->
+  {% if contact.anexos %}
+  <div 
+    class="
+    col-span-2
+    flow-root
+    mt-1 ml-auto mr-auto
+    p-4
+    w-full sm:w-11/12
+    rounded-lg
+    bg-white dark:bg-primary">
+    <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
+      <div class="grid grid-cols-1 gap-1 py-2">
+        <dt class="font-medium text-black/70 dark:text-white/70">anexos</dt>
+        <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
+          <a href="/static/{{ contact.anexos }}">
+            {{ contact.anexos | get_file_name }}
+          </a>
+        </dd>
+      </div>   
+    {% endif %}                   
+    </dl>
+  </div>                  
 
 </div>
 
