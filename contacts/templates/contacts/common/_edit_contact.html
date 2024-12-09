@@ -278,7 +278,7 @@
         <dt class="font-medium text-black/70 dark:text-white/70">anexos</dt>
         <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
           <a href="/static/{{ contact.anexos }}">
-            {{ contact.anexos | get_file_name }}
+            {{ contact.anexos | lower | get_file_name }}
           </a>
         </dd>
       </div>   
