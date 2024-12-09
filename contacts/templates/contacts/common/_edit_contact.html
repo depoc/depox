@@ -80,7 +80,7 @@
     bg-white dark:bg-primary">
     <dl class="-my-3 divide-y divide-black/5 dark:divide-white/10 text-sm">        
       {% if contact.cpf_cnpj|length == 11 %}
-      <div class="grid grid-cols-2 gap-1 py-2">
+      <div class="grid grid-cols-1 gap-1 py-2">
         <dt class="font-medium text-black/70 dark:text-white/70">cpf</dt>
         <dd class="text-black/50 dark:text-white/50 sm:col-span-2">
             <span>{{ contact.cpf_cnpj | format_cpf_cnpj }}</span>
