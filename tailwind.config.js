@@ -15,6 +15,7 @@ module.exports = {
     './finance/templates/finance/*.html',   
 
     './contacts/templates/contacts/**/*.html',
+    './contacts/templates/contacts/common/modals/*.html',
     './contacts/templates/contacts/*.html',   
 
     './templates/**/*.html',
