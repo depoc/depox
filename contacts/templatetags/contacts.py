@@ -16,4 +16,13 @@ def format_cpf_cnpj(cpf_cnpj: str) -> str:
         f'{cpf_cnpj[0:2]}.{cpf_cnpj[2:5]}.{cpf_cnpj[5:8]}'
         f'/{cpf_cnpj[8:12]}-{cpf_cnpj[12:14]}'
     )
-    return cnpj
+    return ''
+
+@register.filter
+def get_file_name(file) -> str:
+    if file:
+        file_path = str(file)
+        last_back_slash = file_path.rfind('/')
+        file_name = file_path[last_back_slash+1:]
+        return file_name
+    return ''
