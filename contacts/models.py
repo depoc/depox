@@ -4,7 +4,8 @@ from erp.models import Company
 
 
 class Contacts(models.Model):
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    company = models.ForeignKey(
+        Company, on_delete=models.CASCADE, related_name='contacts')
     created = models.DateTimeField(auto_now_add=True)
 
     nome = models.CharField(max_length=255)
@@ -34,3 +35,6 @@ class Contacts(models.Model):
 
     def __str__(self):
         return self.nome
+    
+    class Meta:
+        ordering = ['nome']
