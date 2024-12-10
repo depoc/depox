@@ -598,6 +598,7 @@
                             <input
                                 type="text"
                                 name="nascimento"
+                                inputmode="decimal"
                                 id="contact-aniversario"
                                 value="{{ contact.nascimento|date:"d/m/Y" }}"
                                 autocomplete="off"
@@ -608,6 +609,14 @@
                                 bg-transparent outline-none w-full text-end
                                 placeholder:text-black/40 dark:placeholder:text-white/40">
                             </input>
+                            <button
+                                id="openDatePickerButton"
+                                type="button"
+                                class="ml-1 text-sm py-1 rounded">
+                                <svg class="w-4 h-4 stroke-black/40 dark:stroke-white/40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                </svg>
+                            </button>
                           </div>                              
                         </dl>
                     </div>               
@@ -691,15 +700,20 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        flatpickr(".flatpickr", {
+        const flatpickrInstance = flatpickr(".flatpickr", {
             dateFormat: "d/m/Y",
             locale: "pt",
             disableMobile: "true",
-            mode: "single",  
-            clickOpens: "true",        
-            position: "above center",  
+            mode: "single",
+            clickOpens: false, // Prevent the picker from opening on input click
+            position: "above center",
             positionElement: document.querySelector("#datePickerDiv"),
-            allowInput = "true",
+            allowInput: true,
+        });
+
+        // Add event listener to the button to open Flatpickr
+        document.querySelector("#openDatePickerButton").addEventListener("click", function() {
+            flatpickrInstance.open();
         });
     });
 </script>
