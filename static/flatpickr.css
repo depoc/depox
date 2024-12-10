@@ -6,14 +6,12 @@
 .flatpickr-calendar {
     border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: #ffffff2e; /* Cor de fundo clara */
+    background-color: rgba(255, 255, 255, 0.3); /* Cor de fundo clara */
     backdrop-filter: blur(8px);
     color: rgba(0, 0, 0, 0.6); /* Texto preto com opacidade reduzida */
     font-family: sans-serif;
     font-weight: normal;
     text-transform: lowercase; /* Texto em minúsculas */
-    padding-left: 1rem;
-    padding-right: 1rem;
     padding-bottom: 1rem;
   }
   
@@ -88,7 +86,7 @@
   
   /* Estilos para o modo escuro */
   .dark .flatpickr-calendar {
-    background-color: rgba(0, 0, 0, 0.1); /* Fundo escuro */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro */
     color: rgba(255, 255, 255, 0.8); /* Texto claro */
     border-color: rgb(255, 255, 255, 0.2); /* Bordas mais claras */
     box-shadow: none;
