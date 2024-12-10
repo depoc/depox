@@ -53,10 +53,20 @@ class ContactsLogic:
             if form.is_valid():
                 form.save()
 
-        return {'addContactForm': form}
+        return {'addContactForm': form, 'post_data': post_data}
     
     @staticmethod
     def edit_contact(request, pk) -> dict[str, object]:
         contact = get_object_or_404(Contacts, pk=pk)
+        data = ContactsLogic.add_contact(request)
+        post_data = data.get('post_data')
+
+        if request.method == 'POST':
+            form = ContactsForm(post_data, instance=contact)
+            if form.is_valid():
+                form.save()
+                print('IT WORKEDDDD')
+            else:
+                print(form.errors)
 
         return {'contact': contact}

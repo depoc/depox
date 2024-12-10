@@ -27,11 +27,11 @@
         rounded-2xl
         relative flex">
 
-        <form action="{% url "contacts:main" %}?filtro=todos" method="POST"
+        <form action="{% url "contacts:edit_contact" contact.id %}" method="POST"
             class="overflow-x-auto p-0 flex gap-3 no-scrollbar snap-mandatory snap-x">
             {% csrf_token %}
 
-            <input name="company" value="{{ contact.company }}" id="company" class="hidden"> 
+            <input name="company" id="company" class="hidden"> 
 
             <div
                 class="
@@ -217,7 +217,7 @@
                                 <input
                                     name="ie"
                                     id="ie"
-                                    value="{{ contact.ie }}"
+                                    {% if contact.ie %}value="{{ contact.ie }}"{% endif %}
                                     placeholder="..."
                                     inputmode="decimal"
                                     class="w-full text-end text-sm text-black/40 dark:text-white/40 bg-transparent outline-none">
@@ -232,7 +232,7 @@
                                     <input
                                         name="im"
                                         id="im"
-                                        value="{{ contact.im }}"
+                                        {% if contact.im %}value="{{ contact.im }}"{% endif %}
                                         inputmode="decimal"
                                         placeholder="..."
                                         class="w-full text-end text-sm text-black/40 dark:text-white/40 bg-transparent outline-none">
@@ -629,7 +629,7 @@
                     </div>                       
                     
                     <!--bottom-right submit button-->    
-                    <div id="submit-contact-form" class="absolute bottom-4 right-4 text-sm leading-5">
+                    <div id="" class="absolute bottom-4 right-4 text-sm leading-5">
                         <button
                             class="
                             group
@@ -646,7 +646,7 @@
                             bg-white dark:bg-tertiary
                             hover:bg-zinc-100 dark:hover:bg-primary"                    
                             type="submit" 
-                            name="add-contact">
+                            name="edit-contact">
                             <svg class="size-[18px] stroke-black/55 dark:stroke-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                             </svg>                                                         
@@ -802,4 +802,28 @@
             }
         }
     });
+</script>
+<script src="{% static "js/erp/formatPhone.js" %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const dateInput = document.getElementById("contact-aniversario");
+    
+        dateInput.addEventListener("input", (e) => {
+            const input = e.target;
+            let value = input.value.replace(/\D/g, ""); // Remove non-numeric characters
+    
+            if (value.length > 8) value = value.slice(0, 8); // Limit to 8 digits
+    
+            // Format as DD/MM/YYYY
+            const day = value.slice(0, 2);
+            const month = value.slice(2, 4);
+            const year = value.slice(4);
+    
+            let formattedDate = day;
+            if (month) formattedDate += `/${month}`;
+            if (year) formattedDate += `/${year}`;
+    
+            input.value = formattedDate;
+        });
+    });    
 </script>
