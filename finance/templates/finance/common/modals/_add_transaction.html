@@ -72,11 +72,32 @@
                     <input
                         required
                         name="contato"
-                        id="contato"
+                        list="ContactsList"
+                        id="ContactSelect"
                         placeholder="..."
-                        class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start sm:text-end">
-                    </input>
-                  </div>
+                        class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start sm:text-end [&::-webkit-calendar-picker-indicator]:opacity-0" />
+                    <span class="absolute right-3 mt-1 hidden sm:flex w-8 items-center">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="size-5 text-gray-500"
+                        >
+                            <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                            />
+                        </svg>
+                    </span>                        
+                    <datalist name="ContactSelect" id="ContactsList">
+                        {% for contact in request.user.company.contacts.all %}
+                        <option value="{{ contact.nome }}">{{ contact.apelido }}</option>
+                        {% endfor %}
+                    </datalist>                    
+                  </div>                 
               
                   <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
                     <dt class="text-black/70 dark:text-white/70">descrição</dt>
