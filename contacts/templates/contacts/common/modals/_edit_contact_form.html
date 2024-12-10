@@ -1,0 +1,805 @@
+{% load static %}
+{% load filters %}
+{% load contacts %}
+
+<div
+    id="editContact"
+    class="
+        overflow-hidden
+        hidden
+        fixed
+        inset-0 z-50 
+        justify-center items-center
+        bg-background/20 dark:bg-black/40
+        backdrop-blur-md">
+  
+    <div
+      class=
+        "overflow-auto
+        ring-1
+        ring-primary/10
+        dark:ring-white/15
+        shadow-xl   
+        lg:w-5/12 
+        md:w-8/12
+        sm:w-11/12 sm:h-[75%]
+        w-11/12 h-[85%]
+        rounded-2xl
+        relative flex">
+
+        <form action="{% url "contacts:main" %}?filtro=todos" method="POST"
+            class="overflow-x-auto p-0 flex gap-3 no-scrollbar snap-mandatory snap-x">
+            {% csrf_token %}
+
+            <input name="company" value="{{ contact.company }}" id="company" class="hidden"> 
+
+            <div
+                class="
+                    snap-always snap-center
+                    ring-1 
+                    ring-black/5 dark:ring-white/5
+                    bg-white
+                    dark:bg-secondary      
+                    shadow-md         
+                    p-4
+                    relative  
+                    rounded-2xl
+                    h-full w-full
+                    flex-shrink-0">     
+
+                <div class="relative leading-5 w-full">
+                    <p
+                        class="
+                        text-lg text-black/75 dark:text-white/75
+                        flex 
+                        mb-2
+                        items-center justify-center">
+                        <kbd>editar contato</kbd>                                                        
+                    </p>
+                </div>   
+
+                <section id="dados-gerais" class="">
+                    <div>
+                        <span id="ProgressLabel" class="sr-only">Loading</span>
+                      
+                        <span
+                          role="progressbar"
+                          aria-labelledby="ProgressLabel"
+                          aria-valuemin="0"
+                          aria-valuenow="33"
+                          aria-valuemax="100"
+                          class="block rounded-full bg-gray-200 dark:bg-white/20">
+        
+                          <span class="block h-[2px] bg-black dark:bg-white/75" style="width: 33%"></span>
+                        </span>                      
+                    </div>  
+    
+                    <div class="relative leading-5 w-full">
+                        <p
+                            class="
+                            text-sm font-semibold text-black/75 dark:text-white/75
+                            flex 
+                            mt-2 sm:mt-4
+                            items-center justify-center">
+                            1 • 3
+                        </p>
+                    </div>     
+                    
+                    <div class="relative leading-5 w-full">
+                        <p
+                            class="
+                            text-4xl text-black/75 dark:text-white/75
+                            flex 
+                            mt-0
+                            items-center justify-center">
+                            dados gerais
+                        </p>
+                    </div>       
+                    
+                    <fieldset class="grid grid-cols-3 gap-1 w-fit mt-6 px-1 sm:px-4">
+                        <legend class="sr-only">Tipo de Pessoa</legend>
+                      
+                        <div>
+                          <label
+                            for="pf"
+                            class="
+                            block cursor-pointer w-fit rounded-lg p-1 px-1
+                            text-sm text-black/30 dark:text-white/45
+                            underline underline-offset-4 decoration-1 decoration-black/30 dark:decoration-white/45
+                            has-[:checked]:decoration-2
+                            has-[:checked]:decoration-black/75 has-[:checked]:text-black/75  
+                            dark:has-[:checked]:text-white/75         
+                            dark:has-[:checked]:decoration-white/75">
+                            <div>
+                              <p class="">CPF</p>
+                            </div>
+                      
+                            <input
+                              type="radio"
+                              name="pessoa"
+                              value="pf"
+                              id="pf"
+                              class="sr-only"
+                              {% if contact.pessoa == 'pf' %}checked{% endif %}
+                            />
+                          </label>
+                        </div>
+                      
+                        <div>
+                          <label
+                            for="pj"
+                            class="
+                            block cursor-pointer w-fit rounded-lg p-1 px-[6px]
+                            text-sm text-black/30 dark:text-white/45
+                            underline underline-offset-4 decoration-1 decoration-black/30 dark:decoration-white/45
+                            has-[:checked]:decoration-2
+                            has-[:checked]:decoration-black/75 has-[:checked]:text-black/75
+                            dark:has-[:checked]:text-white/75         
+                            dark:has-[:checked]:decoration-white/75">
+                            <div>
+                              <p class="">CNPJ</p>
+                            </div>
+                      
+                            <input
+                              type="radio"
+                              name="pessoa"
+                              value="pj"
+                              id="pj"
+                              class="sr-only"
+                              {% if contact.pessoa == 'pj' %}checked{% endif %}
+                            />
+                          </label>
+                        </div>
+                    </fieldset>                
+                    
+                    <div id="pf-form" class="flow-root mt-4 mb-24 px-[6px] sm:px-4">
+                        <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                      
+                          <div class="flex items-center w-full gap-1 p-3">
+                            <dt id="nome-label" class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">nome</dt>
+                            <input
+                                name="nome"
+                                id="nome"
+                                value="{{ contact.nome }}"
+                                placeholder="..."
+                                class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
+                            </input>
+                          </div>
+                          <div class="flex items-center w-full gap-1 p-3">
+                            <dt id="apelido-label" class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">apelido</dt>
+                            <input
+                                name="apelido"
+                                id="apelido"
+                                value="{{ contact.apelido }}"
+                                placeholder="..."
+                                class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
+                            </input>
+                          </div>    
+                          <div class="flex items-center w-full gap-1 p-3">
+                            <dt id="cpf-cnpj-label" class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">cpf</dt>
+                            <input
+                                name="cpf_cnpj"
+                                id="cpf_cnpj"
+                                value="{{ contact.cpf_cnpj }}"
+                                inputmode="decimal"
+                                placeholder="..."
+                                class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
+                            </input>
+                          </div>                                           
+                        </dl>
+                    </div>
+    
+                    <div id="contribuinte-checkbox" class="mb-24 px-[6px] sm:px-4">
+                        <fieldset class="flex gap-2 mt-4">                  
+                            <div>
+                                <label
+                                for="contribuinte"
+                                class=
+                                "w-36 p-2 px-3
+                                flex cursor-pointer items-center gap-4 rounded-lg 
+                                bg-background/50 dark:bg-tertiary ring-1 ring-black/10 
+                                transition 
+                                has-[:checked]:bg-[rgba(0,0,0,0.05)] dark:has-[:checked]:bg-white/10">
+    
+                                <div class="flex items-center">
+                                    <input type="checkbox" class="peer hidden rounded-lg border-gray-200 accent-current" id="contribuinte" name="contribuinte" {% if contact.contribuinte == 'on' %}checked{% endif %} />
+                                    <div class="w-4 h-4 rounded-[5px] bg-white dark:bg-white/50 border border-gray-300 dark:border-gray-300/60 peer-checked:bg-black"></div>
+                                </div>
+    
+                                <div>
+                                    <span class="text-sm text-black/70 dark:text-white/70"> contribuinte </span>
+                                </div>
+                                </label>
+                            </div>
+                        
+                            <div class="flex items-center w-full gap-1 p-2 px-3 rounded-lg dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                                <label id="ie-label" class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">ie</label>
+                                <input
+                                    name="ie"
+                                    id="ie"
+                                    value="{{ contact.ie }}"
+                                    placeholder="..."
+                                    inputmode="decimal"
+                                    class="w-full text-end text-sm text-black/40 dark:text-white/40 bg-transparent outline-none">
+                                </input>
+                            </div>
+                        </fieldset>                
+                        
+                        <div class="flow-root mt-4">
+                            <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                                <div class="flex items-center w-full gap-1 p-3">
+                                    <dt id="im-label" class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">inscrição municipal</dt>
+                                    <input
+                                        name="im"
+                                        id="im"
+                                        value="{{ contact.im }}"
+                                        inputmode="decimal"
+                                        placeholder="..."
+                                        class="w-full text-end text-sm text-black/40 dark:text-white/40 bg-transparent outline-none">
+                                    </input>
+                                </div>                                           
+                            </dl>
+                        </div>     
+                    </div>   
+                    
+                    <!--bottom-left svg-->  
+                    <div class="hidden absolute bottom-4 left-5 sm:left-4 text-sm leading-5">
+                        <div
+                            class="
+                            group
+                            flex 
+                            p-1
+                            items-center justify-center 
+                            aspect-square rounded-md 
+                            dark:shadow-thick 
+                            ring-1 
+                            ring-primary/15 hover:ring-primary/10
+                            dark:ring-white/10 dark:hover:ring-white/20
+                            duration-300 
+                            transition-all
+                            bg-white dark:bg-tertiary
+                            hover:bg-zinc-100 dark:hover:bg-primary">
+                            <button id="closeEditContact">
+                                <svg class="size-[18px] text-black/55 dark:text-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M6 18 17.94 6M18 18 6.06 6"/>
+                                </svg>                                                   
+                            </button>
+                        </div>
+                    </div>                  
+                     
+                    <div class="absolute bottom-4 right-5 sm:right-4 text-sm leading-5">
+                        <p class="text-center text-[13px] text-black/40 dark:text-white/40">
+                            arraste para o lado
+                        </p>
+                    </div>    
+                </section>                  
+            </div>
+
+            <div
+                class="
+                snap-always snap-center
+                ring-1 
+                ring-black/5 dark:ring-white/5
+                bg-white
+                dark:bg-secondary      
+                shadow-md         
+                p-4
+                relative  
+                rounded-2xl
+                h-full w-full
+                flex-shrink-0">     
+
+                <div class="relative leading-5 w-full">
+                    <p
+                        class="
+                        text-lg text-black/75 dark:text-white/75
+                        flex 
+                        mb-2
+                        items-center justify-center">
+                        <kbd>editar contato</kbd>                                                        
+                    </p>
+                </div>   
+
+                <section id="contact-endereco" class="">
+                    <div>
+                        <span id="ProgressLabel" class="sr-only">Loading</span>
+                      
+                        <span
+                          role="progressbar"
+                          aria-labelledby="ProgressLabel"
+                          aria-valuemin="0"
+                          aria-valuenow="66"
+                          aria-valuemax="100"
+                          class="block rounded-full bg-gray-200 dark:bg-white/20">
+        
+                          <span class="block h-[2px] bg-black dark:bg-white/75" style="width: 66%"></span>
+                        </span>                      
+                    </div>  
+    
+                    <div class="relative leading-5 w-full">
+                        <p
+                            class="
+                            text-sm font-semibold text-black/75 dark:text-white/75
+                            flex 
+                            mt-2 sm:mt-4
+                            items-center justify-center">
+                            2 • 3
+                        </p>
+                    </div>     
+                    
+                    <div class="relative leading-5 w-full">
+                        <p
+                            class="
+                            text-4xl text-black/75 dark:text-white/75
+                            flex 
+                            mt-0
+                            items-center justify-center">
+                            endereço
+                        </p>
+                    </div>      
+                    
+                    <div class="flow-root mt-6 px-[6px] sm:px-4">
+                        <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                            <div class="flex items-center w-full gap-1 p-3">
+                            <dt class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">cep</dt>
+                            <input
+                                name="cep"
+                                id="contact-cep"
+                                value="{{ contact.cep | format_cep }}"
+                                size="10"
+                                maxlength="9"
+                                inputmode="decimal"
+                                placeholder="..."
+                                onblur="pesquisacep(this.value);"
+                                class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
+                            </input>
+                          </div>                                                                                                                     
+                        </dl>
+                    </div>                  
+                    
+                    <div class="flow-root mt-4 px-[6px] sm:px-4">
+                        <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                      
+                            <div class="flex items-center w-full gap-1 p-3">
+                                <dt class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">endereço</dt>
+                                <input
+                                    name="endereco"
+                                    id="endereco"
+                                    value="{{ contact.endereco }}"
+                                    placeholder="..."
+                                    class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
+                                </input>
+                              </div>
+    
+                            <div class="flex items-center w-full gap-1 p-3">
+                                <dt class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">número</dt>
+                                <input
+                                    name="numero"
+                                    inputmode="decimal"
+                                    {% if contact.numero %}value="{{ contact.numero }}"{% endif %}
+                                    placeholder="..."
+                                    class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
+                                </input>
+                          </div>   
+    
+                          <div class="flex items-center w-full gap-1 p-3">
+                            <dt class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">complemento</dt>
+                            <input
+                                name="complemento"
+                                id="contact-complemento"
+                                value="{{ contact.complemento }}"
+                                placeholder="..."
+                                class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
+                            </input>
+                          </div>                      
+    
+                          <div class="flex items-center w-full gap-1 p-3">
+                            <dt class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">bairro</dt>
+                            <input
+                                name="bairro"
+                                id="contact-bairro"
+                                value="{{ contact.bairro }}"
+                                placeholder="..."
+                                class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
+                            </input>
+                          </div>    
+    
+                        </dl>
+                    </div>   
+    
+                    <div id="contribuinte-checkbox" class="px-[6px] sm:px-4 mb-24">
+                        <fieldset class="flex gap-2 mt-4">                  
+                            <div class="flex items-center w-full gap-2 p-3 px-3 rounded-lg dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                                <label for="cidade" class="inline text-sm text-black/70 dark:text-white/70">cidade</label>
+                                <input
+                                    name="cidade"
+                                    id="contact-cidade"
+                                    value="{{ contact.cidade }}"
+                                    placeholder="..."
+                                    class="w-full text-end text-sm text-black/40 dark:text-white/40 bg-transparent outline-none placeholder:text-black/70 dark:placeholder:text-white/70" />
+                            </div>
+                        
+                            <div class="w-fit flex-shrink-0 gap-1 p-3 px-3 rounded-lg dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                                <input
+                                    name="uf"
+                                    id="contact-uf"
+                                    value="{{ contact.uf | upper }}"
+                                    size="2"
+                                    maxlength="2"
+                                    placeholder="UF"
+                                    class="w-8 text-sm text-black/40 dark:text-white/40 bg-transparent outline-none text-center
+                                    placeholder:text-black/70 dark:placeholder:text-white/70" />
+                            </div>
+                        </fieldset> 
+                    </div>            
+                    <div class="absolute bottom-4 right-5 sm:right-4 text-sm leading-5">
+                        <p class="text-center text-[13px] text-black/40 dark:text-white/40">
+                            arraste para o lado
+                        </p>
+                    </div>                                     
+                </section>                   
+            </div>  
+            
+            <div
+                class="
+                snap-always snap-center
+                ring-1 
+                ring-black/5 dark:ring-white/5
+                bg-white
+                dark:bg-secondary      
+                shadow-md         
+                p-4
+                relative  
+                rounded-2xl
+                h-full w-full
+                flex-shrink-0">     
+
+                <div class="relative leading-5 w-full">
+                    <p
+                        class="
+                        text-lg text-black/75 dark:text-white/75
+                        flex 
+                        mb-2
+                        items-center justify-center">
+                        <kbd>editar contato</kbd>                                                        
+                    </p>
+                </div>    
+                
+                <section id="dados-comp" class="">
+                    <div>
+                        <span id="ProgressLabel" class="sr-only">Loading</span>
+                      
+                        <span
+                          role="progressbar"
+                          aria-labelledby="ProgressLabel"
+                          aria-valuemin="0"
+                          aria-valuenow="100"
+                          aria-valuemax="100"
+                          class="block rounded-full bg-gray-200 dark:bg-white/20">
+        
+                          <span class="block h-[2px] bg-black dark:bg-white/75" style="width: 100%"></span>
+                        </span>                      
+                    </div>  
+    
+                    <div class="relative leading-5 w-full">
+                        <p
+                            class="
+                            text-sm font-semibold text-black/75 dark:text-white/75
+                            flex 
+                            mt-2 sm:mt-4
+                            items-center justify-center">
+                            3 • 3
+                        </p>
+                    </div>     
+                    
+                    <div class="relative leading-5 w-full">
+                        <p
+                            class="
+                            text-4xl text-black/75 dark:text-white/75
+                            flex 
+                            mt-0
+                            items-center justify-center">
+                            outros
+                        </p>
+                    </div>   
+                    
+                    <fieldset class="grid grid-cols-3 gap-0 w-fit mt-6 px-[6px] sm:px-5">
+                        <legend class="sr-only">Tipo de Contato</legend>
+                      
+                        <div>
+                          <label
+                            for="cliente"
+                            class="
+                            block cursor-pointer w-fit rounded-lg p-2 px-4
+                            text-sm text-black/20 dark:text-white/45
+                            bg-background/0 dark:bg-secondary ring-1 ring-black/10 dark:ring-white/10
+                            hover:bg-background/60 dark:hover:bg-tertiary/40
+                            transition duration-300 ease-custom
+                            has-[:checked]:text-black/75
+                            has-[:checked]:bg-background  
+                            dark:has-[:checked]:text-white/75
+                            dark:has-[:checked]:bg-tertiary">
+                            <div>
+                              <p class="">cliente</p>
+                            </div>
+                      
+                            <input
+                              type="radio"
+                              name="tipo"
+                              value="cliente"
+                              id="cliente"
+                              class="sr-only"
+                              {% if contact.tipo == "cliente" %}checked{% endif %}
+                            />
+                          </label>
+                        </div>
+                      
+                        <div>
+                          <label
+                            for="fornecedor"
+                            class="
+                            block cursor-pointer w-fit rounded-lg p-2 px-2
+                            text-sm text-black/20 dark:text-white/25
+                            bg-background/0 dark:bg-secondary ring-1 ring-black/10 dark:ring-white/10
+                            hover:bg-background/60 dark:hover:bg-tertiary/40
+                            transition duration-300 ease-custom
+                            has-[:checked]:text-black/75
+                            has-[:checked]:bg-background  
+                            dark:has-[:checked]:text-white/75
+                            dark:has-[:checked]:bg-tertiary">
+                            <div>
+                              <p class="">fornecedor</p>
+                            </div>
+                      
+                            <input
+                              type="radio"
+                              name="tipo"
+                              value="fornecedor"
+                              id="fornecedor"
+                              class="sr-only"
+                              {% if contact.tipo == 'fornecedor' %}checked{% endif %}
+                            />
+                          </label>
+                        </div>
+                    </fieldset>                    
+                    
+                    <div class="flow-root mt-4 px-[6px] sm:px-5">
+                        <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                            <div class="flex items-center w-full gap-1 p-3">
+                            <dt class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">celular</dt>
+                            <input
+                                name="celular"
+                                id="contact-celular"
+                                value="{{ contact.celular | format_phone_number }}"
+                                inputmode="decimal"
+                                placeholder="..."
+                                class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
+                            </input>
+                          </div>     
+                          
+                          <div class="flex items-center w-full gap-1 p-3">
+                            <dt class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">email</dt>
+                            <input
+                                type="email"
+                                name="email"
+                                id="contact-email"
+                                value="{{ contact.email }}"
+                                placeholder="..."
+                                class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
+                            </input>
+                          </div>                           
+                        </dl>
+                    </div>  
+                    
+                    <div id="datePickerDiv" class="flow-root mt-4 px-[6px] sm:px-5">
+                        <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                          <div class="flex items-center w-full gap-1 p-3">
+                            <dt class="inline text-nowrap mr-2 text-black/70 dark:text-white/70">aniversário</dt>
+                            <input
+                                type="text"
+                                name="nascimento"
+                                id="contact-aniversario"
+                                value="{{ contact.nascimento|date:"d/m/Y" }}"
+                                autocomplete="off"
+                                placeholder="selecione data"
+                                class="
+                                flatpickr
+                                text-black/40 dark:text-white/40
+                                bg-transparent outline-none w-full text-end
+                                placeholder:text-black/40 dark:placeholder:text-white/40">
+                            </input>
+                          </div>                              
+                        </dl>
+                    </div>               
+                    
+                    <div class="flow-root mt-4 px-[6px] sm:px-5">
+                        <dl class="text-sm rounded-lg divide-y divide-black/5 dark:divide-white/5 bg-background/50 dark:bg-tertiary ring-1 ring-black/10">
+                          <div class="grid grid-cols-2 gap-1 p-3">
+                            <dt class="text-black/70 dark:text-white/70">observações</dt>
+                            <input
+                                type="text"
+                                name="observacoes"
+                                id="contact-observacoes"
+                                value="{{ contact.observacoes }}"
+                                placeholder="..."
+                                class="text-black/40 dark:text-white/40 bg-transparent outline-none col-span-2 text-start">
+                            </input>
+                          </div>                              
+                        </dl>
+                    </div>                       
+                    
+                    <!--bottom-right submit button-->    
+                    <div id="submit-contact-form" class="absolute bottom-4 right-4 text-sm leading-5">
+                        <button
+                            class="
+                            group
+                            flex 
+                            p-1
+                            items-center justify-center 
+                            aspect-square rounded-md 
+                            dark:shadow-thick 
+                            ring-1 
+                            ring-primary/15 hover:ring-primary/10
+                            dark:ring-white/10 dark:hover:ring-white/20
+                            duration-300 
+                            transition-all
+                            bg-white dark:bg-tertiary
+                            hover:bg-zinc-100 dark:hover:bg-primary"                    
+                            type="submit" 
+                            name="add-contact">
+                            <svg class="size-[18px] stroke-black/55 dark:stroke-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                            </svg>                                                         
+                        </button>
+                    </div>                     
+                </section>                 
+            </div>               
+
+            <input class="bg-transparent"> 
+        </form>          
+
+        <!--top-left closeAddContact button-->  
+        <div class="absolute hidden top-6 left-4 text-sm leading-5">
+            <div
+                class="
+                group
+                flex 
+                p-1
+                items-center justify-center 
+                aspect-square rounded-md 
+                dark:shadow-thick 
+                ring-1 
+                ring-primary/15 hover:ring-primary/10
+                dark:ring-white/10 dark:hover:ring-white/20
+                duration-300 
+                transition-all
+                bg-white dark:bg-tertiary
+                hover:bg-zinc-100 dark:hover:bg-primary">
+                <button>
+                    <svg class="size-[18px] text-black/55 dark:text-white/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M6 18 17.94 6M18 18 6.06 6"/>
+                    </svg>                                                   
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+ 
+<script src="{% static "js/contacts/editContact.js" %}"></script>
+<script src="{% static "js/contacts/cpfCnpj.js" %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        flatpickr(".flatpickr", {
+            dateFormat: "d/m/Y",
+            locale: "pt",
+            disableMobile: "true",
+            mode: "single",  
+            clickOpens: "true",        
+            position: "above center",  
+            positionElement: document.querySelector("#datePickerDiv"),
+            allowInput = "true",
+        });
+    });
+</script>
+<script>
+    
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('contact-endereco').value=("");
+            document.getElementById('contact-bairro').value=("");
+            document.getElementById('contact-cidade').value=("");
+            document.getElementById('contact-uf').value=("");
+            
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('contact-endereco').value=(conteudo.logradouro);
+            document.getElementById('contact-bairro').value=(conteudo.bairro);
+            document.getElementById('contact-cidade').value=(conteudo.localidade);
+            document.getElementById('contact-uf').value=(conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('contact-endereco').value="...";
+                document.getElementById('contact-bairro').value="...";
+                document.getElementById('contact-cidade').value="...";
+                document.getElementById('contact-uf').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var cpfCnpjField = document.querySelector('input[name="cpf_cnpj"]');
+        
+        // Max digits for CPF (11) and CNPJ (14)
+        const maxDigits = 14;
+
+        // Format CPF/CNPJ field on page load (if it already has a value)
+        if (cpfCnpjField.value) {
+            cpfCnpjField.value = formatCpfCnpj(cpfCnpjField.value);
+        }
+    
+        // Add formatting while typing
+        cpfCnpjField.addEventListener('input', function() {
+            // Limit input to max digits
+            cpfCnpjField.value = cpfCnpjField.value.replace(/\D/g, '').slice(0, maxDigits);
+            // Format CPF or CNPJ
+            cpfCnpjField.value = formatCpfCnpj(cpfCnpjField.value);
+        });
+    
+        function formatCpfCnpj(value) {
+            // Remove all non-digit characters
+            value = value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                // Format as CPF: 000.000.000-00
+                return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+            } else {
+                // Format as CNPJ: 00.000.000/0000-00
+                return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+            }
+        }
+    });
+</script>
