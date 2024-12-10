@@ -2,6 +2,7 @@ from django.db import models
 
 from erp.models import Company
 from users.models import User
+from contacts.models import Contacts
 
 import uuid
 
@@ -40,8 +41,10 @@ class Transactions(models.Model):
     conta = models.ForeignKey(
         BankAccount, on_delete=models.PROTECT,
     )
-    contato = models.CharField(
-        max_length=255, blank=False, null=False, default='...',
+    contato = models.ForeignKey(
+        Contacts,
+        on_delete=models.PROTECT,
+        blank=True, null=True, default=None,
     )
     descricao = models.CharField(max_length=255, blank=False, null=False)
     categoria = models.CharField(max_length=255, blank=True)
@@ -53,9 +56,7 @@ class Transactions(models.Model):
     linked = models.OneToOneField(
         'Transactions',
         on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-        default=None,
+        blank=True, null=True, default=None,
     )    
 
     def __str__(self):
