@@ -297,8 +297,8 @@
   {% endif %}                
 
   <!--delete button-->  
-  <form id="" class="col-span-2 mt-6 mb-4 ml-auto mr-auto w-full sm:w-8/12 flex justify-start"
-      action="" method="POST">
+  <form class="col-span-2 mt-6 mb-4 ml-auto mr-auto w-full sm:w-8/12 flex justify-start"
+      action="{% url "contacts:delete_contact" contact.id %}" method="POST">
       {% csrf_token %}
       <div class="rounded-lg w-fit h-fit">
           <button class="

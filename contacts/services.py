@@ -61,12 +61,9 @@ class ContactsLogic:
         data = ContactsLogic.add_contact(request)
         post_data = data.get('post_data')
 
-        if request.method == 'POST':
+        if request.method == 'POST' and 'edit-contact' in request.POST:
             form = ContactsForm(post_data, instance=contact)
             if form.is_valid():
                 form.save()
-                print('IT WORKEDDDD')
-            else:
-                print(form.errors)
 
         return {'contact': contact}
