@@ -45,6 +45,7 @@ class Transactions(models.Model):
         Contacts,
         on_delete=models.PROTECT,
         blank=True, null=True, default=None,
+        related_name='transactions',
     )
     descricao = models.CharField(max_length=255, blank=False, null=False)
     categoria = models.CharField(max_length=255, blank=True)
