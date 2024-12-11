@@ -21,7 +21,7 @@ class Finance:
 
     @staticmethod
     def add_transactions(request) -> dict[str, object]:
-        form: TransactionsForm = TransactionsForm(user=request.user)
+        form: TransactionsForm = TransactionsForm(company=request.user.company)
         tipo: str = request.POST.get('tipo')
 
         if request.method == 'POST' and 'add-transaction' in request.POST:
@@ -53,11 +53,11 @@ class Finance:
                 destination_account = BankAccount.objects \
                     .get(id=post_data['conta2'])                   
                      
-                post_data['contato'] = request.user.name              
+                post_data['contato'] = None              
                 post_data['descricao'] = f'enviada → {destination_account}'          
 
         post_data['created_by'] = request.user
-        form = TransactionsForm(post_data, user=request.user)
+        form = TransactionsForm(post_data, company=request.user.company)
         if form.is_valid() and valor_cleaned != 0:
             transaction = form.save()
             if tipo == 'transferir':
@@ -65,7 +65,7 @@ class Finance:
                 tipo = 'transferir',
                 valor = valor_cleaned,
                 conta = destination_account,
-                contato = request.user.name,
+                contato = None,
                 descricao = f'recebida ← {origin_account}',
                 categoria = 'transferência',
                 created_by = request.user,
