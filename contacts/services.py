@@ -19,15 +19,23 @@ class ContactsLogic:
     @staticmethod
     def get_contacts(request) -> dict[str, object]:
         q = request.GET.get('q')
+        tipo = request.GET.get('filtro')
+
         contacts = Contacts.objects.all().order_by('apelido')
 
+        if tipo == 'cliente' or tipo == 'fornecedor' or tipo == 'vendedor':
+            contacts = Contacts.objects.filter(tipo=tipo).order_by('apelido')
+
         if q:
-            contacts = Contacts.objects.filter(
+            contacts = Contacts.objects \
+                .filter(
                 Q(nome__icontains=q) |
                 Q(apelido__icontains=q) |
                 Q(cpf_cnpj__icontains=q) |
-                Q(celular__icontains=q)
-            )
+                Q(celular__icontains=q) |
+                Q(tipo__icontains=q)
+                ) \
+                .order_by('apelido')
 
         recent_contacts = Contacts.objects.all().order_by('-created')[0:2]
 

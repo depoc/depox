@@ -70,13 +70,13 @@
                     <span class="">todos</span>
                 </a>  
 
-                <a id="todos" href="?filtro=clientes{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
+                <a id="todos" href="?filtro=cliente{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
                     class="
                     tracking-wide
                     px-3 py-[3px] sm:px-3 sm:py-[4px]
                     ring-1
                     text-[13px]
-                    {% if request.GET.filtro == 'clientes' %}
+                    {% if request.GET.filtro == 'cliente' %}
                         bg-blue-50 dark:bg-blue-950
                         text-blue-500 dark:text-blue-200
                         ring-blue-500 dark:ring-blue-500
@@ -90,13 +90,13 @@
                     <span class="">clientes</span>
                 </a> 
 
-                <a id="hoje" href="?filtro=fornecedores{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
+                <a id="hoje" href="?filtro=fornecedor{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
                     class="
                     tracking-wide
                     px-3 py-[3px] sm:px-3 sm:py-[4px]
                     ring-1
                     text-[13px]
-                    {% if request.GET.filtro == 'fornecedores' %}
+                    {% if request.GET.filtro == 'fornecedor' %}
                         bg-blue-50 dark:bg-blue-950
                         text-blue-500 dark:text-blue-200
                         ring-blue-500 dark:ring-blue-500
@@ -110,13 +110,13 @@
                     <span>fornecedores</span>
                 </a> 
 
-                <a id="semana" href="?filtro=vendedores{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
+                <a id="semana" href="?filtro=vendedor{% if request.GET.banco %}&banco={{ request.GET.banco }}{% endif %}"
                     class="
                     tracking-wide
                     px-3 py-[3px] sm:px-3 sm:py-[4px]
                     ring-1
                     text-[13px]
-                    {% if request.GET.filtro == 'vendedores' %}
+                    {% if request.GET.filtro == 'vendedor' %}
                         bg-blue-50 dark:bg-blue-950
                         text-blue-500 dark:text-blue-200
                         ring-blue-500 dark:ring-blue-500
@@ -134,7 +134,7 @@
         </div>   
     </div>
 
-    {% if not request.GET.q %}
+    {% if not request.GET.q and request.GET.filtro != 'cliente' and request.GET.filtro != 'fornecedor' and request.GET.filtro != 'vendedor' %}
     <p class="text-lg text-black/30 dark:text-white/50 mt-2 px-3">
         recentes
     </p>   
@@ -232,7 +232,15 @@
 
     <p class="text-lg text-black/30 dark:text-white/50 mt-6 px-3">
         {% if request.GET.q %} resultados para: "{{ request.GET.q }}"
-        {% else %} todos {% endif %}
+        {% elif request.GET.filtro == 'cliente' %}
+        clientes
+        {% elif request.GET.filtro == 'fornecedor' %}
+        fornecedores
+        {% elif request.GET.filtro == 'vendedor' %}
+        vendedores
+        {% else %}
+        todos 
+        {% endif %}
     </p>
     <!--contacts-->
     <div class="
