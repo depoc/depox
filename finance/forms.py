@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 
 from .models import Transactions, BankAccount
+from contacts.models import Contacts
 
 
 class TransactionsForm(ModelForm):
@@ -9,21 +10,26 @@ class TransactionsForm(ModelForm):
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user')
+        company = kwargs.pop('company')
         super(TransactionsForm, self).__init__(*args, **kwargs)
 
         self.fields['conta'].queryset = BankAccount.objects \
-            .filter(company=user.company) \
+            .filter(company=company) \
             .order_by('-saldo')
         
+        self.fields['contato'].queryset = Contacts.objects \
+            .filter(company=company) \
+            .order_by('nome')
+        
         self.fields['conta'].empty_label = None
+        self.fields['contato'].empty_label = 'escolha contato'
 
         for name, field in self.fields.items():
             field.widget.attrs.update({
                 'autofocus': True,
                 'class': '''
                     placeholder:text-black dark:placeholder:text-white
-                    appearance-none w-full sm:w-1/2
+                    appearance-none w-full
                     bg-transparent
                     outline-none''',
             })            
