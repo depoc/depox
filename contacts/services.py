@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 from .models import Contacts
 from .forms import ContactsForm
@@ -17,7 +18,16 @@ class ContactsLogic:
     
     @staticmethod
     def get_contacts(request) -> dict[str, object]:
+        q = request.GET.get('q')
         contacts = Contacts.objects.all().order_by('apelido')
+
+        if q:
+            contacts = Contacts.objects.filter(
+                Q(nome__icontains=q) |
+                Q(apelido__icontains=q) |
+                Q(cpf_cnpj__icontains=q) |
+                Q(celular__icontains=q)
+            )
 
         recent_contacts = Contacts.objects.all().order_by('-created')[0:2]
 
