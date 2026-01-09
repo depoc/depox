@@ -297,6 +297,7 @@
   {% endif %}                
 
   <!--delete button-->  
+  {% if not contact.transactions.all and user.is_superuser %}
   <form class="col-span-2 mt-6 mb-4 ml-auto mr-auto w-full sm:w-8/12 flex justify-start"
       action="{% url "contacts:delete_contact" contact.id %}" method="POST">
       {% csrf_token %}
@@ -312,7 +313,23 @@
             excluir contato
           </button>
       </div>   
-  </form>      
+  </form>
+  {% elif user.is_superuser %}
+  <div class="col-span-2 mt-6 mb-4 ml-auto mr-auto w-full sm:w-8/12 flex justify-start">
+      <div class="rounded-lg w-fit h-fit">
+          <p class="
+          text-[13px] py-1 px-2 w-full h-full
+          duration-300 transition-all
+          ring-1 ring-zinc-200 hover:ring-zinc-300
+          dark:ring-zinc-700/50 dark:hover:ring-zinc-600/60
+          bg-white dark:bg-primary rounded-lg
+          hover:bg-background dark:hover:bg-primary
+          text-zinc-400 dark:text-zinc-400/70">
+            contato possui contas cadastradas
+          </p>
+      </div>   
+  </div>
+  {% endif %}  
 </div>
 
 <div class="fixed hidden inset-0 gap-4 p-4">

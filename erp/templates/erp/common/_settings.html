@@ -250,6 +250,7 @@
 
         <!--empresa settings-->    
         <div class="hidden" id="empresaSettings">
+            {% if user.is_superuser %}
             <form action="{% url "erp:index" %}" method="POST">
                 {% csrf_token %}
                 <!--empresa + button-->
@@ -591,7 +592,25 @@
                         </div>      
                 </div>
                 <button type="submit" class="hidden" name="company-form"></button>
-            </form>                     
+            </form>
+            {% else %}
+            <div
+                class="
+                    border
+                    border-zinc-300 dark:border-zinc-700
+                    bg-white dark:bg-secondary
+                    ml-auto mr-auto
+                    rounded-md
+                    md:w-10/12
+                    lg:w-3/4
+                    mt-8">
+            <p class="text-center p-4 text-xs text-black/40 dark:text-white/40">
+                acesso restrito
+                <br>
+                contate admin
+            </p>  
+            </div>
+            {% endif %}                 
         </div>
         
         <!--equipe settings-->        
@@ -609,7 +628,7 @@
                     lg:w-3/4
                     mt-8">
 
-                {% if user.company %}
+                {% if user.company and user.is_superuser %}
                 {% for member in team %}
                     <div 
                         class="
@@ -639,7 +658,13 @@
                     <hr class="border-none h-[1px] bg-zinc-300 dark:bg-zinc-600">
                     {% endif %}
                 {% endfor %}
-                
+
+                {% elif user %}
+                <p class="text-center p-4 text-xs text-black/40 dark:text-white/40">
+                    acesso restrito
+                    <br>
+                    contate admin
+                </p>         
                 {% else %}
                 <p class="text-center p-4 text-xs text-black/40 dark:text-white/40">
                     complete cadastro da empresa para
@@ -651,7 +676,7 @@
             </div>  
 
             <!--membro + button-->
-            {% if user.company %}
+            {% if user.company and user.is_superuser %}
             <a id="toggle-membro-button" class="cursor-pointer">
                 <div 
                     id="div-membro-button"
@@ -758,6 +783,7 @@
         </div>      
 
         <!--delete account button-->
+        {% if user.is_superuser %}
         <form action="{% url "erp:account_delete" %}" method="POST">
             {% csrf_token %}
             <div class="absolute bottom-5 left-6 text-sm leading-5">
@@ -788,6 +814,7 @@
                 </button>
             </div>
         </form>
+        {% endif %}
 
         <!--theme button swith-->
         <div 

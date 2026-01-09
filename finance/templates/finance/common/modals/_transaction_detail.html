@@ -110,6 +110,7 @@
         </div>         
   
         <!--bottom-left delete button-->  
+        {% if user.is_superuser %}
         <form id="delete-transaction-form"
             action="{% url "finance:delete_transaction" 0 %}" method="POST">
             {% csrf_token %}
@@ -135,7 +136,8 @@
                     </svg>                                                                                                      
                 </button>
             </div>   
-        </form>         
+        </form>
+        {% endif %}
   
         <!--empty closeHistory button-->  
         <div class="absolute top-4 left-5 sm:left-4 text-sm leading-5">
