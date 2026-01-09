@@ -12,12 +12,6 @@ closeAddContact.addEventListener("click", () => {
     addContact.classList.add("hidden");
 })
 
-addContact.addEventListener("click", (e) => {
-    if (e.target === addContact) {
-        addContact.classList.add("hidden");
-    }
-})
-
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { 
       if (addContact.classList.contains('flex')) {
