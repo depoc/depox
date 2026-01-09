@@ -4,8 +4,6 @@ from django.db.models import Q
 from .models import Contacts
 from .forms import ContactsForm
 
-from finance.models import Transactions
-
 
 class ContactsLogic:
     @staticmethod
