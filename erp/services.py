@@ -1,5 +1,6 @@
 from users.forms import CustomUserChangeForm
 from .forms import CompanyForm, MemberCreationForm
+from decimal import Decimal
 
 
 class Settings:
@@ -9,6 +10,7 @@ class Settings:
         context.update(Settings.get_user_context(request))
         context.update(Settings.get_company_context(request))
         context.update(Settings.get_team_context(request))
+        context.update(Settings.calculate_total_balance(request))
 
         return context
     
@@ -64,3 +66,13 @@ class Settings:
             
         return context
     
+    @staticmethod
+    def calculate_total_balance(request) -> dict:
+        company = request.user.company
+        banks = company.banks.all()
+
+        total_balance = Decimal(0)
+        for bank in banks:
+            total_balance += bank.saldo
+
+        return {"total_balance": total_balance}

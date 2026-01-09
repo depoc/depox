@@ -75,17 +75,13 @@
         <!--bottom-left text-->
         <div class="absolute mt-10 bottom-4 left-4">
             <p class="hidden lg:block text-lg text-zinc-400 dark:text-white/40">
-                caixa
+                saldo total
             </p>
             <p class="text-[22px] md:text-3xl text-black dark:text-white">
                 <span class="text-sm md:text-lg text-zinc-400">
                     R$
                 </span>
-                {% for bank in user.company.banks.all %}
-                    {% if bank.nome == 'caixa' %}
-                        {{ bank.saldo | format_money }}
-                    {% endif %}
-                {% endfor %}
+                {{ total_balance | format_money }}
             </p>
         </div>
     </div>
