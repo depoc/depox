@@ -371,10 +371,10 @@
                             </td>
                             {% endif %}
                             <td class=
-                            "whitespace-nowrap p-4 font-semibold sm:font-normal
-                            {% if transaction.valor < 0 %}text-orange-500{% else %}text-black/60 dark:text-white/65{% endif %}
+                            "whitespace-nowrap p-4 font-normal
+                            {% if transaction.valor < 0 %}text-red-500{% else %}text-black/60 dark:text-white/65{% endif %}
                             ">
-                            <span class="text-black/60">R$</span>
+                            <span class="text-black/60 dark:text-white/65">R$</span>
                                 {{ transaction.valor | format_money }}
                             </td>
                             <td class="whitespace-nowrap p-4 text-black/60 dark:text-white/65 text-end sm:text-start sm:rounded-none rounded-e-3xl">

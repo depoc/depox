@@ -59,14 +59,16 @@
                     text-sm text-black/40 dark:text-white/50
                     bottom-10 sm:bottom-4 left-4">
                     R$
-                    <span class="text-black dark:text-white text-lg">
+                    <span class="text-lg
+                    {% if bank.saldo < 0 %}text-red-500{% else %}text-black dark:text-white{% endif %}">
                         {{ bank.saldo | format_money }}
                     </span>                    
                 </p>
                 <p class="absolute bottom-10 left-4 text-sm text-black/40 dark:text-white/50 block sm:hidden">
                     R$
                 </p>  
-                <p class="absolute bottom-4 left-4 text-black dark:text-white text-lg block sm:hidden">
+                <p class="absolute bottom-4 left-4 text-lg block sm:hidden
+                {% if bank.saldo < 0 %}text-red-500{% else %}text-black dark:text-white{% endif %}">
                     {{ bank.saldo | format_money }}
                 </p>           
                 {% else %}
@@ -76,7 +78,8 @@
                     text-sm text-black/40 dark:text-white/50
                     bottom-4 left-4">
                     R$
-                    <span class="text-black dark:text-white text-lg">
+                    <span class="text-lg
+                    {% if bank.saldo < 0 %}text-red-500{% else %}text-black dark:text-white{% endif %}">
                         {{ bank.saldo | format_money }}
                     </span>
                 </p>                

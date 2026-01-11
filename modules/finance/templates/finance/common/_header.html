@@ -79,8 +79,9 @@
             <p class="text-[15px] sm:text-lg text-zinc-500 dark:text-white/50">
                 saldo total
             </p>    
-            <p class="text-[22px] sm:text-2xl text-black dark:text-white">
-                <span class="text-sm sm:text-lg text-zinc-500 dark:text-white/50">
+            <p class="text-[22px] sm:text-2xl
+            {% if saldo_total < 0 %}text-red-500{% else %}text-black/60 dark:text-white{% endif %}">
+                <span class="text-sm sm:text-lg text-black dark:text-white">
                     R$
                 </span>
                 {{ saldo_total | format_money }}

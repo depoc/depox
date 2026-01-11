@@ -77,7 +77,8 @@
             <p class="hidden lg:block text-lg text-zinc-400 dark:text-white/40">
                 saldo total
             </p>
-            <p class="text-[22px] md:text-3xl text-black dark:text-white">
+            <p class="text-[22px] md:text-3xl
+            {% if total_balance < 0 %}text-red-500{% else %}text-black dark:text-white{% endif %}">
                 <span class="text-sm md:text-lg text-zinc-400">
                     R$
                 </span>
