@@ -5,8 +5,10 @@ from datetime import timedelta
 
 from decimal import Decimal, InvalidOperation
 
-from .models import BankAccount, Transactions
-from .forms import TransactionsForm, BankAccountForm
+from .models import BankAccount, Transactions, Categories
+from .forms import TransactionsForm, BankAccountForm, CategoriesForm
+
+import uuid
 
 
 class Finance:
@@ -17,6 +19,8 @@ class Finance:
         context.update(Finance.get_transactions_by_date(request))
         context.update(Finance.add_bank_account(request))
         context.update(Finance.edit_bank_account(request))
+        context.update(Finance.add_category(request))
+        context.update(Finance.get_categories(request))
         return context
 
     @staticmethod
@@ -53,8 +57,9 @@ class Finance:
                 destination_account = BankAccount.objects \
                     .get(id=post_data['conta2'])                   
                      
-                post_data['contato'] = None              
-                post_data['descricao'] = f'enviada → {destination_account}'          
+                post_data['contato'] = None
+                user_description = post_data['descricao']      
+                post_data['descricao'] = f'enviada → {destination_account} • {user_description}'          
 
         post_data['created_by'] = request.user
         form = TransactionsForm(post_data, company=request.user.company)
@@ -66,12 +71,14 @@ class Finance:
                 valor = valor_cleaned,
                 conta = destination_account,
                 contato = None,
-                descricao = f'recebida ← {origin_account}',
-                categoria = 'transferência',
+                descricao = f'recebida ← {origin_account} • {user_description}',
+                categoria = None,
                 created_by = request.user,
                 linked=transaction,
                 )                     
                 transfer_to_destination_account.save()
+        else:
+            print(form.errors.get_context)
 
         return form
     
@@ -175,9 +182,9 @@ class Finance:
                             tipo='receber',
                             valor=saldo_cleaned,
                             conta=bank_account,
-                            contato='...',
+                            contato=None,
                             descricao='saldo inicial',
-                            categoria='...',
+                            categoria=None,
                             created_by=request.user,
                         )          
 
@@ -210,3 +217,22 @@ class Finance:
                 print(edit_bank_form.errors)              
 
         return {'edit_bank_form': edit_bank_form}
+
+    @staticmethod
+    def add_category(request) -> dict[str, object]:
+        form = CategoriesForm()
+        post_date = request.POST.copy()
+
+        if request.method == 'POST' and 'add-category' in request.POST:
+            form = CategoriesForm(post_date)
+
+            if form.is_valid():
+                form = form.save()
+
+        return {'add_category_form': form}
+    
+    @staticmethod
+    def get_categories(request) -> dict[str, object]:
+        categories = Categories.objects.all()
+
+        return {'categories': categories}

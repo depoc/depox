@@ -71,7 +71,22 @@
                         <dt class="text-black/70 dark:text-white/70 text-sm">
                             {{ transaction.contato | lower }}
                         </dt>
-                    </div>            
+                    </div>       
+                    
+                    <div class="p-3">
+                        <dt class="text-black/70 dark:text-white/70 text-sm">
+                            <select name="categoria" class="w-full bg-transparent outline-none appearance-none">
+                            <option value="" disabled selected>escolha categoria</option>
+                            {% for k, v in transaction.category.items %}
+                            <optgroup label={{ k }}>
+                                {% for subcategoria in v.subcategorias %}
+                                <option value={{ subcategoria.id }}>{{ subcategoria.nome }}</option>
+                                {% endfor %}
+                            </optgroup>
+                            {% endfor %}
+                            </select>
+                        </dt>
+                    </div>     
               
                   <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
                     <dt class="text-black/70 dark:text-white/70">descrição</dt>
@@ -79,16 +94,6 @@
                         required
                         name="descricao"
                         id="descricao"
-                        placeholder="..."
-                        class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start sm:text-end">
-                    </input>
-                  </div>
-              
-                  <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="text-black/70 dark:text-white/70">categoria</dt>
-                    <input
-                        name="categoria"
-                        id="categoria"
                         placeholder="..."
                         class="text-black/40 dark:text-white/40 bg-transparent outline-none sm:col-span-2 text-start sm:text-end">
                     </input>

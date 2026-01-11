@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import BankAccount, Transactions
+from .models import BankAccount, Transactions, Categories
 
 
 class TransactionsInline(admin.StackedInline):
@@ -20,5 +20,11 @@ class TransactionsAdmin(admin.ModelAdmin):
     readonly_fields = ('conta', 'created_by', 'created')
 
 
+class CategoriesAdmin(admin.ModelAdmin):
+    list_display = ['nome']
+    readonly_fields = ['id']
+
+
 admin.site.register(BankAccount, BankAccountAdmin)
 admin.site.register(Transactions, TransactionsAdmin)
+admin.site.register(Categories, CategoriesAdmin)
