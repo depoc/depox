@@ -9,6 +9,9 @@ def format_money(number):
         .replace(".", ",") \
         .replace("X", ".")
     
+    if money[0] == '-':
+        money = f'({money.removeprefix('-')})'
+    
     return money
 
 @register.filter
