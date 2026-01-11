@@ -69,10 +69,12 @@ class Settings:
     @staticmethod
     def calculate_total_balance(request) -> dict:
         company = request.user.company
-        banks = company.banks.all()
-
         total_balance = Decimal(0)
-        for bank in banks:
-            total_balance += bank.saldo
+        
+        if company:
+            banks = company.banks.all()
+
+            for bank in banks:
+                total_balance += bank.saldo
 
         return {"total_balance": total_balance}
