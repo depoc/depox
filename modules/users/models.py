@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-from erp.models import Company
+from modules.erp.models import Company
 
 from .managers import UserManager
 

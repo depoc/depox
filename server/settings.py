@@ -38,14 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'users.apps.UsersConfig',
-    'erp.apps.ErpConfig',
-    'finance.apps.FinanceConfig',
-    'contacts.apps.ContactsConfig',
+    'modules.users',
+    'modules.erp',
+    'modules.finance',
+    'modules.contacts',
     'shared',
 ]
 
 AUTH_USER_MODEL = 'users.User'
+
+AUTHENTICATION_BACKENDS = [
+    'modules.users.backends.EmailOrUsernameBackend',
+]
 
 LOGOUT_REDIRECT_URL = '/login/'
 
@@ -72,7 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'finance.context.processor',
+                'modules.finance.context.processor',
             ],
         },
     },
@@ -137,7 +141,3 @@ MEDIA_ROOT = BASE_DIR / 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-AUTHENTICATION_BACKENDS = [
-    'users.backends.EmailOrUsernameBackend',
-]

@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, redirect
 
-from erp.services import Settings
+from modules.erp.services import Settings
 from .services import Finance
 
 from .models import Transactions, BankAccount

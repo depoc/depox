@@ -3,7 +3,9 @@ from django.apps import AppConfig
 
 class FinanceConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'finance'
+    name = 'modules.finance'
+    module = 'modules'
+    label = 'finance'
 
     def ready(self):
-        import finance.signals
+        from . import signals

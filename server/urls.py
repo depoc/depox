@@ -5,10 +5,10 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('users.urls')),
-    path('erp/', include('erp.urls')),
-    path('caixa/', include('finance.urls')),
-    path('contatos/', include('contacts.urls')),
+    path('', include('modules.users.urls')),
+    path('erp/', include('modules.erp.urls')),
+    path('caixa/', include('modules.finance.urls')),
+    path('contatos/', include('modules.contacts.urls')),
 
     # temporary: while the index page is not built
     path(

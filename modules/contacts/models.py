@@ -1,6 +1,6 @@
 from django.db import models
 
-from erp.models import Company
+from modules.erp.models import Company
 
 
 class Contacts(models.Model):

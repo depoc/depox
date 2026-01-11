@@ -1,7 +1,7 @@
 from django.forms import ModelForm, ChoiceField
 
 from .models import Transactions, BankAccount, Categories
-from contacts.models import Contacts
+from modules.contacts.models import Contacts
 
 
 class TransactionsForm(ModelForm):

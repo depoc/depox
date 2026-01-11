@@ -4,7 +4,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
-from users.models import User
+from modules.users.models import User
 
 from .services import Settings    
 

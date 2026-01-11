@@ -3,7 +3,7 @@ from django.forms import ModelForm
 
 from .models import Company
 
-from users.models import User
+from modules.users.models import User
 
 
 class CompanyForm(ModelForm):

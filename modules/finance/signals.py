@@ -3,7 +3,7 @@ from django.dispatch import receiver
 from django.db import transaction
 from django.db.models import Sum
 
-from erp.models import Company
+from modules.erp.models import Company
 from .models import BankAccount, Transactions, Categories
 
 

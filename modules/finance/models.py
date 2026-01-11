@@ -1,9 +1,9 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
-from erp.models import Company
-from users.models import User
-from contacts.models import Contacts
+from modules.erp.models import Company
+from modules.users.models import User
+from modules.contacts.models import Contacts
 
 import uuid
 
