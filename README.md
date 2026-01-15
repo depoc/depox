@@ -1,7 +1,7 @@
-# DEPOX (archived)
+# DEPOX (MVP)
 
-### As the project grew, combining backend and frontend became hard to manage. Frontend features often required workarounds, which wasn’t sustainable long-term.
+### The first Depoc MVP build with Django, leveraging the template system and DTL.
 
 ---
 
-*Last updated: 2026-01-10*
+*Last updated: 2026-01-15*
