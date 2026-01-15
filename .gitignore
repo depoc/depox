@@ -43,7 +43,7 @@ local_settings.py
 static/images/logos/*
 
 # Ignore auto-generated CSS files
-static/output.css
+# static/output.css
 
 # mypy
 .mypy_cache/
