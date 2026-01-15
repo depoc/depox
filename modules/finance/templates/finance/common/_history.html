@@ -385,7 +385,7 @@
                             <td class="whitespace-normal p-4 text-black/60 dark:text-white/65 font-semibold hidden sm:table-cell">
                                 {% if transaction.tipo == 'transferir' %}
                                 {{ transaction.created_by }}
-                                {% elif transaction.contacto %}
+                                {% elif transaction.contato %}
                                 {{transaction.contato | lower}}
                                 {% else %}
                                 -

@@ -25,7 +25,7 @@
         rounded-2xl
         relative flex">
         
-        <form action="{% url "contacts:main" %}?filtro=todos" method="POST"
+        <form id="add-contact-form" action="{% url "contacts:main" %}?filtro=todos" method="POST"
             class="overflow-x-auto p-0 flex gap-3 no-scrollbar snap-mandatory snap-x">
             {% csrf_token %}
 
@@ -157,6 +157,7 @@
                             <input
                                 name="nome"
                                 id="nome"
+                                required
                                 placeholder="..."
                                 class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
                             </input>
@@ -175,6 +176,7 @@
                             <input
                                 name="cpf_cnpj"
                                 id="cpf_cnpj"
+                                required
                                 inputmode="decimal"
                                 placeholder="..."
                                 class="w-full text-end text-black/40 dark:text-white/40 bg-transparent outline-none">
@@ -649,6 +651,15 @@
 <script src="{% static "js/contacts/addContact.js" %}"></script>
 <script src="{% static "js/contacts/cpfCnpj.js" %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+<script>
+const form = document.getElementById("add-contact-form");
+
+form.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+  }
+});
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         flatpickr(".flatpickr", {
