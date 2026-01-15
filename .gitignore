@@ -49,3 +49,5 @@ static/output.css
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+.env
